@@ -1,0 +1,587 @@
+[
+  {
+    "english": "What did",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "the other",
+    "chinese": "其他",
+    "pos": "adj"
+  },
+  {
+    "english": "workers",
+    "chinese": "工人",
+    "pos": "noun"
+  },
+  {
+    "english": "do",
+    "chinese": "做了",
+    "pos": "verb"
+  },
+  {
+    "english": "with",
+    "chinese": "用",
+    "pos": "prep"
+  },
+  {
+    "english": "the money",
+    "chinese": "錢",
+    "pos": "noun"
+  },
+  {
+    "english": "they",
+    "chinese": "他們",
+    "pos": "pro"
+  },
+  {
+    "english": "earned",
+    "chinese": "賺的",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "First",
+    "chinese": "先",
+    "pos": "adv"
+  },
+  {
+    "english": "they",
+    "chinese": "他們",
+    "pos": "pro"
+  },
+  {
+    "english": "bought",
+    "chinese": "買了",
+    "pos": "verb"
+  },
+  {
+    "english": "food to eat",
+    "chinese": "吃的吃",
+    "pos": "phrase"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "clothes to wear",
+    "chinese": "穿的穿",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Then",
+    "chinese": "然後",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "they",
+    "chinese": "他們",
+    "pos": "pro"
+  },
+  {
+    "english": "put",
+    "chinese": "把",
+    "pos": "verb"
+  },
+  {
+    "english": "some of the",
+    "chinese": "一部分",
+    "pos": "det"
+  },
+  {
+    "english": "money",
+    "chinese": "錢",
+    "pos": "noun"
+  },
+  {
+    "english": "in",
+    "chinese": "存入",
+    "pos": "prep"
+  },
+  {
+    "english": "the bank",
+    "chinese": "銀行",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Later",
+    "chinese": "之後",
+    "pos": "adv"
+  },
+  {
+    "english": "they",
+    "chinese": "他們",
+    "pos": "pro"
+  },
+  {
+    "english": "will use",
+    "chinese": "會用",
+    "pos": "verb"
+  },
+  {
+    "english": "the money",
+    "chinese": "錢",
+    "pos": "noun"
+  },
+  {
+    "english": "in the bank",
+    "chinese": "銀行的",
+    "pos": "prep"
+  },
+  {
+    "english": "to buy",
+    "chinese": "買",
+    "pos": "verb"
+  },
+  {
+    "english": "other",
+    "chinese": "其他",
+    "pos": "adj"
+  },
+  {
+    "english": "things",
+    "chinese": "東西",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What else",
+    "chinese": "還有_什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "did",
+    "chinese": "了",
+    "pos": "verb"
+  },
+  {
+    "english": "they",
+    "chinese": "他們",
+    "pos": "pro"
+  },
+  {
+    "english": "buy",
+    "chinese": "買",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Stitches",
+    "chinese": "針",
+    "pos": "noun"
+  },
+  {
+    "english": "bought",
+    "chinese": "買了",
+    "pos": "verb"
+  },
+  {
+    "english": "an",
+    "chinese": "一個",
+    "pos": "det"
+  },
+  {
+    "english": "egg beater",
+    "chinese": "打蛋器",
+    "pos": "noun"
+  },
+  {
+    "english": "so that",
+    "chinese": "這樣",
+    "pos": "conj"
+  },
+  {
+    "english": "his",
+    "chinese": "他的",
+    "pos": "poss"
+  },
+  {
+    "english": "family",
+    "chinese": "家人",
+    "pos": "noun"
+  },
+  {
+    "english": "could make",
+    "chinese": "就可以做_了",
+    "pos": "verb"
+  },
+  {
+    "english": "fudge",
+    "chinese": "軟糖",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Try",
+    "chinese": "試",
+    "pos": "verb"
+  },
+  {
+    "english": "not",
+    "chinese": "不要",
+    "pos": "adv"
+  },
+  {
+    "english": "to get",
+    "chinese": "把_弄",
+    "pos": "verb"
+  },
+  {
+    "english": "any",
+    "chinese": "(軟糖)",
+    "pos": "det"
+  },
+  {
+    "english": "on",
+    "chinese": "到_上",
+    "pos": "prep"
+  },
+  {
+    "english": "your",
+    "chinese": "你的",
+    "pos": "poss"
+  },
+  {
+    "english": "new",
+    "chinese": "新",
+    "pos": "adj"
+  },
+  {
+    "english": "clothes",
+    "chinese": "衣服",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Blacksmith",
+    "chinese": "鐵匠",
+    "pos": "noun"
+  },
+  {
+    "english": "Fox",
+    "chinese": "狐狸",
+    "pos": "noun"
+  },
+  {
+    "english": "bought",
+    "chinese": "買了",
+    "pos": "verb"
+  },
+  {
+    "english": "more",
+    "chinese": "更多的",
+    "pos": "adj"
+  },
+  {
+    "english": "iron",
+    "chinese": "鐵",
+    "pos": "noun"
+  },
+  {
+    "english": "for",
+    "chinese": "為",
+    "pos": "prep"
+  },
+  {
+    "english": "his",
+    "chinese": "他的",
+    "pos": "poss"
+  },
+  {
+    "english": "shop",
+    "chinese": "店",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "will heat",
+    "chinese": "要加熱",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "bend",
+    "chinese": "彎曲",
+    "pos": "verb"
+  },
+  {
+    "english": "the metal",
+    "chinese": "金屬",
+    "pos": "noun"
+  },
+  {
+    "english": "to make",
+    "chinese": "製造",
+    "pos": "verb"
+  },
+  {
+    "english": "more",
+    "chinese": "更多的",
+    "pos": "adj"
+  },
+  {
+    "english": "tractors",
+    "chinese": "拖拉機",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "tools",
+    "chinese": "工具",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Grocer",
+    "chinese": "雜貨商",
+    "pos": "noun"
+  },
+  {
+    "english": "Cat",
+    "chinese": "貓",
+    "pos": "noun"
+  },
+  {
+    "english": "bought",
+    "chinese": "買了",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一件",
+    "pos": "det"
+  },
+  {
+    "english": "new",
+    "chinese": "新",
+    "pos": "adj"
+  },
+  {
+    "english": "dress",
+    "chinese": "裙子",
+    "pos": "noun"
+  },
+  {
+    "english": "for",
+    "chinese": "給",
+    "pos": "prep"
+  },
+  {
+    "english": "Mommy",
+    "chinese": "媽媽",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "also",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": "bought",
+    "chinese": "買了",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一份",
+    "pos": "det"
+  },
+  {
+    "english": "present",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": "for",
+    "chinese": "給",
+    "pos": "prep"
+  },
+  {
+    "english": "his son",
+    "chinese": "兒子",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Huckle",
+    "chinese": "哈克",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Huckle",
+    "chinese": "哈克",
+    "pos": "noun"
+  },
+  {
+    "english": "was",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a very",
+    "chinese": "很",
+    "pos": "adv"
+  },
+  {
+    "english": "good",
+    "chinese": "好",
+    "pos": "adj"
+  },
+  {
+    "english": "helper",
+    "chinese": "幫手",
+    "pos": "noun"
+  },
+  {
+    "english": "today",
+    "chinese": "今天",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Sand",
+    "chinese": "沙",
+    "pos": "noun"
+  },
+  {
+    "english": "bag",
+    "chinese": "袋",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "bellows",
+    "chinese": "風箱",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "forge",
+    "chinese": "鍛爐",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "iron",
+    "chinese": "鐵",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "How do",
+    "chinese": "怎麼樣",
+    "pos": "quest"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "look",
+    "chinese": "看起來",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  }
+]

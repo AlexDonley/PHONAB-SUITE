@@ -1,0 +1,692 @@
+[
+  {
+    "english": "Hey",
+    "chinese": "嘿",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Casey",
+    "chinese": "凱西",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Do you",
+    "chinese": "你_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "like",
+    "chinese": "喜歡",
+    "pos": "verb"
+  },
+  {
+    "english": "Christmas",
+    "chinese": "聖誕節",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "don't",
+    "chinese": "不",
+    "pos": "verb"
+  },
+  {
+    "english": "know",
+    "chinese": "了解",
+    "pos": "verb"
+  },
+  {
+    "english": "much",
+    "chinese": "多",
+    "pos": "adv"
+  },
+  {
+    "english": "about",
+    "chinese": "有關",
+    "pos": "prep"
+  },
+  {
+    "english": "Christmas",
+    "chinese": "聖誕節",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What do",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "do",
+    "chinese": "做",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Christmas",
+    "chinese": "聖誕節",
+    "pos": "noun"
+  },
+  {
+    "english": "is great",
+    "chinese": "真棒",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "spend time",
+    "chinese": "共度時光",
+    "pos": "verb"
+  },
+  {
+    "english": "with",
+    "chinese": "與",
+    "pos": "prep"
+  },
+  {
+    "english": "family",
+    "chinese": "家人",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "give",
+    "chinese": "贈送",
+    "pos": "verb"
+  },
+  {
+    "english": "presents",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and",
+    "chinese": "還有",
+    "pos": "conj"
+  },
+  {
+    "english": "decorate",
+    "chinese": "裝飾",
+    "pos": "verb"
+  },
+  {
+    "english": "a Christmas tree",
+    "chinese": "聖誕樹",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "A tree",
+    "chinese": "一棵樹",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Inside the house",
+    "chinese": "屋內",
+    "pos": "phrase"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yeah",
+    "chinese": "是啊",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "put",
+    "chinese": "掛_在",
+    "pos": "verb"
+  },
+  {
+    "english": "lights",
+    "chinese": "燈飾",
+    "pos": "noun"
+  },
+  {
+    "english": "on",
+    "chinese": "上(面)",
+    "pos": "prep"
+  },
+  {
+    "english": "it",
+    "chinese": "(樹)",
+    "pos": "pro"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It's",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": "so",
+    "chinese": "太",
+    "pos": "adj"
+  },
+  {
+    "english": "pretty",
+    "chinese": "漂亮了",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Sounds",
+    "chinese": "聽起來很",
+    "pos": "verb"
+  },
+  {
+    "english": "fun",
+    "chinese": "有趣",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Who",
+    "chinese": "誰",
+    "pos": "quest"
+  },
+  {
+    "english": "gets",
+    "chinese": "收到",
+    "pos": "verb"
+  },
+  {
+    "english": "presents",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Mostly",
+    "chinese": "主要是",
+    "pos": "adv"
+  },
+  {
+    "english": "family",
+    "chinese": "家人",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "friends",
+    "chinese": "朋友",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "also",
+    "chinese": "還",
+    "pos": "adv"
+  },
+  {
+    "english": "get",
+    "chinese": "收到",
+    "pos": "verb"
+  },
+  {
+    "english": "presents",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": "from Santa Claus",
+    "chinese": "聖誕老公公的",
+    "pos": "phrase"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Santa Claus",
+    "chinese": "聖誕老公公",
+    "pos": "noun"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Is he",
+    "chinese": "他是_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "the big man",
+    "chinese": "大個子男生",
+    "pos": "phrase"
+  },
+  {
+    "english": "in",
+    "chinese": "穿",
+    "pos": "prep"
+  },
+  {
+    "english": "a red",
+    "chinese": "紅色",
+    "pos": "adj"
+  },
+  {
+    "english": "suit",
+    "chinese": "衣服",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yep",
+    "chinese": "是的",
+    "pos": "ex"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "gives",
+    "chinese": "會給",
+    "pos": "verb"
+  },
+  {
+    "english": "presents",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": "to kids",
+    "chinese": "孩子",
+    "pos": "phrase"
+  },
+  {
+    "english": "if",
+    "chinese": "如果",
+    "pos": "conj"
+  },
+  {
+    "english": "they",
+    "chinese": "他們",
+    "pos": "pro"
+  },
+  {
+    "english": "ve been",
+    "chinese": "表現",
+    "pos": "verb"
+  },
+  {
+    "english": "good",
+    "chinese": "好",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Nice",
+    "chinese": "很好",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Do you",
+    "chinese": "你們_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "special",
+    "chinese": "特別的",
+    "pos": "adj"
+  },
+  {
+    "english": "food",
+    "chinese": "菜",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes",
+    "chinese": "是的",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "have",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "a big",
+    "chinese": "一頓豐盛的",
+    "pos": "adj"
+  },
+  {
+    "english": "dinner",
+    "chinese": "晚餐",
+    "pos": "noun"
+  },
+  {
+    "english": "with",
+    "chinese": "有",
+    "pos": "prep"
+  },
+  {
+    "english": "ham",
+    "chinese": "火腿",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "cookies",
+    "chinese": "餅乾",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and",
+    "chinese": "還有",
+    "pos": "conj"
+  },
+  {
+    "english": "sometimes",
+    "chinese": "有時候",
+    "pos": "adv"
+  },
+  {
+    "english": "eggnog",
+    "chinese": "蛋酒",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yum",
+    "chinese": "好吃",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Christmas",
+    "chinese": "聖誕節",
+    "pos": "noun"
+  },
+  {
+    "english": "Sounds",
+    "chinese": "聽起來很",
+    "pos": "verb"
+  },
+  {
+    "english": "fun",
+    "chinese": "有趣",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It's",
+    "chinese": "這",
+    "pos": "pro"
+  },
+  {
+    "english": "super",
+    "chinese": "非常",
+    "pos": "adj"
+  },
+  {
+    "english": "fun",
+    "chinese": "有趣",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Do you",
+    "chinese": "你_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "say",
+    "chinese": "想說的",
+    "pos": "verb"
+  },
+  {
+    "english": "anything",
+    "chinese": "任何",
+    "pos": "noun"
+  },
+  {
+    "english": "special",
+    "chinese": "特別",
+    "pos": "adj"
+  },
+  {
+    "english": "for",
+    "chinese": "對",
+    "pos": "prep"
+  },
+  {
+    "english": "Christmas",
+    "chinese": "聖誕節",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "always",
+    "chinese": "總是",
+    "pos": "adv"
+  },
+  {
+    "english": "say",
+    "chinese": "說",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Merry Christmas",
+    "chinese": "聖誕快樂",
+    "pos": "phrase"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Merry Christmas",
+    "chinese": "聖誕快樂",
+    "pos": "phrase"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Tom",
+    "chinese": "湯姆",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  }
+]

@@ -1,0 +1,537 @@
+[
+    {
+      "english": "Seven AM",
+      "chinese": "早上七點",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "the usual",
+      "chinese": "照常",
+      "pos": "adj"
+    },
+    {
+      "english": "morning",
+      "chinese": "早上",
+      "pos": "noun"
+    },
+    {
+      "english": "lineup",
+      "chinese": "行程",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "start on",
+      "chinese": "開始做",
+      "pos": "verb"
+    },
+    {
+      "english": "the chores",
+      "chinese": "家事",
+      "pos": "noun"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "sweep",
+      "chinese": "掃地",
+      "pos": "verb"
+    },
+    {
+      "english": "til",
+      "chinese": "直到",
+      "pos": "prep"
+    },
+    {
+      "english": "the floor",
+      "chinese": "地板",
+      "pos": "noun"
+    },
+    {
+      "english": "s all clean",
+      "chinese": "都乾淨",
+      "pos": "adj"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "polish",
+      "chinese": "拋光",
+      "pos": "verb"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "wax",
+      "chinese": "打蠟",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "do laundry",
+      "chinese": "洗衣服",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "mop",
+      "chinese": "拖地",
+      "pos": "verb"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "shine up",
+      "chinese": "擦亮",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "sweep",
+      "chinese": "掃",
+      "pos": "verb"
+    },
+    {
+      "english": "again",
+      "chinese": "再_一次",
+      "pos": "adv"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "by then",
+      "chinese": "到那時",
+      "pos": "adv"
+    },
+    {
+      "english": "it's like",
+      "chinese": "大約是",
+      "pos": "pro"
+    },
+    {
+      "english": "7:15",
+      "chinese": "7點15分了",
+      "pos": "noun"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "And so",
+      "chinese": "所以",
+      "pos": "conj"
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "read",
+      "chinese": "讀",
+      "pos": "verb"
+    },
+    {
+      "english": "a book",
+      "chinese": "一本書",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "or",
+      "chinese": "或者",
+      "pos": "conj"
+    },
+    {
+      "english": "maybe",
+      "chinese": "也許是",
+      "pos": "adv"
+    },
+    {
+      "english": "two or three",
+      "chinese": "兩三本",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "ll add",
+      "chinese": "將_添加",
+      "pos": "verb"
+    },
+    {
+      "english": "a few",
+      "chinese": "一些",
+      "pos": "adj"
+    },
+    {
+      "english": "new",
+      "chinese": "新",
+      "pos": "adj"
+    },
+    {
+      "english": "paintings",
+      "chinese": "畫作",
+      "pos": "noun"
+    },
+    {
+      "english": "to",
+      "chinese": "在_中",
+      "pos": "prep"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "gallery",
+      "chinese": "畫廊",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "ll play",
+      "chinese": "會彈",
+      "pos": "verb"
+    },
+    {
+      "english": "guitar",
+      "chinese": "吉他",
+      "pos": "noun"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "knit",
+      "chinese": "編織",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "cook",
+      "chinese": "做飯 / 煮飯",
+      "pos": "verb"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "basically",
+      "chinese": "基本上",
+      "pos": "adv"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "just",
+      "chinese": "只(是)",
+      "pos": "adv"
+    },
+    {
+      "english": "wonder",
+      "chinese": "想知道",
+      "pos": "verb"
+    },
+    {
+      "english": "when",
+      "chinese": "什麼時候",
+      "pos": "prep"
+    },
+    {
+      "english": "will",
+      "chinese": "將",
+      "pos": "verb"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "life",
+      "chinese": "生活",
+      "pos": "noun"
+    },
+    {
+      "english": "begin",
+      "chinese": "開始",
+      "pos": "verb"
+    },
+    {
+      "english": "?",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "Then",
+      "chinese": "然後",
+      "pos": "adv"
+    },
+    {
+      "english": "after",
+      "chinese": "後",
+      "pos": "prep"
+    },
+    {
+      "english": "lunch",
+      "chinese": "午餐",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "it's",
+      "chinese": "就是",
+      "pos": "pro"
+    },
+    {
+      "english": "puzzles",
+      "chinese": "拼圖",
+      "pos": "noun"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "darts",
+      "chinese": "飛鏢",
+      "pos": "noun"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "baking",
+      "chinese": "烘焙",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "paper mache",
+      "chinese": "紙漿",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "a bit of",
+      "chinese": "一點",
+      "pos": "adj"
+    },
+    {
+      "english": "ballet",
+      "chinese": "芭蕾舞",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "chess",
+      "chinese": "西洋棋",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "pottery",
+      "chinese": "陶器",
+      "pos": "noun"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "ventriloquy",
+      "chinese": "腹語",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "candle making",
+      "chinese": "蠟燭製作",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "then",
+      "chinese": "然後",
+      "pos": "adv"
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "ll stretch",
+      "chinese": "會伸展身體",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "maybe",
+      "chinese": "也許",
+      "pos": "adj"
+    },
+    {
+      "english": "sketch",
+      "chinese": "素描",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "take a climb",
+      "chinese": "爬爬",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "sew",
+      "chinese": "縫",
+      "pos": "verb"
+    },
+    {
+      "english": "a dress",
+      "chinese": "一件裙子",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "",
+      "pos": ""
+    }
+  ]

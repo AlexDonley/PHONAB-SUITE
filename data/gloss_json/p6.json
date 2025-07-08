@@ -1,0 +1,537 @@
+[
+  {
+    "english": "\"",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "cannot",
+    "chinese": "不能",
+    "pos": "verb"
+  },
+  {
+    "english": "go to",
+    "chinese": "去",
+    "pos": "verb"
+  },
+  {
+    "english": "school",
+    "chinese": "學校",
+    "pos": "noun"
+  },
+  {
+    "english": "today",
+    "chinese": "今天",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "\"",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "said",
+    "chinese": "說",
+    "pos": "verb"
+  },
+  {
+    "english": "little",
+    "chinese": "小",
+    "pos": "adj"
+  },
+  {
+    "english": "Peggy Ann Mckay",
+    "chinese": "佩吉·安·麥凱",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "\"",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "have",
+    "chinese": "患有",
+    "pos": "verb"
+  },
+  {
+    "english": "the measles",
+    "chinese": "麻疹",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "the mumps",
+    "chinese": "腮腺炎",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a gash",
+    "chinese": "傷口",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a rash",
+    "chinese": "皮疹",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "purple",
+    "chinese": "紫色",
+    "pos": "adj"
+  },
+  {
+    "english": "bumps",
+    "chinese": "腫塊",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "My",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "mouth",
+    "chinese": "嘴巴",
+    "pos": "noun"
+  },
+  {
+    "english": "is wet",
+    "chinese": "濕了",
+    "pos": "adj"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "throat",
+    "chinese": "喉嚨",
+    "pos": "noun"
+  },
+  {
+    "english": "is dry",
+    "chinese": "乾了",
+    "pos": "adj"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "'m going blind in",
+    "chinese": "快要瞎了",
+    "pos": "verb"
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "right",
+    "chinese": "右邊",
+    "pos": "adj"
+  },
+  {
+    "english": "eye",
+    "chinese": "眼睛",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "My",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "tonsils",
+    "chinese": "扁桃腺",
+    "pos": "noun"
+  },
+  {
+    "english": "are as big as",
+    "chinese": "像_一樣大",
+    "pos": "phrase"
+  },
+  {
+    "english": "rocks",
+    "chinese": "石頭",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "'ve counted",
+    "chinese": "數了一下",
+    "pos": "verb"
+  },
+  {
+    "english": "sixteen",
+    "chinese": "十六個",
+    "pos": "adj"
+  },
+  {
+    "english": "chicken pox",
+    "chinese": "水痘",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And there's one more",
+    "chinese": "還有一個",
+    "pos": "phrase"
+  },
+  {
+    "english": "—",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "that's",
+    "chinese": "那是",
+    "pos": "phrase"
+  },
+  {
+    "english": "seventeen",
+    "chinese": "十七個",
+    "pos": "adj"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "don't",
+    "chinese": "不",
+    "pos": "adv"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "think",
+    "chinese": "覺得",
+    "pos": "verb"
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "face",
+    "chinese": "臉",
+    "pos": "noun"
+  },
+  {
+    "english": "looks",
+    "chinese": "看起來",
+    "pos": "verb"
+  },
+  {
+    "english": "green",
+    "chinese": "綠綠的",
+    "pos": "adj"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "My",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "leg",
+    "chinese": "腿",
+    "pos": "noun"
+  },
+  {
+    "english": "is cut",
+    "chinese": "被割傷了",
+    "pos": "adj"
+  },
+  {
+    "english": "—",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "eyes",
+    "chinese": "眼睛",
+    "pos": "noun"
+  },
+  {
+    "english": "are",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "blue",
+    "chinese": "藍色的",
+    "pos": "adj"
+  },
+  {
+    "english": "—",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It might be",
+    "chinese": "可能是",
+    "pos": "phrase"
+  },
+  {
+    "english": "instamatic",
+    "chinese": "突發性",
+    "pos": "adj"
+  },
+  {
+    "english": "flu",
+    "chinese": "流感",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "cough",
+    "chinese": "咳嗽",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "sneeze",
+    "chinese": "打噴嚏",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "gasp",
+    "chinese": "喘氣",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "choke",
+    "chinese": "窒息",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "'m sure that",
+    "chinese": "確定",
+    "pos": "verb"
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "left",
+    "chinese": "左",
+    "pos": "adj"
+  },
+  {
+    "english": "leg",
+    "chinese": "腿",
+    "pos": "noun"
+  },
+  {
+    "english": "is broke",
+    "chinese": "斷了",
+    "pos": "adj"
+  },
+  {
+    "english": "—",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "My",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "hip",
+    "chinese": "髖",
+    "pos": "noun"
+  },
+  {
+    "english": "hurts",
+    "chinese": "會痛",
+    "pos": "verb"
+  },
+  {
+    "english": "when",
+    "chinese": "當_時",
+    "pos": "conj"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "move",
+    "chinese": "移動",
+    "pos": "verb"
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "chin",
+    "chinese": "下巴",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "My",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "belly button",
+    "chinese": "肚臍眼",
+    "pos": "noun"
+  },
+  {
+    "english": "'s caving in",
+    "chinese": "凹陷了",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "\"",
+    "chinese": "",
+    "pos": ""
+  }
+]

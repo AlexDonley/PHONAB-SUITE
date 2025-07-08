@@ -1,0 +1,327 @@
+[
+  {
+    "english": "This",
+    "chinese": "這",
+    "pos": "det"
+  },
+  {
+    "english": "is",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "Busytown",
+    "chinese": "繁忙的小鎮",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "My",
+    "chinese": "天啊",
+    "pos": "poss"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "what a nice",
+    "chinese": "多麼好的一個",
+    "pos": "phrase"
+  },
+  {
+    "english": "town",
+    "chinese": "小鎮",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Town hall",
+    "chinese": "市政廳",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "news stand",
+    "chinese": "報攤",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "post office",
+    "chinese": "郵局",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "shoemaker",
+    "chinese": "鞋匠",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "detective",
+    "chinese": "偵探",
+    "pos": "noun"
+  },
+  {
+    "english": "agency",
+    "chinese": "社",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "police",
+    "chinese": "警察",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "hotel",
+    "chinese": "飯店",
+    "pos": "noun"
+  },
+  {
+    "english": "sun",
+    "chinese": "太陽",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "watch",
+    "chinese": "手錶",
+    "pos": "noun"
+  },
+  {
+    "english": "repairs",
+    "chinese": "維修",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a poet",
+    "chinese": "詩人",
+    "pos": "noun"
+  },
+  {
+    "english": "writing",
+    "chinese": "在寫",
+    "pos": "verb"
+  },
+  {
+    "english": "poems",
+    "chinese": "詩",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "an artist",
+    "chinese": "藝術家",
+    "pos": "noun"
+  },
+  {
+    "english": "painting",
+    "chinese": "在畫",
+    "pos": "verb"
+  },
+  {
+    "english": "a picture",
+    "chinese": "一張圖",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "story",
+    "chinese": "故事",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a pretty",
+    "chinese": "漂亮的",
+    "pos": "adj"
+  },
+  {
+    "english": "model",
+    "chinese": "模特",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "photographer",
+    "chinese": "攝影師",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a businessman",
+    "chinese": "商人",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a secretary",
+    "chinese": "秘書",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "operator",
+    "chinese": "總機",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "printer",
+    "chinese": "印刷者",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "newspaper",
+    "chinese": "報紙",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "editor",
+    "chinese": "編輯",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "saleslady",
+    "chinese": "女售貨員",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "reporter",
+    "chinese": "記者",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "janitor",
+    "chinese": "看門人",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "remarkable",
+    "chinese": "非凡的",
+    "pos": "adj"
+  },
+  {
+    "english": "book",
+    "chinese": "書",
+    "pos": "noun"
+  },
+  {
+    "english": "shop",
+    "chinese": "店",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

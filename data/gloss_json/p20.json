@@ -1,0 +1,517 @@
+[
+  {
+    "english": "Today",
+    "chinese": "今天",
+    "pos": "noun"
+  },
+  {
+    "english": "Alfalfa",
+    "chinese": "苜蓿",
+    "pos": "noun"
+  },
+  {
+    "english": "bought",
+    "chinese": "買了",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一套",
+    "pos": "det"
+  },
+  {
+    "english": "new",
+    "chinese": "新",
+    "pos": "adj"
+  },
+  {
+    "english": "suit",
+    "chinese": "西裝",
+    "pos": "noun"
+  },
+  {
+    "english": "with",
+    "chinese": "用",
+    "pos": "prep"
+  },
+  {
+    "english": "some of the",
+    "chinese": "部分的",
+    "pos": "det"
+  },
+  {
+    "english": "money",
+    "chinese": "錢",
+    "pos": "noun"
+  },
+  {
+    "english": "he got from",
+    "chinese": "從_得到",
+    "pos": "prep"
+  },
+  {
+    "english": "Grocer",
+    "chinese": "雜貨",
+    "pos": "noun"
+  },
+  {
+    "english": "Cat",
+    "chinese": "貓",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Stitches",
+    "chinese": "針",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "the tailor",
+    "chinese": "裁縫師",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "makes",
+    "chinese": "製作",
+    "pos": "verb"
+  },
+  {
+    "english": "clothes",
+    "chinese": "衣服",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Alfalfa",
+    "chinese": "苜蓿",
+    "pos": "noun"
+  },
+  {
+    "english": "bought",
+    "chinese": "購買了",
+    "pos": "verb"
+  },
+  {
+    "english": "his",
+    "chinese": "他的",
+    "pos": "poss"
+  },
+  {
+    "english": "new",
+    "chinese": "新",
+    "pos": "adj"
+  },
+  {
+    "english": "suit",
+    "chinese": "西裝",
+    "pos": "noun"
+  },
+  {
+    "english": "from",
+    "chinese": "從",
+    "pos": "prep"
+  },
+  {
+    "english": "Stitches",
+    "chinese": "針",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Then",
+    "chinese": "然後",
+    "pos": "adv"
+  },
+  {
+    "english": "Alfalfa",
+    "chinese": "苜蓿",
+    "pos": "noun"
+  },
+  {
+    "english": "went to",
+    "chinese": "去了",
+    "pos": "verb"
+  },
+  {
+    "english": "to",
+    "chinese": "",
+    "pos": "prep"
+  },
+  {
+    "english": "Blacksmith",
+    "chinese": "鐵匠",
+    "pos": "noun"
+  },
+  {
+    "english": "Fox's",
+    "chinese": "狐狸的",
+    "pos": "prep"
+  },
+  {
+    "english": "shop",
+    "chinese": "商店",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "had saved",
+    "chinese": "已經存",
+    "pos": "verb"
+  },
+  {
+    "english": "enough",
+    "chinese": "夠了",
+    "pos": "adj"
+  },
+  {
+    "english": "money",
+    "chinese": "錢",
+    "pos": "noun"
+  },
+  {
+    "english": "to buy",
+    "chinese": "來買",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一輛",
+    "pos": "det"
+  },
+  {
+    "english": "new",
+    "chinese": "新",
+    "pos": "adj"
+  },
+  {
+    "english": "tractor",
+    "chinese": "拖拉機",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "The new",
+    "chinese": "新",
+    "pos": "adj"
+  },
+  {
+    "english": "tractor",
+    "chinese": "拖拉機",
+    "pos": "noun"
+  },
+  {
+    "english": "will make",
+    "chinese": "將使",
+    "pos": "verb"
+  },
+  {
+    "english": "his",
+    "chinese": "他的",
+    "pos": "poss"
+  },
+  {
+    "english": "farm",
+    "chinese": "農",
+    "pos": "noun"
+  },
+  {
+    "english": "work",
+    "chinese": "事",
+    "pos": "verb"
+  },
+  {
+    "english": "easier",
+    "chinese": "更輕鬆",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "With",
+    "chinese": "有了",
+    "pos": "poss"
+  },
+  {
+    "english": "it",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "will be able",
+    "chinese": "將能",
+    "pos": "verb"
+  },
+  {
+    "english": "to grow",
+    "chinese": "種植",
+    "pos": "verb"
+  },
+  {
+    "english": "more",
+    "chinese": "更多的",
+    "pos": "adj"
+  },
+  {
+    "english": "food",
+    "chinese": "食物",
+    "pos": "noun"
+  },
+  {
+    "english": "than he could grow before",
+    "chinese": "比_以前",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "also",
+    "chinese": "還",
+    "pos": "adv"
+  },
+  {
+    "english": "bought",
+    "chinese": "買了",
+    "pos": "verb"
+  },
+  {
+    "english": "some",
+    "chinese": "一些",
+    "pos": "det"
+  },
+  {
+    "english": "presents",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": "for",
+    "chinese": "給",
+    "pos": "prep"
+  },
+  {
+    "english": "Mommy",
+    "chinese": "媽媽",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "his son",
+    "chinese": "兒子",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Alfalfa",
+    "chinese": "苜蓿",
+    "pos": "noun"
+  },
+  {
+    "english": "put",
+    "chinese": "把",
+    "pos": "verb"
+  },
+  {
+    "english": "the rest of",
+    "chinese": "剩餘的",
+    "pos": "phrase"
+  },
+  {
+    "english": "the money",
+    "chinese": "錢",
+    "pos": "noun"
+  },
+  {
+    "english": "in",
+    "chinese": "存入",
+    "pos": "prep"
+  },
+  {
+    "english": "the bank",
+    "chinese": "銀行",
+    "pos": "noun"
+  },
+  {
+    "english": "for safekeeping",
+    "chinese": "保管",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Then",
+    "chinese": "然後",
+    "pos": "adv"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "drove",
+    "chinese": "開車",
+    "pos": "verb"
+  },
+  {
+    "english": "home",
+    "chinese": "回家",
+    "pos": "noun"
+  },
+  {
+    "english": "to his family",
+    "chinese": "與家人團聚",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Mommy",
+    "chinese": "媽媽",
+    "pos": "noun"
+  },
+  {
+    "english": "loved",
+    "chinese": "很喜歡",
+    "pos": "verb"
+  },
+  {
+    "english": "her",
+    "chinese": "她的",
+    "pos": "poss"
+  },
+  {
+    "english": "new",
+    "chinese": "新",
+    "pos": "adj"
+  },
+  {
+    "english": "earrings",
+    "chinese": "耳環",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Alfred",
+    "chinese": "阿爾弗雷德",
+    "pos": "noun"
+  },
+  {
+    "english": "loved",
+    "chinese": "很喜歡",
+    "pos": "verb"
+  },
+  {
+    "english": "his",
+    "chinese": "他的",
+    "pos": "poss"
+  },
+  {
+    "english": "present",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Anvil",
+    "chinese": "鐵砧",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "bank",
+    "chinese": "銀行",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

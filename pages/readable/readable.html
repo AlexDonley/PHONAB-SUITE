@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2F4YZQ0DV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-L2F4YZQ0DV');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="description" content="Practice English speech live in your classroom!">
+    <meta name="keywords" content="speaking, phrase, English, ESL, vocabulary, language learning">
+    <meta name="author" content="Alex Donley">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+    <link rel="stylesheet" href="readable.css">
+    <script type="module" src="readable.js" defer></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Readable</title>
+</head>
+<body>
+    <div class="three-columns">
+
+        <div class="zhuyin" id="zhuyinBlock">
+            
+        </div>
+
+        <div class="user-input">
+            Enter                 
+            <select name="lang-select" id="langSel">
+                <option value="chinese">Chinese</option>
+                <option value="english">English</option>
+            </select>  below:
+            <textarea class="user-text" id="userText">道可道，非常道。名可名，非常名。</textarea>
+            <div class="test">
+                <ruby>
+                    <ruby>
+                        你<rt>ni</rt>好<rt>hao</rt>
+                    </ruby>
+                    <rt>hello</rt>
+                </ruby>
+            </div>
+            <div class="settings">
+                <label for="pin-position">Pinyin caption position:</label>
+                <select name="pin-position" id="pinPos">
+                    <option value="under">Under</option>
+                    <option value="over">Over</option>
+                </select> 
+                <br>
+                <label for="zhu-position">Zhuyin caption position:</label>
+                <select name="zhu-position" id="zhuPos">
+                    <option value="over">Left</option>
+                    <option value="under">Right</option>
+                </select> 
+            </div>
+        </div>
+
+        <div class="pinyin ruby-under" id="pinyinBlock">
+        
+        </div>
+    </div>
+</body>
+</html>

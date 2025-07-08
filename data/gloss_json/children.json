@@ -1,0 +1,567 @@
+[
+  {
+    "english": "Hey",
+    "chinese": "嘿",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Casey",
+    "chinese": "凱西",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "heard",
+    "chinese": "聽說",
+    "pos": "verb"
+  },
+  {
+    "english": "you",
+    "chinese": "你們",
+    "pos": "pro"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "a holiday",
+    "chinese": "一個節日",
+    "pos": "noun"
+  },
+  {
+    "english": "named",
+    "chinese": "叫",
+    "pos": "adj"
+  },
+  {
+    "english": "Children's Day",
+    "chinese": "兒童節",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "is it true",
+    "chinese": "是真的嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "That's right",
+    "chinese": "沒錯",
+    "pos": "phrase"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It's",
+    "chinese": "這是",
+    "pos": "pro"
+  },
+  {
+    "english": "a special",
+    "chinese": "一個特別的",
+    "pos": "adj"
+  },
+  {
+    "english": "day",
+    "chinese": "日子",
+    "pos": "noun"
+  },
+  {
+    "english": "just for",
+    "chinese": "只為了",
+    "pos": "prep"
+  },
+  {
+    "english": "kids",
+    "chinese": "孩子",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "the whole",
+    "chinese": "一整_都",
+    "pos": "adj"
+  },
+  {
+    "english": "day",
+    "chinese": "天",
+    "pos": "noun"
+  },
+  {
+    "english": "off from school",
+    "chinese": "沒有上學",
+    "pos": "phrase"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "That",
+    "chinese": "那",
+    "pos": "pro"
+  },
+  {
+    "english": "sounds",
+    "chinese": "聽起來",
+    "pos": "verb"
+  },
+  {
+    "english": "awesome",
+    "chinese": "棒極了",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What do you do",
+    "chinese": "你會怎麼做",
+    "pos": "quest"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Families",
+    "chinese": "一家人",
+    "pos": "noun"
+  },
+  {
+    "english": "go to",
+    "chinese": "去",
+    "pos": "verb"
+  },
+  {
+    "english": "the park",
+    "chinese": "公園",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "play",
+    "chinese": "玩",
+    "pos": "verb"
+  },
+  {
+    "english": "games",
+    "chinese": "遊戲",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and sometimes",
+    "chinese": "還有時候",
+    "pos": "adv"
+  },
+  {
+    "english": "visit",
+    "chinese": "參觀",
+    "pos": "verb"
+  },
+  {
+    "english": "museums",
+    "chinese": "博物館",
+    "pos": "noun"
+  },
+  {
+    "english": "or",
+    "chinese": "或",
+    "pos": "conj"
+  },
+  {
+    "english": "zoos",
+    "chinese": "動物園",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Do you",
+    "chinese": "你_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "get",
+    "chinese": "收到",
+    "pos": "verb"
+  },
+  {
+    "english": "presents",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Sometimes",
+    "chinese": "有時候",
+    "pos": "adv"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Parents",
+    "chinese": "父母",
+    "pos": "noun"
+  },
+  {
+    "english": "or",
+    "chinese": "或",
+    "pos": "conj"
+  },
+  {
+    "english": "teachers",
+    "chinese": "老師",
+    "pos": "noun"
+  },
+  {
+    "english": "give",
+    "chinese": "贈送",
+    "pos": "verb"
+  },
+  {
+    "english": "small",
+    "chinese": "小",
+    "pos": "adj"
+  },
+  {
+    "english": "presents",
+    "chinese": "禮物",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "like",
+    "chinese": "例如",
+    "pos": "adj"
+  },
+  {
+    "english": "books",
+    "chinese": "書籍",
+    "pos": "noun"
+  },
+  {
+    "english": "or",
+    "chinese": "或",
+    "pos": "conj"
+  },
+  {
+    "english": "toys",
+    "chinese": "玩具",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What do you do",
+    "chinese": "你做什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "for",
+    "chinese": "為(了)",
+    "pos": "prep"
+  },
+  {
+    "english": "Children's Day",
+    "chinese": "兒童節",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Actually",
+    "chinese": "事實上",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "country",
+    "chinese": "國家",
+    "pos": "noun"
+  },
+  {
+    "english": "doesn't have",
+    "chinese": "沒有",
+    "pos": "verb"
+  },
+  {
+    "english": "Children's Day",
+    "chinese": "兒童節",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Really",
+    "chinese": "真的嗎",
+    "pos": "adv"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Why not",
+    "chinese": "為什麼沒有",
+    "pos": "quest"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "My",
+    "chinese": "我",
+    "pos": "poss"
+  },
+  {
+    "english": "mom and dad",
+    "chinese": "爸爸媽媽",
+    "pos": "noun"
+  },
+  {
+    "english": "told",
+    "chinese": "告訴",
+    "pos": "verb"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "that",
+    "chinese": "",
+    "pos": "conj"
+  },
+  {
+    "english": "we",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "don't have",
+    "chinese": "沒有",
+    "pos": "verb"
+  },
+  {
+    "english": "a Children's Day",
+    "chinese": "兒童節",
+    "pos": "noun"
+  },
+  {
+    "english": "because",
+    "chinese": "因為",
+    "pos": "conj"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "every day",
+    "chinese": "每天(都)",
+    "pos": "noun"
+  },
+  {
+    "english": "is",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "Children's Day",
+    "chinese": "兒童節",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Wow",
+    "chinese": "哇",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "never",
+    "chinese": "從來沒有",
+    "pos": "adv"
+  },
+  {
+    "english": "thought of it",
+    "chinese": "想過",
+    "pos": "verb"
+  },
+  {
+    "english": "that way",
+    "chinese": "那樣",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Happy Children's Day",
+    "chinese": "兒童節快樂",
+    "pos": "phrase"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Casey",
+    "chinese": "凱西",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Enjoy",
+    "chinese": "享受",
+    "pos": "verb"
+  },
+  {
+    "english": "your",
+    "chinese": "你的",
+    "pos": "poss"
+  },
+  {
+    "english": "time off",
+    "chinese": "休息時間",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Happy Children's Day",
+    "chinese": "兒童節快樂",
+    "pos": "phrase"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Tom",
+    "chinese": "湯姆",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  }
+]

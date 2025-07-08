@@ -1,0 +1,302 @@
+[
+  {
+    "english": "Some",
+    "chinese": "有些",
+    "pos": "det"
+  },
+  {
+    "english": "workers",
+    "chinese": "工人",
+    "pos": "noun"
+  },
+  {
+    "english": "always",
+    "chinese": "總是",
+    "pos": "adv"
+  },
+  {
+    "english": "do their work",
+    "chinese": "工作",
+    "pos": "verb"
+  },
+  {
+    "english": "at",
+    "chinese": "在",
+    "pos": "prep"
+  },
+  {
+    "english": "the same",
+    "chinese": "同一個",
+    "pos": "adj"
+  },
+  {
+    "english": "place",
+    "chinese": "地方",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Others",
+    "chinese": "其他人",
+    "pos": "noun"
+  },
+  {
+    "english": "travel",
+    "chinese": "移動",
+    "pos": "verb"
+  },
+  {
+    "english": "from",
+    "chinese": "從",
+    "pos": "prep"
+  },
+  {
+    "english": "place",
+    "chinese": "一個地方",
+    "pos": "noun"
+  },
+  {
+    "english": "to",
+    "chinese": "到",
+    "pos": "prep"
+  },
+  {
+    "english": "place",
+    "chinese": "另一個地方",
+    "pos": "noun"
+  },
+  {
+    "english": "to do their jobs",
+    "chinese": "工作",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What does your Daddy do",
+    "chinese": "你的爸爸做什麼的",
+    "pos": "phrase"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What does your mommy do?",
+    "chinese": "你的媽媽做什麼的",
+    "pos": "phrase"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And what do you do?",
+    "chinese": "那你做什麼呢？",
+    "pos": "phrase"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Are you",
+    "chinese": "你是_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "a",
+    "chinese": "個",
+    "pos": "det"
+  },
+  {
+    "english": "good",
+    "chinese": "好",
+    "pos": "adj"
+  },
+  {
+    "english": "helper",
+    "chinese": "幫手",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "A",
+    "chinese": "一輛",
+    "pos": "det"
+  },
+  {
+    "english": "stuck",
+    "chinese": "被困的",
+    "pos": "adj"
+  },
+  {
+    "english": "truck",
+    "chinese": "卡車",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a",
+    "chinese": "一名",
+    "pos": "det"
+  },
+  {
+    "english": "sleeping",
+    "chinese": "正在睡覺的",
+    "pos": "adj"
+  },
+  {
+    "english": "fireman",
+    "chinese": "消防員",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fire house",
+    "chinese": "消防局",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "apartments",
+    "chinese": "公寓",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "window",
+    "chinese": "窗戶",
+    "pos": "noun"
+  },
+  {
+    "english": "washer",
+    "chinese": "清潔工",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "barber shop",
+    "chinese": "男士理髮店",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "laundress",
+    "chinese": "洗衣女工",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "delivery boy",
+    "chinese": "送貨員",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "automobile",
+    "chinese": "汽車",
+    "pos": "noun"
+  },
+  {
+    "english": "salesman",
+    "chinese": "銷售員",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "jack hammer",
+    "chinese": "手提鑽 / 打地機",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ditch digger",
+    "chinese": "鑿地工人",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "telephone",
+    "chinese": "電話",
+    "pos": "noun"
+  },
+  {
+    "english": "booth",
+    "chinese": "亭",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "taxi",
+    "chinese": "計程車",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

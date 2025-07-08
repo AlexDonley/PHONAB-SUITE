@@ -1,0 +1,607 @@
+[
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a butterfly",
+    "chinese": "一隻蝴蝶",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a dragonfly",
+    "chinese": "蜻蜓",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a firefly",
+    "chinese": "螢火蟲",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a bee",
+    "chinese": "一隻蜜蜂",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "!!!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Um",
+    "chinese": "嗯",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "uh",
+    "chinese": "呃",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "what",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a bee",
+    "chinese": "一隻蜜蜂",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "have to be",
+    "chinese": "必須是",
+    "pos": "verb"
+  },
+  {
+    "english": "a fly",
+    "chinese": "一隻蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Okay",
+    "chinese": "好吧",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a fly",
+    "chinese": "一隻蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "have to be",
+    "chinese": "必須是",
+    "pos": "verb"
+  },
+  {
+    "english": "a kind of",
+    "chinese": "一種",
+    "pos": ""
+  },
+  {
+    "english": "fly",
+    "chinese": "蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "But",
+    "chinese": "但是",
+    "pos": "conj"
+  },
+  {
+    "english": "what kind of",
+    "chinese": "哪一種",
+    "pos": "quest"
+  },
+  {
+    "english": "fly",
+    "chinese": "蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "should",
+    "chinese": "應該",
+    "pos": "verb"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "be",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Um",
+    "chinese": "嗯",
+    "pos": "ex"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "seems like",
+    "chinese": "看來",
+    "pos": "verb"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "the black",
+    "chinese": "黑色",
+    "pos": "adj"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "yellow",
+    "chinese": "黃色的",
+    "pos": "adj"
+  },
+  {
+    "english": "stripe",
+    "chinese": "條紋",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "So",
+    "chinese": "所以",
+    "pos": "adv"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a tiger fly",
+    "chinese": "一隻虎蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Fly",
+    "chinese": "蒼蠅 / 飛翔",
+    "pos": "noun"
+  },
+  {
+    "english": "~",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Can I",
+    "chinese": "我可以__嗎?",
+    "pos": "quest"
+  },
+  {
+    "english": "join",
+    "chinese": "加入",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a fly",
+    "chinese": "一隻蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What",
+    "chinese": "哪一種",
+    "pos": "quest"
+  },
+  {
+    "english": "kind of",
+    "chinese": "一種",
+    "pos": "phrase"
+  },
+  {
+    "english": "fly",
+    "chinese": "蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Um",
+    "chinese": "嗯",
+    "pos": "ex"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "just",
+    "chinese": "只是",
+    "pos": "adv"
+  },
+  {
+    "english": "a fly",
+    "chinese": "一隻蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "can't",
+    "chinese": "不能",
+    "pos": "verb"
+  },
+  {
+    "english": "just be",
+    "chinese": "只是",
+    "pos": "verb"
+  },
+  {
+    "english": "a fly",
+    "chinese": "一隻蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "have to be",
+    "chinese": "必須是",
+    "pos": "verb"
+  },
+  {
+    "english": "'something'",
+    "chinese": "「某些東西」",
+    "pos": "noun"
+  },
+  {
+    "english": "with",
+    "chinese": "的",
+    "pos": "prep"
+  },
+  {
+    "english": "'fly'",
+    "chinese": "「蒼蠅」",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "But",
+    "chinese": "但",
+    "pos": "conj"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a fly",
+    "chinese": "一隻蒼蠅",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Okay",
+    "chinese": "好的",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Okay",
+    "chinese": "好的",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Um",
+    "chinese": "嗯",
+    "pos": "ex"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a housefly",
+    "chinese": "一隻家蠅",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Fly",
+    "chinese": "蒼蠅 / 飛翔",
+    "pos": "noun"
+  },
+  {
+    "english": "~",
+    "chinese": "",
+    "pos": ""
+  }
+]

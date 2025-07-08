@@ -1,0 +1,403 @@
+body {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    font-family: century gothic, sans-serif
+}
+
+.columns {
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
+    display: flex;
+    margin: 15px
+}
+
+.column {
+    width: 50%;
+    
+}
+
+.highlight {
+    background: pink;
+    display: flex;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    height: 50%;
+    margin-right: 15px;
+}
+
+.fulltext {
+    position: relative;
+    text-align: center;
+    height: 50%;
+    text-align: left;
+    padding: 15px;
+    padding-bottom: 0px;
+    overflow: auto;
+    font-size: 20pt;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.fulltext:focus{
+    border-radius: 10px;
+}
+.fulltext::-webkit-scrollbar {
+    display: none;
+}
+.text::after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(255, 0, 0, 0) 90%, white);
+    pointer-events: none;
+}
+
+.button-bar {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+}
+.button-bar.two {
+    right: 10px
+}
+
+.snip {
+    user-select: none;
+    border-radius: 5px;
+    transition: background 0.5s, padding 0.5s;
+}
+
+.go {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    font-size: 25pt;
+    font-family: century gothic;
+    background: green;
+    color: rgb(187, 255, 187)
+}
+
+.plus-minus {
+
+    display: flex
+}
+.plus-minus.two {
+    right: 30px;
+    bottom: 30px
+}
+
+.grow{
+    margin: 0;
+    font-size: 20pt;
+    width: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-right: 0
+}
+.grow.one{
+    background: pink;
+    color: maroon;
+}
+.grow.two{
+    background: lightblue;
+    color: darkblue;
+}
+
+.shrink{
+    margin: 0;
+    font-size: 20pt;
+    font-weight: bold;
+    width: 50px;
+    height: 40px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-left: 0
+}
+.shrink.one{
+    color: pink;
+    background: maroon;
+}
+.shrink.two{
+    color: lightblue;
+    background: darkblue
+}
+
+.gloss-btn {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.gloss {
+    position: relative;
+    background: rgb(179, 179, 179);
+    color: rgb(66, 66, 66);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.word {
+    width: 50%;
+    pointer-events: none
+}
+
+.english {
+    text-align: right;
+    margin-right: 8px;
+}
+
+.chinese {
+    text-align: left;
+    margin-left: 8px;
+}
+
+.header {
+    display: flex;
+    gap: 15px;
+}
+.head {
+    width: 50%;
+    height: 10vh;
+    color: black;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+}
+
+.entries{
+    font-size: 40pt;
+    user-select: none;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.entries::-webkit-scrollbar {
+    display: none;
+}
+
+.entry {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid;
+    transition: font-size 0.5s, color 0.5s;
+    position: relative;
+}
+
+.color {
+    padding: 0 5px;
+}
+
+.pro.color {
+    background: rgb(208, 208, 255);
+}
+.verb.color {
+    background: red
+}
+.noun.color {
+    background: rgb(0, 183, 255)
+}
+.ex.color {
+    background: orange
+}
+.adj.color {
+    background: lightgreen
+}
+.adv.color {
+    background: turquoise
+}
+.phrase.color {
+    background: cyan
+}
+.prep.color {
+    background: yellow
+}
+.conj.color {
+    background: rgb(255, 255, 179)
+}
+.poss.color {
+    background: pink
+}
+.quest.color {
+    background: tan
+}
+.det.color {
+    background: lightgray
+}
+
+.new {
+    color: black;
+    font-size: 60pt;
+    font-weight: bold;
+}
+
+.text-selector {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s, z-index 0s;
+}
+
+.menu-background {
+    height: 100%;
+    width: 100%;
+    background: rgba(68, 55, 55, 0.3);
+    backdrop-filter: blur(11.3px);
+    -webkit-backdrop-filter: blur(11.3px);
+    position: fixed
+}
+
+.text-dropdown {
+    background: white;
+    line-height: 100px;
+    font-size: 35pt;
+    text-align: center;
+    border-radius: 15px;
+    padding: 5px 15px;
+    z-index: 2;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+}
+
+.text-names {
+    font-size: 35pt;
+    font-family: century gothic;
+    border: none;
+    margin: 0 10px
+}
+
+.hide {
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.2s, z-index 0s 0.2s;
+}
+
+.wrap-all {
+    display: flex;
+}
+
+.left-bar {
+    position: absolute;
+    left: 0;
+    height: calc(100% - 20px);
+    width: max(10vw, 150px);
+    background: lightgray;
+    padding: 10px
+}
+
+.grid-column {
+    width: 80vw;
+    transform: translateX(calc(max(10vw, 150px) + 30px));
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 30px 30px 1fr 1fr 1fr;
+    font-size: 24pt;
+    padding-top: 60px;
+}
+
+.grid1 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+}
+.grid2 {
+    grid-column-start: 4;
+    grid-column-end: 4;
+}
+.grid3 {
+    grid-column-start: 5;
+    grid-column-end: 5;
+}
+
+.user-input {
+    font-size: 18pt;
+    width: 95%;
+    height: 30px;
+    font-family: century gothic
+}
+
+
+
+.side-bar-button {
+    height: 10vh;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: none;
+}
+
+.home-button {
+    color: rgb(0, 70, 0);
+    background: linear-gradient(lightgreen, green);
+    /* border-color: rgb(0, 70, 0); */
+}
+.return-home:visited {
+    color: rgb(0, 70, 0);
+}
+
+.save {
+    color: navy;
+    background: linear-gradient(lightblue, rgb(100, 100, 255));
+    /* border-color: navy; */
+}
+
+.user-title {
+    width: 95%
+}
+
+.material-symbols-outlined.md-60 { 
+    font-size: 50px; 
+}
+
+rt {
+    font-size: 0pt;
+    transition: font-size 0.5s;
+}
+
+rt.show {
+    font-size: 12pt;
+}
+
+.py-check {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.resize-txt {
+    user-select: none;
+}
+
+.drag-handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: calc(100% - 6px);
+    width: max(10%, 40px);
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0.8), 
+        rgba(255, 255, 255, 0.0)
+    );
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin: 3px 0px;
+}

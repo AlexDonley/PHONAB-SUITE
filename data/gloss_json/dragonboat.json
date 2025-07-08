@@ -1,0 +1,647 @@
+[
+  {
+    "english": "Hi",
+    "chinese": "嗨",
+    "pos": "ex"
+  },
+  {
+    "english": "Tom",
+    "chinese": "湯姆",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Do you",
+    "chinese": "你_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "know",
+    "chinese": "知道",
+    "pos": "verb"
+  },
+  {
+    "english": "what",
+    "chinese": "什麼(日子)",
+    "pos": "quest"
+  },
+  {
+    "english": "today",
+    "chinese": "今天",
+    "pos": "noun"
+  },
+  {
+    "english": "is",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Hmm",
+    "chinese": "嗯",
+    "pos": "ex"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Is it",
+    "chinese": "這是_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "a",
+    "chinese": "一個",
+    "pos": "det"
+  },
+  {
+    "english": "holiday",
+    "chinese": "節日",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes",
+    "chinese": "是的",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It's",
+    "chinese": "是",
+    "pos": "ex"
+  },
+  {
+    "english": "the Dragon Boat Festival",
+    "chinese": "端午節",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Wow",
+    "chinese": "哇",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What do",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "people",
+    "chinese": "人們",
+    "pos": "noun"
+  },
+  {
+    "english": "do",
+    "chinese": "會做",
+    "pos": "verb"
+  },
+  {
+    "english": "on",
+    "chinese": "在",
+    "pos": "prep"
+  },
+  {
+    "english": "this",
+    "chinese": "這",
+    "pos": "det"
+  },
+  {
+    "english": "day",
+    "chinese": "天",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Many",
+    "chinese": "很多",
+    "pos": "adj"
+  },
+  {
+    "english": "people",
+    "chinese": "人",
+    "pos": "noun"
+  },
+  {
+    "english": "watch",
+    "chinese": "看",
+    "pos": "verb"
+  },
+  {
+    "english": "dragon",
+    "chinese": "龍",
+    "pos": "noun"
+  },
+  {
+    "english": "boat",
+    "chinese": "舟",
+    "pos": "noun"
+  },
+  {
+    "english": "races",
+    "chinese": "賽",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "eat",
+    "chinese": "吃",
+    "pos": "verb"
+  },
+  {
+    "english": "zongzi",
+    "chinese": "粽子",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "ve heard of",
+    "chinese": "聽過",
+    "pos": "verb"
+  },
+  {
+    "english": "zongzi",
+    "chinese": "粽子",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Are they",
+    "chinese": "它們是_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "sticky rice dumplings",
+    "chinese": "糯米粽子",
+    "pos": "noun"
+  },
+  {
+    "english": "wrapped",
+    "chinese": "包的",
+    "pos": "adj"
+  },
+  {
+    "english": "in",
+    "chinese": "用",
+    "pos": "prep"
+  },
+  {
+    "english": "leaves",
+    "chinese": "葉子",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes",
+    "chinese": "是的",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "They",
+    "chinese": "它們",
+    "pos": "pro"
+  },
+  {
+    "english": "ususally",
+    "chinese": "通常",
+    "pos": "adv"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "ingredients",
+    "chinese": "配料",
+    "pos": "noun"
+  },
+  {
+    "english": "inside",
+    "chinese": "裡",
+    "pos": "prep"
+  },
+  {
+    "english": "like",
+    "chinese": "例如",
+    "pos": "conj"
+  },
+  {
+    "english": "peanuts",
+    "chinese": "花生",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "shrimp",
+    "chinese": "蝦子",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "pork",
+    "chinese": "豬肉",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "They're",
+    "chinese": "它們",
+    "pos": "phrase"
+  },
+  {
+    "english": "so",
+    "chinese": "太",
+    "pos": "adj"
+  },
+  {
+    "english": "yummy",
+    "chinese": "好吃了",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "That sounds",
+    "chinese": "聽起來",
+    "pos": "phrase"
+  },
+  {
+    "english": "delicious",
+    "chinese": "真好吃",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Why do",
+    "chinese": "為什麼要",
+    "pos": "quest"
+  },
+  {
+    "english": "people",
+    "chinese": "人們",
+    "pos": "noun"
+  },
+  {
+    "english": "race",
+    "chinese": "賽",
+    "pos": "verb"
+  },
+  {
+    "english": "boats",
+    "chinese": "(龍)舟",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It's",
+    "chinese": "是",
+    "pos": "phrase"
+  },
+  {
+    "english": "to remember",
+    "chinese": "為了紀念",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一位",
+    "pos": "det"
+  },
+  {
+    "english": "great",
+    "chinese": "偉大的",
+    "pos": "adj"
+  },
+  {
+    "english": "man",
+    "chinese": "人",
+    "pos": "noun"
+  },
+  {
+    "english": "named",
+    "chinese": "名叫",
+    "pos": "adj"
+  },
+  {
+    "english": "Qu Yuan",
+    "chinese": "屈原",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Oh",
+    "chinese": "哦",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "know",
+    "chinese": "認識",
+    "pos": "verb"
+  },
+  {
+    "english": "Qu Yuan",
+    "chinese": "屈原",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Was he",
+    "chinese": "他是_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "a",
+    "chinese": "一位",
+    "pos": "det"
+  },
+  {
+    "english": "famous",
+    "chinese": "著名的",
+    "pos": "adj"
+  },
+  {
+    "english": "poet",
+    "chinese": "詩人",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "That's right",
+    "chinese": "沒錯",
+    "pos": "phrase"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "people",
+    "chinese": "人們",
+    "pos": "noun"
+  },
+  {
+    "english": "race",
+    "chinese": "賽(龍舟)",
+    "pos": "verb"
+  },
+  {
+    "english": "to honor",
+    "chinese": "為了紀念",
+    "pos": "verb"
+  },
+  {
+    "english": "him",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "That's",
+    "chinese": "這",
+    "pos": "phrase"
+  },
+  {
+    "english": "very",
+    "chinese": "很",
+    "pos": "adj"
+  },
+  {
+    "english": "interesting",
+    "chinese": "有意思",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "want",
+    "chinese": "想",
+    "pos": "verb"
+  },
+  {
+    "english": "to see",
+    "chinese": "看",
+    "pos": "verb"
+  },
+  {
+    "english": "a dragon",
+    "chinese": "龍",
+    "pos": "noun"
+  },
+  {
+    "english": "boat",
+    "chinese": "舟",
+    "pos": "noun"
+  },
+  {
+    "english": "race",
+    "chinese": "賽",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Me, too",
+    "chinese": "我也是",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "can",
+    "chinese": "可以",
+    "pos": "verb"
+  },
+  {
+    "english": "go",
+    "chinese": "去",
+    "pos": "verb"
+  },
+  {
+    "english": "to the river",
+    "chinese": "河邊",
+    "pos": "phrase"
+  },
+  {
+    "english": "to watch them",
+    "chinese": "看",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes",
+    "chinese": "好的",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And",
+    "chinese": "而且",
+    "pos": "conj"
+  },
+  {
+    "english": "let's",
+    "chinese": "我們要",
+    "pos": "phrase"
+  },
+  {
+    "english": "eat",
+    "chinese": "吃",
+    "pos": "verb"
+  },
+  {
+    "english": "zongzi",
+    "chinese": "粽子",
+    "pos": "noun"
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

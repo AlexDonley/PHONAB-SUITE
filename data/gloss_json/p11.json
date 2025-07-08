@@ -1,0 +1,442 @@
+[
+  {
+    "english": "And",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "ll re-read",
+    "chinese": "會重讀",
+    "pos": "verb"
+  },
+  {
+    "english": "the books",
+    "chinese": "這些書",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "if",
+    "chinese": "如果",
+    "pos": "conj"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "time to spare",
+    "chinese": "空時間",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "ll paint",
+    "chinese": "會_粉刷",
+    "pos": "verb"
+  },
+  {
+    "english": "the walls",
+    "chinese": "牆壁",
+    "pos": "noun"
+  },
+  {
+    "english": "some more",
+    "chinese": "再",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m sure",
+    "chinese": "確信",
+    "pos": "adj"
+  },
+  {
+    "english": "there's",
+    "chinese": "還有",
+    "pos": "phrase"
+  },
+  {
+    "english": "room",
+    "chinese": "空間",
+    "pos": "noun"
+  },
+  {
+    "english": "somewhere",
+    "chinese": "某處",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and then",
+    "chinese": "然後",
+    "pos": "adv"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "ll brush",
+    "chinese": "就梳",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "再",
+    "pos": "conj"
+  },
+  {
+    "english": "brush",
+    "chinese": "梳",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "再",
+    "pos": "conj"
+  },
+  {
+    "english": "brush",
+    "chinese": "梳",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "再",
+    "pos": "conj"
+  },
+  {
+    "english": "brush",
+    "chinese": "梳",
+    "pos": "verb"
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "hair",
+    "chinese": "頭髮",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "stuck in",
+    "chinese": "困在",
+    "pos": "adj"
+  },
+  {
+    "english": "the same",
+    "chinese": "同一個",
+    "pos": "adj"
+  },
+  {
+    "english": "place",
+    "chinese": "地方",
+    "pos": "noun"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "ve always been",
+    "chinese": "一直在",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "ll keep",
+    "chinese": "會一直",
+    "pos": "verb"
+  },
+  {
+    "english": "wondering",
+    "chinese": "想知道",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "再",
+    "pos": "conj"
+  },
+  {
+    "english": "wondering",
+    "chinese": "想知道",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "再",
+    "pos": "conj"
+  },
+  {
+    "english": "wondering",
+    "chinese": "想知道",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "再",
+    "pos": "conj"
+  },
+  {
+    "english": "wondering",
+    "chinese": "想知道",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "when",
+    "chinese": "什麼時候",
+    "pos": "prep"
+  },
+  {
+    "english": "will",
+    "chinese": "即將",
+    "pos": "verb"
+  },
+  {
+    "english": "my",
+    "chinese": "我的",
+    "pos": "poss"
+  },
+  {
+    "english": "life",
+    "chinese": "生活",
+    "pos": "noun"
+  },
+  {
+    "english": "begin",
+    "chinese": "開始",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Tomorrow",
+    "chinese": "明天",
+    "pos": "noun"
+  },
+  {
+    "english": "night",
+    "chinese": "晚上",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "the lights",
+    "chinese": "燈光",
+    "pos": "noun"
+  },
+  {
+    "english": "will appear",
+    "chinese": "將會出現",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "just like",
+    "chinese": "就像_的那樣",
+    "pos": "conj"
+  },
+  {
+    "english": "they",
+    "chinese": "他們",
+    "pos": "pro"
+  },
+  {
+    "english": "do",
+    "chinese": "所做",
+    "pos": "verb"
+  },
+  {
+    "english": "on",
+    "chinese": "在_時",
+    "pos": "prep"
+  },
+  {
+    "english": "my",
+    "chinese": "我",
+    "pos": "poss"
+  },
+  {
+    "english": "birthday",
+    "chinese": "生日",
+    "pos": "noun"
+  },
+  {
+    "english": "each",
+    "chinese": "每",
+    "pos": "adj"
+  },
+  {
+    "english": "year",
+    "chinese": "年",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "what is it like",
+    "chinese": "它是什麼樣子的",
+    "pos": "phrase"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "out there where",
+    "chinese": "在哪裡",
+    "pos": "phrase"
+  },
+  {
+    "english": "they",
+    "chinese": "它們",
+    "pos": "pro"
+  },
+  {
+    "english": "glow",
+    "chinese": "發光",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Now that",
+    "chinese": "現在",
+    "pos": "adv"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m older",
+    "chinese": "年紀比較大了",
+    "pos": "adj"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "mother",
+    "chinese": "媽媽",
+    "pos": "noun"
+  },
+  {
+    "english": "might",
+    "chinese": "可能",
+    "pos": "verb"
+  },
+  {
+    "english": "just",
+    "chinese": "就",
+    "pos": "adv"
+  },
+  {
+    "english": "let",
+    "chinese": "讓",
+    "pos": "verb"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "go",
+    "chinese": "走",
+    "pos": "verb"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  }
+]

@@ -1,0 +1,377 @@
+[
+  {
+    "english": "Joseph",
+    "chinese": "約瑟夫",
+    "pos": "noun"
+  },
+  {
+    "english": "had",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一條",
+    "pos": "det"
+  },
+  {
+    "english": "little",
+    "chinese": "小",
+    "pos": "adj"
+  },
+  {
+    "english": "necktie",
+    "chinese": "領帶",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": "got old and worn",
+    "chinese": "又舊又破了",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "So",
+    "chinese": "於是",
+    "pos": "conj"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "made",
+    "chinese": "做了",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一塊",
+    "pos": "det"
+  },
+  {
+    "english": "handkerchief",
+    "chinese": "手帕",
+    "pos": "noun"
+  },
+  {
+    "english": "out of it",
+    "chinese": "用它",
+    "pos": "phrase"
+  },
+  {
+    "english": "and",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "drank",
+    "chinese": "喝了",
+    "pos": "verb"
+  },
+  {
+    "english": "a glass",
+    "chinese": "一杯",
+    "pos": "noun"
+  },
+  {
+    "english": "of hot",
+    "chinese": "熱",
+    "pos": "adj"
+  },
+  {
+    "english": "tea",
+    "chinese": "茶",
+    "pos": "noun"
+  },
+  {
+    "english": "with lemon",
+    "chinese": "檸檬",
+    "pos": "prep"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Joseph",
+    "chinese": "約瑟夫",
+    "pos": "noun"
+  },
+  {
+    "english": "had",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一塊",
+    "pos": "det"
+  },
+  {
+    "english": "little",
+    "chinese": "小",
+    "pos": "adj"
+  },
+  {
+    "english": "handkerchief",
+    "chinese": "手帕",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "It",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": "got old and worn",
+    "chinese": "又舊又破了",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "So",
+    "chinese": "於是",
+    "pos": "conj"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "made",
+    "chinese": "做了",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一個",
+    "pos": "det"
+  },
+  {
+    "english": "button",
+    "chinese": "紐扣",
+    "pos": "noun"
+  },
+  {
+    "english": "out of it",
+    "chinese": "用它",
+    "pos": "phrase"
+  },
+  {
+    "english": "and",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "used",
+    "chinese": "用",
+    "pos": "verb"
+  },
+  {
+    "english": "it",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": "to fasten",
+    "chinese": "來固定",
+    "pos": "verb"
+  },
+  {
+    "english": "his",
+    "chinese": "他的",
+    "pos": "poss"
+  },
+  {
+    "english": "suspenders",
+    "chinese": "背帶",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Joseph",
+    "chinese": "約瑟夫",
+    "pos": "noun"
+  },
+  {
+    "english": "had",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一個",
+    "pos": "det"
+  },
+  {
+    "english": "little",
+    "chinese": "小",
+    "pos": "adj"
+  },
+  {
+    "english": "button",
+    "chinese": "紐扣",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "One day",
+    "chinese": "有一天",
+    "pos": "adv"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "lost",
+    "chinese": "失去了",
+    "pos": "verb"
+  },
+  {
+    "english": "it",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Now",
+    "chinese": "現在",
+    "pos": "adv"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "had nothing",
+    "chinese": "什麼都沒有了",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "So",
+    "chinese": "所以",
+    "pos": "adv"
+  },
+  {
+    "english": "Joseph",
+    "chinese": "約瑟夫",
+    "pos": "noun"
+  },
+  {
+    "english": "made",
+    "chinese": "寫了",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一本",
+    "pos": "det"
+  },
+  {
+    "english": "book",
+    "chinese": "書",
+    "pos": "noun"
+  },
+  {
+    "english": "about",
+    "chinese": "關於_的",
+    "pos": "prep"
+  },
+  {
+    "english": "it",
+    "chinese": "它(這個故事)",
+    "pos": "pro"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Which",
+    "chinese": "這",
+    "pos": "pro"
+  },
+  {
+    "english": "shows",
+    "chinese": "表示",
+    "pos": "verb"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "can",
+    "chinese": "可以",
+    "pos": "verb"
+  },
+  {
+    "english": "always",
+    "chinese": "總是",
+    "pos": "adv"
+  },
+  {
+    "english": "make something out of nothing",
+    "chinese": "從無到有",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

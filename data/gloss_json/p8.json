@@ -1,0 +1,677 @@
+[
+  {
+    "english": "Alright",
+    "chinese": "好的",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "so",
+    "chinese": "那麽",
+    "pos": "prep"
+  },
+  {
+    "english": "here's",
+    "chinese": "這是",
+    "pos": "phrase"
+  },
+  {
+    "english": "your",
+    "chinese": "你的",
+    "pos": "poss"
+  },
+  {
+    "english": "small",
+    "chinese": "小",
+    "pos": "adj"
+  },
+  {
+    "english": "fries",
+    "chinese": "薯條",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "small",
+    "chinese": "小",
+    "pos": "adj"
+  },
+  {
+    "english": "drink",
+    "chinese": "飲料",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Thank you",
+    "chinese": "謝謝",
+    "pos": "phrase"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "you know",
+    "chinese": "你知道",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "d like to",
+    "chinese": "想",
+    "pos": "verb"
+  },
+  {
+    "english": "pay for",
+    "chinese": "付",
+    "pos": "verb"
+  },
+  {
+    "english": "the guy's",
+    "chinese": "那個人的",
+    "pos": "poss"
+  },
+  {
+    "english": "meal",
+    "chinese": "餐費",
+    "pos": "noun"
+  },
+  {
+    "english": "behind",
+    "chinese": "後面",
+    "pos": "prep"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "you know",
+    "chinese": "你知道",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Just",
+    "chinese": "只",
+    "pos": "adv"
+  },
+  {
+    "english": "pay it forward",
+    "chinese": "將善意傳遞下去",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Oh",
+    "chinese": "哦",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "wow",
+    "chinese": "哇",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "that's really nice of",
+    "chinese": "真是太好了",
+    "pos": "phrase"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yeah",
+    "chinese": "是啊",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "who",
+    "chinese": "誰",
+    "pos": "quest"
+  },
+  {
+    "english": "knows",
+    "chinese": "知道(呢)",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Maybe",
+    "chinese": "也許",
+    "pos": "adv"
+  },
+  {
+    "english": "it",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": "ll catch on",
+    "chinese": "會成為趨勢",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Alright",
+    "chinese": "好的",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "well",
+    "chinese": "好吧",
+    "pos": "ex"
+  },
+  {
+    "english": "you",
+    "chinese": "您",
+    "pos": "pro"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "a great",
+    "chinese": "美好的",
+    "pos": "adj"
+  },
+  {
+    "english": "day",
+    "chinese": "一天",
+    "pos": "noun"
+  },
+  {
+    "english": "sir",
+    "chinese": "先生",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Stop",
+    "chinese": "停止",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "stop",
+    "chinese": "停止",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "stop",
+    "chinese": "停止",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "please",
+    "chinese": "請",
+    "pos": "adv"
+  },
+  {
+    "english": "let",
+    "chinese": "讓",
+    "pos": "verb"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "go",
+    "chinese": "走",
+    "pos": "verb"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Please",
+    "chinese": "請",
+    "pos": "adv"
+  },
+  {
+    "english": "let",
+    "chinese": "讓",
+    "pos": "verb"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "go",
+    "chinese": "走",
+    "pos": "verb"
+  },
+  {
+    "english": "first",
+    "chinese": "先",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m doing something",
+    "chinese": "有事",
+    "pos": "verb"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Hi",
+    "chinese": "(｡･∀･)ﾉﾞ嗨",
+    "pos": "ex"
+  },
+  {
+    "english": "can I",
+    "chinese": "我可以__嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "take your order",
+    "chinese": "幫您點餐",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "burgers",
+    "chinese": "漢堡",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "fries",
+    "chinese": "薯條",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "tacos",
+    "chinese": "玉米餅",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "pies",
+    "chinese": "派",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五杯",
+    "pos": "noun"
+  },
+  {
+    "english": "Cokes",
+    "chinese": "可樂",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "one hundred",
+    "chinese": "一百份",
+    "pos": "noun"
+  },
+  {
+    "english": "tater tots",
+    "chinese": "馬鈴薯泥",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "one hundred",
+    "chinese": "一百份",
+    "pos": "noun"
+  },
+  {
+    "english": "pizzas",
+    "chinese": "披薩",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "one hundred",
+    "chinese": "一百個",
+    "pos": "noun"
+  },
+  {
+    "english": "tenders",
+    "chinese": "雞柳/去骨",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "one hundred",
+    "chinese": "一百個",
+    "pos": "noun"
+  },
+  {
+    "english": "meatballs",
+    "chinese": "肉丸",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "one hundred",
+    "chinese": "一百杯",
+    "pos": "noun"
+  },
+  {
+    "english": "coffees",
+    "chinese": "咖啡",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "wings",
+    "chinese": "雞翅",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五杯",
+    "pos": "noun"
+  },
+  {
+    "english": "shakes",
+    "chinese": "奶昔",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "pancakes",
+    "chinese": "煎餅",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "pasta",
+    "chinese": "義大利麵",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "peppers",
+    "chinese": "辣椒 / 甜椒",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "one hundred fifty-five",
+    "chinese": "一百五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "taters",
+    "chinese": "馬鈴薯泥",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Okay",
+    "chinese": "好的",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "that",
+    "chinese": "那",
+    "pos": "phrase"
+  },
+  {
+    "english": "ll be",
+    "chinese": "就是",
+    "pos": "verb"
+  },
+  {
+    "english": "$680",
+    "chinese": "680 美元",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Okay",
+    "chinese": "好的",
+    "pos": "ex"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

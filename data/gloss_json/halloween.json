@@ -1,0 +1,642 @@
+[
+    {
+      "english": "Hi",
+      "chinese": "嗨",
+      "pos": "ex"
+    },
+    {
+      "english": "Tom",
+      "chinese": "湯姆",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "Are you",
+      "chinese": "你_嗎",
+      "pos": "quest"
+    },
+    {
+      "english": "excited",
+      "chinese": "感到興奮",
+      "pos": "adj"
+    },
+    {
+      "english": "for",
+      "chinese": "對",
+      "pos": "prep"
+    },
+    {
+      "english": "Halloween",
+      "chinese": "萬聖節",
+      "pos": "noun"
+    },
+    {
+      "english": "?",
+      "chinese": "？",
+      "pos": ""
+    },
+    {
+      "english": "Hi",
+      "chinese": "嗨",
+      "pos": "ex"
+    },
+    {
+      "english": "Casey",
+      "chinese": "凱西",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "Hmm",
+      "chinese": "嗯",
+      "pos": "ex"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "a little",
+      "chinese": "有一點",
+      "pos": "adj"
+    },
+    {
+      "english": ".",
+      "chinese": "。",
+      "pos": ""
+    },
+    {
+      "english": "What",
+      "chinese": "什麼",
+      "pos": "quest"
+    },
+    {
+      "english": "is",
+      "chinese": "是",
+      "pos": "verb"
+    },
+    {
+      "english": "Halloween",
+      "chinese": "萬聖節",
+      "pos": "noun"
+    },
+    {
+      "english": "?",
+      "chinese": "？",
+      "pos": ""
+    },
+    {
+      "english": "Oh",
+      "chinese": "哦",
+      "pos": "ex"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "Halloween",
+      "chinese": "萬聖節",
+      "pos": "noun"
+    },
+    {
+      "english": "is",
+      "chinese": "是",
+      "pos": "verb"
+    },
+    {
+      "english": "so",
+      "chinese": "真",
+      "pos": "adj"
+    },
+    {
+      "english": "fun",
+      "chinese": "有趣",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "We",
+      "chinese": "我們",
+      "pos": "pro"
+    },
+    {
+      "english": "wear",
+      "chinese": "穿上",
+      "pos": "verb"
+    },
+    {
+      "english": "costumes",
+      "chinese": "服裝",
+      "pos": "noun"
+    },
+    {
+      "english": "and",
+      "chinese": "然後",
+      "pos": "conj"
+    },
+    {
+      "english": "go",
+      "chinese": "去",
+      "pos": "verb"
+    },
+    {
+      "english": "trick-or-treating",
+      "chinese": "「不給糖就搗蛋」",
+      "pos": "verb"
+    },
+    {
+      "english": ".",
+      "chinese": "。",
+      "pos": ""
+    },
+    {
+      "english": "What",
+      "chinese": "什麼",
+      "pos": "quest"
+    },
+    {
+      "english": "is",
+      "chinese": "是",
+      "pos": "verb"
+    },
+    {
+      "english": "trick-or-treating",
+      "chinese": "「不給糖就搗蛋」",
+      "pos": "verb"
+    },
+    {
+      "english": "?",
+      "chinese": "？",
+      "pos": ""
+    },
+    {
+      "english": "We",
+      "chinese": "我們",
+      "pos": "pro"
+    },
+    {
+      "english": "go to",
+      "chinese": "去",
+      "pos": "verb"
+    },
+    {
+      "english": "people's",
+      "chinese": "人們",
+      "pos": "poss"
+    },
+    {
+      "english": "houses",
+      "chinese": "家",
+      "pos": "noun"
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "say",
+      "chinese": "說",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "",
+      "chinese": "“",
+      "pos": ""
+    },
+    {
+      "english": "Trick-or-treat",
+      "chinese": "「不給糖就搗蛋」",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "",
+      "chinese": "”",
+      "pos": ""
+    },
+    {
+      "english": "Then",
+      "chinese": "然後",
+      "pos": "Adv"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "they",
+      "chinese": "他們",
+      "pos": "pro"
+    },
+    {
+      "english": "give",
+      "chinese": "給",
+      "pos": "verb"
+    },
+    {
+      "english": "us",
+      "chinese": "我們",
+      "pos": "pro"
+    },
+    {
+      "english": "candy",
+      "chinese": "糖果",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "Wow",
+      "chinese": "哇",
+      "pos": "ex"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "Fun",
+      "chinese": "好玩",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "Do we",
+      "chinese": "我們_嗎",
+      "pos": "quest"
+    },
+    {
+      "english": "have to",
+      "chinese": "必須",
+      "pos": "verb"
+    },
+    {
+      "english": "wear",
+      "chinese": "穿",
+      "pos": "verb"
+    },
+    {
+      "english": "costumes",
+      "chinese": "服裝",
+      "pos": "noun"
+    },
+    {
+      "english": "?",
+      "chinese": "？",
+      "pos": ""
+    },
+    {
+      "english": "Yes",
+      "chinese": "是的",
+      "pos": "ex"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "we",
+      "chinese": "我們",
+      "pos": "pro"
+    },
+    {
+      "english": "can",
+      "chinese": "可以",
+      "pos": "verb"
+    },
+    {
+      "english": "be",
+      "chinese": "成為",
+      "pos": "verb"
+    },
+    {
+      "english": "a superhero",
+      "chinese": "超級英雄",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "a princess",
+      "chinese": "公主",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "or even a",
+      "chinese": "甚至是",
+      "pos": "conj"
+    },
+    {
+      "english": "scary",
+      "chinese": "可怕的",
+      "pos": "adj"
+    },
+    {
+      "english": "monster",
+      "chinese": "怪物",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "Oh",
+      "chinese": "哦",
+      "pos": "ex"
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "see",
+      "chinese": "知道了",
+      "pos": "verb"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "think",
+      "chinese": "想",
+      "pos": "verb"
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "want to",
+      "chinese": "想要",
+      "pos": "verb"
+    },
+    {
+      "english": "be",
+      "chinese": "成為",
+      "pos": "verb"
+    },
+    {
+      "english": "a pirate",
+      "chinese": "一名海盜",
+      "pos": "noun"
+    },
+    {
+      "english": ".",
+      "chinese": "。",
+      "pos": ""
+    },
+    {
+      "english": "What about you",
+      "chinese": "你呢",
+      "pos": "phrase"
+    },
+    {
+      "english": "?",
+      "chinese": "？",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "'m going to",
+      "chinese": "要",
+      "pos": "verb"
+    },
+    {
+      "english": "be",
+      "chinese": "成為",
+      "pos": "verb"
+    },
+    {
+      "english": "an astronaut",
+      "chinese": "太空人",
+      "pos": "noun"
+    },
+    {
+      "english": ".",
+      "chinese": "。",
+      "pos": ""
+    },
+    {
+      "english": "That's",
+      "chinese": "那",
+      "pos": "pro"
+    },
+    {
+      "english": "cool",
+      "chinese": "太酷了",
+      "pos": "adj"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "Do you",
+      "chinese": "你_嗎",
+      "pos": "quest"
+    },
+    {
+      "english": "like",
+      "chinese": "喜歡",
+      "pos": "verb"
+    },
+    {
+      "english": "Halloween",
+      "chinese": "萬聖節",
+      "pos": "noun"
+    },
+    {
+      "english": "?",
+      "chinese": "？",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "love",
+      "chinese": "愛",
+      "pos": "verb"
+    },
+    {
+      "english": "it",
+      "chinese": "它",
+      "pos": "pro"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    },
+    {
+      "english": "It",
+      "chinese": "它",
+      "pos": "pro"
+    },
+    {
+      "english": "'s",
+      "chinese": "是",
+      "pos": "verb"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "favorite",
+      "chinese": "最喜歡的",
+      "pos": "adj"
+    },
+    {
+      "english": "holiday",
+      "chinese": "節慶",
+      "pos": "noun"
+    },
+    {
+      "english": ".",
+      "chinese": "。",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "think",
+      "chinese": "想",
+      "pos": "verb"
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "'ll",
+      "chinese": "會",
+      "pos": "verb"
+    },
+    {
+      "english": "like",
+      "chinese": "喜歡",
+      "pos": "verb"
+    },
+    {
+      "english": "Halloween",
+      "chinese": "萬聖節",
+      "pos": "noun"
+    },
+    {
+      "english": "too",
+      "chinese": "也",
+      "pos": "adv"
+    },
+    {
+      "english": ".",
+      "chinese": "。",
+      "pos": ""
+    },
+    {
+      "english": "You",
+      "chinese": "你",
+      "pos": "pro"
+    },
+    {
+      "english": "'ll",
+      "chinese": "會",
+      "pos": "verb"
+    },
+    {
+      "english": "have",
+      "chinese": "玩",
+      "pos": "verb"
+    },
+    {
+      "english": "so much",
+      "chinese": "得很",
+      "pos": "adj"
+    },
+    {
+      "english": "fun",
+      "chinese": "開心的",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "，",
+      "pos": ""
+    },
+    {
+      "english": "Tom",
+      "chinese": "湯姆",
+      "pos": "noun"
+    },
+    {
+      "english": "!",
+      "chinese": "！",
+      "pos": ""
+    }
+  ]

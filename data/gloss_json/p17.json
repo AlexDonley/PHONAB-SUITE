@@ -1,0 +1,372 @@
+[
+  {
+    "english": "Some",
+    "chinese": "有些",
+    "pos": "det"
+  },
+  {
+    "english": "workers",
+    "chinese": "工人",
+    "pos": "noun"
+  },
+  {
+    "english": "work",
+    "chinese": "工作",
+    "pos": "verb"
+  },
+  {
+    "english": "indoors",
+    "chinese": "在室內",
+    "pos": "prep"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "some",
+    "chinese": "有些",
+    "pos": "det"
+  },
+  {
+    "english": "workers",
+    "chinese": "工人",
+    "pos": "noun"
+  },
+  {
+    "english": "work",
+    "chinese": "工作",
+    "pos": "verb"
+  },
+  {
+    "english": "outdoors",
+    "chinese": "在室外",
+    "pos": "prep"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Some",
+    "chinese": "有些",
+    "pos": "det"
+  },
+  {
+    "english": "work",
+    "chinese": "工作",
+    "pos": "verb"
+  },
+  {
+    "english": "up in the sky",
+    "chinese": "在天空",
+    "pos": "prep"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "some",
+    "chinese": "一些",
+    "pos": "det"
+  },
+  {
+    "english": "work",
+    "chinese": "工作",
+    "pos": "verb"
+  },
+  {
+    "english": "underground",
+    "chinese": "在地下",
+    "pos": "prep"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Wrong Way",
+    "chinese": "錯誤的路",
+    "pos": "phrase"
+  },
+  {
+    "english": "Roger",
+    "chinese": "羅傑",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "chimney sweep",
+    "chinese": "掃煙囪的人",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "music",
+    "chinese": "音樂",
+    "pos": "noun"
+  },
+  {
+    "english": "teacher",
+    "chinese": "老師",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "dancing",
+    "chinese": "跳舞",
+    "pos": "verb"
+  },
+  {
+    "english": "school",
+    "chinese": "學校",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "dentist",
+    "chinese": "牙醫",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "doctor",
+    "chinese": "醫生",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "eye",
+    "chinese": "眼科",
+    "pos": "noun"
+  },
+  {
+    "english": "doctor",
+    "chinese": "醫生",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "dressmaker",
+    "chinese": "裁縫師",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "beauty parlor",
+    "chinese": "美容院",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "real estate",
+    "chinese": "房地產",
+    "pos": "noun"
+  },
+  {
+    "english": "office",
+    "chinese": "辦公室",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "bank",
+    "chinese": "銀行",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "drug store",
+    "chinese": "藥局",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "prescriptions",
+    "chinese": "處方",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "street cleaner",
+    "chinese": "街道清潔工",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "water hydrant",
+    "chinese": "消防栓",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "sewer",
+    "chinese": "下水道,水溝",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "manhole",
+    "chinese": "人孔",
+    "pos": "noun"
+  },
+  {
+    "english": "cover",
+    "chinese": "蓋",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "wire",
+    "chinese": "金屬絲",
+    "pos": "noun"
+  },
+  {
+    "english": "cable",
+    "chinese": "電纜",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "lamppost",
+    "chinese": "燈柱",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "sewage pipe",
+    "chinese": "污水管",
+    "pos": "noun"
+  },
+  {
+    "english": "to",
+    "chinese": "到",
+    "pos": "prep"
+  },
+  {
+    "english": "sewage plant",
+    "chinese": "污水廠",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "All kinds of",
+    "chinese": "各種",
+    "pos": "phrase"
+  },
+  {
+    "english": "pipes",
+    "chinese": "管道",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "wires",
+    "chinese": "電線",
+    "pos": "noun"
+  },
+  {
+    "english": "are buried",
+    "chinese": "均埋",
+    "pos": "adj"
+  },
+  {
+    "english": "underground",
+    "chinese": "在地下",
+    "pos": "prep"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

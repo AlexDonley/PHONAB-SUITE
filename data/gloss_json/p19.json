@@ -1,0 +1,367 @@
+[
+  {
+    "english": "How many",
+    "chinese": "多少",
+    "pos": "quest"
+  },
+  {
+    "english": "workers",
+    "chinese": "工人",
+    "pos": "noun"
+  },
+  {
+    "english": "are here",
+    "chinese": "這裡有",
+    "pos": "phrase"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "One",
+    "chinese": "一",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "two",
+    "chinese": "二",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "three",
+    "chinese": "三",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "four",
+    "chinese": "四",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "five",
+    "chinese": "五",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "six",
+    "chinese": "六",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What do",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "these",
+    "chinese": "這些",
+    "pos": "pro"
+  },
+  {
+    "english": "workers",
+    "chinese": "工人",
+    "pos": "noun"
+  },
+  {
+    "english": "do",
+    "chinese": "做",
+    "pos": "verb"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Farmer",
+    "chinese": "農夫",
+    "pos": "noun"
+  },
+  {
+    "english": "Alfalfa",
+    "chinese": "苜蓿",
+    "pos": "noun"
+  },
+  {
+    "english": "grows",
+    "chinese": "種植",
+    "pos": "verb"
+  },
+  {
+    "english": "all kinds of",
+    "chinese": "各種",
+    "pos": "phrase"
+  },
+  {
+    "english": "food",
+    "chinese": "食物",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "keeps",
+    "chinese": "留",
+    "pos": "verb"
+  },
+  {
+    "english": "some of it",
+    "chinese": "把其中一部分",
+    "pos": "phrase"
+  },
+  {
+    "english": "for",
+    "chinese": "給",
+    "pos": "prep"
+  },
+  {
+    "english": "his family",
+    "chinese": "家人",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "sells",
+    "chinese": "賣",
+    "pos": "verb"
+  },
+  {
+    "english": "the rest",
+    "chinese": "把剩下的",
+    "pos": "phrase"
+  },
+  {
+    "english": "to",
+    "chinese": "給了",
+    "pos": "prep"
+  },
+  {
+    "english": "Grocer",
+    "chinese": "雜貨商",
+    "pos": "noun"
+  },
+  {
+    "english": "Cat",
+    "chinese": "貓",
+    "pos": "noun"
+  },
+  {
+    "english": "in exchange for",
+    "chinese": "以換取",
+    "pos": "phrase"
+  },
+  {
+    "english": "money",
+    "chinese": "錢",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Grocer",
+    "chinese": "雜貨商",
+    "pos": "noun"
+  },
+  {
+    "english": "Cat",
+    "chinese": "貓",
+    "pos": "noun"
+  },
+  {
+    "english": "will sell",
+    "chinese": "會將_賣",
+    "pos": "verb"
+  },
+  {
+    "english": "the food",
+    "chinese": "食物",
+    "pos": "noun"
+  },
+  {
+    "english": "to",
+    "chinese": "給",
+    "pos": "prep"
+  },
+  {
+    "english": "other people",
+    "chinese": "其他人",
+    "pos": "phrase"
+  },
+  {
+    "english": "in Busytown",
+    "chinese": "繁忙小鎮的",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Farmer",
+    "chinese": "農夫",
+    "pos": "noun"
+  },
+  {
+    "english": "Alfalfa",
+    "chinese": "苜蓿",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Blacksmith",
+    "chinese": "鐵匠",
+    "pos": "noun"
+  },
+  {
+    "english": "Fox",
+    "chinese": "狐狸",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Stitches",
+    "chinese": "針",
+    "pos": "noun"
+  },
+  {
+    "english": "the tailor",
+    "chinese": "裁縫師",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Grocer",
+    "chinese": "雜貨商",
+    "pos": "noun"
+  },
+  {
+    "english": "Cat",
+    "chinese": "貓",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Mommy",
+    "chinese": "媽媽",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Huckle",
+    "chinese": "哈克爾",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Hi",
+    "chinese": "嗨",
+    "pos": "ex"
+  },
+  {
+    "english": "Daddy",
+    "chinese": "爸爸",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Groceries",
+    "chinese": "雜貨",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "potatoes",
+    "chinese": "馬鈴薯",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

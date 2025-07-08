@@ -1,0 +1,467 @@
+[
+  {
+    "english": "Oh",
+    "chinese": "哦",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "no",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "no",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "never",
+    "chinese": "從來不",
+    "pos": "adv"
+  },
+  {
+    "english": "go",
+    "chinese": "去",
+    "pos": "verb"
+  },
+  {
+    "english": "to work",
+    "chinese": "上班",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "On Monday",
+    "chinese": "星期一",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "never",
+    "chinese": "(從來)不",
+    "pos": "adv"
+  },
+  {
+    "english": "go",
+    "chinese": "去",
+    "pos": "verb"
+  },
+  {
+    "english": "to work",
+    "chinese": "上班",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "On Tuesday",
+    "chinese": "星期二",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "stay",
+    "chinese": "待",
+    "pos": "verb"
+  },
+  {
+    "english": "at",
+    "chinese": "在",
+    "pos": "prep"
+  },
+  {
+    "english": "home",
+    "chinese": "家裡",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "On Wednesday",
+    "chinese": "星期三",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I'm",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "never",
+    "chinese": "從不",
+    "pos": "adv"
+  },
+  {
+    "english": "feeling",
+    "chinese": "覺得",
+    "pos": "verb"
+  },
+  {
+    "english": "fine",
+    "chinese": "好",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Work",
+    "chinese": "工作",
+    "pos": "noun"
+  },
+  {
+    "english": "is",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "the last",
+    "chinese": "最後的",
+    "pos": "adj"
+  },
+  {
+    "english": "thing",
+    "chinese": "事情",
+    "pos": "noun"
+  },
+  {
+    "english": "on my mind",
+    "chinese": "在我的腦海裡",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "On Thursday",
+    "chinese": "星期四",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "it's",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a holiday",
+    "chinese": "假期",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "Fridays",
+    "chinese": "星期五",
+    "pos": "noun"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "detest",
+    "chinese": "討厭",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Oh",
+    "chinese": "哦",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "it's much too late",
+    "chinese": "太晚了",
+    "pos": "phrase"
+  },
+  {
+    "english": "on a Saturday",
+    "chinese": "星期六",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "Sunday",
+    "chinese": "星期日",
+    "pos": "noun"
+  },
+  {
+    "english": "is",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "the day of rest",
+    "chinese": "休息日",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes",
+    "chinese": "耶",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "yes",
+    "chinese": "耶",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "practice",
+    "chinese": "練習",
+    "pos": "verb"
+  },
+  {
+    "english": "trumpet",
+    "chinese": "小號",
+    "pos": "noun"
+  },
+  {
+    "english": "every day",
+    "chinese": "每天",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Practice",
+    "chinese": "練習",
+    "pos": "verb"
+  },
+  {
+    "english": "Monday",
+    "chinese": "星期一",
+    "pos": "noun"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Practice",
+    "chinese": "練習",
+    "pos": "verb"
+  },
+  {
+    "english": "Tuesday",
+    "chinese": "星期二",
+    "pos": "noun"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Practice",
+    "chinese": "練習",
+    "pos": "verb"
+  },
+  {
+    "english": "Wednesday",
+    "chinese": "星期三",
+    "pos": "noun"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Practice",
+    "chinese": "練習",
+    "pos": "verb"
+  },
+  {
+    "english": "Thursday",
+    "chinese": "星期四",
+    "pos": "noun"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And",
+    "chinese": "還有",
+    "pos": "conj"
+  },
+  {
+    "english": "Friday",
+    "chinese": "星期五",
+    "pos": "noun"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "practice",
+    "chinese": "練習",
+    "pos": "verb"
+  },
+  {
+    "english": "all night",
+    "chinese": "整夜",
+    "pos": "adv"
+  },
+  {
+    "english": "on Saturday",
+    "chinese": "星期六",
+    "pos": "adv"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "so",
+    "chinese": "所以",
+    "pos": "conj"
+  },
+  {
+    "english": "on Sundays",
+    "chinese": "星期日",
+    "pos": "adv"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "play",
+    "chinese": "吹",
+    "pos": "verb"
+  },
+  {
+    "english": "best",
+    "chinese": "最好",
+    "pos": "adv"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  }
+]

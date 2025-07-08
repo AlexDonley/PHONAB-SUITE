@@ -1,0 +1,627 @@
+[
+  {
+    "english": "Hey",
+    "chinese": "嘿",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "c'mon",
+    "chinese": "來吧",
+    "pos": "phrase"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "what's",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "going on",
+    "chinese": "發生了__事",
+    "pos": "verb"
+  },
+  {
+    "english": "up there",
+    "chinese": "那裡",
+    "pos": "pro"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Not",
+    "chinese": "不",
+    "pos": "adv"
+  },
+  {
+    "english": "paying it",
+    "chinese": "付錢",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "have to",
+    "chinese": "必須(這麼做)",
+    "pos": "verb"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "The guy",
+    "chinese": "那個人",
+    "pos": "noun"
+  },
+  {
+    "english": "did it",
+    "chinese": "做",
+    "pos": "verb"
+  },
+  {
+    "english": "for",
+    "chinese": "為",
+    "pos": "prep"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You're",
+    "chinese": "你就是",
+    "pos": "phrase"
+  },
+  {
+    "english": "the guy",
+    "chinese": "那個人",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Oh",
+    "chinese": "哦",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "just",
+    "chinese": "就",
+    "pos": "adv"
+  },
+  {
+    "english": "do it",
+    "chinese": "這麼做吧",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "you're",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "rich",
+    "chinese": "很有錢",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "What",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Hey",
+    "chinese": "嘿",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "what's",
+    "chinese": "什麼",
+    "pos": "quest"
+  },
+  {
+    "english": "going on",
+    "chinese": "發生了__事",
+    "pos": "verb"
+  },
+  {
+    "english": "up there",
+    "chinese": "那裡",
+    "pos": "pro"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "This",
+    "chinese": "這",
+    "pos": "adj"
+  },
+  {
+    "english": "guy",
+    "chinese": "個人",
+    "pos": "noun"
+  },
+  {
+    "english": "s trying to",
+    "chinese": "正試圖",
+    "pos": "verb"
+  },
+  {
+    "english": "start",
+    "chinese": "開始",
+    "pos": "verb"
+  },
+  {
+    "english": "a",
+    "chinese": "一個",
+    "pos": "adj"
+  },
+  {
+    "english": "pay it forward",
+    "chinese": "將善意傳遞的",
+    "pos": "verb"
+  },
+  {
+    "english": "chain",
+    "chinese": "連鎖行動",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "burgers",
+    "chinese": "漢堡",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifty-five",
+    "chinese": "五十五份",
+    "pos": "noun"
+  },
+  {
+    "english": "...",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Ah",
+    "chinese": "啊",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "look",
+    "chinese": "看看",
+    "pos": "verb"
+  },
+  {
+    "english": "what",
+    "chinese": "什麼",
+    "pos": "noun"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "did",
+    "chinese": "做了",
+    "pos": "verb"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Come on",
+    "chinese": "快點",
+    "pos": "phrase"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Ah",
+    "chinese": "啊",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ah",
+    "chinese": "啊",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ah",
+    "chinese": "啊",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Thought",
+    "chinese": "(你)以為",
+    "pos": "verb"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "could",
+    "chinese": "可以",
+    "pos": "verb"
+  },
+  {
+    "english": "just",
+    "chinese": "就",
+    "pos": "adv"
+  },
+  {
+    "english": "pull that",
+    "chinese": "耍手段",
+    "pos": "verb"
+  },
+  {
+    "english": "on",
+    "chinese": "對",
+    "pos": "prep"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Fine",
+    "chinese": "好的",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "win",
+    "chinese": "贏了",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "That's fine",
+    "chinese": "沒關係",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "just",
+    "chinese": "只",
+    "pos": "adv"
+  },
+  {
+    "english": "wanted",
+    "chinese": "想",
+    "pos": "verb"
+  },
+  {
+    "english": "to do",
+    "chinese": "做",
+    "pos": "verb"
+  },
+  {
+    "english": "something",
+    "chinese": "一些_事",
+    "pos": "noun"
+  },
+  {
+    "english": "good",
+    "chinese": "好",
+    "pos": "adj"
+  },
+  {
+    "english": "this morning",
+    "chinese": "今天早上",
+    "pos": "noun"
+  },
+  {
+    "english": "before",
+    "chinese": "在_前",
+    "pos": "prep"
+  },
+  {
+    "english": "alcohol class",
+    "chinese": "酒精教育課",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "But",
+    "chinese": "但",
+    "pos": "conj"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "you"
+  },
+  {
+    "english": "won",
+    "chinese": "贏了",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "That's",
+    "chinese": "這是",
+    "pos": "phrase"
+  },
+  {
+    "english": "the last",
+    "chinese": "最後",
+    "pos": "adj"
+  },
+  {
+    "english": "time",
+    "chinese": "一次",
+    "pos": "noun"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "try to",
+    "chinese": "嘗試",
+    "pos": "verb"
+  },
+  {
+    "english": "do",
+    "chinese": "做",
+    "pos": "verb"
+  },
+  {
+    "english": "something",
+    "chinese": "一些_事",
+    "pos": "noun"
+  },
+  {
+    "english": "good",
+    "chinese": "好",
+    "pos": "adj"
+  },
+  {
+    "english": "ever again",
+    "chinese": "(再也不)",
+    "pos": "adv"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Maybe",
+    "chinese": "也許",
+    "pos": "adv"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "did",
+    "chinese": "確實",
+    "pos": "verb"
+  },
+  {
+    "english": "have",
+    "chinese": "有",
+    "pos": "verb"
+  },
+  {
+    "english": "some",
+    "chinese": "一些",
+    "pos": "det"
+  },
+  {
+    "english": "good",
+    "chinese": "好",
+    "pos": "adj"
+  },
+  {
+    "english": "intentions",
+    "chinese": "意圖",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "maybe",
+    "chinese": "也許",
+    "pos": "adv"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "did",
+    "chinese": "確實",
+    "pos": "verb"
+  },
+  {
+    "english": "jump to conclusions",
+    "chinese": "妄下結論",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Oh",
+    "chinese": "哦",
+    "pos": "ex"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "can",
+    "chinese": "可以",
+    "pos": "verb"
+  },
+  {
+    "english": "just",
+    "chinese": "乾脆",
+    "pos": "adv"
+  },
+  {
+    "english": "run",
+    "chinese": "跑",
+    "pos": "verb"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  }
+]

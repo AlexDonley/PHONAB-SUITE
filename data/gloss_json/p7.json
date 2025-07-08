@@ -1,0 +1,567 @@
+[
+    {
+      "english": "",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "back",
+      "chinese": "背",
+      "pos": "noun"
+    },
+    {
+      "english": "is wrenched",
+      "chinese": "拉傷了",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "ankle",
+      "chinese": "腳踝",
+      "pos": "noun"
+    },
+    {
+      "english": "s sprained",
+      "chinese": "扭傷了",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "pendix",
+      "chinese": "闌尾",
+      "pos": "noun"
+    },
+    {
+      "english": "pains",
+      "chinese": "會疼痛",
+      "pos": "verb"
+    },
+    {
+      "english": "each",
+      "chinese": "每",
+      "pos": "adj"
+    },
+    {
+      "english": "time",
+      "chinese": "次",
+      "pos": "noun"
+    },
+    {
+      "english": "it rains",
+      "chinese": "下雨",
+      "pos": "verb"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "nose",
+      "chinese": "鼻子",
+      "pos": "noun"
+    },
+    {
+      "english": "is cold",
+      "chinese": "很冷",
+      "pos": "adj"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "toes",
+      "chinese": "腳趾",
+      "pos": "noun"
+    },
+    {
+      "english": "are numb",
+      "chinese": "發麻",
+      "pos": "adj"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "have",
+      "chinese": "有",
+      "pos": "verb"
+    },
+    {
+      "english": "a sliver",
+      "chinese": "一個碎片",
+      "pos": "noun"
+    },
+    {
+      "english": "in",
+      "chinese": "裡",
+      "pos": "prep"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "thumb",
+      "chinese": "拇指",
+      "pos": "noun"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "neck",
+      "chinese": "脖子",
+      "pos": "noun"
+    },
+    {
+      "english": "is stiff",
+      "chinese": "僵硬",
+      "pos": "adj"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "voice",
+      "chinese": "聲音",
+      "pos": "noun"
+    },
+    {
+      "english": "is weak",
+      "chinese": "微弱",
+      "pos": "adj"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "hardly",
+      "chinese": "幾乎不能",
+      "pos": "adv"
+    },
+    {
+      "english": "whisper",
+      "chinese": "輕聲",
+      "pos": "verb"
+    },
+    {
+      "english": "when",
+      "chinese": "_時",
+      "pos": "prep"
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "speak",
+      "chinese": "說話",
+      "pos": "verb"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "tongue",
+      "chinese": "舌頭",
+      "pos": "noun"
+    },
+    {
+      "english": "is filling up",
+      "chinese": "塞滿了",
+      "pos": "verb"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "mouth",
+      "chinese": "嘴巴",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "think",
+      "chinese": "想",
+      "pos": "verb"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "hair",
+      "chinese": "頭髮",
+      "pos": "noun"
+    },
+    {
+      "english": "is falling out",
+      "chinese": "正在脫落",
+      "pos": "verb"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "elbow",
+      "chinese": "手肘",
+      "pos": "noun"
+    },
+    {
+      "english": "s bent",
+      "chinese": "彎曲了",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "spine",
+      "chinese": "脊椎",
+      "pos": "noun"
+    },
+    {
+      "english": "ain't",
+      "chinese": "不",
+      "pos": "verb"
+    },
+    {
+      "english": "straight",
+      "chinese": "直",
+      "pos": "adj"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "temperature",
+      "chinese": "體溫",
+      "pos": "noun"
+    },
+    {
+      "english": "is",
+      "chinese": "是",
+      "pos": "verb"
+    },
+    {
+      "english": "one-o-eight",
+      "chinese": "42°C",
+      "pos": "noun"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "My",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "brain",
+      "chinese": "大腦",
+      "pos": "noun"
+    },
+    {
+      "english": "is shrunk",
+      "chinese": "萎縮了",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "cannot hear",
+      "chinese": "聽不見",
+      "pos": "verb"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "There is",
+      "chinese": "有",
+      "pos": "phrase"
+    },
+    {
+      "english": "a hole",
+      "chinese": "一個洞",
+      "pos": "noun"
+    },
+    {
+      "english": "inside",
+      "chinese": "裡面",
+      "pos": "prep"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "ear",
+      "chinese": "耳朵",
+      "pos": "noun"
+    },
+    {
+      "english": ".",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "have",
+      "chinese": "有",
+      "pos": "verb"
+    },
+    {
+      "english": "a hangnail",
+      "chinese": "一個倒刺 / 肉刺",
+      "pos": "noun"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "and",
+      "chinese": "和",
+      "pos": "conj"
+    },
+    {
+      "english": "my",
+      "chinese": "我的",
+      "pos": "poss"
+    },
+    {
+      "english": "heart",
+      "chinese": "心臟",
+      "pos": "noun"
+    },
+    {
+      "english": "is",
+      "chinese": "是",
+      "pos": "verb"
+    },
+    {
+      "english": "-",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "what",
+      "chinese": "什麼",
+      "pos": "quest"
+    },
+    {
+      "english": "?",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "What's that",
+      "chinese": "那是什麼",
+      "pos": "phrase"
+    },
+    {
+      "english": "?",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "What's that you say",
+      "chinese": "你說什麼",
+      "pos": "phrase"
+    },
+    {
+      "english": "?",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "You",
+      "chinese": "你",
+      "pos": "pro"
+    },
+    {
+      "english": "say",
+      "chinese": "說",
+      "pos": "verb"
+    },
+    {
+      "english": "today",
+      "chinese": "今天",
+      "pos": "noun"
+    },
+    {
+      "english": "is",
+      "chinese": "是",
+      "pos": "verb"
+    },
+    {
+      "english": "...",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "Saturday",
+      "chinese": "星期六",
+      "pos": "noun"
+    },
+    {
+      "english": "?",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "G'bye",
+      "chinese": "再見",
+      "pos": "phrase"
+    },
+    {
+      "english": ",",
+      "chinese": "",
+      "pos": ""
+    },
+    {
+      "english": "I",
+      "chinese": "我",
+      "pos": "pro"
+    },
+    {
+      "english": "m going out",
+      "chinese": "要出去",
+      "pos": "verb"
+    },
+    {
+      "english": "to play",
+      "chinese": "玩了",
+      "pos": "verb"
+    },
+    {
+      "english": "!",
+      "chinese": "",
+      "pos": ""
+    }
+  ]
