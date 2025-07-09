@@ -1,5 +1,5 @@
 import { 
-    splitPinyin, addPinTone, charToPin,
+    splitPinyin, pinNumToDiacritic, charToPin,
     constructPinRT, constructZhuRT 
 } from '../../js_modules/ruby-text.js'
 import { fillMaxFontSize } from '../../js_modules/resize-text.js'
@@ -196,7 +196,7 @@ function addGloss(n) {
         if (thisPin) {
             const newPinyin = constructPinRT(
                 char,
-                addPinTone(splitPinyin(thisPin)),
+                pinNumToDiacritic(thisPin),
                 'under'
             )
             chinSpan.append(newPinyin) 

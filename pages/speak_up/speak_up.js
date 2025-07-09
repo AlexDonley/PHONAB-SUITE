@@ -17,7 +17,7 @@ import {
     mapToFreqs, findPercent 
 } from '../../js_modules/completion-map.js'
 import { 
-    monocharLangs, splitPinyin, addPinTone, 
+    monocharLangs, splitPinyin, pinNumToDiacritic, 
     charToPin, pinToZhu,
     constructPinRT, constructZhuRT 
 } from '../../js_modules/ruby-text.js'
@@ -357,7 +357,7 @@ function populateUtterances(arr, elem) {
             let pinWithTone = ''
 
             if (thisPin) {
-                pinWithTone = addPinTone(splitPinyin(thisPin))
+                pinWithTone = pinNumToDiacritic(thisPin)
             }
 
             const newContent = constructPinRT(
@@ -587,7 +587,7 @@ function loadTarget(arr, leftoversBool){
             let pinWithTone = ''
 
             if (thisPin) {
-                pinWithTone = addPinTone(splitPinyin(thisPin))
+                pinWithTone = pinNumToDiacritic(thisPin)
             }
 
             newContent = constructPinRT(
