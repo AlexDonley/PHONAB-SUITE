@@ -161,6 +161,20 @@ export function pinNumToDiacritic(char) {
     return newStr
 }
 
+function diacriticToPinNum(str){
+    if (str.includes('ˊ')) {
+        return 2;
+    } else if (str.includes('ˇ')) {
+        return 3;
+    } else if (str.includes('ˋ')) {
+        return 4;
+    } else if (str.includes('˙')) {
+        return 5;
+    } else {
+        return 1;
+    }
+}
+
 export function constructPinRT(char, str, pos) {
 
     const fullWrap = document.createElement('span')

@@ -1,0 +1,760 @@
+[
+    {
+        "title": "Halloween I",
+        "words": [
+            "superhero", "monster", "princess", "pirate",
+            "astronaut", "what about you", "think", "like",
+            "love", "favorite", "holiday", "going to",
+            "Halloween", "costume", "excited", "trick or treat"
+                ],
+        "sentences": [
+            "You can be a"
+        ]
+    },
+    {
+        "title": "Christmas I",
+        "words": [
+            "Christmas", "great", "family", "friends",
+            "present", "tree", "house", "lights",
+            "Santa Claus", "pretty", "spend time", "decorate"
+                ],
+        "sentences": [
+            "is so much fun"
+        ]
+    },
+    {
+        "title": "Christmas II",
+        "words": [
+            "red", "suit", "kid", "good",
+            "special", "food", "dinner", "ham",
+            "cookies", "eggnog", "super", "always",
+            "Merry Christmas"
+                ],
+        "sentences": [
+            "We like"
+        ]
+    },
+    {
+        "title": "Children's Day I",
+        "words": [
+            "heard", "children", "just for", "whole",
+            "off from school", "awesome", "park", "game",
+            "museum", "zoo", "toy", "kids"
+        ],
+        "sentences": [
+            "I", "you", "we"
+        ]
+    },    
+    {
+        "title": "Children's Day II",
+        "words": [
+            "actually", "country", "really", "why not",
+            "mom and dad", "told", "because", "every day",
+            "never", "thought", "enjoy", "time off"                
+        ],
+        "sentences": [
+            "I", "you", "we"
+        ]
+    },
+    {
+        "title": "Dragon Boat Festival I",
+        "words": [
+            "today", "dragon", "boat", "festival",
+            "watch", "race", "sticky", "rice",
+            "dumplings", "wrapped", "leaves"              
+        ],
+        "sentences": [
+            "The next word is"
+        ]
+    },
+        {
+        "title": "Dragon Boat Festival II",
+        "words": [
+            "ingredients", "peanuts", "shrimp", "pork",
+            "delicious", "remember", "famous", "poet",
+            "honor", "interesting", "river"               
+        ],
+        "sentences": [
+            "The next word is"
+        ]
+    },
+    {
+        "title": "Silverstein - Sick",
+        "words": [
+            "the measles", "the mumps", "a gash", "a rash", 
+            "purple bumps", "instamatic flu", "a cold", "a fever",
+            "a stomach ache", "a runny nose", "a cough", "a sore throat",
+            "chicken pox", "an ear infection", "a virus", "covid-19"
+                ],
+        "sentences": [
+            "I have", "Do you have", "Does she have", "Does he have"
+        ]
+    },
+    {
+        "title": "Color Zoo - Animals",
+        "words": [
+            "tiger", "mouse", "fox", "ox", "monkey", 
+            "deer", "lion", "goat", "snake"
+                ],
+        "sentences": [
+            "There's a", "I see a"
+        ]
+    },
+    {
+        "title": "Color Zoo - Shapes",
+        "words": [
+            "circle", "square", "triangle", "rectangle", "oval", 
+            "heart", "diamond", "octagon", "hexagon"
+                ],
+        "sentences": [
+            "There's a", "I see a"
+        ]
+    },
+    {
+        "title": "Color Zoo - Colors",
+        "words": [
+            "red", "blue", "green", "orange", "yellow", 
+            "purple", "pink", "black", "white"
+                ],
+        "sentences": [
+            "There's a", "I see a"
+        ]
+    },
+    {
+        "title": "Dear Zoo - Animals",
+        "words": [
+            "elephant", "giraffe", "lion", "camel", 
+            "snake", "monkey", "frog", "puppy"
+                ],
+        "sentences": [
+            "So they sent me a"
+        ]
+    },
+    {
+        "title": "Dear Zoo - Adjectives",
+        "words": [
+            "big", "tall", "fierce", "grumpy", "scary", "naughty", "jumpy", "perfect"
+                ],
+        "sentences": [
+            "He was too", "She was too", "You're too"
+        ]
+    },
+    {
+        "title": "Brown Bear - Animals",
+        "words": [
+            "bear", "bird", "duck", 
+            "horse", "cat", "dog", 
+            "frog", "sheep", "goldfish"
+                ],
+        "sentences": [
+            "I see a", "looking at me"
+        ]
+    },
+    {
+        "title": "Polar Bear - Animals",
+        "words": [
+            "polar bear", "lion", "hippo",  
+            "flamingo", "zebra", "boa", "elephant", 
+            "leopard", "peacock", "walrus"
+                ],
+        "sentences": [
+            "I hear a", "in my ear"
+        ]
+    },
+    {
+        "title": "Polar Bear - Sounds",
+        "words": [
+            "growling", "roaring", "snorting",  
+            "fluting", "hissing", "trumpeting", 
+            "snarling", "yelping", "bellowing"
+                ],
+        "sentences": [
+            "I hear a", "in my ear"
+        ]
+    },
+    {
+        "title": "Polar Bear - Phonics 1",
+        "words": [
+            "fling", "ring", "ting", "king",
+            "bing", "sing", "ping", "wing"
+                ],
+        "sentences": [
+            "I hear a", "in my ear"
+        ]
+    },
+    {
+        "title": "Polar Bear - Phonics 2",
+        "words": [
+            "now", "cow", "how", "brow",
+            "owl", "cowl", "growl", "prowl"
+                ],
+        "sentences": [
+            "I hear a", "in my ear"
+        ]
+    },    
+    {
+        "title": "Polar Bear - Phonics 3",
+        "words": [
+            "snore", "snare", "sort", "score",
+            "scar", "roar", "soar", "Carl"
+                ],
+        "sentences": [
+            "I hear a", "in my ear"
+        ]
+    },    
+    {
+        "title": "Polar Bear - Phonics 4",
+        "words": [
+            "hiss", "kiss", "diss", 
+            "bump", "dump", "trump", 
+            "yelp", "help", "kelp"
+                ],
+        "sentences": [
+            "I hear a", "in my ear"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U1L1",
+        "words": [
+            "police officer", "mail carrier", "doctor",
+            "farmer", "baker", "toy maker"
+                ],
+        "sentences": [
+            "He's a", "She's a", "They're"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U1L2",
+        "words": [
+            "teacher", "carpenter", "firefighter",
+            "pilot", "dentist", "nurse"
+                ],
+        "sentences": [
+            "Is he a", "Is she a", "Are they"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U1L3",
+        "words": [
+            "kind", "mean", "generous", "greedy",
+            "brave", "cowardly", "hard-working", "lazy"
+                ],
+        "sentences": [
+            "He's", "She's", "They're"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U2L1",
+        "words": [
+            "mop", "bucket", "dustpan",
+            "broom", "trash can", "sponge"
+                ],
+        "sentences": [
+            "I need a", "He needs a", "She needs a"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U2L2",
+        "words": [
+            "above", "next to",
+            "in front of", "between"
+                ],
+        "sentences": [
+            "Is the", "Are the"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U2L3",
+        "words": [
+            "sweep the floor", "mop the floor", "pick up the trash",
+            "empty the trash", "wash the dishes", "water the plants"
+                ],
+        "sentences": [
+            "Can you"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U3L1",
+        "words": [
+            "monitor", "keyboard", "mouse",
+            "flash drive", "webcam", "speaker",
+            "monitors", "keyboards", "mice",
+            "flash drives", "webcam", "speakers"
+                ],
+        "sentences": [
+            "There is a", "There are"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U3L2",
+        "words": [
+            "pencil case", "notebook", "pencil sharpener",
+            "ruler", "colored pencil", "marker"
+                ],
+        "sentences": [
+            "Is there a", "Are there"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U3L3",
+        "words": [
+            "sunny", "cloudy", "windy",
+            "rainy", "foggy", "snowy"
+                ],
+        "sentences": [
+            "It's", "How's the weather? It's"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U4L1",
+        "words": [
+            "cute", "ugly", "expensive",
+            "cheap", "new", "cheap"
+                ],
+        "sentences": [
+            "Is this", "Is that", "Are these", "Are those"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U4L2",
+        "words": [
+            "20", "30", "40", "50",
+            "60", "70", "80", "90"
+                ],
+        "sentences": [
+            "plus", "minus", "equals"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U4L3",
+        "words": [
+            "one dollar", "ten dollars", "one hundred dollars"
+                ],
+        "sentences": [
+            "It's", "They're"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U5L1",
+        "words": [
+            "reading", "writing", "painting",
+            "thinking", "eating", "sleeping"
+                ],
+        "sentences": [
+            "I'm", "He's", "She's", "They're"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U5L2",
+        "words": [
+            "watching TV", "surfing the web", "listening to music",
+            "playing a video game", "playing a board game", "studying for an exam"
+                ],
+        "sentences": [
+            "Are you", "Is he", "Is she", "Are they"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U5L3",
+        "words": [
+            "bedroom", "living room", "dining room",
+            "kitchen", "bathroom", "balcony"
+                ],
+        "sentences": [
+            "This is the", "We're in the"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U6L1",
+        "words": [
+            "a baseball",
+            "a basketball",
+            "a jump rope",
+            "a skateboard",
+            "a racket",
+            "in-line skates"
+                ],
+        "sentences": [
+            "I have", "He has", "She has", "They have"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U6L2",
+        "words": [
+            "a puzzle",
+            "a board game",
+            "a dollhouse",
+            "marbles",
+            "trading cards",
+            "building blocks"
+                ],
+        "sentences": [
+            "Do you have", "Does he have", "Does she have"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U6L3",
+        "words": [
+            "dress",
+            "skirt",
+            "jacket",
+            "shirt",
+            "pants",
+            "shorts",
+            "shoes",
+            "slippers"
+                ],
+        "sentences": [
+            "I'm wearing", "He's wearing", "She's wearing", "They're wearing"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U7L1",
+        "words": [
+            "my",
+            "your",
+            "his",
+            "her",
+            "their",
+            "our"
+                ],
+        "sentences": [
+            "It's", "They're"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U7L2",
+        "words": [
+            "head",
+            "eye",
+            "nose",
+            "ear",
+            "mouth",
+            "arm",
+            "hand",
+            "leg",
+            "foot"
+                ],
+        "sentences": [
+            "My", "hurts"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U7L3",
+        "words": [
+            "a cold",
+            "a headache",
+            "a toothache",
+            "a stomachache",
+            "a sore throat",
+            "a nosebleed"
+                ],
+        "sentences": [
+            "I have", "She has", "He has"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U8L1",
+        "words": [
+            "Help!",
+            "Stop!",
+            "Watch out!",
+            "Don't push!",
+            "Don't touch that!",
+            "Don't cut in line!"
+                ],
+        "sentences": [
+            "n/a"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U8L2",
+        "words": [
+            "English class",
+            "math class",
+            "music class",
+            "art class",
+            "geography class",
+            "computer class",
+            "science class",
+            "PE class"
+                ],
+        "sentences": [
+            "I'm going to", "He's going to", "She's going to", "They're going to"
+        ]
+    },
+    {
+        "title": "Hip Hip Hooray 2 - U8L3",
+        "words": [
+            "dance class",
+            "band practice",
+            "choir practice",
+            "scout meeting",
+            "science fair",
+            "volleyball game"
+                ],
+        "sentences": [
+            "Are you going to", "Is he going to", "Is she going to", "Are they going to"
+        ]
+    },
+    {
+        "title": "Phonics - Soft A",
+        "words": [
+            "bad",
+            "mad",
+            "sad",
+            "fan",
+            "man",
+            "ham",
+            "bat",
+            "cat",
+            "fat",
+            "hat"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Soft E",
+        "words": [
+            "leg",
+            "hen",
+            "pen",
+            "ten",
+            "net",
+            "pet",
+            "set",
+            "wet"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Soft I",
+        "words": [
+            "kid",
+            "lid",
+            "dig",
+            "pig",
+            "fin",
+            "win",
+            "kit",
+            "hit"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Soft O",
+        "words": [
+            "job",
+            "mom",
+            "hop",
+            "mop",
+            "top",
+            "dot",
+            "not",
+            "pot",
+            "box",
+            "fox"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Soft U",
+        "words": [
+            "cub",
+            "tub",
+            "bug",
+            "bun",
+            "fun",
+            "sun",
+            "cup",
+            "cut"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Hard A",
+        "words": [
+            "bake",
+            "cake",
+            "game",
+            "name",
+            "base",
+            "case",
+            "hate",
+            "late",
+            "save",
+            "wave"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Hard E",
+        "words": [
+            "eve",
+            "Steve",
+            "here",
+            "Pete",
+            "these"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Hard I",
+        "words": [
+            "hide",
+            "ride",
+            "life",
+            "wife",
+            "bike",
+            "like",
+            "fine",
+            "wine",
+            "bite",
+            "kite"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Hard O",
+        "words": [
+            "Coke",
+            "home",
+            "hope",
+            "rope",
+            "nose",
+            "rose",
+            "note",
+            "vote"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Phonics - Hard U",
+        "words": [
+            "cube",
+            "tube",
+            "June",
+            "use",
+            "cute"
+                ],
+        "sentences": [
+            "The word is"
+        ]
+    },
+    {
+        "title": "Wonder World 1 - 2: Emotions",
+        "words": [
+            "angry",
+            "happy",
+            "sad",
+            "hungry",
+            "thirsty"
+                ],
+        "sentences": [
+            "Are you", "Is he", "Is she"
+        ]
+    },
+    {
+        "title": "Wonder World 1 - 3: Toys",
+        "words": [
+            "a ball",
+            "a car",
+            "a doll",
+            "a kite",
+            "a robot",
+            "a yo-yo"
+                ],
+        "sentences": [
+            "It's a"
+        ]
+    },
+    {
+        "title": "Wonder World 1 - 4: Colors",
+        "words": [
+            "blue",
+            "green",
+            "pink",
+            "purple",
+            "red",
+            "yellow"
+                ],
+        "sentences": [
+            "It's"
+        ]
+    },
+    {
+        "title": "Wonder World 1 - 5: Christmas",
+        "words": [
+            "a Christmas tree",
+            "Santa Claus",
+            "a snowman",
+            "a star",
+            "a stocking"
+                ],
+        "sentences": [
+            "Merry Christmas"            
+        ]
+    },
+    {
+        "title": "Big Green Monster - Face",
+        "words": [
+            "face",
+            "eyes",
+            "nose",
+            "ears",
+            "mouth",
+            "teeth",
+            "hair"
+                ],
+        "sentences": [
+            "Big Green Monster has"            
+        ]
+    },
+    {
+        "title": "Big Green Monster - Adj",
+        "words": [
+            "big",
+            "sharp",
+            "long",
+            "scary",
+            "squiggly",
+            "scraggly",
+            "little"
+                ],
+        "sentences": [
+            "Big Green Monster has"            
+        ]
+    },
+    {
+        "title": "Big Green Monster - Color",
+        "words": [
+            "yellow",
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "white"
+                ],
+        "sentences": [
+            "Big Green Monster has"            
+        ]
+    }
+]

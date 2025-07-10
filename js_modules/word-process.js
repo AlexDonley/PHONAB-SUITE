@@ -291,3 +291,23 @@ export function queueToArr(arr, lang) {
 export function removeDash(str) {
     return str.replace(/['-]/g,"");
 }
+
+export function checkArrOverlap(targArr, utterArr) {
+    let matches = 0
+    // let compIdx = 0
+    
+    for (let i = 0; i < targArr.length; i++) {
+        for (let j = matches; j < utterArr.length; j++) {
+            if (targArr[i] == utterArr[j]) {
+                // compIdx++
+                matches++
+            }
+        }
+    }
+
+    if (matches == targArr.length) {
+        return true
+    } else {
+        return false
+    }
+}

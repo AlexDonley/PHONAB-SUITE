@@ -1,11 +1,13 @@
 // import { urlConfigs } from './js/url-query.js'
 
-// http://127.0.0.1:5500/index.html?teamnum=2&grid=3&vocabs=[22,23,24]&gonow=true
+// http://127.0.0.1:5500/index.html?t=2&g=3&vocabs=[22,23,24]&gonow=true
 
 
 const defaultConfigs = {
     'fs': false,
-    'lang': 'en'
+    'lang': 'en',
+    't': 1,
+    'g': 4
 }
 export const urlConfigs = urlQuerToDict()
 
@@ -23,6 +25,7 @@ export function urlQuerToDict() {
             queryDict[pair[0]] = pair[1]
         }
     
+        console.log(queryDict)
         return queryDict
     } else {
         return null
@@ -39,12 +42,12 @@ export function overwriteDefaults(querDict) {
     })
 }
 
-export function writeConfigValues(teamElem, gridElem) {
+export function writeConfigValues(teamElem, gElem) {
     
     if (urlConfigs) {
         overwriteDefaults(urlConfigs)
     }
     
-    teamElem.value = defaultConfigs.teamnum;
-    gridElem.value = defaultConfigs.grid;
+    teamElem.value = defaultConfigs.t;
+    gElem.value = defaultConfigs.g;
 }

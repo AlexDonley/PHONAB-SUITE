@@ -10,7 +10,7 @@ let timerObj = {
     "target": null,
 }
 
-let ding = new Audio("../sound/ding.wav");
+let ding = new Audio("../../sfx/ding.wav");
 ding.volume = 0.3
 
 export function startTimer(elem) {

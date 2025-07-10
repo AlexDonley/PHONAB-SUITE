@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2F4YZQ0DV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-L2F4YZQ0DV');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="watch_your_tone.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="watch_your_tone.js" defer></script>
+    <link rel="icon" href="watch_your_tone.ico" type="image/x-icon">
+    <title>Watch Your Tone</title>
+</head>
+<body>
+    <div class="menu disappear" id="menu">
+        <button onclick="cycleMode()" onmousedown="event.preventDefault();">1</button>
+        <button onclick="toggleErrors()" onmousedown="event.preventDefault();">E</button>
+        <button onclick="toggleHint()" onmousedown="event.preventDefault();">ㄓ</button>
+        <button onclick="toggleShuffle()" onmousedown="event.preventDefault();">
+            <ion-icon name="shuffle-outline"></ion-icon>
+        </button>
+        <button onclick="toggleSpeech()" onmousedown="event.preventDefault();">
+            <ion-icon name="megaphone-outline"></ion-icon>
+        </button>          
+    </div>
+
+    <textarea class="text-input disappear" id="userText">世界八大不可相信英國研究中國製造台灣報導南韓起源北韓宣布美國力挺菲國道歉大馬選舉</textarea>
+    
+    <span class="tri tritop onload">
+        <div class="emboss-text">1</div>
+    </span>
+    <span class="tri triright onload">
+        <div class="emboss-text">2</div>
+    </span>
+    <span class="tri tribottom onload">
+        <div class="emboss-text">3</div>
+    </span>
+    <span class="tri trileft onload">
+        <div class="emboss-text">4</div>
+    </span>
+    
+    <div class="cir emboss-text onload" id="ZHchar">5</div>
+
+    <div class="chart disappear" id="chartWrap">
+        <canvas id="letterFreq"></canvas>
+    </div>
+
+    <div class="errors disappear" id="errorsWrap">
+        <canvas class="error-wrap" id="errors"></canvas>
+    </div>
+    
+</body>
+</html>
