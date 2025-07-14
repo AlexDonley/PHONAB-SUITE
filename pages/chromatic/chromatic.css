@@ -1,0 +1,41 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    touch-action: none;
+}
+
+.touch-board {
+    height: 100vh;
+    width: 100vw;
+    background: conic-gradient(
+        maroon 15deg,
+        yellow 15deg 45deg,
+        maroon 45deg 75deg,
+        yellow 75deg 105deg,
+        maroon 105deg 135deg,
+        yellow 135deg 165deg,
+        maroon 165deg 195deg,
+        yellow 195deg 225deg,
+        maroon 225deg 255deg,
+        yellow 255deg 285deg,
+        maroon 285deg 315deg,
+        yellow 315deg 345deg,
+        maroon 345deg);
+}
+
+.center-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+}
+
+.pointer-debug {
+    position: absolute;
+    background-color: red;
+    transform: translate(-50%, -50%);
+}

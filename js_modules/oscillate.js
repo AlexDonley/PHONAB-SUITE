@@ -1,9 +1,43 @@
-// import { oscillator } from './js/oscillate.js'
+// import { oscBeep } from './js/oscillate.js'
 
 const context = new AudioContext()
 
 const majorChord = [261.62, 329.62, 391.99, 523.33]
 const minorChord = [261.62, 311.12, 391.99, 523.33]
+
+var oscArr = {}
+
+export function startAndIdxOsc(n, freq) {
+    const newOsc = context.createOscillator()
+
+    newOsc.type = 'triangle'
+    newOsc.frequency.value = freq
+
+    const newGain = context.createGain()
+    newGain.gain.setValueAtTime(1, context.currentTime)
+
+    newOsc.connect(newGain)
+    newGain.connect(context.destination)
+
+    if (oscArr[n] == undefined) {
+        oscArr[n] = newOsc
+        console.log(oscArr)
+        newOsc.start()
+    }
+}
+
+export function updateOscFreq(n, freq) {
+    if (oscArr[n] == undefined) return
+    oscArr[n].frequency.value = freq
+}
+
+export function stopAndDidxOsc(n) {
+    const thisOsc = oscArr[n]
+
+    thisOsc.stop()
+    oscArr[n] = undefined
+    console.log(oscArr)
+}
 
 export function oscBeep(freq, vol, length, type) {
     const oscillator = context.createOscillator()
