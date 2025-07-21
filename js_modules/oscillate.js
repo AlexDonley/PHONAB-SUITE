@@ -14,7 +14,7 @@ export function startAndIdxOsc(n, freq) {
     newOsc.frequency.value = freq
 
     const newGain = context.createGain()
-    newGain.gain.setValueAtTime(1, context.currentTime)
+    newGain.gain.setValueAtTime(0.25, context.currentTime)
 
     newOsc.connect(newGain)
     newGain.connect(context.destination)

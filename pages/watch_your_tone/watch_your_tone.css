@@ -103,70 +103,30 @@ body {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    width: 200px;
-    height: 200px;
+    width: min(30vh, 30vw);
+    height: min(30vh, 30vw);
     border-radius: 50%;
     color: rgb(255, 255, 255);
     background-color: #ccc;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 200px;
-    font-size: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     filter: drop-shadow(0px 0px 4px #0f0f0f);
-    /* font-weight: bold; */
-    transition: opacity 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 .cir.disappear {
     opacity: 1;
 }
 .offset{
     transform: translate(10vh, 10vh);
-    /* background-color: white;
-    filter: drop-shadow(0px 0px 0px #fff);
-    color: #ccc; */
 }
 
-.zhuyin{
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    right: calc(50% - 100px);
-    width: 70px;
-    height: 200px;
-    transform: translateX(50%) translateY(-50%);
-    border-radius: 30px;
-    color: #fff;
-    background-color: #aaa;
+.center-disp {
     display: flex;
-    transition: right 0.5s ease-in-out,
-                visibility 0s;
-}
-.zhuyin.disappear{
-    transition: right 0.5s ease-in-out,
-                visibility 0s .5s;
-    visibility: hidden;
-    right: calc(0% - 50px);
-}
-
-.bpmf-display{
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    font-size: 3rem;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    white-space: nowrap;
-}
-
-.tone-display{
-    font-size: 4rem;
-    align-self: right;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: min(18vh, 18vw);
 }
 
 .complete {
@@ -201,7 +161,7 @@ button {
     justify-content: center;
     text-align: middle;
 }
-button.flip{
+button.flipped-on{
     color: white;
     background-color: red;
 }
@@ -228,9 +188,9 @@ button.flip{
 
 
 .errors { 
-    z-index: -3;
-    height: 230px;
-    width: 230px;
+    z-index: -1;
+    height: min(35vh, 35vw);
+    width: min(35vh, 35vw);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -261,7 +221,7 @@ button.flip{
     /* text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.2),
                 1px 3px 0 rgba(0, 0, 0, 0.2), 1px 4px 0 rgba(0, 0, 0, 0.2),
                 2px 5px 0 rgba(0, 0, 0, 0.2), 2px 6px 0 rgba(0, 0, 0, 0.2); */
-    transition: all .3s ease-in-out;
+    transition: all .1s linear;
 }
 .emboss-text:hover{
     text-shadow: 0px 1px 0 #333, 0 2px 0 #333,
@@ -269,6 +229,7 @@ button.flip{
     2px 5px 0 #333, 2px 6px 0 #333,
     3px 7px 0 #333, 3px 8px 0 #333,
     4px 9px 0 #333, 4px 10px 0 #333;
+    transform: translate(-4px, -4px);
     color: white;
 }
 .mini-emboss-text{
@@ -276,6 +237,13 @@ button.flip{
                 1px 3px 0 #333, 1px 4px 0 #333;
     filter: drop-shadow(0px 0px 4px #0f0f0f);
 }
-/* .error-chart{
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-} */
+
+rt {
+    font-size: min(4vh, 4vw);
+    transition: font-size 0.2s;
+    ruby-align: center
+}
+
+rt.hide {
+    font-size: 0pt
+}

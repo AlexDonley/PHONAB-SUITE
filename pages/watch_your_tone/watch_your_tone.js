@@ -1,32 +1,60 @@
-import { charToZhu } from "../../js_modules/ruby-text.js"
+import { shuffle } from '../../js_modules/shuffle.js'
+import { 
+    charToZhu, constructZhuRT,
+    toggleRTHide 
+} from "../../js_modules/ruby-text.js"
 
-const ZHchar        = document.getElementById('ZHchar')
-const letterFreq    = document.getElementById('letterFreq')
-const errorsWrap    = document.getElementById('errorsWrap')
-const errors        = document.getElementById('errors')
+const ZHchar        = document.querySelector('#ZHchar')
+const bigCirc       = document.querySelector('.cir')
+const letterFreq    = document.querySelector('#letterFreq')
+const errorsWrap    = document.querySelector('#errorsWrap')
+const errors        = document.querySelector('#errors')
 
 const triangles     = Array.from(document.getElementsByClassName('tri'))
 const onloads       = Array.from(document.getElementsByClassName('onload'))
-const buttons       = Array.from(document.getElementsByTagName('button'))
-const chartWrap     = document.getElementById('chartWrap')
-const userText      = document.getElementById('userText')
-const menu          = document.getElementById('menu')
+const chartWrap     = document.querySelector('#chartWrap')
+const userText      = document.querySelector('#userText')
+const menu          = document.querySelector('#menu')
+
+// get button elements
+
+const modeBtn       = document.querySelector('#modeBtn')
+const errorBtn      = document.querySelector('#errorBtn')
+const hintBtn       = document.querySelector('#hintBtn')
+const shuffBtn      = document.querySelector('#shuffBtn')
+const speechBtn     = document.querySelector('#speechBtn')
 
 for (let i = 0; i < triangles.length; i++) {
-    triangles[i].addEventListener('click', checkToneWrap(i+1))
+    triangles[i].addEventListener('pointerdown', checkToneWrap(i+1))
 }
-ZHchar.addEventListener('click', checkToneWrap(triangles.length + 1))
+bigCirc.addEventListener('pointerdown', checkToneWrap(triangles.length + 1))
 
-var toneErrors = {};
-var typeErrors = {};
-var logErrors = true;
-var shuffleBool = false;
-var speechBool = false;
-var mode = 1;
+let toneErrors = {};
+let typeErrors = {};
+let logErrors = true;
+let hintBool = false
+let shuffleBool = false;
+let speechBool = false;
+let mode = 1;
 
 let queueCount
 let limit
 let targetLength
+
+// assign button functions
+
+modeBtn.addEventListener('pointerdown', cycleMode)
+errorBtn.addEventListener('pointerdown', toggleErrors)
+hintBtn.addEventListener('pointerdown', e => {
+    hintBool = !hintBool    
+    flipElem(hintBool, e.target)
+    toggleRTHide(hintBool)
+})
+shuffBtn.addEventListener('pointerdown', e => {
+    shuffleBool = !shuffleBool
+    flipElem(shuffleBool, e.target)
+})
+speechBtn.addEventListener('pointerdown', toggleSpeech)
 
 const bpmfChar = [
     'ㄅ', 'ㄆ', 'ㄇ', 'ㄈ', 
@@ -43,7 +71,6 @@ const bpmfChar = [
 ]
 
 const lordsPrayer = "我們在天上的父,願人都尊祢的名為聖,願祢的國降臨,願祢的旨意行在地上,如同行在天上.我們日用的飲食,今日賜給我們,免我們的債,如同我們免了人的債,不叫我們遇見試探,救我們脫離兇惡,因為國度,權柄,榮耀,全是祢的,直到永遠.阿們"
-const LP1 = "我們在天上的父願人都尊祢的名為聖"
 const memeText = "世界八大不可相信英國研究中國製造台灣報導南韓起源北韓宣布美國力挺菲國道歉大馬選舉"
 
 const bpmfData = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
@@ -181,24 +208,24 @@ const ZHkeyBindings = {
     ' ': ' '
 }
 
-let currentChar;
-let currentZY;
-let currentTone;
+let currChar;
+let currZY;
+let currTone;
 let charQueue = [];
 
 // let success = new Audio("sfx/ding3.wav");
-// let correct = new Audio("sfx/click2.wav")
+// let correct = new Audio("sfx/pointerdown2.wav")
 // let failure = new Audio("sfx/ohno.wav");
 
 let calibrate = false;
 let calibrateCount = 1;
 
-function go(){
+function startRound(){
     
     ZHchar.style.fontWeight = 'bold';
 
     errorsWrap.classList.remove('disappear');
-    buttons[1].classList.add('flip');
+    errorBtn.classList.add('flipped-on');
 
     const userInput = userText.value;
     console.log(userInput)
@@ -219,28 +246,31 @@ function nextChar(){
 
     if (queueCount < limit){
 
-        currentChar = charQueue[queueCount]
+        currChar = charQueue[queueCount]
 
     } else {
 
-        var N = Math.floor(Math.random() * 100) + 100
-        currentChar = "我"
+        currChar = "我"
 
     }
     
-    currentZY = charToZhu(currentChar)
-    currentTone = currentZY[1]
-    console.log(currentZY, currentTone)
+    currZY = charToZhu(currChar)
+    currTone = currZY[1]
+    console.log(currZY, currTone)
 
-    console.log(currentChar + " " + currentZY + " " + currentTone)
+    console.log(currChar + " " + currZY + " " + currTone)
 
-    ZHchar.innerHTML = currentChar;
-
-    queueCount++
+    const newRby = constructZhuRT(currChar, currZY, !hintBool)
+    newRby.classList.add('emboss-text')
+    
+    ZHchar.innerHTML = ''
+    ZHchar.append(newRby)
 
     if (speechBool === true) {
-        speakWords(currentChar);
+        speakWords(currChar)
     }
+
+    queueCount++
 }
 
 function checkToneWrap(int) {
@@ -252,8 +282,8 @@ function checkToneWrap(int) {
 function checkTone(input){
     if (ZHchar.innerText == 'G') {
         
-        ZHchar.classList.remove('offset');
-        go();
+        bigCirc.classList.remove('offset');
+        startRound();
 
     } else if (ZHchar.innerText == 'F') {
         showTextArea();
@@ -277,7 +307,7 @@ function checkTone(input){
             }
 
         } else {
-            if (input == currentTone){
+            if (input == currTone){
                 if(queueCount < targetLength) {
                     nextChar();
                 
@@ -302,8 +332,8 @@ function checkTone(input){
                     
                     let inputArray = [input]
 
-                    if (Object.keys(toneErrors).includes(currentChar)){
-                        inputArray = toneErrors[currentChar];
+                    if (Object.keys(toneErrors).includes(currChar)){
+                        inputArray = toneErrors[currChar];
                         if (!inputArray.includes(input)){
                             inputArray.push(input);
                         }
@@ -311,7 +341,7 @@ function checkTone(input){
                         //console.log(inputArray);
                     } 
 
-                    toneErrors[currentChar] = inputArray;
+                    toneErrors[currChar] = inputArray;
                     
                 }
 
@@ -345,10 +375,10 @@ window.addEventListener('keydown', (ev) =>{
 
 function updateTyping(inp) {
     
-    if (currentTone == 1 && nextType == typingLength - 1) {
+    if (currTone == 1 && nextType == typingLength - 1) {
         specificLetter = ' '        
     } else {
-        letterSpan = document.getElementById('span' + nextType);
+        letterSpan = document.querySelector('#span' + nextType);
         specificLetter = letterSpan.innerText;
     }
     
@@ -386,15 +416,6 @@ function createQueue(str) {
     
     charQueue = str.split('');
 
-    // filter out any characters not found in the dataset
-
-    // for (var n = 0; n < charQueue.length; n++){
-    //     if (!chineseChars.includes(charQueue[n])){
-    //         charQueue.splice(n, 1);
-    //         n--
-    //     }
-    // }
-
     if (shuffleBool) {
         charQueue = shuffle(charQueue);
     }
@@ -416,7 +437,7 @@ function cycleMode(){
         recognition.abort();
         mode = 1;
     }
-    buttons[0].innerText = mode;
+    modeBtn.innerText = mode;
 }
 
 function addTriangles() {
@@ -434,43 +455,39 @@ function removeTriangles() {
 function toggleErrors(){
     if (errorsWrap.classList.contains('disappear')) {
         errorsWrap.classList.remove('disappear');
-        buttons[1].classList.add('flip');
+        errorBtn.classList.add('flipped-on');
     } else {
         errorsWrap.classList.add('disappear');
-        buttons[1].classList.remove('flip');
+        errorBtn.classList.remove('flipped-on');
     }
-    
-    // logErrors = !logErrors;
-    // console.log(logErrors)
 }
 
-function toggleHint(){
-    console.log("TO DO: replace zhuyin hint system")
+function flipElem(bool, elem) {
     
-    // if (true) {
-
-    // } else {
-
-    // }
+    if (bool) {
+        elem.classList.add('flipped-on')
+    } else {
+        elem.classList.remove('flipped-on')
+    }
 }
 
 function toggleShuffle(){
-    if (!buttons[3].classList.contains('flip')) {
+    if (!shuffBtn.classList.contains('flipped-on')) {
         shuffleBool = true;
-        buttons[3].classList.add('flip');
+        shuffBtn.classList.add('flipped-on');
     } else {
         shuffleBool = false;
-        buttons[3].classList.remove('flip');
+        shuffBtn.classList.remove('flipped-on');
     }
 }
 
 function toggleSpeech(){
-    if (!buttons[4].classList.contains('flip')) {
+    if (!speechBtn.classList.contains('flipped-on')) {
         speechBool = true;
-        buttons[4].classList.add('flip');
+        speechBtn.classList.add('flipped-on');
     } else {
         speechBool = false;
-        buttons[4].classList.remove('flip');
+        speechBtn.classList.remove('flipped-on');
     }
 }
 
@@ -516,7 +533,7 @@ function closeRound() {
 function showTextArea() {
     userText.classList.remove('disappear');
     ZHchar.innerText = 'G';
-    ZHchar.classList.add('offset')
+    bigCirc.classList.add('offset')
     
     triangles.forEach(tri =>{
         tri.classList.add('disappear')
@@ -524,29 +541,15 @@ function showTextArea() {
 }
 
 async function speakWords(str){
-    speechSetup = window.speechSynthesis;
+    const speechSetup = window.speechSynthesis;
 
     speechSetup.cancel();
     
-    utterance = new SpeechSynthesisUtterance(str);
+    const utterance = new SpeechSynthesisUtterance(str);
     utterance.lang = "zh"
     utterance.rate = .8;
     
     speechSetup.speak(utterance);
-}
-
-function shuffle(arr){
-    let unshuffled = arr;
-    let shuffled = [];
-
-    unshuffled.forEach(word =>{
-        randomPos = Math.floor(Math.random() * shuffled.length);
-
-        shuffled.splice(randomPos, 0, word);
-    })
-    
-    //console.log(shuffled);
-    return shuffled;
 }
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -567,7 +570,7 @@ recognition.addEventListener("result", (e) => {
     array.forEach((element)=>{
         if (isNaN(element)){
             
-            if (charToZhu(element) == currentZY){
+            if (charToZhu(element) == currZY){
                 nextChar();
             }
 

@@ -22,13 +22,13 @@
 </head>
 <body>
     <div class="menu disappear" id="menu">
-        <button onclick="cycleMode()" onmousedown="event.preventDefault();">1</button>
-        <button onclick="toggleErrors()" onmousedown="event.preventDefault();">E</button>
-        <button onclick="toggleHint()" onmousedown="event.preventDefault();">ㄓ</button>
-        <button onclick="toggleShuffle()" onmousedown="event.preventDefault();">
+        <button id="modeBtn" onmousedown="event.preventDefault();">1</button>
+        <button id="errorBtn" onmousedown="event.preventDefault();">E</button>
+        <button id="hintBtn" onmousedown="event.preventDefault();">ㄓ</button>
+        <button id="shuffBtn" onmousedown="event.preventDefault();">
             <ion-icon name="shuffle-outline"></ion-icon>
         </button>
-        <button onclick="toggleSpeech()" onmousedown="event.preventDefault();">
+        <button id="speechBtn" onmousedown="event.preventDefault();">
             <ion-icon name="megaphone-outline"></ion-icon>
         </button>          
     </div>
@@ -48,7 +48,11 @@
         <div class="emboss-text">4</div>
     </span>
     
-    <div class="cir emboss-text onload" id="ZHchar">5</div>
+    <div class="cir onload">
+        <div class="center-disp emboss-text" id="ZHchar">
+            5
+        </div>
+    </div>
 
     <div class="chart disappear" id="chartWrap">
         <canvas id="letterFreq"></canvas>

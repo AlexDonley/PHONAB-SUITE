@@ -90,8 +90,9 @@ export function charToZhu(char) {
 export function pinToZhu(pin) {
     
     // console.log(pin)
-    const syll = splitPinyin(pin)[0]
-    const tone = splitPinyin(pin)[1]
+    const pinSplit = splitPinyin(pin)
+    const syll = pinSplit[0]
+    const tone = pinSplit[1]
     
     let divideIndex = 0
     let zhuOnset = ''
@@ -110,12 +111,22 @@ export function pinToZhu(pin) {
         zhuOnset = zhuyinDict[0][pinOnset]
     }
 
-    if (['u', 'un', 'uan'].includes(pinCoda)) {
+    // the pinyin syllables 'zhi', 'chi', 'shi', and 'ri' do not use a vowel in zhuyin
+    // they must be written without a coda
+    if (['zh', 'ch', 'sh', 'r'].includes(pinOnset) && pinCoda == 'i') {
+        zhuCoda = ''
+
+    // the pinyin codas 'u', 'un', and 'uan' translate to different zhuyin vowels depending on context
+    // if they come after 'j', 'q', or 'x', then they will begin with the vowel ㄩ
+    // otherwise, they will being with the vowel ㄨ
+    } else if (['u', 'un', 'uan'].includes(pinCoda)) {
         if (['j', 'q', 'x'].includes(pinOnset)) {
             zhuCoda = zhuyinDict[1][pinCoda][1]
         } else {
             zhuCoda = zhuyinDict[1][pinCoda][0]
         }
+    
+    // if the pinyin doesn't fall into one of these exceptions, the coda may be translated normally
     } else {
         zhuCoda = zhuyinDict[1][pinCoda]
     }
@@ -197,7 +208,7 @@ export function constructPinRT(char, str, pos) {
     return fullWrap
 }
 
-export function constructZhuRT(char, [letterStr, toneNum]) {
+export function constructZhuRT(char, [letterStr, toneNum], hideBool) {
 
     const fullWrap = document.createElement('span')
     fullWrap.style.writingMode = 'vertical-rl'
@@ -207,6 +218,11 @@ export function constructZhuRT(char, [letterStr, toneNum]) {
     const innerRuby = document.createElement('ruby')
     const zhuRT = document.createElement('rt')
     const toneRT = document.createElement('rt')
+
+    if (hideBool) {
+        zhuRT.classList.add('hide')
+        toneRT.classList.add('hide')
+    }
     
     outerRuby.classList.add('zhu-wrap')
     zhuRT.classList.add('zhu-text')
@@ -272,4 +288,22 @@ export function createHorRT(main, cap) {
     fullWrap.append(pinRuby)
 
     return fullWrap
+}
+
+export function toggleRTHide(hideBool, specificClass) {
+    let selectedElems
+
+    if (specificClass) {
+        selectedElems = Array.from(document.querySelectorAll('.' + specificClass))
+    } else {
+        selectedElems = Array.from(document.querySelectorAll('rt'))
+    }
+
+    selectedElems.forEach(elem => {
+        if (!hideBool) {
+            elem.classList.add('hide')
+        } else {
+            elem.classList.remove('hide')
+        }
+    })
 }
