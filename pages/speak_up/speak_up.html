@@ -26,18 +26,13 @@
     <div class="left-sidebar shadow">
         <div class="green-arrow" id="greenArrow">
             <div class="arrow-perc" id="arrowPerc">0%</div>
+            <div class="arrow-overlay"></div>
         </div>
     </div>
     <div class="right-sidebar">
         <div class="award-div" id="awardDiv"></div>
     </div>
     <div class="corner-btns">
-        <button class="read-btn" id="micBtn" disabled=true>
-            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#555555"><path d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm0-240Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm40-360q17 0 28.5-11.5T520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480Z"/></svg>
-        </button>
-        <button class="read-btn" id="playBtn" disabled=true>
-            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 24 24" width="40px" fill="#555555"><path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z"/></svg>
-        </button>
         <button class="home-btn" id="homeBtn">
             <svg height="40px" viewBox="0 -960 960 960" width="40px" fill="#5f6368"><path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"/></svg>
         </button>
@@ -95,16 +90,30 @@
                         <div class="leftover-btn" id="leftBtn"></div>
                     </div>
                     <div class="column-block" id="columnWrap">
+                        <div class="left-hand btn-ribbon">
+                            <button class="read-btn" id="playBtn" disabled=true>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#555555"><path d="M240-80q62 0 101.5-31t60.5-91q17-50 32.5-70t71.5-64q62-50 98-113t36-151q0-119-80.5-199.5T360-880q-119 0-199.5 80.5T80-600h80q0-85 57.5-142.5T360-800q85 0 142.5 57.5T560-600q0 68-27 116t-77 86q-52 38-81 74t-43 78q-14 44-33.5 65T240-160q-33 0-56.5-23.5T160-240H80q0 66 47 113t113 47Zm120-420q42 0 71-29.5t29-70.5q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 41 29 70.5t71 29.5Zm380 121-59-59q19-37 29-77.5t10-84.5q0-44-10-84t-29-77l59-59q29 49 44.5 104.5T800-600q0 61-15.5 116.5T740-379Zm117 116-59-58q39-60 60.5-130T880-598q0-78-22-148.5T797-877l60-60q49 72 76 157.5T960-600q0 94-27 179.5T857-263Z"/></svg>
+                            </button>
+                        </div>
+                        
                         <div class="line-of-words targetColumn"></div>
                         <div class="line-of-words texts"></div>
-                        <button class="punch-btn"></button>
+
+                        <div class="right-hand btn-ribbon">
+                            <button class="read-btn" id="micBtn" disabled=true>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#555555"><path d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm0-240Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm40-360q17 0 28.5-11.5T520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480Z"/></svg>
+                            </button>
+                            <button class="punch-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#e8eaed"><path d="M660-240v-480h80v480h-80Zm-440 0v-480l360 240-360 240Zm80-240Zm0 90 136-90-136-90v180Z"/></svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="user-block">
                     <div class="user-info-wrap shadow">
                         <h1>Log in:</h1>
                         <input type="text" id="userEntry">
-                        <button onclick="createUser()">CREATE USER</button>
+                        <button id="createUserBtn">CREATE USER</button>
                         <br>
                         Available Users:
                         <div class="available-users" id="availableUsers"></div>

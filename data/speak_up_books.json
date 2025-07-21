@@ -1,6 +1,7 @@
 [
     {
         "title": "Numbers Text",
+        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -13,6 +14,7 @@
     },
     {
         "title": "Instructions",
+        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -29,6 +31,7 @@
     },
     {
         "title": "Halloween Broadcast",
+        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -62,6 +65,7 @@
     },
     {
         "title": "Christmas Broadcast",
+        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -98,6 +102,7 @@
     },
     {
         "title": "Children's Day Broadcast",
+        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -136,6 +141,7 @@
     },
     {
         "title": "Dragon Boat Day Broadcast",
+        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -167,6 +173,7 @@
     },
     {
         "title": "ABCs",
+        "lang": "en",
         "author": "none",
         "parts": [
             {
@@ -215,6 +222,7 @@
     },
     {
         "title": "Kid Inspired Assessment",
+        "lang": "en",
         "author": "Kid Inspired",
         "parts": [
             {
@@ -274,6 +282,7 @@
     },
     {
         "title": "Vocabulary",
+        "lang": "en",
         "author": "none",
         "parts": [
             {
@@ -293,6 +302,7 @@
     },
     {
         "title": "Today is Monday",
+        "lang": "en",
         "author": "Eric Carle",
         "parts": [
             {
@@ -320,6 +330,7 @@
     },
     {
         "title": "Summer Camp",
+        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -357,6 +368,7 @@
     },
     {
         "title": "Go Dog Go",
+        "lang": "en",
         "author": "P.D. Eastman",
         "parts": [
             {
@@ -514,6 +526,7 @@
     },
     {
         "title": "Big Green Monster",
+        "lang": "en",
         "author": "Ed Emberley",
         "parts": [
             {
@@ -546,6 +559,7 @@
     },
     {
         "title": "A New House",
+        "lang": "en",
         "author": "Arnold Lobel",
         "parts":[
             {
@@ -613,6 +627,7 @@
     },
     {
         "title": "Brown Bear",
+        "lang": "en",
         "author": "Eric Carle",
         "parts":[
             {
@@ -660,6 +675,7 @@
     },
     {
         "title": "Apple",
+        "lang": "en",
         "author": "Bad Time Stories",
         "parts": [
             {
@@ -714,8 +730,9 @@
             }
         ]
     },
-        {
+    {
         "title": "International Relations",
+        "lang": "en",
         "author": "Studio C",
         "parts": [
             {
@@ -840,6 +857,7 @@
     },
     {
         "title": "Sick",
+        "lang": "en",
         "author": "Shel Silverstein",
         "parts": [
             {
@@ -898,6 +916,7 @@
     },
     {
         "title": "Pay It Forward",
+        "lang": "en",
         "author": "Tim Robinson",
         "parts": [
             {
@@ -962,6 +981,7 @@
     },
     {
         "title": "When Will My Life Begin?",
+        "lang": "en",
         "author": "Glenn Slater",
         "parts": [
             {
@@ -1025,6 +1045,7 @@
     },
     {
         "title": "Fly",
+        "lang": "en",
         "author": "Bad Time Stories",
         "parts": [
             {
@@ -1058,6 +1079,7 @@
     },
     {
         "title": "I Never Go To Work",
+        "lang": "en",
         "author": "They Might Be Giants",
         "parts": [
             {
@@ -1094,6 +1116,7 @@
     },
     {
         "title": "Joseph Had a Little Overcoat",
+        "lang": "en",
         "author": "Simms Taback",
         "parts": [
             {
@@ -1150,6 +1173,7 @@
     },
     {
         "title": "What Do People Do All Day?",
+        "lang": "en",
         "author": "Richard Scarry",
         "parts": [
             {
@@ -1350,7 +1374,8 @@
         ]
     },
     {
-        "title": "Black Lagoon",
+        "title": "The Teacher from the Black Lagoon",
+        "lang": "en",
         "author": "Mike Thaler",
         "parts": [
             {
@@ -1473,6 +1498,7 @@
     },
     {
         "title": "Hip Hip Hooray 1",
+        "lang": "en",
         "author": "Pearson",
         "parts": [
             {
@@ -1689,6 +1715,7 @@
     },
     {
         "title": "Hip Hip Hooray 2",
+        "lang": "en",
         "author": "Pearson",
         "parts": [
             {
@@ -1911,6 +1938,7 @@
     },
     {
         "title": "Wonder World 1 Story",
+        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -1986,6 +2014,7 @@
     },
     {
         "title": "Wonder World 2 Story",
+        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -2065,6 +2094,7 @@
     },
     {
         "title": "Wonder World 3 Story",
+        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -2143,6 +2173,7 @@
     },
     {
         "title": "Wonder World 4 Story",
+        "lang": "en",
         "author": "KNSH",
         "parts": [
             {
@@ -2226,6 +2257,7 @@
     },
     {
         "title": "Wonder World 5 Story",
+        "lang": "en",
         "author": "KNSH",
         "parts": [
             {
@@ -2303,6 +2335,7 @@
     },
     {
         "title": "Wonder World 6 Story",
+        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -2377,6 +2410,7 @@
     },
     {
         "title": "Wonder World 7 Story",
+        "lang": "en",
         "author": "KNSH",
         "parts": [
             {

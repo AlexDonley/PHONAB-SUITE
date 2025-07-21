@@ -9,6 +9,10 @@ body {
   background-color: rgb(37, 37, 37);
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s;
+}
+body.active-mic {
+  background-color: rgb(62, 3, 3);
 }
 
 .left-sidebar {
@@ -44,6 +48,14 @@ body {
   color: white;
   font-weight: bold;
   filter: drop-shadow(0 0.5mm 0.5mm rgb(0, 0, 0));
+}
+
+.arrow-overlay {
+  position: absolute;
+  margin-top: -30px;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
 
 .right-sidebar {
@@ -371,17 +383,36 @@ img {
   display: none;
 }
 
-.punch-btn {
+.btn-ribbon {
+  width: max(60px, 5%);
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  right: max(-2vw, -2vh);
-  width: max(5vw, 5vh);
-  height: max(5vw, 5vh);
-  text-align: right;
-  padding: 1vh;
-  margin-top: 1vh;
-  z-index: 3;
+  z-index: 1;
+}
+
+.btn-ribbon > * {
+  padding: 1vh 0vh;
+  height: 80px;
+}
+.btn-ribbon > *:nth-child(1) {
+  border-top-left-radius: max(30px, 2.5%);
+  border-top-right-radius: max(30px, 2.5%);
+}
+.btn-ribbon > *:last-child {
+  border-bottom-left-radius: max(30px, 2.5%);
+  border-bottom-right-radius: max(30px, 2.5%);
+}
+
+.left-hand {
+  left: 0px
+}
+.right-hand {
+  right: 0px
+}
+
+.punch-btn {
   background: green;
-  border-radius: 1vh;
 }
 
 .corner-btns {
@@ -410,14 +441,6 @@ img {
   border-top-right-radius: 50%;
 }
 
-.read-btn-wrap {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
 .read-btn {
   transition: color 0.3s,
               background-color 0.3s;
@@ -431,7 +454,7 @@ img {
   transition: width 0.3s, fill 0.3s;
 }
 .read-btn.active:not(:disabled) > * {
-  width: 45px;
+  width: 40px;
   fill: white
 }
 

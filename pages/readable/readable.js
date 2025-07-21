@@ -7,7 +7,7 @@ import {
 import { 
     genWPStrToArr 
 } from '../../js_modules/word-process.js'
-import { wordToZhu } from '../../js_modules/eng-ipa-zhu.js'
+import { wordToZhu } from '../../js_modules/universal-phonics.js'
 
 const defaultChinese = "道可道，非常道。名可名，非常名。";
 const defaultEnglish = "Sing cheese documentation."

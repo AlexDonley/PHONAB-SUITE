@@ -1,4 +1,6 @@
 // import { synthSpeak } from './js/speech-synth.js'
+import { toggRecogAndElem } from "../pages/speak_up/speak_up.js";
+
 
 let synthVoices
 
@@ -27,11 +29,13 @@ export function synthSpeak(str, speed, vol, lang, micBtn) {
     synthUtter.addEventListener("end", (event) => {
         console.log(
             `Finished synthesizing utterance after ${event.elapsedTime / 1000} seconds.`,
-        );
-        if (micBtn) {
-            micBtn.disabled = false;
-        }
-    });
+        )
+
+        micBtn.disabled = false
+
+        // TO DO: this solution is a clunky, can it be handled without imports?
+        toggRecogAndElem(true)
+    })
 }
 
 const allVoicesObtained = new Promise(function(resolve, reject) {

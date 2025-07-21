@@ -41,6 +41,7 @@ const speedReader     = document.querySelector('#speedReader');
 const volReader       = document.querySelector('#volReader');
 const greenArrow      = document.querySelector('#greenArrow');
 const arrowPerc       = document.querySelector('#arrowPerc');
+const arrowOverlay    = document.querySelector('.arrow-overlay')
 const viewQR          = document.querySelector('.view-QR');
 const qrImg           = document.querySelector('#qrImg');
 const showQR          = document.querySelector('.show-QR-btn');
@@ -190,8 +191,10 @@ searchTitles.addEventListener("input", e => {
 // elements contained in the action section
 // reading section contains two columns, one for target words and the other for user input
 
+const booksDataPath = "../../data/speak_up_books.json"
+
 function loadBooks(){
-    fetch('../../data/speak_up_books.json')
+    fetch(booksDataPath)
     .then(res => {
         if (res.ok) {
             console.log('Fetched books');
@@ -216,8 +219,9 @@ loadBooks();
 
 // sound effects
 
-let next    = new Audio("../../sfx/chaching.webm");
-let perfect = new Audio("../../sfx/wow.mp3");
+let next            = new Audio("../../sfx/chaching.webm")
+let perfectWow      = new Audio("../../sfx/wow.mp3")
+perfectWow.volume = 0.2
 
 // variables for scoring and progress
 
@@ -259,6 +263,17 @@ function checkAnswer() {
         completionMap[progressMarkers[0]] = compareArr[0]
         progressMarkers[1] = compareArr[1]
       
+        // to determine whether the utterance gets a perfect score,
+        // it must be fully complete (its completion map is all 1s)
+        // and it must be the same length as the target utterance
+        if (
+            compareArr[0].every(v => v === 1) && 
+            utteredWords.length == completionMap[progressMarkers[0]].length
+        ) {
+            // play an animation to reward the perfect performance
+            perfectAnim()
+        }
+
         logProgress(completionMap[progressMarkers[0]], progressMarkers[0])
         evalArr(completionMap[progressMarkers[0]])
 
@@ -337,10 +352,17 @@ function logProgress(arr, sentInd) {
     completionMap[sentInd] = arr
     console.log(completionMap)
 
-    const grabProg = document.querySelector('#prog' + sentInd)
-    grabProg.style.background = generateCompGrad(completionMap[sentInd])
+    const grabProgBar = document.querySelector('#prog' + sentInd)
+    grabProgBar.style.background = generateCompGrad(completionMap[sentInd])
 
     updateTargVisual(arr, 50)
+}
+
+function perfectAnim() {
+    startRainbow(120, 1, arrowOverlay, 90)
+
+    perfectWow.currentTime = 0
+    perfectWow.play()
 }
 
 function populateUtterances(arr, elem) {
@@ -466,22 +488,28 @@ function startQueue() {
     shiftContentBlocks('game')
 }
 
-function toggRecogAndElem(bool) {
+export function toggRecogAndElem(bool) {
     
-    let recogSet = isRecog;
+    let recogSet = isRecog
 
     if(bool === true || bool === false) {
-        recogSet = !bool;
+        recogSet = !bool
     }
 
     if (!recogSet) {
-        isRecog = true;
-        micBtn.classList.add('active');
-        startRecLoop(1, 1, 0, targetLang);
+
+        isRecog = true
+        document.body.classList.add('active-mic')
+        micBtn.classList.add('active')
+        startRecLoop(1, 1, 0, targetLang)
+
     } else {
-        isRecog = false;
-        micBtn.classList.remove('active');
-        stopRecLoop();
+
+        isRecog = false
+        document.body.classList.remove('active-mic')
+        micBtn.classList.remove('active')
+        stopRecLoop()
+
     }
 }
 
@@ -528,7 +556,7 @@ function endQueue() {
 
     shiftContentBlocks('menu')
 
-    stopRecLoop()
+    toggRecogAndElem(false)
     stopTimer()
 
     // uncheck all boxes
