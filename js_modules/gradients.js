@@ -140,6 +140,7 @@ export function genCompGrad(arr) {
 // STEPPED CONIC GRADIENT
 
 export function genStepConicGrad(colorsArr, propArr) {
+
     // determine the number of colors entered in the argument
     const colorCount = colorsArr.length
 
@@ -201,6 +202,6 @@ export function genStepConicGrad(colorsArr, propArr) {
         }
     }
 
-    console.log(degreeArr, gradientStr)
+    // console.log(degreeArr, gradientStr)
     return gradientStr
 }

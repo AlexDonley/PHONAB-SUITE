@@ -60,23 +60,34 @@ body.active-mic {
 
 .right-sidebar {
   position: fixed;
-  right: max(1vh, 1vw);
+  right: 10px;
   bottom: max(1vh, 1vw);
-  height: 88vh;
-  display: flex;
-  flex-direction: column;
+  height: 86vh;
+  z-index: 2;
 }
 
 .award-div {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: right;
-  user-select: none;
   gap: 5px;
   padding: 10px;
-  font-size: 40px;
   writing-mode: vertical-lr;
+}
+
+.award-circle {
+  height: min(7vh, 7vw);
+  width: min(7vh, 7vw);
+  border-radius: 50%;
+  font-size: min(3vh, 3vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: font-size 0.2s;
+  user-select: none;
+}
+
+.award-circle:hover {
+  font-size: min(4vh, 4vw);
 }
 
 canvas {
@@ -418,10 +429,11 @@ img {
 .corner-btns {
   position: fixed;
   bottom: max(1vh, 1vw);
-  right: max(1vh, 1vw);
+  right: 50%;
+  transform: translateX(50%);
   z-index: 3;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center
 }
@@ -437,7 +449,7 @@ img {
 .corner-btns > *:nth-child(1) {
   border-top-left-radius: 50%;
 }
-.corner-btns > *:nth-child(2) {
+.corner-btns > *:last-child {
   border-top-right-radius: 50%;
 }
 
@@ -789,7 +801,7 @@ input[type="checkbox"].preset-check:checked + label {
 
 .settings-menu {
   position: fixed;
-  top: 115vh;
+  top: -115vh;
   left: 10vw;
   width: 80vw;
   height: 80vh;

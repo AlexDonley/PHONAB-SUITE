@@ -431,34 +431,39 @@ function startQueue() {
     // check if the sentence queue will be preset or freeform
 
     if (presetBool) {
-      // PRESET INPUT
-      // set the target language
 
-      if (bookList[bookIndex].lang != undefined) {
-        setLanguage(bookList[bookIndex].lang)
-      } else {
-        setLanguage('en')
-      }
-      
-      // clear the index array
-      bookIndexArray = [];
-      
-      // see which boxes are checked
-      const checkboxes = document.querySelectorAll('.preset-check')
+        // PRESET INPUT
+        // set the target language
 
-      for (let n = 0; n < checkboxes.length; n++){
-        if (checkboxes[n].checked) {
-            bookIndexArray.push(n);
+        if (bookList[bookIndex].lang != undefined) {
+            setLanguage(bookList[bookIndex].lang)
+        } else {
+            setLanguage('en')
         }
-      }
+        
+        // clear the index array
+        bookIndexArray = [];
+        
+        // see which boxes are checked
+        const checkboxes = document.querySelectorAll('.preset-check')
 
-      console.log(bookIndexArray)
+        for (let n = 0; n < checkboxes.length; n++){
+            if (checkboxes[n].checked) {
+                bookIndexArray.push(n);
+            }
+        }
 
-      bookIndexArray.forEach((num) => {
-          sentenceQueue = sentenceQueue.concat(bookList[bookIndex].parts[num].text)
-      })
+
+        bookIndexArray.forEach((num) => {
+            sentenceQueue = sentenceQueue.concat(bookList[bookIndex].parts[num].text)
+            
+            console.log(bookIndex, num)
+            const newAward = awardProgElem(bookIndex, num)
+            awardDiv.prepend(newAward)
+        })
 
     } else {
+
         // FREEFORM INPUT
         // The following grabs the text entered by the user and eliminates blank lines
         setLanguage(ffLang.value)
@@ -499,14 +504,14 @@ export function toggRecogAndElem(bool) {
     if (!recogSet) {
 
         isRecog = true
-        document.body.classList.add('active-mic')
+        //document.body.classList.add('active-mic')
         micBtn.classList.add('active')
         startRecLoop(1, 1, 0, targetLang)
 
     } else {
 
         isRecog = false
-        document.body.classList.remove('active-mic')
+        //document.body.classList.remove('active-mic')
         micBtn.classList.remove('active')
         stopRecLoop()
 
@@ -732,20 +737,37 @@ function updateScore(n) {
 }
 
 function addOneAward(textN, awardN) {
-  const thisAward = bookList[textN].parts[awardN].award
-  
-  awardDiv.prepend(thisAward)
-
-  if (!(currentUserIndex == null)) {
+    const thisAward = bookList[textN].parts[awardN].award
     
-    const timeStamp = new Date.now()
+    awardDiv.prepend(thisAward)
 
-    const awardArray = [thisAward, timeStamp]
+    if (!(currentUserIndex == null)) {
 
-    userInfo[currentUserIndex].user_awards.push(awardArray)
-    console.log(userInfo)
-    saveUserDataLocally()
-  }
+        const timeStamp = new Date.now()
+        
+        const awardArray = [thisAward, timeStamp]
+        
+        userInfo[currentUserIndex].user_awards.push(awardArray)
+        console.log(userInfo)
+        saveUserDataLocally()
+    }
+}
+
+function awardProgElem(textN, partN) {
+    
+    // create surrounding circle progress marker
+    const gradCirc = document.createElement('div')
+    gradCirc.classList.add('award-circle')
+    gradCirc.id = textN + "_" + partN
+    gradCirc.style.background = genStepConicGrad(['gray'])
+
+    // TO DO: add functionality with a click to restore partially-completed round
+
+    // add the emoticon award inside
+    const emoticonAward = bookList[textN].parts[partN].award
+    gradCirc.innerText = emoticonAward
+
+    return gradCirc
 }
 
 function togglePresets(str) {
