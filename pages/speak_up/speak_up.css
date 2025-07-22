@@ -12,7 +12,7 @@ body {
   transition: background-color 0.3s;
 }
 body.active-mic {
-  background-color: rgb(62, 3, 3);
+  background-color: rgb(57, 1, 1);
 }
 
 .left-sidebar {

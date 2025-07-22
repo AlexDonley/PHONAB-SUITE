@@ -4,7 +4,7 @@ import { toggRecogAndElem } from "../pages/speak_up/speak_up.js";
 
 let synthVoices
 
-export function synthSpeak(str, speed, vol, lang, micBtn) {
+export function synthSpeak(str, speed, vol, lang, micBtn, isRecog) {
     
     const synth = window.speechSynthesis
     const synthUtter = new SpeechSynthesisUtterance(str);
@@ -34,7 +34,9 @@ export function synthSpeak(str, speed, vol, lang, micBtn) {
         micBtn.disabled = false
 
         // TO DO: this solution is a clunky, can it be handled without imports?
-        toggRecogAndElem(true)
+        if (isRecog) {
+            toggRecogAndElem(true)
+        }
     })
 }
 

@@ -1,4 +1,6 @@
-// import { startRainbow, generateRBWGrad, generateCompGrad } from './rbw-grad.js'
+// import { startRainbow, genRBWGrad, genCompGrad } from './rbw-grad.js'
+
+// ANIMATED RAINBOW GRADIENT
 
 const rainbowValues = [
     "hsla(0, 100%, 50%, ",
@@ -39,13 +41,13 @@ export function startRainbow(len, speed, elem, startDir){
     
         cycleArray(movingRainbow);
 
-        elem.style.background = generateRBWGrad(movingRainbow, (1 / len), speed)
-        //return generateRBWGrad(movingRainbow);
+        elem.style.background = genRBWGrad(movingRainbow, (1 / len), speed)
+        //return genRBWGrad(movingRainbow);
     
     }, 20);
 }
 
-function generateRBWGrad(arr, fract, step){
+function genRBWGrad(arr, fract, step){
     direction += step
     opacity -= fract
 
@@ -67,7 +69,10 @@ function cycleArray(arr) {
     return arr;
 }
 
-export function generateStripeGrad(reps, color1, color2) {
+
+// ALTERNATING COLOR STRIPE GRADIENT
+
+export function genStripeGrad(reps, color1, color2) {
 
     const segment = 100 / reps
     let gradStr = "linear-gradient(0deg, "
@@ -96,7 +101,10 @@ export function generateStripeGrad(reps, color1, color2) {
     return gradStr
 }
 
-export function generateCompGrad(arr) {
+
+// SPEAK UP COMPLETION GRADIENT
+
+export function genCompGrad(arr) {
 
     const segment = 100 / arr.length
 
@@ -126,4 +134,73 @@ export function generateCompGrad(arr) {
 
     //console.log(gradStr)
     return gradStr
+}
+
+
+// STEPPED CONIC GRADIENT
+
+export function genStepConicGrad(colorsArr, propArr) {
+    // determine the number of colors entered in the argument
+    const colorCount = colorsArr.length
+
+    // set a default slice value so all slices would have an equal number of degrees
+    let oneSlice = 360 / colorCount
+
+    // by default, proportions will be equal for all slices
+    let equalProp = true
+    let propSum = 0
+    let degIncrement = 0
+
+    // if there is a proportions array that matches the number of colors,
+    // turn off equal proportions and find the sum of the values in the proportions array
+    if (propArr && propArr.length == colorsArr.length) {
+        equalProp = false
+        propSum = propArr.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+    }
+
+    // calculate the degree values that will go in the final gradient string
+    let degreeArr = []
+    for (let i = 0; i < colorCount; i++) {
+
+        // equal proportions make the calcuation simple, all degree values are the same
+        if (equalProp) {
+            degreeArr.push(oneSlice * (i + 1))
+
+        // for unequal proportions, find the slice of 360 degrees
+        // that equals the proportion over the sum
+        } else {
+            degIncrement += 360 * propArr[i] / propSum
+            degreeArr.push(degIncrement)
+        }
+    }
+
+    // start and then concatenate the final gradient string
+    let gradientStr = "conic-gradient("
+
+    // iterate through each color in the color array
+    for (let i = 0; i < colorCount; i++) {
+        gradientStr += colorsArr[i] + " " 
+
+        // all values except the first need a starting degree value
+        if (i > 0) {
+            gradientStr += degreeArr[i - 1] + "deg "
+        }
+
+        // all values, including the first, need the ending degree value
+        gradientStr += degreeArr[i] + "deg"
+
+        if (i < colorCount - 1) {
+
+            // not final value, extend with comma
+            gradientStr += ", "
+
+        } else {
+            
+            // final value, closing parenthesis
+            gradientStr += ")"
+        }
+    }
+
+    console.log(degreeArr, gradientStr)
+    return gradientStr
 }

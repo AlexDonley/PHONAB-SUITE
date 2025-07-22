@@ -8,7 +8,7 @@ import {
     compareWords, queueToArr 
 } from '../../js_modules/word-process.js'
 import { synthSpeak } from '../../js_modules/speech-synth.js'
-import { startRainbow, generateStripeGrad, generateCompGrad } from '../../js_modules/gradients.js'
+import { startRainbow, genCompGrad, genStepConicGrad } from '../../js_modules/gradients.js'
 import { timerMode, nextTimerMode, startTimer, stopTimer } from '../../js_modules/timer.js'
 import { 
     genBlankCompMap, findInt, 
@@ -116,9 +116,9 @@ let completionMap = []
 let presetBool      = false // false means freeform, true means preset
 let shuffleBool     = false // false means chronological targets, true means shuffled targets
 let loopBool        = false // false means finishes after 1 iteration, true means continues iterating until the user stops
-let fullscreenBool  = false //
-let isLeftRound     = false //
-let isRecog         = false //
+let fullscreenBool  = false // false means the application is not fullscreen, true means it is fullscreen
+let isLeftRound     = false // false means the speaker is practicing a normal speech chunk, true means they've returned to skipped words
+let isRecog         = false // false means speech recognition is not activated, true means it is activated
 
 // setting for P5 sawtooth frequency
 
@@ -298,7 +298,7 @@ function checkAnswer() {
                     completionMap[coords[0]][coords[1]] = 1
 
                     const grabProg = document.querySelector('#prog' + coords[0])
-                    grabProg.style.background = generateCompGrad(completionMap[coords[0]])
+                    grabProg.style.background = genCompGrad(completionMap[coords[0]])
 
                     updateScore(1)
                 }
@@ -353,7 +353,7 @@ function logProgress(arr, sentInd) {
     console.log(completionMap)
 
     const grabProgBar = document.querySelector('#prog' + sentInd)
-    grabProgBar.style.background = generateCompGrad(completionMap[sentInd])
+    grabProgBar.style.background = genCompGrad(completionMap[sentInd])
 
     updateTargVisual(arr, 50)
 }
@@ -479,7 +479,7 @@ function startQueue() {
     updateArrow(completionMap)
 
     populateProgressParts(blankCompData)
-    //document.querySelector('#progBtns').style.background = generateStripeGrad(totalWords, 'yellow', 'blue')
+    //document.querySelector('#progBtns').style.background = genStripeGrad(totalWords, 'yellow', 'blue')
 
     loadTarget(sentenceArrays[progressMarkers[0]])
 
@@ -552,30 +552,39 @@ function nextSentence() {
 
 function endQueue() {
     
+    // set leftover round boolean to false
     isLeftRound = false
 
-    shiftContentBlocks('menu')
-
+    // stop speech recognition
     toggRecogAndElem(false)
+
+    // stop the timer
     stopTimer()
 
-    // uncheck all boxes
+    // return view to the menu
+    shiftContentBlocks('menu')
+
+    // uncheck all checkboxes for story parts
     const checkboxes = partsCards.querySelectorAll('input[type="checkbox"]');
 
     checkboxes.forEach(box => {
       box.checked = false
     })
 
+    // clear all target and utterance elements after small delay
     setTimeout(() => {
         targetColumn.innerHTML = ''
         utterTexts.innerHTML = ''
         progBtns.innerHTML = ''
     }, 275)
+
+    // TO DO: log user progress in local storage
+    // eventually transition to using backend database
 }
 
 function loadTarget(arr, leftoversBool){
-    targetColumn.innerHTML = '';
-    // utterTexts.innerHTML = '';
+    
+    targetColumn.innerHTML = ''
 
     for (let n = 0; n < arr.length; n++){
 
@@ -866,7 +875,7 @@ function assignLeftover(n) {
         targElem.classList.add('grayed-out')
 
         const sentPart = document.querySelector('#prog' + progressMarkers[0])
-        sentPart.style.background = generateCompGrad(completionMap[progressMarkers[0]])
+        sentPart.style.background = genCompGrad(completionMap[progressMarkers[0]])
         // sentPart.disabled = true
 
         leftBtn.classList.add('active')
@@ -884,7 +893,6 @@ function assignLeftover(n) {
 function synthSpeakClosure(str, lang) {
     
     return function executeOnEvent(event) {
-        toggRecogAndElem(false)
         
         let thisSent = str
         
@@ -892,7 +900,9 @@ function synthSpeakClosure(str, lang) {
             thisSent = sentenceArrays[progressMarkers[0]].join(' ')
         } 
         
-        synthSpeak(thisSent, synthSpeed.value, synthVol.value, lang, micBtn)
+        synthSpeak(thisSent, synthSpeed.value, synthVol.value, lang, micBtn, isRecog)
+        
+        toggRecogAndElem(false)
     }
 }
 
