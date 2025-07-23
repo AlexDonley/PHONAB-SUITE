@@ -9,11 +9,11 @@ import { compareWords, removeDash } from './word-process.js'
 // compound flexibility
 const compFlex = 2
 
-export function genBlankCompMap(arr) {
+export function genBlankCompMap(arrOfArrs) {
     let compMap = []
     let wordCount = 0
     
-    arr.forEach(innerArr => {
+    arrOfArrs.forEach(innerArr => {
 
         let sentMap =[]
 
@@ -190,4 +190,31 @@ export function findPercent(frac, total) {
     }
 
     return percentNum
+}
+
+export function mapToAwardArr(mapArrs) {
+    
+    // this function constructs an array that counts the number of each value
+    // the first value is for 0s (gray)
+    // the second value is for -1s (yellow)
+    // the third value is for 1s (green)
+    let arrValues = [0, 0, 0]
+
+    mapArrs.forEach(arr => {
+        arr.forEach(val => {
+            switch(val){
+                case 0:
+                    arrValues[0] += 1
+                    break;
+                case -1:
+                    arrValues[1] += 1
+                    break;
+                case 1:
+                    arrValues[2] += 1
+                    break;
+            }
+        })
+    })
+
+    return arrValues
 }

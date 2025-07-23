@@ -632,19 +632,31 @@ button {
   justify-content: center;
   align-items: center;
   background: linear-gradient(90deg, rgb(182, 182, 182), rgba(255, 255, 255, 1));
-  transition: width 0.2s
+  transition: background 0.3s
 }
 
 .mini-tri {
   height: 60%;
   width: 60%;
+  user-select: none;
   background-color: rgb(121, 121, 121);
-  clip-path: polygon(0 50%, 100% 0, 100% 100%);
-  user-select: none
+  clip-path: polygon(0 50%, 50% 25%, 100% 0, 100% 100%);
+  transition: clip-path 0.3s, background-color 0.3s;
 }
 
-.no-width {
-  width: 0px
+.skip-btn.no-width {
+  background: lightgray
+}
+.skip-btn.no-width > .mini-tri {
+  clip-path: polygon(100% 50%, 50% 25%, 0 0, 0 100%);
+}
+
+.skip-btn.complete {
+  background: green;
+}
+.skip-btn.complete > .mini-tri {
+  clip-path: polygon(0 50%, 55% 66%, 100% 0, 66% 100%);
+  background-color: rgb(255, 255, 255);
 }
 
 .target {

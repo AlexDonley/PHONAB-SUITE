@@ -13,7 +13,7 @@ import { timerMode, nextTimerMode, startTimer, stopTimer } from '../../js_module
 import { 
     genBlankCompMap, findInt, 
     checkMapForZero, checkMapForInt,
-    indexIntsFromMap, trackCompletion,
+    mapToAwardArr, trackCompletion,
     mapToFreqs, findPercent 
 } from '../../js_modules/completion-map.js'
 import { 
@@ -68,7 +68,6 @@ const userBtn       = document.querySelector('#userBtn');
 const fullscreenBtn = document.querySelector('#fullscreenBtn');
 const settingBtn    = document.querySelector('#settingBtn');
 
-const presetOpts        = document.querySelector("#presetOptions");
 const searchTitles      = document.querySelector("#searchTitles");
 const titleCards        = document.querySelector("#titleCards");
 const partsCards        = document.querySelector("#partsCards");
@@ -104,14 +103,22 @@ punchBtn.addEventListener("click", checkAndClear);
 
 // arrays for sentences and subdivisions
 
-let bookIndexArray= []
+let freeformIndex = 0
 let bookIndex = 0 
 
 let sentenceArrays = []
-let progressMarkers = [0, 0]
+let globalProgMarkers = [0, 0]
 let completionMap = []
+let completionObjects = {}
+let currentChunk = null
 
-// index markers for working through the above arrays
+let globCurrents = {
+    'chunk': null,
+    'sent': null,
+    'word': null
+}
+
+// settings booleans
 
 let presetBool      = false // false means freeform, true means preset
 let shuffleBool     = false // false means chronological targets, true means shuffled targets
@@ -250,39 +257,47 @@ speechRec.addEventListener("result", (e) => {
 
 function checkAnswer() {
     if (!isLeftRound) {
+
+        let thisCompletionObj = completionObjects[currentChunk]
+        //console.log(thisCompletionObj.completionMap[0][globalProgMarkers[0]])
+
         const compareArr = trackCompletion(
-            sentenceArrays[progressMarkers[0]], 
+            thisCompletionObj.text[globalProgMarkers[0]], 
             utteredWords, 
             'linear', 
             targetLang, 
-            progressMarkers[1],
-            completionMap[progressMarkers[0]]
+            globalProgMarkers[1],
+            thisCompletionObj.completionMap[0][globalProgMarkers[0]]
         )
 
-        updateScore(compareArr[1] - progressMarkers[1])
-        completionMap[progressMarkers[0]] = compareArr[0]
-        progressMarkers[1] = compareArr[1]
+        updateScore(compareArr[1] - globalProgMarkers[1])
+        
+        
+        completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]] = compareArr[0]
+        console.log(completionObjects[currentChunk].completionMap[0], compareArr[0])
+        
+        globalProgMarkers[1] = compareArr[1]
       
         // to determine whether the utterance gets a perfect score,
         // it must be fully complete (its completion map is all 1s)
         // and it must be the same length as the target utterance
         if (
             compareArr[0].every(v => v === 1) && 
-            utteredWords.length == completionMap[progressMarkers[0]].length
+            utteredWords.length == completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]].length
         ) {
             // play an animation to reward the perfect performance
             perfectAnim()
         }
 
-        logProgress(completionMap[progressMarkers[0]], progressMarkers[0])
-        evalArr(completionMap[progressMarkers[0]])
+        logProgress(completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]], globalProgMarkers[0])
+        evalArr(completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]])
 
     } else {
         const leftArr = grabLeftovers(sentenceArrays, completionMap)
         // console.log(leftArr)
 
         if (leftArr.length > 0) {
-            loadTarget(leftArr, true)
+            loadSentence(leftArr, true)
 
             const leftsCompare = trackCompletion(
                 leftArr,
@@ -312,7 +327,7 @@ function checkAnswer() {
                 const newArr = grabLeftovers(sentenceArrays, completionMap)
                 
                 if (newArr.length > 0) {
-                    loadTarget(newArr, true)
+                    loadSentence(newArr, true)
                 } else {
                    nextSentence()
                 }                    
@@ -336,7 +351,7 @@ function tryLeftRound() {
         isLeftRound = true
 
         const leftArr = grabLeftovers(sentenceArrays, completionMap)
-        loadTarget(leftArr, true)
+        loadSentence(leftArr, true)
         console.log(leftArr)
 
     } else {
@@ -347,14 +362,23 @@ function tryLeftRound() {
     }
 }
 
-function logProgress(arr, sentInd) {
+function logProgress(arr, sentIdx) {
 
-    completionMap[sentInd] = arr
-    console.log(completionMap)
+    // update navigation progress bars
+    const grabProgBar = document.getElementById(currentChunk + "." + sentIdx)
 
-    const grabProgBar = document.querySelector('#prog' + sentInd)
-    grabProgBar.style.background = genCompGrad(completionMap[sentInd])
+    const horizGradient = genCompGrad(arr)
+    grabProgBar.style.background = horizGradient
 
+    // update award buttons
+    const grabAward = document.getElementById(currentChunk)
+
+    const progArr = mapToAwardArr(completionObjects[currentChunk].completionMap[0])
+    const conGradient = genStepConicGrad(['gray', 'yellow', 'green'], progArr)
+
+    grabAward.style.background = conGradient
+
+    // update target words to turn green
     updateTargVisual(arr, 50)
 }
 
@@ -417,19 +441,21 @@ function evalArr(arr) {
 
 function startQueue() {
     
-    // clear sentence queue
-    let sentenceQueue = []
+    // clear chunks queue and sentence queue
+    let chunksQueue = []
     sentenceArrays = []
-    progressMarkers = [0, 0]
+    globalProgMarkers = [0, 0]
 
+    // reset oscillator frequency to low frequency
+    // TO DO: change this so that it resets on each load to a random value
     defaultFreq = 100
 
+    // start timer countdown if mode dictates it
     if (!timerMode == 0) {
         startTimer(stopWatch)
     }
   
     // check if the sentence queue will be preset or freeform
-
     if (presetBool) {
 
         // PRESET INPUT
@@ -442,25 +468,31 @@ function startQueue() {
         }
         
         // clear the index array
-        bookIndexArray = [];
+        let bookIdxArr = [];
         
         // see which boxes are checked
         const checkboxes = document.querySelectorAll('.preset-check')
 
         for (let n = 0; n < checkboxes.length; n++){
             if (checkboxes[n].checked) {
-                bookIndexArray.push(n);
+                bookIdxArr.push(n);
+                chunksQueue.push(bookIndex + "_" + n)
             }
         }
 
 
-        bookIndexArray.forEach((num) => {
-            sentenceQueue = sentenceQueue.concat(bookList[bookIndex].parts[num].text)
+        bookIdxArr.forEach((num) => {
             
-            console.log(bookIndex, num)
+            // TO DO: focus on and refactor this section
+            // create a completion object for each index number
+            console.log(chunksQueue)
+            completionObjects[bookIndex + "_" + num] = genPresetObj(bookIndex, num)
+
             const newAward = awardProgElem(bookIndex, num)
             awardDiv.prepend(newAward)
         })
+
+        currentChunk = chunksQueue[0]
 
     } else {
 
@@ -469,28 +501,52 @@ function startQueue() {
         setLanguage(ffLang.value)
 
         const freeformText = textInput.value.replace(/^\s*\n/gm, "");
-        sentenceQueue = freeformText.split('\n');
+        const freeformArr = freeformText.split(/\r?\n|\r|\n/g)
+        const thisTextID = 'freef' + freeformIndex
+
+        completionObjects[thisTextID] = genFreefObj(freeformArr)
+        currentChunk = thisTextID
+        freeformIndex++
     }
     
-    if (shuffleBool) {
-        sentenceQueue = myShuffle(sentenceQueue)
-    }
-
-    sentenceArrays = queueToArr(sentenceQueue, targetLang)
-
-    const blankCompData = genBlankCompMap(sentenceArrays)
-
-    completionMap = blankCompData[0]
-    updateArrow(completionMap)
-
-    populateProgressParts(blankCompData)
-    //document.querySelector('#progBtns').style.background = genStripeGrad(totalWords, 'yellow', 'blue')
-
-    loadTarget(sentenceArrays[progressMarkers[0]])
+    loadChunk(currentChunk)
 
     toggRecogAndElem(true)
 
     shiftContentBlocks('game')
+}
+
+// FUNCTIONS FOR CREATING COMPLETION OBJECTS
+
+function genCompletionObj(textArrs) {
+    
+    // fetch the text arrays and generate a new 
+    const newCompletionMap = genBlankCompMap(textArrs)
+
+    let newObj = {
+        'status': 'incomplete',
+        'startTime': 0,
+        'endTime': 0,
+        'mode': 'linear',
+        'text': textArrs,
+        'completionMap': newCompletionMap
+    }
+
+    return newObj
+}
+
+function genPresetObj(bookIdx, chunkIdx) {
+    
+    const textArrs = queueToArr(bookList[bookIdx].parts[chunkIdx].text, targetLang)
+
+    return genCompletionObj(textArrs)
+}
+
+function genFreefObj(arr) {
+    
+    const textArrs = queueToArr(arr)
+
+    return genCompletionObj(textArrs)
 }
 
 export function toggRecogAndElem(bool) {
@@ -524,12 +580,12 @@ function nextSentence() {
   
     // defaultFreq = Math.floor(Math.random() * 400) + 100
 
-    const indexIncomp = checkMapForZero(completionMap)
+    const indexIncomp = checkMapForZero(completionObjects[currentChunk].completionMap[0])
 
     if (indexIncomp) {
       
-        progressMarkers = indexIncomp
-        loadTarget(sentenceArrays[indexIncomp[0]])
+        globalProgMarkers = indexIncomp
+        loadSentence(completionObjects[currentChunk].text[indexIncomp[0]])
 
     } else {
 
@@ -537,14 +593,10 @@ function nextSentence() {
         
         if (leftoversCheck) {
 
-            loadTarget(grabLeftovers(sentenceArrays, completionMap), true)
+            loadSentence(grabLeftovers(sentenceArrays, completionMap), true)
             isLeftRound = true
 
-        } else {
-
-            bookIndexArray.forEach(num => {
-                addOneAward(bookIndex, num)
-            })       
+        } else {      
           
             if(loopBool) {
               startQueue();
@@ -587,7 +639,7 @@ function endQueue() {
     // eventually transition to using backend database
 }
 
-function loadTarget(arr, leftoversBool){
+function loadSentence(arr, leftoversBool){
     
     targetColumn.innerHTML = ''
 
@@ -602,9 +654,9 @@ function loadTarget(arr, leftoversBool){
 
         if (!leftoversBool) {
 
-            if (completionMap[progressMarkers[0]][n] == -1) {
+            if (completionMap[globalProgMarkers[0]][n] == -1) {
                 newSpan.classList.add('grayed-out')
-            } else if (completionMap[progressMarkers[0]][n] == 1) {
+            } else if (completionMap[globalProgMarkers[0]][n] == 1) {
                 newSpan.classList.add('correct')
             } else {
                 const leftButton = document.createElement('div')
@@ -654,6 +706,27 @@ function loadTarget(arr, leftoversBool){
     }
 }
 
+function loadChunk(idStr) {
+
+    // for now, the ID string will be bookIdx_chunkIdx
+    // in the future, it will be a UUID
+    
+    const thisCompletionObj = completionObjects[idStr]
+    let thisSentArr = thisCompletionObj.text
+
+    if (shuffleBool) {
+        thisSentArr = myShuffle(thisSentArr)
+    }
+
+    const thisCompData = thisCompletionObj.completionMap
+
+    populateProgressParts(thisCompData)
+    completionMap = thisCompData[0]
+    updateArrow(completionMap)
+
+    loadSentence(thisSentArr[globalProgMarkers[0]])
+}
+
 function updateTargVisual(arr, delay) {
     
     // update arrow size
@@ -676,7 +749,7 @@ function updateTargVisual(arr, delay) {
                 const skipBtn = document.querySelector('#skip' + i)
                 
                 if (skipBtn) {
-                    skipBtn.classList.add('no-width')
+                    skipBtn.classList.add('complete')
                     
                     //skipBtn.remove()
                 }
@@ -877,27 +950,16 @@ function selectTitleWrap(n) {
     }
 }
 
-function jumpToSentence(n) {
-    return function executeOnEvent (event) {
-        isLeftRound = false
-      
-        progressMarkers[0] = n
-        progressMarkers[1] = 0
-        loadTarget(sentenceArrays[progressMarkers[0]])
-    }
-}
-
 function assignLeftover(n) {
     return function executeOnEvent (event) {
       
-        completionMap[progressMarkers[0]][n] = -1
-        console.log(completionMap)
+        completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]][n] = -1
 
         const targElem = document.querySelector('#target' + n)
         targElem.classList.add('grayed-out')
 
-        const sentPart = document.querySelector('#prog' + progressMarkers[0])
-        sentPart.style.background = genCompGrad(completionMap[progressMarkers[0]])
+        const sentPart = document.getElementById(currentChunk + "." + globalProgMarkers[0])
+        sentPart.style.background = genCompGrad(completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]])
         // sentPart.disabled = true
 
         leftBtn.classList.add('active')
@@ -906,7 +968,7 @@ function assignLeftover(n) {
         thisSkip.classList.add('no-width')
         //event.target.remove()
 
-        if (findInt(completionMap[progressMarkers[0]], 0) < 0) {
+        if (findInt(completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]], 0) < 0) {
             nextSentence()
         }
     }
@@ -919,7 +981,7 @@ function synthSpeakClosure(str, lang) {
         let thisSent = str
         
         if (str == 'fullSent') {
-            thisSent = sentenceArrays[progressMarkers[0]].join(' ')
+            thisSent = sentenceArrays[globalProgMarkers[0]].join(' ')
         } 
         
         synthSpeak(thisSent, synthSpeed.value, synthVol.value, lang, micBtn, isRecog)
@@ -956,10 +1018,25 @@ function populateProgressParts([arr, total]) {
     for (let i = 0; i < arr.length; i++) {
         const progPart = document.createElement('div')
         progPart.classList.add('prog')
-        progPart.id = 'prog' + i
+        progPart.id = currentChunk + "." + i
         
         progPart.style.background = "gray"
-        progPart.addEventListener('click', jumpToSentence(i))
+        progPart.addEventListener('pointerdown', e => {
+            
+            // on click, switch to the selected chunk
+            // first get an array from the part's id
+            const idArr = e.target.id.split('.')
+            const objId = idArr[0]
+            const sentId = idArr[1]
+
+            globalProgMarkers[0] = sentId
+            globalProgMarkers[1] = 0
+
+            const pickedSent = completionObjects[objId].text[sentId]
+            console.log(pickedSent)
+            loadSentence(pickedSent)
+
+        })
         progBtns.append(progPart)
 
         rowTempStr += 100 * arr[i].length / total + "fr "
