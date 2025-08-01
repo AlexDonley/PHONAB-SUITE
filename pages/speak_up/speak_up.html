@@ -56,6 +56,14 @@
         <div class="main-content">
             <div class="content-blocks" id="contentBlocks">
                 <div class="menu-block" id="startMenu">
+                    <div class="language-dd">
+                       Language:
+                        <select class="pick-lang" id="ffLang">
+                            <option value="en" selected>en</option>
+                            <option value="zh">zh</option>
+                            <option value="ph">ph</option>
+                        </select>
+                    </div>
                     <div class="preset-options" id="presetOptions">
                         <div class="search-wrap">
                             <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
@@ -67,19 +75,21 @@
                         </div>
                     </div>
                     <textarea class="text-input" id="textInput">Hello! How are you?&#013;&#010;I'm fine thank you.&#013;&#010;It's 3:00.</textarea>
-                    <button class="preset" id="preset">Preset</button>
-                    <button class="shuffle" id="shuffle">
-                        <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M560-160v-80h104L537-367l57-57 126 126v-102h80v240H560Zm-344 0-56-56 504-504H560v-80h240v240h-80v-104L216-160Zm151-377L160-744l56-56 207 207-56 56Z"/></svg>
-                    </button>
-                    <button class="repeat" id="loop">
-                        <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M220-260q-92 0-156-64T0-480q0-92 64-156t156-64q37 0 71 13t61 37l68 62-60 54-62-56q-16-14-36-22t-42-8q-58 0-99 41t-41 99q0 58 41 99t99 41q22 0 42-8t36-22l310-280q27-24 61-37t71-13q92 0 156 64t64 156q0 92-64 156t-156 64q-37 0-71-13t-61-37l-68-62 60-54 62 56q16 14 36 22t42 8q58 0 99-41t41-99q0-58-41-99t-99-41q-22 0-42 8t-36 22L352-310q-27 24-61 37t-71 13Z"/></svg>
-                    </button>
-                    <button class="timer flip" id="timer">
-                        <div class="arrow-frame">
-                            <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="gray"><path d="M400-840q-17 0-28.5-11.5T360-880q0-17 11.5-28.5T400-920h160q17 0 28.5 11.5T600-880q0 17-11.5 28.5T560-840H400Zm80 440q17 0 28.5-11.5T520-440v-160q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600v160q0 17 11.5 28.5T480-400Zm0 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l28-28q11-11 28-11t28 11q11 11 11 28t-11 28l-28 28q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
-                        </div>
-                    </button>
-                    <button class="go" id="goBtn">GO</button>
+                    <div class="menu-btns">
+                        <button class="preset" id="preset">Preset</button>
+                        <button class="shuffle" id="shuffle">
+                            <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M560-160v-80h104L537-367l57-57 126 126v-102h80v240H560Zm-344 0-56-56 504-504H560v-80h240v240h-80v-104L216-160Zm151-377L160-744l56-56 207 207-56 56Z"/></svg>
+                        </button>
+                        <button class="repeat" id="loop">
+                            <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M220-260q-92 0-156-64T0-480q0-92 64-156t156-64q37 0 71 13t61 37l68 62-60 54-62-56q-16-14-36-22t-42-8q-58 0-99 41t-41 99q0 58 41 99t99 41q22 0 42-8t36-22l310-280q27-24 61-37t71-13q92 0 156 64t64 156q0 92-64 156t-156 64q-37 0-71-13t-61-37l-68-62 60-54 62 56q16 14 36 22t42 8q58 0 99-41t41-99q0-58-41-99t-99-41q-22 0-42 8t-36 22L352-310q-27 24-61 37t-71 13Z"/></svg>
+                        </button>
+                        <button class="timer flip" id="timer">
+                            <div class="arrow-frame">
+                                <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="gray"><path d="M400-840q-17 0-28.5-11.5T360-880q0-17 11.5-28.5T400-920h160q17 0 28.5 11.5T600-880q0 17-11.5 28.5T560-840H400Zm80 440q17 0 28.5-11.5T520-440v-160q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600v160q0 17 11.5 28.5T480-400Zm0 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l28-28q11-11 28-11t28 11q11 11 11 28t-11 28l-28 28q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
+                            </div>
+                        </button>
+                        <button class="go" id="goBtn">GO</button>
+                    </div>
                 </div>
                 <div class="reading-block">
                     <div class="progress-click shadow">
@@ -124,16 +134,6 @@
         <div class="setting-panels">
             <div>
                 <h2>Speech Rec</h2>
-                <div>
-                    <!-- <input type="checkbox" id="zhRT" name="zhRT" checked />
-                    <label for="zhRT">Ruby Text for Chinese</label> -->
-                    Freeform language:
-                    <select class="ff-lang" id="ffLang">
-                        <option value="en" selected>en</option>
-                        <option value="zh">zh</option>
-                        <option value="ph">ph</option>
-                    </select>
-                </div>
                 <button class="show-QR-btn">Show / Hide QR</button><br>
                 <input type="checkbox" id="goOpt">
                 <label for="goOpt">go immediately</label>
