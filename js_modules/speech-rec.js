@@ -17,6 +17,8 @@ export function setLanguage(str) {
     targetLang = str
     speechRec.lang = targetLang
 
+    console.log("Speech recognition set to: " + speechRec.lang)
+
     return str
 }
 

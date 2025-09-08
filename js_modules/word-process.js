@@ -77,7 +77,7 @@ loadHomophones();
 // Functions
 
 export function omitPunctuation(str) {
-    const noPunct = str.replace(/[.。…—,，\/#!$%\^&\*;；{}=_`~()[\]?]/g,"").replace(/\s+/g, " ");
+    const noPunct = str.replace(/[.。…—,，\/#!！$%\^&\*;；{}=_`~()[\]?？]/g,"").replace(/\s+/g, " ");
     return noPunct;
 }
     

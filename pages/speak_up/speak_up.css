@@ -289,7 +289,7 @@ img {
 .content-blocks {
   position: fixed;
   margin-top: 20px min(8vh, 8vw);
-  left: -0%;
+  left: -100%;
   display: grid;
   justify-content: center;
   height: 100%;
@@ -313,7 +313,7 @@ img {
   gap: 20px;
   position: relative;
   margin-top: calc(20px + min(8vh, 8vw));
-  grid-column-start: 2;
+  grid-column-start: 3;
   grid-column-end: 3;
 }
 
@@ -432,13 +432,34 @@ img {
   right: 50%;
   transform: translateX(50%);
   z-index: 3;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   justify-content: center;
   align-items: center
 }
 
-.corner-btns > * {
+.language-dd {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  padding-left: 3%;
+  color: white;
+  margin-right: -5vh;
+  padding-right: 5vh;
+  font-size: 20pt;
+  background: linear-gradient(gray, rgb(66, 66, 66));
+  border-top-left-radius: 4vh;
+}
+
+.pick-lang {
+  margin: 3px 10px;
+  padding: 0px 10px;
+  background-color: darkslategray;
+  color: white;
+  font-size: 16pt;
+  border-radius: 5px;
+}
+
+.corner-btns > button {
   height: 8vh;
   width: 8vh;
   display: flex;
@@ -446,10 +467,14 @@ img {
   align-items: center;
   border: 1px solid black;
 }
-.corner-btns > *:nth-child(1) {
+.corner-btns > *:nth-child(2) {
   border-top-left-radius: 50%;
 }
+.corner-btns > *:nth-child(4) {
+  border-top-right-radius: 50%;
+}
 .corner-btns > *:last-child {
+  border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
 
@@ -498,45 +523,22 @@ img {
 
 .text-input {
   position: absolute;
-  top: 10%;
   width: 100%;
   height: 90%;
   border-radius: 2vh;
   padding: 20px;
   font-size: 1.5rem;
+  resize: none;
 }
 
 button {
   transition: background-color 0.3s;
 }
 
-.language-dd {
-  height: 10%;
-  display: flex;
-  align-items: center;
-  padding-left: 3%;
-  margin: 0% max(15px, 2%);
-  color: white;
-  font-size: 20pt;
-  font-weight: bold;
-  background: linear-gradient(gray, rgb(66, 66, 66));
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
-.pick-lang {
-  margin: 3px 25px;
-  background-color: darkslategray;
-  color: white;
-  font-size: 20pt;
-  border-radius: 5px;
-}
-
 .preset-options {
   position: absolute;
-  top: 10%;
   width: 100%;
-  height: 80%;
+  height: 90%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-color: rgb(100, 100, 100);
@@ -749,6 +751,7 @@ button {
 .title-cards {
   width: 50%;
   margin: 10px;
+  padding-bottom: 16vh;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -757,6 +760,7 @@ button {
 .parts-cards {
   width: 50%;
   margin: 10px;
+  padding-bottom: 16vh;
   overflow-y:scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */

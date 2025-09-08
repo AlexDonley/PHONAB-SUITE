@@ -88,7 +88,13 @@ goBtn.addEventListener("click", startQueue);
 leftBtn.addEventListener("click", tryLeftRound);
 playBtn.addEventListener("click", synthSpeakClosure('fullSent', targetLang));
 homeBtn.addEventListener("click", endQueue);
-userBtn.addEventListener("click", showUserPage);
+userBtn.addEventListener("click", e => {
+    shiftContentBlocks('user')
+    stopRecLoop()
+});
+readBtn.addEventListener("click", e => {
+    shiftContentBlocks('game')
+})
 fullscreenBtn.addEventListener("click", toggleFullscreen);
 settingBtn.addEventListener("click", toggleSettings);
 pinyinDropdown.addEventListener("change", togglePinyinRT);
@@ -134,9 +140,13 @@ let defaultFreq = 100
 // variables to fill with JSON data using fetch
 
 let bookList;
-let titleList = [];
 let utteredWords = [];
 
+const defaultFfText = {
+    'en': "Hello! How are you?\nI'm fine thank you.\nIt's 3:00.",
+    'cmn-Hant': "你好！你吃飯了嗎?\n我很好,謝謝!",
+    'fil-PH': "Kumusta ka?\nMabuti ako, salamat po."
+}
 
 function QRgenWrap() {
     const newURL = genQRstr(QRdictFromElem());
@@ -185,12 +195,7 @@ function togglePinyinRT() {
 searchTitles.addEventListener("input", e => {
     const value = e.target.value.toLowerCase()
 
-    let searchList = []
-    titleList.forEach(title => {
-        if (title.toLowerCase().includes(value)){
-            searchList.push(title);
-        }
-    })
+    let searchList = filterBooks(bookList, 'title', value)
 
     populatePresets(searchList);
 })
@@ -213,16 +218,26 @@ function loadBooks(){
     .then(data => {
         bookList = data;
 
-        for (var key in data) {
-            titleList.push(data[key].title);
-        }
-        populatePresets(titleList);
+        swapLang('en')
         processQueries();
     })
     .catch(error => console.log(error))
 }
 
 loadBooks();
+
+function filterBooks(dataset, attr, cond) {
+    let indArr = []
+
+    // TO DO: modify to accomodate multiple filter conditions
+    for (let i = 0; i < dataset.length; i++) {
+        if (dataset[i][attr].toLowerCase().includes(cond)) {
+            indArr.push(i)
+        }
+    }
+
+    return indArr
+}
 
 // sound effects
 
@@ -439,8 +454,27 @@ function evalArr(arr) {
     }
 }
 
+ffLang.addEventListener('change', e => {
+    swapLang(ffLang.value)
+})
+
+function swapLang(lang) {
+    // set the target language for speech recognition
+    setLanguage(lang)
+
+    // swap freeform text
+    textInput.value = defaultFfText[lang]
+
+    // filter different preset options
+    const langPresets = filterBooks(bookList, "lang", lang)
+    populatePresets(langPresets)
+}
+
 function startQueue() {
     
+    // disable language change
+    ffLang.disabled = true
+
     // clear chunks queue and sentence queue
     let chunksQueue = []
     sentenceArrays = []
@@ -498,14 +532,17 @@ function startQueue() {
 
         // FREEFORM INPUT
         // The following grabs the text entered by the user and eliminates blank lines
-        setLanguage(ffLang.value)
 
+        // remove excess spaces
         const freeformText = textInput.value.replace(/^\s*\n/gm, "");
+        // split text by line break
         const freeformArr = freeformText.split(/\r?\n|\r|\n/g)
         const thisTextID = 'freef' + freeformIndex
 
         completionObjects[thisTextID] = genFreefObj(freeformArr)
         currentChunk = thisTextID
+
+        console.log(completionObjects[thisTextID])
         freeformIndex++
     }
     
@@ -544,7 +581,7 @@ function genPresetObj(bookIdx, chunkIdx) {
 
 function genFreefObj(arr) {
     
-    const textArrs = queueToArr(arr)
+    const textArrs = queueToArr(arr, targetLang)
 
     return genCompletionObj(textArrs)
 }
@@ -599,9 +636,9 @@ function nextSentence() {
         } else {      
           
             if(loopBool) {
-              startQueue();
+                startQueue();
             } else {
-              endQueue();
+                endQueue();
             }
         }
     }
@@ -609,6 +646,9 @@ function nextSentence() {
 
 function endQueue() {
     
+    // enable language dropdown
+    ffLang.disabled = false
+
     // set leftover round boolean to false
     isLeftRound = false
 
@@ -667,7 +707,7 @@ function loadSentence(arr, leftoversBool){
                 miniTri.classList.add('mini-tri')
 
                 leftButton.append(miniTri)
-                leftButton.addEventListener('click', assignLeftover(n))
+                leftButton.addEventListener('click', toggleLeftover, true)
                 targWrap.appendChild(leftButton)
             }
         }
@@ -751,7 +791,7 @@ function updateTargVisual(arr, delay) {
                 if (skipBtn) {
                     skipBtn.classList.add('complete')
                     
-                    //skipBtn.remove()
+                    skipBtn.removeEventListener('click', toggleLeftover, true)
                 }
 
                 if (arr[i] == -1) {
@@ -927,18 +967,16 @@ function toggleFullscreen(bool) {
 function populatePresets(arr) {
     titleCards.innerHTML = ""
 
-    let n = 0
-    arr.forEach((element) => {
+    arr.forEach((idx) => {
         const newTitle = document.createElement('div')
-        newTitle.innerText = element
+        newTitle.innerText = bookList[idx]['title']
 
         newTitle.classList.add('preset-line')
         newTitle.classList.add('one-title')
 
-        newTitle.addEventListener('click', selectTitleWrap(n))
+        newTitle.addEventListener('click', selectTitleWrap(idx))
         titleCards.appendChild(newTitle)
 
-        n++
     });
 }
 
@@ -950,17 +988,26 @@ function selectTitleWrap(n) {
     }
 }
 
-function assignLeftover(n) {
-    return function executeOnEvent (event) {
-      
+function toggleLeftover(event) {
+    
+    console.log('clicked ' + event.target.id)
+
+    const n = event.currentTarget.id.replace("skip", "")
+    const checkWordComp = completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]][n]
+
+    console.log(event.target.id, n)
+
+    if (checkWordComp == 0) {
+        // ASSIGN THIS WORD TO LEFTOVERS
+        
         completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]][n] = -1
 
         const targElem = document.querySelector('#target' + n)
         targElem.classList.add('grayed-out')
 
+        // update top progress bar
         const sentPart = document.getElementById(currentChunk + "." + globalProgMarkers[0])
         sentPart.style.background = genCompGrad(completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]])
-        // sentPart.disabled = true
 
         leftBtn.classList.add('active')
 
@@ -971,7 +1018,25 @@ function assignLeftover(n) {
         if (findInt(completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]], 0) < 0) {
             nextSentence()
         }
+
+    } else {
+        // BRING THIS WORD BACK FROM LEFTOVERS
+
+        completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]][n] = 0
+
+        const targElem = document.querySelector('#target' + n)
+        targElem.classList.remove('grayed-out')
+
+        // update top progress bar
+        const sentPart = document.getElementById(currentChunk + "." + globalProgMarkers[0])
+        sentPart.style.background = genCompGrad(completionObjects[currentChunk].completionMap[0][globalProgMarkers[0]])
+
+        leftBtn.classList.remove('active')
+
+        const thisSkip = document.querySelector('#skip' + n)
+        thisSkip.classList.remove('no-width')
     }
+
 }
 
 function synthSpeakClosure(str, lang) {
@@ -981,7 +1046,8 @@ function synthSpeakClosure(str, lang) {
         let thisSent = str
         
         if (str == 'fullSent') {
-            thisSent = sentenceArrays[globalProgMarkers[0]].join(' ')
+            const currArr = completionObjects[currentChunk].text[globalProgMarkers[0]]
+            thisSent = currArr.join(' ')
         } 
         
         synthSpeak(thisSent, synthSpeed.value, synthVol.value, lang, micBtn, isRecog)
@@ -1098,13 +1164,13 @@ function shiftContentBlocks(str) {
     micBtn.disabled = true;
     
     if (str == 'user') {
-        contentBlocks.style.left = "-200%"
+        contentBlocks.style.left = "0%"
     } else if (str == 'game') {
-        contentBlocks.style.left = "-100%"
+        contentBlocks.style.left = "-200%"
         playBtn.disabled = false;
         micBtn.disabled = false;
     } else if (str == 'menu') {
-        contentBlocks.style.left = "0%"
+        contentBlocks.style.left = "-100%"
     }
 }
 
