@@ -634,6 +634,22 @@ button {
   border-top-right-radius: 1vh;
   border-bottom-right-radius: 1vh;
 }
+.word-wrap.correct > * {
+  background: green;
+  color: white
+}
+.word-wrap.grayed-out > * {
+  color: gray;
+  background: lightgray;
+  background-color: lightgray
+}
+.word-wrap.correct > .skip-btn > .mini-tri {
+  clip-path: polygon(0 50%, 55% 66%, 100% 0, 66% 100%);
+  background-color: rgb(255, 255, 255);
+}
+.word-wrap.grayed-out > .skip-btn > .mini-tri {
+  clip-path: polygon(100% 50%, 50% 25%, 0 0, 0 100%);
+}
 
 .one-word {
   user-select: none;
@@ -668,32 +684,9 @@ button {
   transition: clip-path 0.3s, background-color 0.3s;
 }
 
-.skip-btn.no-width {
-  background: lightgray
-}
-.skip-btn.no-width > .mini-tri {
-  clip-path: polygon(100% 50%, 50% 25%, 0 0, 0 100%);
-}
-
-.skip-btn.complete {
-  background: green;
-}
-.skip-btn.complete > .mini-tri {
-  clip-path: polygon(0 50%, 55% 66%, 100% 0, 66% 100%);
-  background-color: rgb(255, 255, 255);
-}
-
 .target {
   padding: 0px 10px;
   flex: 1;
-}
-.target.grayed-out {
-  color: gray;
-  background-color: lightgray
-}
-.target.correct {
-  color: white;
-  background-color: green;
 }
 
 .behind{

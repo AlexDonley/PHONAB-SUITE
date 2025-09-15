@@ -33,8 +33,9 @@ export function findInt(arr, int) {
     return arr.indexOf(int)
 }
 
-export function checkMapForZero(map) {
-    for (let n = 0; n < map.length; n++) {
+export function checkMapForZero(map, startN) {
+    
+    for (let n = startN; n < map.length; n++) {
         const check = findInt(map[n], 0)
         
         if (check > -1) {
@@ -43,6 +44,16 @@ export function checkMapForZero(map) {
     }
 
     return false
+}
+
+export function checkArrForZero(arr) {
+    let checkZero = arr.indexOf(0)
+
+    if (checkZero > -1) {
+        return checkZero
+    } else {
+        return false
+    }
 }
 
 export function checkMapForInt(map, int) {
@@ -72,52 +83,48 @@ export function indexIntsFromMap(map, int) {
     return indeces
 }
 
-export function trackCompletion(targetArr, utterArr, mode, lang, startInd, compArrNow) {
+export function trackCompletion(targetArr, utterArr, mode, lang, compArrNow) {
     
-    let compArrNew = []
-    let sentCompletion = []
-    let targMarker = 0
-
-    if (startInd) {
-        targMarker = startInd
-    }
+    let compArrNew = compArrNow
+    let wordMatches = 0
 
     if (mode == 'linear') {
-        for (let i = 0; i< utterArr.length; i++) {
-            
-            if (compArrNow) {
-                for (
-                    targMarker;
-                    targMarker < compArrNow.length
-                    && !(compArrNow[targMarker] == 0);
-                    targMarker++
-                ) {
-                    sentCompletion.push(compArrNow[targMarker])
-                }
+
+        // reconstruct array of target words based on completion map
+        // all target words that have a value of 0 may be added
+
+        let targetZeros = []
+        for (let h = 0; h < compArrNow.length; h++) {
+            if (compArrNow[h] == 0) {
+                targetZeros.push(targetArr[h])
             }
+        }
+
+        console.log(targetZeros)
+
+        for (let i = 0; i < utterArr.length; i++) {
             
-            if (targMarker < targetArr.length) {
+            if (wordMatches < targetZeros.length) {
 
                 // the first check is to see if the words are identical
-                if (compareWords(targetArr[targMarker], utterArr[i], lang)) {
+                if (compareWords(targetZeros[wordMatches], utterArr[i], lang)) {
                     
-                    targMarker++;
-                    sentCompletion.push(1);
+                    wordMatches++;
 
                 // the second check is for compound words
                 // for instance, "shoemaker", "shoe-maker", and "shoe maker"
                 // should all be considered the same
                 } else {
 
-                    let newTarCompound = removeDash(targetArr[targMarker]);
+                    let newTarCompound = removeDash(targetZeros[wordMatches]);
                     let newUttCompound = removeDash(utterArr[i]);
                     
                     let tarCompoundArr = [newTarCompound];
                     let uttCompoundArr = [newUttCompound];
                     
                     for (let j = 1; j <= compFlex; j++) {
-                        if (targetArr[targMarker + j]) {
-                            newTarCompound += targetArr[targMarker + j];
+                        if (targetZeros[wordMatches + j]) {
+                            newTarCompound += targetArr[wordMatches + j];
                             tarCompoundArr.push(newTarCompound);
                         }
                         
@@ -135,34 +142,23 @@ export function trackCompletion(targetArr, utterArr, mode, lang, startInd, compA
 
                     if (testTarIdx > -1 || uttMax > -1) {
                         const newIdx = Math.max(testTarIdx, uttMax);
-                        
-                        //console.log(testTarIdx, uttMax, newIdx)
-                        //i += newIdx;
 
                         for (let k = 0; k < newIdx + 1; k++) {
-                            targMarker++;
-                            sentCompletion.push(1);
+                            wordMatches++;
                         }
                     }
                 }
             }
         }
 
-        for (
-            sentCompletion; 
-            sentCompletion.length < targetArr.length - startInd; 
-            sentCompletion.push(0)
-        ) {}
+        for (let j = 0; j < wordMatches; j++) {
+            let replaceIdx = checkArrForZero(compArrNew)
+            compArrNew[replaceIdx] = 1
+        }
+
     }
 
-    if (startInd) {
-        const alrComplete = compArrNow.slice(0, startInd)
-        compArrNew = alrComplete.concat(sentCompletion)
-    } else {
-        compArrNew = sentCompletion
-    }
-
-    return [compArrNew, targMarker]
+    return [compArrNew, wordMatches]
 }
 
 export function mapToFreqs(map) {
