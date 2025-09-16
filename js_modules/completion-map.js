@@ -4,7 +4,7 @@
 //      trackCompletion
 // } from './js/completion-map.js'
 
-import { compareWords, removeDash } from './word-process.js'
+import { compareArr, removeDash } from './word-process.js'
 
 // compound flexibility
 const compFlex = 2
@@ -57,6 +57,7 @@ export function checkArrForZero(arr) {
 }
 
 export function checkMapForInt(map, int) {
+
     for (let n = 0; n < map.length; n++) {
         const check = findInt(map[n], int)
         
@@ -66,6 +67,21 @@ export function checkMapForInt(map, int) {
     }
 
     return false
+}
+
+export function returnAllIntFromMap(map, int) {
+    
+    let intIdx = []
+
+    for (let i = 0; i < map.length; i++) {
+        for (let j = 0; j < map[i].length; j++) {
+            if (map[i][j] == int) {
+                intIdx.push([i, j])
+            }
+        }
+    }
+
+    return intIdx
 }
 
 export function indexIntsFromMap(map, int) {
@@ -100,56 +116,7 @@ export function trackCompletion(targetArr, utterArr, mode, lang, compArrNow) {
             }
         }
 
-        console.log(targetZeros)
-
-        for (let i = 0; i < utterArr.length; i++) {
-            
-            if (wordMatches < targetZeros.length) {
-
-                // the first check is to see if the words are identical
-                if (compareWords(targetZeros[wordMatches], utterArr[i], lang)) {
-                    
-                    wordMatches++;
-
-                // the second check is for compound words
-                // for instance, "shoemaker", "shoe-maker", and "shoe maker"
-                // should all be considered the same
-                } else {
-
-                    let newTarCompound = removeDash(targetZeros[wordMatches]);
-                    let newUttCompound = removeDash(utterArr[i]);
-                    
-                    let tarCompoundArr = [newTarCompound];
-                    let uttCompoundArr = [newUttCompound];
-                    
-                    for (let j = 1; j <= compFlex; j++) {
-                        if (targetZeros[wordMatches + j]) {
-                            newTarCompound += targetArr[wordMatches + j];
-                            tarCompoundArr.push(newTarCompound);
-                        }
-                        
-                        if (utterArr[i + j]) {
-                            newUttCompound += utterArr[i + j];
-                            uttCompoundArr.push(newUttCompound);
-                        }                       
-
-                        //console.log(tarCompoundArr, uttCompoundArr);
-                    }
-
-                    const testTarIdx = tarCompoundArr.indexOf(uttCompoundArr[0]);
-                    const testUttIdx = uttCompoundArr.indexOf(tarCompoundArr[0]);
-                    const uttMax = Math.floor((testUttIdx - 1) / compFlex);
-
-                    if (testTarIdx > -1 || uttMax > -1) {
-                        const newIdx = Math.max(testTarIdx, uttMax);
-
-                        for (let k = 0; k < newIdx + 1; k++) {
-                            wordMatches++;
-                        }
-                    }
-                }
-            }
-        }
+        wordMatches = compareArr(targetZeros, utterArr, lang, 3)
 
         for (let j = 0; j < wordMatches; j++) {
             let replaceIdx = checkArrForZero(compArrNew)

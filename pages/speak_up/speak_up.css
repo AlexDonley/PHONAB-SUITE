@@ -247,11 +247,11 @@ svg {
 .view-QR {
   width: min(25vw, 25vh);
   position: fixed;
-  left: 0;
+  right: 0;
   bottom: 0;
   margin: 10px;
   z-index: 3;
-  transform: translateX(-150%);
+  transform: translateX(150%);
   transition: transform 0.3s, width 0.3s;
 }
 .view-QR.show {

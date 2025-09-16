@@ -91,34 +91,6 @@ export function omitWords(arr){
     return arr;
 }
 
-export function compareSents(targetArr, utterArr, mode, lang, startInd) {
-    
-    let sentCompletion = []
-    let targMarker = 0
-
-    if (startInd) {
-        targMarker = startInd
-    }
-
-    if (mode == 'linear') {
-        utterArr.forEach(spokenWord => {
-            if (compareWords(targetArr[targMarker], spokenWord, lang)) {
-                targMarker++
-                sentCompletion.push(1)
-            }
-        })
-
-        for (
-            sentCompletion; 
-            sentCompletion.length < targetArr.length - startInd; 
-            sentCompletion.push(0)
-        ) {}
-    }
-
-    console.log(sentCompletion, startInd, targMarker)
-    return [sentCompletion, startInd, targMarker]
-}
-
 export function compareWords(targStr, utterStr, lang) {
     
     if (
@@ -127,6 +99,9 @@ export function compareWords(targStr, utterStr, lang) {
     ) {
         return true
     } else {
+
+        // Homophone test
+        // these are language-specific
         if (monocharLangs.includes(lang)) {
 
             if (charToPin(targStr) == charToPin(utterStr)) {
@@ -147,6 +122,62 @@ export function compareWords(targStr, utterStr, lang) {
             return correct
         }
     }
+}
+
+export function compareArr(targArr, utterArr, lang, flexNum) {
+    
+    let wordMatches = 0
+
+    for (let i = 0; i < utterArr.length; i++) {
+            
+        if (wordMatches < targArr.length) {
+
+            // the first check is to see if the words are identical
+            if (compareWords(targArr[wordMatches], utterArr[i], lang)) {
+                
+                wordMatches++;
+
+            // the second check is for compound words
+            // for instance, "shoemaker", "shoe-maker", and "shoe maker"
+            // should all be considered the same
+            } else {
+
+                let newTarCompound = removeDash(targArr[wordMatches]);
+                let newUttCompound = removeDash(utterArr[i]);
+                
+                let tarCompoundArr = [newTarCompound];
+                let uttCompoundArr = [newUttCompound];
+                
+                for (let j = 1; j <= flexNum; j++) {
+                    if (targArr[wordMatches + j]) {
+                        newTarCompound += targArr[wordMatches + j];
+                        tarCompoundArr.push(newTarCompound);
+                    }
+                    
+                    if (utterArr[i + j]) {
+                        newUttCompound += utterArr[i + j];
+                        uttCompoundArr.push(newUttCompound);
+                    }                       
+
+                    //console.log(tarCompoundArr, uttCompoundArr);
+                }
+
+                const testTarIdx = tarCompoundArr.indexOf(uttCompoundArr[0]);
+                const testUttIdx = uttCompoundArr.indexOf(tarCompoundArr[0]);
+                const uttMax = Math.floor((testUttIdx - 1) / flexNum);
+
+                if (testTarIdx > -1 || uttMax > -1) {
+                    const newIdx = Math.max(testTarIdx, uttMax);
+
+                    for (let k = 0; k < newIdx + 1; k++) {
+                        wordMatches++;
+                    }
+                }
+            }
+        }
+    }
+
+    return wordMatches
 }
 
 export function parseColon(str) {
