@@ -245,17 +245,46 @@ svg {
 }
 
 .view-QR {
-  width: min(25vw, 25vh);
   position: fixed;
   right: 0;
   bottom: 0;
   margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  background: white;
   transform: translateX(150%);
-  transition: transform 0.3s, width 0.3s;
+  transition: transform 0.3s;
 }
 .view-QR.show {
   transform: translateX(0%);
+}
+
+.qr-img {
+  width: min(25vh, 25vh);
+  transition: width 0.3s;
+}
+
+.tray-toggle {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: lightgray;
+  border: none
+}
+
+.qr-tray {
+  height: 0px;
+  padding-top: 0px;
+  overflow: hidden;
+  transition: height 0.3s, padding-top 0.3s
+}
+
+.url-display {
+  width: min(25vh, 25vw);
+  text-overflow: ellipsis;
 }
 
 .user-name {
@@ -276,7 +305,6 @@ svg {
 img {
   height: 100%;
   width: 100%;
-  border-radius: 10px;
 }
 
 .main-content {
@@ -443,11 +471,8 @@ img {
   align-items: center;
   padding-left: 3%;
   color: white;
-  margin-right: -5vh;
-  padding-right: 5vh;
   font-size: 20pt;
   background: linear-gradient(gray, rgb(66, 66, 66));
-  border-top-left-radius: 4vh;
 }
 
 .pick-lang {
@@ -467,14 +492,10 @@ img {
   align-items: center;
   border: 1px solid black;
 }
-.corner-btns > *:nth-child(2) {
+.corner-btns > *:nth-child(1) {
   border-top-left-radius: 50%;
-}
-.corner-btns > *:nth-child(4) {
-  border-top-right-radius: 50%;
 }
 .corner-btns > *:last-child {
-  border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
 

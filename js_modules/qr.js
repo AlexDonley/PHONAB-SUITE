@@ -18,13 +18,13 @@ export function cycleQRSize(n) {
 
     switch (startQRsize) {
         case 1:
-            viewQR.style.width = "min(25vh, 25vw)"
+            qrImg.style.width = "min(25vh, 25vw)"
             break;
         case 2:
-            viewQR.style.width = "min(33vh, 33vw)"
+            qrImg.style.width = "min(33vh, 33vw)"
             break;
         case 3:
-            viewQR.style.width = "min(50vh, 50vw)"
+            qrImg.style.width = "min(50vh, 50vw)"
             break;
     }
 }
@@ -34,6 +34,13 @@ export function cycleQRWrap() {
 }
 
 export function genNewQR(url, elem) {
+    // const thisQR = new QRCode(elem, {
+    //     text: url,
+    //     colorDark: "#000000",
+    //     colorLight: "#fffffff",
+    //     margin: 2,
+    // })
+    
     QRCode.toDataURL(url).then(dataURL => {
         elem.src = dataURL;
     })

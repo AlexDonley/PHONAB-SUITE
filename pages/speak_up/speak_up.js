@@ -47,8 +47,9 @@ const arrowOverlay    = document.querySelector('.arrow-overlay')
 const viewQR          = document.querySelector('.view-QR');
 const qrImg           = document.querySelector('#qrImg');
 const showQR          = document.querySelector('.show-QR-btn');
-const genQR           = document.querySelector('.gen-QR-btn');
-const goOpt           = document.querySelector('#goOpt');
+const trayTogg        = document.querySelector('.tray-toggle')
+const presetCheck     = document.querySelector('#presetCheck')
+const goCheck         = document.querySelector('#goCheck');
 
 // elements contained in the setting section
 
@@ -102,16 +103,17 @@ settingBtn.addEventListener("click", toggleSettings);
 pinyinDropdown.addEventListener("change", togglePinyinRT);
 synthSpeed.addEventListener("pointermove", updateSpeed);
 synthVol.addEventListener("pointermove", updateVol);
-viewQR.addEventListener("click", cycleQRWrap);
+qrImg.addEventListener("click", cycleQRWrap);
 showQR.addEventListener("click", toggleShowQR);
-genQR.addEventListener("click", QRgenWrap);
+trayTogg.addEventListener("click", toggleQRTray);
+presetCheck.addEventListener("change", QRgenWrap);
+goCheck.addEventListener("change", QRgenWrap);
 punchBtn.addEventListener("click", checkAndClear);
 
 // - - - VARIABLES - - - //
 
 // arrays for sentences and subdivisions
 
-let freeformIndex = 0
 let bookIndex = 0 
 let targIterations = 0
 
@@ -143,6 +145,7 @@ let loopBool        = false // false means finishes after 1 iteration, true mean
 let fullscreenBool  = false // false means the application is not fullscreen, true means it is fullscreen
 let isLeftRound     = false // false means the speaker is practicing a normal speech chunk, true means they've returned to skipped words
 let isRecog         = false // false means speech recognition is not activated, true means it is activated
+let qrTrayBool      = false
 
 // setting for P5 sawtooth frequency
 
@@ -182,7 +185,7 @@ function QRdictFromElem() {
         thisDict.psidx = thisIdx;
     }
 
-    if (goOpt.checked) {
+    if (goCheck.checked) {
         thisDict.go = true;
     }
 
@@ -1040,6 +1043,18 @@ function toggleFullscreen(bool) {
     } else {
         document.documentElement.requestFullscreen()
         fullscreenBool = true
+    }
+}
+
+function toggleQRTray() {
+    if (!qrTrayBool) {
+        qrTray.style.paddingTop = "10px"
+        qrTray.style.height = "70px"
+        qrTrayBool = true
+    } else {
+        qrTray.style.paddingTop = "0px"
+        qrTray.style.height = "0px"
+        qrTrayBool = false
     }
 }
 
