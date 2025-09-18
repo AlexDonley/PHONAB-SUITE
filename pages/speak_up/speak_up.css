@@ -639,13 +639,15 @@ button {
   width: 35%;
   height: 15%;
   border-bottom-right-radius: 2vh;
-  background-color: green;
+  background-color: hsl(120, 100%, 25%);
   color: white;
   font-size: 3rem;
 }
 
 .word-wrap {
   display: flex;
+  background-color: hsl(120, 100%, 100%);
+  border-radius: 1vh
 }
 .word-wrap > *:first-child {
   border-top-left-radius: 1vh;
@@ -656,8 +658,8 @@ button {
   border-bottom-right-radius: 1vh;
 }
 .word-wrap.correct > * {
-  background: green;
-  color: white
+  color: white;
+  background: inherit
 }
 .word-wrap.grayed-out > * {
   color: gray;
@@ -678,7 +680,6 @@ button {
   font-size: min(5vw, 5vh);
   font-weight: bold;
   text-align: center;
-  background-color: #fff;
   transition: color 0.2s, 
               background-color 0.2s;
 }

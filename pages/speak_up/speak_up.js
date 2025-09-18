@@ -5,8 +5,8 @@ import {
 } from '../../js_modules/speech-rec.js'
 import { 
     genWPStrToArr, 
-    compareWords, compareArr,
-    queueToArr 
+    compareWords, linearCompArr,
+    clusterCompArr, queueToArr 
 } from '../../js_modules/word-process.js'
 import { synthSpeak } from '../../js_modules/speech-synth.js'
 import { startRainbow, genCompGrad, genStepConicGrad } from '../../js_modules/gradients.js'
@@ -36,6 +36,8 @@ const awardDiv        = document.querySelector('#awardDiv');
 const scoreMarker     = document.querySelector('#scoreMarker');
 const settingsMenu    = document.querySelector('.settings-menu');
 const ffLang          = document.querySelector('#ffLang');
+const recType         = document.querySelector('#recType')
+const cumulCheck      = document.querySelector('#cumulCheck')
 const micBtn          = document.querySelector('#micBtn');
 const synthSpeed      = document.querySelector('#synthSpeed');
 const synthVol        = document.querySelector('#synthVol');
@@ -289,35 +291,52 @@ function checkAnswer() {
     if (!isLeftRound) {
 
         const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
-        //console.log(thisCompletionObj.completionMap[0][globCurrents['sent']])
+        let thisSent = thisCompletionObj.completionMap[0][globCurrents['sent']]
 
+        //console.log(thisCompletionObj)
         const uttToScore = trackCompletion(
             thisCompletionObj.text[globCurrents['sent']], 
             utteredWords, 
-            'linear', 
-            targetLang, 
-            thisCompletionObj.completionMap[0][globCurrents['sent']]
+            thisCompletionObj.mode, 
+            thisCompletionObj.lang, 
+            thisSent
         )
 
-        updateScore(uttToScore[1])
-        
-        
-        complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']] = uttToScore[0]
-        console.log(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], uttToScore[0])
-        
-        globCurrents['word'] = uttToScore[1]
-      
-        // to determine whether the utterance gets a perfect score,
-        // it must be fully complete (its completion map is all 1s)
-        // and it must be the same length as the target utterance
-        if (uttToScore[1] == thisCompletionObj.text[globCurrents['sent']].length) {
-            
-            // play an animation to reward the perfect performance
-            perfectAnim()
-        }
+        const prevScoreCheck = thisSent.reduce((accumulator, currentValue) => {
+            return accumulator + currentValue
+        })
 
-        logProgress()
-        evalArr(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']])
+
+        console.log(uttToScore, prevScoreCheck)
+        // TO DO: update words individually in cluster listening
+
+        if (
+            !cumulCheck.checked || !(thisCompletionObj.mode == 'cluster') || 
+            uttToScore[1] > prevScoreCheck
+        ) {
+            
+            thisCompletionObj.completionMap[0][globCurrents['sent']] = uttToScore[0]
+        
+            updateScore(Math.round(uttToScore[1] *10) / 10)
+            logProgress()
+
+            if (
+                thisCompletionObj.completionMap[0][globCurrents['sent']].every(value => value == 1)
+            ) {
+                // to determine whether the utterance gets a perfect score,
+                // it must be fully complete (its completion map is all 1s)
+                // and it must be the same length as the target utterance
+                if (uttToScore[1] == thisSent.length) {
+                    
+                    // play an animation to reward the perfect performance
+                    perfectAnim()
+                }
+                
+                setTimeout(() => {
+                    nextSentence()
+                }, 50 * thisSent.length + 500)
+            }
+        }
 
     } else {
 
@@ -329,7 +348,7 @@ function checkAnswer() {
         const leftArr = grabLeftovers(coord)
         console.log(leftArr)
 
-        const uttToScore = compareArr(
+        const uttToScore = linearCompArr(
             leftArr, 
             utteredWords, 
             targetLang, 
@@ -600,7 +619,7 @@ function genCompletionObj(textArrs) {
         'status': 'incomplete',
         'startTime': 0,
         'endTime': 0,
-        'mode': 'linear',
+        'mode': recType.value,
         'text': textArrs,
         'completionMap': newCompletionMap
     }
@@ -707,7 +726,8 @@ function endQueue() {
 
 function loadSentence(sentN){
     
-    const thisSentMap = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][sentN]
+    const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
+    const thisSentMap = thisCompletionObj.completionMap[0][sentN]
     setGlobalCurrents(null, sentN, null)
     const arr = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].text[sentN]
     
@@ -722,30 +742,39 @@ function loadSentence(sentN){
         newSpan.id = 'target' + n
         newSpan.classList = 'one-word target'
 
-        const leftButton = document.createElement('div')
-        leftButton.classList.add('skip-btn')
-        leftButton.id = "skip" + n
+        // add a skip button only in linear mode
+        if(thisCompletionObj.mode == 'linear') {
 
-        const miniTri = document.createElement('div')
-        miniTri.classList.add('mini-tri')
+            const leftButton = document.createElement('div')
+            leftButton.classList.add('skip-btn')
+            leftButton.id = "skip" + n
 
-        leftButton.append(miniTri)
+            const miniTri = document.createElement('div')
+            miniTri.classList.add('mini-tri')
 
-        if (thisSentMap[n] == 1) {
+            leftButton.append(miniTri)
 
-            targWrap.classList.add('correct')
+            if (thisSentMap[n] <= 0) {
 
-        } else {
+                leftButton.addEventListener('click', toggleLeftover, true)
 
-            leftButton.addEventListener('click', toggleLeftover, true)
+                if (thisSentMap[n] == -1) {
+                    targWrap.classList.add('grayed-out')
+                }
+            }
+        
+            targWrap.appendChild(leftButton)
 
-            if (thisSentMap[n] == -1) {
-                targWrap.classList.add('grayed-out')
+        }
+
+        if (thisSentMap[n] > 0) {
+            targWrap.style.background = "hsl(120, 100%, " + (100 - 75 * thisSentMap[n]) + "%)"
+
+            if (thisSentMap[n] == 1) {
+                targWrap.classList.add('correct')
             }
         }
-    
-        targWrap.appendChild(leftButton)         
-        
+
         const text = arr[n]
         let newContent
 
@@ -866,18 +895,21 @@ function loadChunk(idStr) {
 }
 
 function updateTargVisual(arr, delay) {
-        
+    
+    const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
     // highlight correct words
     const allTargs = Array.from(targetColumn.children)
 
     for (let i = 0; i < arr.length; i++) {
 
-        if (arr[i] == 1 && !isLeftRound) {
+        if (arr[i] == 1 && !isLeftRound && thisCompletionObj.mode == 'linear') {
             const skipBtn = document.querySelector('#skip' + i)
             skipBtn.removeEventListener('click', toggleLeftover, true)
         }
 
         setTimeout(() => {
+
+            allTargs[i].style.background = "hsl(120, 100%, " + (100 - 75 * arr[i]) + "%)"
 
             if (arr[i] == 0) {
 
@@ -1081,14 +1113,12 @@ function toggleLeftover(event) {
     const n = event.currentTarget.id.replace("skip", "")
     const checkWordComp = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n]
 
-    console.log(event.target.id, n)
-
     const targElem = document.querySelector('#target' + n).parentNode
 
     if (checkWordComp == 0) {
         // ASSIGN THIS WORD TO LEFTOVERS
         
-        complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n] = -1
+        checkWordComp = -1
         
         targElem.classList.add('grayed-out')
         leftBtn.classList.add('active')
@@ -1096,7 +1126,7 @@ function toggleLeftover(event) {
     } else {
         // BRING THIS WORD BACK FROM LEFTOVERS
 
-        complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n] = 0
+        checkWordComp = 0
 
         targElem.classList.remove('grayed-out')
         leftBtn.classList.remove('active')

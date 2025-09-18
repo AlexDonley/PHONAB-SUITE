@@ -124,7 +124,7 @@ export function compareWords(targStr, utterStr, lang) {
     }
 }
 
-export function compareArr(targArr, utterArr, lang, flexNum) {
+export function linearCompArr(targArr, utterArr, lang, flexNum) {
     
     let wordMatches = 0
 
@@ -178,6 +178,110 @@ export function compareArr(targArr, utterArr, lang, flexNum) {
     }
 
     return wordMatches
+}
+
+export function clusterCompArr(targetArrLocal, utterArrLocal) {
+
+    let rawScore = 0
+    
+    let targetOccs = {}
+    let utterOccs = {}
+
+    let revisedUtter = []
+    let clustersMap = []
+    let scoreMap = []
+    
+    const arrIntersect = targetArrLocal.filter(value => utterArrLocal.includes(value));
+    //console.log(arrIntersect)
+
+    for (const word of targetArrLocal) {
+        targetOccs[word] = targetOccs[word] ? targetOccs[word] + 1 : 1;
+    }
+    //console.log(targetOccs)
+
+    for (const word of utterArrLocal) {
+        if (utterOccs[word]) {
+            if (utterOccs[word] < targetOccs[word]){
+                utterOccs[word] += 1
+                revisedUtter.push(word)
+            }
+            
+        } else {
+            if (arrIntersect.includes(word)) {
+                utterOccs[word] = 1
+                revisedUtter.push(word)
+            }
+        }
+    }
+    // console.log(utterOccs, revisedUtter)
+
+    // this code will need some revision but it works for now
+
+    for (const word in targetArrLocal) {
+        clustersMap.push(0)
+    }
+
+    for (let i = 0; i < targetArrLocal.length; i++) {
+        let clusterCount = 1
+
+        if (
+                revisedUtter.indexOf(targetArrLocal[i]) >= 0
+                && clustersMap[i] == 0
+            ) 
+        {
+            clustersMap[i] = "x"
+            const indexOffset = revisedUtter.indexOf(targetArrLocal[i]) - i
+
+            for (let j = 1; i + j < targetArrLocal.length; j++) {
+                if (targetArrLocal[i + j] == revisedUtter[indexOffset + i + j]) {
+                    clusterCount += 1
+                    clustersMap[i + j] = "x"
+                }    
+            }
+
+            for (let k = 0; k < clustersMap.length; k++) {
+                if (clustersMap[k] == "x") {
+                    clustersMap[k] = clusterCount
+                }
+            }
+            console.log(clustersMap)
+        }
+    }
+
+    // construct final  
+
+    // find maximum and minimum in clustersMap
+    let maxCluster = Math.max(...clustersMap)
+    let minCluster = Math.min(...clustersMap)
+    console.log(maxCluster, minCluster)
+
+    clustersMap.forEach(value => {
+        let thisIncrement = maxCluster
+
+        if (thisIncrement) {
+            thisIncrement = value / maxCluster
+        }
+        
+        rawScore += thisIncrement
+        scoreMap.push(thisIncrement)
+    })
+
+    // for (let n = 0; n < clustersMap.length; n++) {
+    //     if (clustersMap[n] > 0) {
+    //         if (clustersMap[n] == maxCluster) {
+    //                 //targDisplay.children[n].classList.add("full-point")
+    //                 rawScore += 1.0
+    //         } else {
+    //                 //targDisplay.children[n].classList.add("half-point")
+    //                 rawScore += 0.5
+    //         }
+    //     }
+    // }
+
+    const percent = Math.round(100 * rawScore / targetArrLocal.length, 1)
+
+    console.log(scoreMap, rawScore)
+    return [scoreMap, rawScore]
 }
 
 export function parseColon(str) {

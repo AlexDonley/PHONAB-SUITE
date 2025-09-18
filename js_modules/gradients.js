@@ -117,8 +117,8 @@ export function genCompGrad(arr) {
             addStr = 'yellow'
         } else if (arr[i] == 0) {
             addStr = 'gray'
-        } else if (arr[i] == 1) {
-            addStr = 'green'
+        } else {
+            addStr = "hsl(120, 100%, " + (100 - 75 * arr[i]) + "%)"
         }
 
         if (i == 0) {

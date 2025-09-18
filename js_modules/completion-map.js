@@ -4,10 +4,7 @@
 //      trackCompletion
 // } from './js/completion-map.js'
 
-import { compareArr, removeDash } from './word-process.js'
-
-// compound flexibility
-const compFlex = 2
+import { linearCompArr, clusterCompArr, removeDash } from './word-process.js'
 
 export function genBlankCompMap(arrOfArrs) {
     let compMap = []
@@ -104,25 +101,33 @@ export function trackCompletion(targetArr, utterArr, mode, lang, compArrNow) {
     let compArrNew = compArrNow
     let wordMatches = 0
 
-    if (mode == 'linear') {
+    switch (mode) {
+        case 'linear':
+            // reconstruct array of target words based on completion map
+            // all target words that have a value of 0 may be added
 
-        // reconstruct array of target words based on completion map
-        // all target words that have a value of 0 may be added
-
-        let targetZeros = []
-        for (let h = 0; h < compArrNow.length; h++) {
-            if (compArrNow[h] == 0) {
-                targetZeros.push(targetArr[h])
+            let targetZeros = []
+            for (let h = 0; h < compArrNow.length; h++) {
+                if (compArrNow[h] == 0) {
+                    targetZeros.push(targetArr[h])
+                }
             }
-        }
 
-        wordMatches = compareArr(targetZeros, utterArr, lang, 3)
+            wordMatches = linearCompArr(targetZeros, utterArr, lang, 3)
 
-        for (let j = 0; j < wordMatches; j++) {
-            let replaceIdx = checkArrForZero(compArrNew)
-            compArrNew[replaceIdx] = 1
-        }
+            for (let j = 0; j < wordMatches; j++) {
+                let replaceIdx = checkArrForZero(compArrNew)
+                compArrNew[replaceIdx] = 1
+            }
+            break;
 
+        case 'cluster':
+            
+            const newArr = clusterCompArr(targetArr, utterArr)
+            compArrNew = newArr[0]
+            wordMatches = newArr[1]
+
+            break;
     }
 
     return [compArrNew, wordMatches]
@@ -169,11 +174,11 @@ export function mapToAwardArr(mapArrs) {
                 case 0:
                     arrValues[0] += 1
                     break;
-                case -1:
-                    arrValues[1] += 1
-                    break;
                 case 1:
                     arrValues[2] += 1
+                    break;
+                default:
+                    arrValues[1] += 1
                     break;
             }
         })

@@ -146,7 +146,22 @@
         <div class="setting-panels">
             <div>
                 <h2>Speech Rec</h2>
-                Recogntion type: linear or cluster
+                    Recognition type: <br>
+                    <select class="rec-type" id="recType">
+                        <option value="linear" >Linear</option>
+                        <option value="cluster" selected>Cluster</option>
+                    </select> <br>
+                    <input type="checkbox" id="cumulCheck" checked>
+                    <label for="cumulCheck">Best score</label> <br>
+                    <input type="checkbox" id="autoCheck" checked>
+                    <label for="autoCheck">Auto next after </label> 
+                    <input type="number" id="autoLimit" min="1" max="100" value="2"/> attempts<br>
+                    Beeps: <br>
+                    <select class="rec-type" id="recType">
+                        <option value="random" selected>Random</option>
+                        <option value="rising">Rising</option>
+                        <option value="chord">Chord</option>
+                    </select>
 
             </div>
             <div>
