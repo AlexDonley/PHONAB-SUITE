@@ -38,6 +38,8 @@ const settingsMenu    = document.querySelector('.settings-menu');
 const ffLang          = document.querySelector('#ffLang');
 const recType         = document.querySelector('#recType')
 const cumulCheck      = document.querySelector('#cumulCheck')
+const autoCheck       = document.querySelector('#autoCheck')
+const autoLimit       = document.querySelector('#autoLimit')
 const micBtn          = document.querySelector('#micBtn');
 const synthSpeed      = document.querySelector('#synthSpeed');
 const synthVol        = document.querySelector('#synthVol');
@@ -124,7 +126,8 @@ let globCurrents = {
     'book': null,
     'chunk': null,
     'sent': 0,
-    'iter': 0
+    'iter': 0,
+    'attempt': 1
 }
 
 function setGlobalCurrents(chunkStr, sentN, iterN) {
@@ -290,6 +293,8 @@ function checkAnswer() {
 
     if (!isLeftRound) {
 
+        globCurrents['attempt'] = globCurrents['attempt'] + 1
+
         const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
         let thisSent = thisCompletionObj.completionMap[0][globCurrents['sent']]
 
@@ -302,41 +307,48 @@ function checkAnswer() {
             thisSent
         )
 
+        switch (thisCompletionObj.mode){
+            case 'cluster':
+                let newSent = [...thisSent]
+
+                for (let n=0; n < newSent.length; n++) {
+                    if (uttToScore[0][n] > newSent[n]) {
+                        newSent[n] = uttToScore[0][n]
+                    }
+                }
+
+                thisCompletionObj.completionMap[0][globCurrents['sent']] = newSent
+                break;
+            case 'linear':
+                thisCompletionObj.completionMap[0][globCurrents['sent']] = uttToScore[0]
+                break;
+        }
+
         const prevScoreCheck = thisSent.reduce((accumulator, currentValue) => {
             return accumulator + currentValue
         })
-
-
-        console.log(uttToScore, prevScoreCheck)
-        // TO DO: update words individually in cluster listening
+        console.log(autoCheck.checked, globCurrents['attempt'], parseInt(autoLimit.value))   
+        updateScore(Math.round(uttToScore[1] *10) / 10)
+        logProgress()
 
         if (
-            !cumulCheck.checked || !(thisCompletionObj.mode == 'cluster') || 
-            uttToScore[1] > prevScoreCheck
+            thisCompletionObj.completionMap[0][globCurrents['sent']].every(value => value == 1) ||
+            (autoCheck.checked && globCurrents['attempt'] > parseInt(autoLimit.value))
         ) {
-            
-            thisCompletionObj.completionMap[0][globCurrents['sent']] = uttToScore[0]
-        
-            updateScore(Math.round(uttToScore[1] *10) / 10)
-            logProgress()
-
-            if (
-                thisCompletionObj.completionMap[0][globCurrents['sent']].every(value => value == 1)
-            ) {
-                // to determine whether the utterance gets a perfect score,
-                // it must be fully complete (its completion map is all 1s)
-                // and it must be the same length as the target utterance
-                if (uttToScore[1] == thisSent.length) {
-                    
-                    // play an animation to reward the perfect performance
-                    perfectAnim()
-                }
+            // to determine whether the utterance gets a perfect score,
+            // it must be fully complete (its completion map is all 1s)
+            // and it must be the same length as the target utterance
+            if (uttToScore[1] == thisSent.length) {
                 
-                setTimeout(() => {
-                    nextSentence()
-                }, 50 * thisSent.length + 500)
+                // play an animation to reward the perfect performance
+                perfectAnim()
             }
+            
+            setTimeout(() => {
+                nextSentence()
+            }, 50 * thisSent.length + 500)
         }
+        
 
     } else {
 
@@ -491,18 +503,6 @@ function populateUtterances(arr, elem) {
         elem.appendChild(wrapElem)
         n++;
     })
-}
-
-function evalArr(arr) {
-    if (!arr.includes(0)) {
-        const delayNext = setTimeout(() => {
-            nextSentence()
-        }, 50 * arr.length + 500)
-
-        return true
-    } else {
-        return false
-    }
 }
 
 ffLang.addEventListener('change', e => {
@@ -672,7 +672,7 @@ function nextSentence() {
   
     // check for the next incomplete word,
     // then check for the previous incomplete word
-    const nextIncomp = checkMapForZero(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], globCurrents['sent'])
+    const nextIncomp = checkMapForZero(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], globCurrents['sent'] + 1)
     const prevIncomp = checkMapForZero(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], 0)
 
     if (nextIncomp) {
@@ -726,6 +726,8 @@ function endQueue() {
 
 function loadSentence(sentN){
     
+    globCurrents['attempt'] = 1
+
     const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
     const thisSentMap = thisCompletionObj.completionMap[0][sentN]
     setGlobalCurrents(null, sentN, null)
@@ -891,7 +893,6 @@ function loadChunk(idStr) {
     updateArrow(thisCompData[0])
 
     loadSentence(globCurrents['sent'])
-    nextSentence()
 }
 
 function updateTargVisual(arr, delay) {
