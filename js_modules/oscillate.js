@@ -5,6 +5,12 @@ const context = new AudioContext()
 const majorChord = [261.62, 329.62, 391.99, 523.33]
 const minorChord = [261.62, 311.12, 391.99, 523.33]
 
+const majorChordSteps = [0, 4, 7, 12]
+const minorChordSteps = [0, 3, 7, 12]
+
+const majorScaleSteps = [0, 2, 4, 5, 7, 9, 11, 12]
+const minorScaleSteps = [0, 2, 3, 5, 7, 8, 10, 12]
+
 var oscArr = {}
 
 export function startAndIdxOsc(n, freq) {
@@ -56,20 +62,29 @@ export function oscBeep(freq, vol, length, type) {
     oscillator.start()
 }
 
-export function createChord(arr, length, delay) {
+export function createChord(arr, length, delay, dir) {
     
-    let thisChord = majorChord
+    let thisChord = majorChordSteps
 
     if (arr) {
         thisChord = arr
     }
 
-    let n = 0;
-    thisChord.forEach(val => {
+    for (let n = 0; n < thisChord.length; n++) {
+        
+        let defaultDelay = n 
+        if (dir == 'down') {
+            defaultDelay = thisChord.length - n
+        }
         setTimeout(() => {
-            oscBeep(val, 0.02, length, 'sawtooth')
-        }, n * delay)
+            oscBeep(halfStepToHz(thisChord[n], -1), 0.02, length, 'sawtooth')
+        }, defaultDelay * delay)
+    }
+}
 
-        n++
-    })
+function halfStepToHz(halfStep, oct) {
+    const thisHz = Math.pow(2, ((halfStep + oct * 12) / 12)) * 440
+    console.log(thisHz)
+
+    return thisHz
 }

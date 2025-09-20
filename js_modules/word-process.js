@@ -93,6 +93,8 @@ export function omitWords(arr){
 
 export function compareWords(targStr, utterStr, lang) {
     
+    // TO DO: add contractions check
+
     if (
         targStr == utterStr
         || removeDash(targStr) == removeDash(utterStr)
@@ -132,7 +134,7 @@ export function linearCompArr(targArr, utterArr, lang, flexNum) {
             
         if (wordMatches < targArr.length) {
 
-            // the first check is to see if the words are identical
+            // the first check is to see if the words match, either identically or as homophones
             if (compareWords(targArr[wordMatches], utterArr[i], lang)) {
                 
                 wordMatches++;
@@ -182,6 +184,7 @@ export function linearCompArr(targArr, utterArr, lang, flexNum) {
 
 export function clusterCompArr(targetArrLocal, utterArrLocal) {
 
+    // TO DO: detect homophones, contractions, and compounds
     let rawScore = 0
     
     let targetOccs = {}

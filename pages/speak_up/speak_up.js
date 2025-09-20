@@ -401,7 +401,6 @@ function checkAndClear() {
 function tryLeftRound() {
 
     const coord = returnAllIntFromMap(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], -1)
-    console.log(coord)
 
     if (coord.length > 0) {
 
@@ -671,7 +670,7 @@ micBtn.addEventListener('click', toggRecogAndElem)
 function nextSentence() {
   
     // check for the next incomplete word,
-    // then check for the previous incomplete word
+    // then check for any previous incomplete word
     const nextIncomp = checkMapForZero(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], globCurrents['sent'] + 1)
     const prevIncomp = checkMapForZero(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], 0)
 
@@ -686,7 +685,35 @@ function nextSentence() {
     } else {
 
         tryLeftRound()
+        if (!isLeftRound) {
+            // mark completion object as complete
+            complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].status = 'complete'
+            console.log(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']])
+
+            // look for any incomplete completion objects
+            let stillIncomp = findIncompObj(complObjs)
+
+            console.log(stillIncomp)
+            if (stillIncomp) {
+                loadChunk(stillIncomp)
+            } else {
+                // if there are none, end the queue
+                endQueue()
+            }
+        }
     }
+}
+
+function findIncompObj(objDict) {
+    const keysArr = Object.keys(objDict)
+
+    for (let i = 0; i < keysArr.length; i++) {
+        if (objDict[keysArr[i]].status == 'incomplete') {
+            console.log(keysArr[i])
+            return keysArr[i]
+        }
+    }
+    return null
 }
 
 function endQueue() {
@@ -1347,11 +1374,13 @@ function reloadAwards(index) {
 
 function toggleSettings() {
 
-    createChord(null, 1, 30)
+    
     if (settingsMenu.classList.contains('show')) {
         settingsMenu.classList.remove('show')
+        createChord(null, 1, 30, 'down')
     } else {
         settingsMenu.classList.add('show')
+        createChord(null, 1, 30)
     }
 }
 
