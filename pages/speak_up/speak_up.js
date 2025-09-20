@@ -23,7 +23,10 @@ import {
     charToPin, pinToZhu,
     constructPinRT, constructZhuRT 
 } from '../../js_modules/ruby-text.js'
-import { oscBeep, createChord } from '../../js_modules/oscillate.js'
+import { 
+    defaultSteps, oscBeep, createChord,
+    halfStepToHz, extendSteps
+} from '../../js_modules/oscillate.js'
 import { urlConfigs } from '../../js_modules/url-query.js'
 import { cycleQRWrap, toggleShowQR, genQRstr, genNewQR } from '../../js_modules/qr.js'
 
@@ -37,6 +40,7 @@ const scoreMarker     = document.querySelector('#scoreMarker');
 const settingsMenu    = document.querySelector('.settings-menu');
 const ffLang          = document.querySelector('#ffLang');
 const recType         = document.querySelector('#recType')
+const oscType         = document.querySelector('#oscType')
 const cumulCheck      = document.querySelector('#cumulCheck')
 const autoCheck       = document.querySelector('#autoCheck')
 const autoLimit       = document.querySelector('#autoLimit')
@@ -324,10 +328,7 @@ function checkAnswer() {
                 break;
         }
 
-        const prevScoreCheck = thisSent.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue
-        })
-        console.log(autoCheck.checked, globCurrents['attempt'], parseInt(autoLimit.value))   
+
         updateScore(Math.round(uttToScore[1] *10) / 10)
         logProgress()
 
@@ -671,8 +672,9 @@ function nextSentence() {
   
     // check for the next incomplete word,
     // then check for any previous incomplete word
-    const nextIncomp = checkMapForZero(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], globCurrents['sent'] + 1)
-    const prevIncomp = checkMapForZero(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], 0)
+    const thisMap = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0]
+    const nextIncomp = checkMapForZero(thisMap, parseInt(globCurrents['sent']) + 1)
+    const prevIncomp = checkMapForZero(thisMap, 0)
 
     if (nextIncomp) {
 
@@ -766,6 +768,7 @@ function loadSentence(sentN){
 
         const targWrap = document.createElement('div')
         targWrap.classList.add('word-wrap')
+        targWrap.dataset.score = thisSentMap[n]
 
         const newSpan = document.createElement('span')
         newSpan.id = 'target' + n
@@ -847,21 +850,11 @@ function loadLeftovers(arr) {
 
         const targWrap = document.createElement('div')
         targWrap.classList.add('word-wrap')
+        targWrap.dataset.score = 0
 
         const newSpan = document.createElement('span')
         newSpan.id = 'target' + n
-        newSpan.classList = 'one-word target'
-
-        // const leftButton = document.createElement('div')
-        // leftButton.classList.add('skip-btn')
-        // leftButton.id = "skip" + n
-
-        // const miniTri = document.createElement('div')
-        // miniTri.classList.add('mini-tri')
-
-        // leftButton.append(miniTri)
-    
-        // targWrap.appendChild(leftButton)         
+        newSpan.classList = 'one-word target'      
         
         const text = arr[n]
         let newContent
@@ -928,7 +921,11 @@ function updateTargVisual(arr, delay) {
     // highlight correct words
     const allTargs = Array.from(targetColumn.children)
 
+    let scoreChord = extendSteps(defaultSteps['majorChordSteps'], arr.length)
+
     for (let i = 0; i < arr.length; i++) {
+
+        console.log(allTargs[i].dataset.score)
 
         if (arr[i] == 1 && !isLeftRound && thisCompletionObj.mode == 'linear') {
             const skipBtn = document.querySelector('#skip' + i)
@@ -936,29 +933,37 @@ function updateTargVisual(arr, delay) {
         }
 
         setTimeout(() => {
-
-            allTargs[i].style.background = "hsl(120, 100%, " + (100 - 75 * arr[i]) + "%)"
-
-            if (arr[i] == 0) {
-
-                allTargs[i].classList = 'word-wrap'
-
-            } else {
-
-                if (arr[i] == -1) {
-                    
+            switch(arr[i]) {
+                case -1:
                     allTargs[i].classList.add('grayed-out')
+                    break;
 
-                } else if (arr[i] == 1) {
+                case 0:
+                    allTargs[i].classList = 'word-wrap'
+                    break;
 
-                    if (!allTargs[i].classList.contains('correct')) {
-                        allTargs[i].classList.add('correct')
+                default:
+                    
+                    if (allTargs[i].dataset.score < arr[i]) {
+                        allTargs[i].style.background = "hsl(120, 100%, " + (100 - 75 * arr[i]) + "%)"
 
                         // TO DO: chordify oscillator beeps
-                        oscBeep(200 + Math.floor(Math.random() * 300), 0.01, 0.3, 'square')
-                        //inchUpSound(30)
+                        switch(oscType.value){
+                            case 'random':
+                                oscBeep(200 + Math.floor(Math.random() * 300), 0.01, 0.3, 'square')
+                                break;
+                            case 'chord':
+                                oscBeep(halfStepToHz(scoreChord[i] - ((1 - arr[i]) * Math.random()), -1), 0.01, 0.3, 'square')
+                                break;
+                        }
+                    
+
+                        if (!allTargs[i].classList.contains('correct') && arr[i] == 1) {
+                            allTargs[i].classList.add('correct')
+                        }
+
+                        allTargs[i].dataset.score = arr[i]
                     }
-                }
             }
         }, delay * i)
     }
@@ -1146,7 +1151,7 @@ function toggleLeftover(event) {
     if (checkWordComp == 0) {
         // ASSIGN THIS WORD TO LEFTOVERS
         
-        checkWordComp = -1
+        complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n] = -1
         
         targElem.classList.add('grayed-out')
         leftBtn.classList.add('active')
@@ -1154,7 +1159,7 @@ function toggleLeftover(event) {
     } else {
         // BRING THIS WORD BACK FROM LEFTOVERS
 
-        checkWordComp = 0
+        complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n] = 0
 
         targElem.classList.remove('grayed-out')
         leftBtn.classList.remove('active')

@@ -5,11 +5,12 @@ const context = new AudioContext()
 const majorChord = [261.62, 329.62, 391.99, 523.33]
 const minorChord = [261.62, 311.12, 391.99, 523.33]
 
-const majorChordSteps = [0, 4, 7, 12]
-const minorChordSteps = [0, 3, 7, 12]
-
-const majorScaleSteps = [0, 2, 4, 5, 7, 9, 11, 12]
-const minorScaleSteps = [0, 2, 3, 5, 7, 8, 10, 12]
+export const defaultSteps = {
+    'majorChordSteps': [0, 4, 7, 12],
+    'minorChordSteps': [0, 3, 7, 12],
+    'majorScaleSteps': [0, 2, 4, 5, 7, 9, 11, 12],
+    'minorScaleSteps': [0, 2, 3, 5, 7, 8, 10, 12]
+}
 
 var oscArr = {}
 
@@ -64,7 +65,7 @@ export function oscBeep(freq, vol, length, type) {
 
 export function createChord(arr, length, delay, dir) {
     
-    let thisChord = majorChordSteps
+    let thisChord = defaultSteps['majorChordSteps']
 
     if (arr) {
         thisChord = arr
@@ -82,9 +83,28 @@ export function createChord(arr, length, delay, dir) {
     }
 }
 
-function halfStepToHz(halfStep, oct) {
+export function halfStepToHz(halfStep, oct) {
     const thisHz = Math.pow(2, ((halfStep + oct * 12) / 12)) * 440
-    console.log(thisHz)
 
     return thisHz
+}
+
+export function extendSteps(progressionArr, lengthN) {
+    
+    let newArr = []
+    const progSnip = progressionArr.slice(0, progressionArr.length - 1)
+
+    const fullIterations = Math.floor(lengthN / progSnip.length)
+    const partIteration = lengthN % progSnip.length
+
+    for (let i = 0; i < fullIterations; i++) {
+        const adjustedArr = progSnip.map(value => value + (12 * i))
+
+        newArr = newArr.concat(adjustedArr)
+    }
+    for (let j = 0; j < partIteration; j++) {
+        newArr.push(progSnip[j] + (12 * fullIterations))
+    }
+
+    return newArr
 }
