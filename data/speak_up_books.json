@@ -1936,6 +1936,30 @@
         ]
 
     },
+        {
+        "title": "Jerlyn Fruit Practice",
+        "lang": "en",
+        "author": "KNSH",
+        "parts":[
+            {
+                "award": "🍊",
+                "text": [  
+                    "How many apples do you need?",
+                    "I need an apple.",
+                    "How many guavas do you need?",
+                    "We need five guavas.",
+                    "How many pineapples do they need?",
+                    "They need three pineapples.",
+                    "How many bananas does he need?",
+                    "He needs a banana.",
+                    "How many papayas does she need?",
+                    "She needs eight papayas.",
+                    "How many oranges do they need?",
+                    "They need two oranges."
+                ]
+            }
+        ]
+    },
     {
         "title": "Wonder World 1 Story",
         "lang": "en",

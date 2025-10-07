@@ -212,6 +212,27 @@
         "sentences": [
             "I hear a", "in my ear"
         ]
+    },        
+    {
+        "title": "Adult English - Countries 1",
+        "words": [
+            "the United Kingdom", "the United States",
+            "Australia", "Canada", "New Zealand"
+                ],
+        "sentences": [
+            "has many English speakers"
+        ]
+    },
+    {
+        "title": "Adult English - Countries 2",
+        "words": [
+            "the Philippines", "India",
+            "Nigeria", "South Africa",
+            "Singapore", "Sweden"
+                ],
+        "sentences": [
+            "has many English speakers"
+        ]
     },
     {
         "title": "Hip Hip Hooray 2 - U1L1",

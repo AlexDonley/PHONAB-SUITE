@@ -29,6 +29,9 @@ import {
 } from '../../js_modules/oscillate.js'
 import { urlConfigs } from '../../js_modules/url-query.js'
 import { cycleQRWrap, toggleShowQR, genQRstr, genNewQR } from '../../js_modules/qr.js'
+import { 
+    getBookParts, getFilteredBooks, getPartById
+} from '../../js_modules/supabase_crud.js'
 
 // - - - ELEMENTS - - - //
 // ux elements that show user progress through arrow movement, score, timer, and awards
@@ -248,6 +251,23 @@ function loadBooks(){
 }
 
 loadBooks();
+
+//const supaBooks = loadAllBooks()
+
+// async function extractSupaTitles() {
+//     try {
+//         const data = await supaBooks
+        
+//         let titleArr = []
+//         data.forEach(entry => {
+//             titleArr.push(data.title)
+//         })
+
+//         return titleArr
+//     } catch (error) {
+//         console.error('Error fetchign data: ', error)
+//     }
+// }
 
 function filterBooks(dataset, attr, cond) {
     let indArr = []
@@ -509,7 +529,7 @@ ffLang.addEventListener('change', e => {
     swapLang(ffLang.value)
 })
 
-function swapLang(lang) {
+async function swapLang(lang) {
     // set the target language for speech recognition
     setLanguage(lang)
 
@@ -517,17 +537,19 @@ function swapLang(lang) {
     textInput.value = defaultFfText[lang]
 
     // filter different preset options
-    const langPresets = filterBooks(bookList, "lang", lang)
-    populatePresets(langPresets)
+    const langBooks = await getFilteredBooks({
+        'lang': 'en', 
+        'searchTerm': null,
+        'limit': 20
+    })
+    
+    populatePresets(langBooks)
 }
 
-function startQueue() {
+async function startQueue() {
     
     // disable language change
     ffLang.disabled = true
-
-    // clear chunks queue and sentence queue
-    let chunksQueue = []
 
     // reset oscillator frequency to low frequency
     // TO DO: change this so that it resets on each load to a random value
@@ -540,45 +562,33 @@ function startQueue() {
   
     // check if the sentence queue will be preset or freeform
     if (presetBool) {
-
-        // PRESET INPUT
-        // set the target language
-
-        if (bookList[bookIndex].lang != undefined) {
-            setLanguage(bookList[bookIndex].lang)
-        } else {
-            setLanguage('en')
-        }
         
-        // clear the index array
-        let bookIdxArr = [];
+        globCurrents['iter'] = targIterations
+        globCurrents['chunk'] = null
         
         // see which boxes are checked
         const checkboxes = document.querySelectorAll('.preset-check')
 
         for (let n = 0; n < checkboxes.length; n++){
             if (checkboxes[n].checked) {
-                bookIdxArr.push(n);
-                chunksQueue.push(bookIndex + "_" + n)
+
+                const thisId = checkboxes[n].id
+                if (globCurrents['chunk'] == null) {
+                    globCurrents['chunk'] = thisId
+                }
+                const chunkData = await getPartById(thisId)
+                console.log(chunkData)
+
+                const fullId = thisId + "*" + targIterations
+                complObjs[fullId] = genPresetObj(chunkData)
+
+                const newAward = awardProgElem(fullId, chunkData.award)
+                awardDiv.prepend(newAward)
+
+                targIterations++
             }
         }
 
-        globCurrents['iter'] = targIterations
-
-        bookIdxArr.forEach((num) => {
-            
-            // TO DO: focus on and refactor this section
-            // create a completion object for each index number
-            const newID = bookIndex + "_" + num + "*" + targIterations
-            complObjs[newID] = genPresetObj(bookIndex, num)
-
-            const newAward = awardProgElem(newID, bookList[bookIndex].parts[num].award)
-            awardDiv.prepend(newAward)
-
-            targIterations++
-        })
-
-        globCurrents['chunk'] = chunksQueue[0]
         loadChunk(globCurrents['chunk'] + "*" + globCurrents['iter'])
 
     } else {
@@ -627,9 +637,9 @@ function genCompletionObj(textArrs) {
     return newObj
 }
 
-function genPresetObj(bookIdx, chunkIdx) {
+function genPresetObj(chunkData) {
     
-    const textArrs = queueToArr(bookList[bookIdx].parts[chunkIdx].text, targetLang)
+    const textArrs = queueToArr(chunkData.text, targetLang)
 
     return genCompletionObj(textArrs)
 }
@@ -672,6 +682,7 @@ function nextSentence() {
   
     // check for the next incomplete word,
     // then check for any previous incomplete word
+    // TO DO: this is broken, fix
     const thisMap = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0]
     const nextIncomp = checkMapForZero(thisMap, parseInt(globCurrents['sent']) + 1)
     const prevIncomp = checkMapForZero(thisMap, 0)
@@ -953,10 +964,9 @@ function updateTargVisual(arr, delay) {
                                 oscBeep(200 + Math.floor(Math.random() * 300), 0.01, 0.3, 'square')
                                 break;
                             case 'chord':
-                                oscBeep(halfStepToHz(scoreChord[i] - ((1 - arr[i]) * Math.random()), -1), 0.01, 0.3, 'square')
+                                oscBeep(halfStepToHz(scoreChord[i] - ((1 - arr[i]) * 4 * Math.random()), -1), 0.01, 0.3, 'square')
                                 break;
                         }
-                    
 
                         if (!allTargs[i].classList.contains('correct') && arr[i] == 1) {
                             allTargs[i].classList.add('correct')
@@ -1123,19 +1133,19 @@ function toggleQRTray() {
     }
 }
 
-function populatePresets(arr) {
-    titleCards.innerHTML = ""
+async function populatePresets(data) {
+    titleCards.innerHTML = ''
 
-    arr.forEach((idx) => {
+    data.forEach((entry) => {
         const newTitle = document.createElement('div')
-        newTitle.innerText = bookList[idx]['title']
+        newTitle.innerText = entry.title
 
         newTitle.classList.add('preset-line')
         newTitle.classList.add('one-title')
 
         newTitle.addEventListener('click', (e) => {
-            bookIndex = idx
-            populateChunks(idx, e.target)
+            console.log('get chunks for: ' + entry.id)
+            populateChunks(entry.id, e.target)
         })
         titleCards.appendChild(newTitle)
     });
@@ -1190,7 +1200,7 @@ function synthSpeakClosure(str, lang) {
     }
 }
 
-function populateChunks(n, clickedElem) {
+async function populateChunks(id, clickedElem) {
       
     const clearHighlight = document.querySelector('.title-highlight')
 
@@ -1200,13 +1210,13 @@ function populateChunks(n, clickedElem) {
 
     clickedElem.classList.add('title-highlight')
 
-    partsCards.innerHTML = "";
+    partsCards.innerHTML = ''
 
-    let m = 0;
+    const partsData = await getBookParts(id)
+    console.log(partsData)
 
-    bookList[n].parts.forEach(chunk =>{
-        constructPresetCheckbox(chunk, m)
-        m++
+    partsData.forEach(entry => {
+        constructChunkCheckbox(entry.id, entry.text, entry.award)
     })
 }
 
@@ -1242,10 +1252,11 @@ function populateProgressParts([arr, total]) {
     progBtns.style.gridTemplateColumns = rowTempStr
 }
 
-function constructPresetCheckbox(arr, n) {
+function constructChunkCheckbox(chunkId, textArr, awardStr) {
 
-    const currentID = 'part' + n;
-    const preview = (n + 1) + " - " + arr.text[0]
+    const currentID = chunkId;
+    // TO DO: add indeces to the parts and place the index number in the preview
+    const preview = "- " + textArr[0]
 
     let preset = document.createElement('input')
     preset.classList.add('preset-check')
@@ -1255,7 +1266,7 @@ function constructPresetCheckbox(arr, n) {
     let preLabel = document.createElement('label')
     preLabel.classList.add('preset-label')
     preLabel.htmlFor = currentID
-    preLabel.innerText = arr.award + preview
+    preLabel.innerText = awardStr + preview
 
     let divWrap = document.createElement('div')
     divWrap.appendChild(preset)
