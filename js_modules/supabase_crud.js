@@ -14,9 +14,81 @@ const supabase = createClient(
 export async function addBook(title, lang, author) {
     const { data, error } = await supabase
         .from('books')
-        .insert([{ title, lang, author }]);
+        .insert([{ title, lang, author }])
+        .select()
+        .single();
     if (error) console.error(error);
-    else console.log('Book added:', data);
+    else {
+        console.log('Book added:', data)
+        return data.id
+    };
+}
+
+export async function addPart(bookId, award = null, text = []) {
+  if (!bookId) {
+    console.error('❌ Missing book ID.');
+    return null;
+  }
+
+  const { data, error } = await supabase
+    .from('parts')
+    .insert([{ book_id: bookId, award, text }])
+    .select()
+    .single(); // return the inserted row
+
+  if (error) {
+    console.error('Error creating part:', error);
+    return null;
+  }
+
+  console.log('✅ Part created:', data);
+  return data;
+}
+
+
+export async function addBookWithParts(bookData, partsData = []) {
+  // Step 1: Insert the book
+  const { data: book, error: bookError } = await supabase
+    .from('books')
+    .insert([{
+      title: bookData.title,
+      author: bookData.author,
+      lang: bookData.lang,
+      mercy_words: bookData.mercy_words || {}
+    }])
+    .select()
+    .single();
+
+  if (bookError) {
+    console.error('❌ Error creating book:', bookError);
+    return null;
+  }
+
+  console.log('✅ Book created:', book.id);
+
+  // Step 2: Insert any parts (if provided)
+  let parts = [];
+  if (partsData.length > 0) {
+    const partsToInsert = partsData.map(p => ({
+      book_id: book.id,
+      award: p.award || null,
+      text: p.text || []
+    }));
+
+    const { data: insertedParts, error: partsError } = await supabase
+      .from('parts')
+      .insert(partsToInsert)
+      .select();
+
+    if (partsError) {
+      console.error('❌ Error creating parts:', partsError);
+    } else {
+      parts = insertedParts;
+      console.log(`✅ Created ${parts.length} parts for book ${book.id}`);
+    }
+  }
+
+  return { book, parts };
 }
 
 
@@ -110,5 +182,53 @@ export async function deleteBook(id) {
     await supabase.from('books').delete().eq('id', id);
 }
 
-// Call loadAllBooks on page load
-// loadAllBooks();
+// Incorporating a local cache
+
+/*
+    TO DO: come back to this later, it's complicated and it scares me
+    Generic Supabase caching wrapper
+    
+    @param {string} cacheKey - Unique name for the cached data.
+    @param {Function} fetchFn - Async function returning { data, error } from Supabase.
+    @param {number} [ttl=300000] - Cache lifetime in milliseconds (default 5 minutes).
+    @returns {Promise<Array|Object>} Cached or fresh data.
+*/
+
+export async function fetchWithCache(cacheKey, fetchFn, ttl = 5 * 60 * 1000) {
+    // Try to get cached version
+    const cached = JSON.parse(localStorage.getItem(cacheKey));
+
+    if (cached && Date.now() - cached.timestamp < ttl) {
+        // Return cached data immediately (fast UI)
+        refreshInBackground(cacheKey, fetchFn); // background update
+        return cached.data;
+    }
+
+    // Otherwise fetch fresh data
+    const { data, error } = await fetchFn();
+    if (error) {
+        console.error(`Error fetching ${cacheKey}:`, error);
+        return cached ? cached.data : []; // fallback to stale data if exists
+    }
+
+    // Save to cache
+    localStorage.setItem(cacheKey, JSON.stringify({
+        data,
+        timestamp: Date.now()
+    }));
+
+    return data;
+}
+
+/*
+    Refresh cache asynchronously (non-blocking)
+*/
+export async function refreshInBackground(cacheKey, fetchFn) {
+    const { data, error } = await fetchFn();
+    if (!error && data) {
+        localStorage.setItem(cacheKey, JSON.stringify({
+        data,
+        timestamp: Date.now()
+        }));
+    }
+}

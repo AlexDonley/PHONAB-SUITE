@@ -30,7 +30,9 @@ import {
 import { urlConfigs } from '../../js_modules/url-query.js'
 import { cycleQRWrap, toggleShowQR, genQRstr, genNewQR } from '../../js_modules/qr.js'
 import { 
-    getBookParts, getFilteredBooks, getPartById
+    addBook, addPart, addBookWithParts,
+    getBookParts, getFilteredBooks, getPartById,
+    fetchWithCache, loadAllBooks
 } from '../../js_modules/supabase_crud.js'
 
 // - - - ELEMENTS - - - //
@@ -66,6 +68,7 @@ const goCheck         = document.querySelector('#goCheck');
 
 const contentBlocks = document.getElementById("contentBlocks");
 const startMenu = document.getElementById("startMenu");
+const createOpt = document.querySelector('#createOpt')
 const textInput = document.getElementById("textInput");
 
 // buttons and their fuunctions
@@ -81,18 +84,24 @@ const homeBtn       = document.querySelector('#homeBtn');
 const userBtn       = document.querySelector('#userBtn');
 const fullscreenBtn = document.querySelector('#fullscreenBtn');
 const settingBtn    = document.querySelector('#settingBtn');
+const saveBookBtn   = document.querySelector('#saveBookBtn');
+const addChunkBtn   = document.querySelector('#addChunkBtn');
 
 const searchTitles      = document.querySelector("#searchTitles");
 const titleCards        = document.querySelector("#titleCards");
 const partsCards        = document.querySelector("#partsCards");
 const pinyinDropdown    = document.querySelector('#pinyinDropdown');
 
-const targetColumn    = document.querySelector(".targetColumn");
-const utterTexts      = document.querySelector(".texts");
-const userEntry       = document.querySelector('#userEntry');
-const availableUsers  = document.querySelector('#availableUsers');
-const userName        = document.querySelector('#userName');
-const punchBtn        = document.querySelector('.punch-btn');
+const targetColumn      = document.querySelector(".targetColumn");
+const utterTexts        = document.querySelector(".texts");
+const userEntry         = document.querySelector('#userEntry');
+const availableUsers    = document.querySelector('#availableUsers');
+const userName          = document.querySelector('#userName');
+const punchBtn          = document.querySelector('.punch-btn');
+
+const createTitle       = document.querySelector('#createTitle')
+const chunkArea         = document.querySelector('#chunkArea');
+const chunkTemplate     = document.querySelector('#chunkTemplate')
 
 presetBtn.addEventListener("click", togglePresets);
 shuffleBtn.addEventListener("click", toggleShuffle);
@@ -111,6 +120,8 @@ readBtn.addEventListener("click", e => {
 })
 fullscreenBtn.addEventListener("click", toggleFullscreen);
 settingBtn.addEventListener("click", toggleSettings);
+saveBookBtn.addEventListener("click", trySaveBook)
+addChunkBtn.addEventListener("click", addChunk);
 pinyinDropdown.addEventListener("change", togglePinyinRT);
 synthSpeed.addEventListener("pointermove", updateSpeed);
 synthVol.addEventListener("pointermove", updateVol);
@@ -533,14 +544,14 @@ async function swapLang(lang) {
     // set the target language for speech recognition
     setLanguage(lang)
 
-    // swap freeform text
-    textInput.value = defaultFfText[lang]
+    // TO DO: update swap freeform text
+    // textInput.value = defaultFfText[lang]
 
     // filter different preset options
     const langBooks = await getFilteredBooks({
         'lang': 'en', 
         'searchTerm': null,
-        'limit': 20
+        'limit': 40
     })
     
     populatePresets(langBooks)
@@ -1052,13 +1063,13 @@ function togglePresets(str) {
 
         presetBtn.innerHTML = 'Preset'
         presetBool = false;
-        textInput.classList.remove('disappear');
+        createOpt.classList.remove('disappear');
 
     } else {
     
-        presetBtn.innerHTML = 'Freeform'
+        presetBtn.innerHTML = 'Create'
         presetBool = true;
-        textInput.classList.add('disappear');
+        createOpt.classList.add('disappear');
 
     }
 }
@@ -1452,5 +1463,68 @@ function FSwrapper(bool) {
     return function executeOnEvent(e) {
         toggleFullscreen(bool);
         e.target.remove()
+    }
+}
+
+function addChunk() {
+    const newChunk = chunkTemplate.content.cloneNode(true);
+    newChunk.querySelector('.del-chunk').addEventListener("click", (e) => {
+        e.target.parentNode.parentNode.remove()
+
+        const chunkArr = Array.from(chunkArea.children)
+        
+        if (chunkArr.length < 2) {
+            const thisButton = document.querySelector('.del-chunk')
+            thisButton.disabled = true
+        }
+    })
+
+    chunkArea.append(newChunk)
+
+    const chunkArr = Array.from(chunkArea.children)
+    if (chunkArr.length > 1) {
+        const allButtons = document.querySelectorAll('.del-chunk')
+
+        allButtons.forEach(button => {
+            button.disabled = false
+        })
+    }
+}
+
+addChunk()
+
+function trySaveBook() {
+
+    let noNullCheck = true
+
+    const theseChunks = document.querySelectorAll('.chunk-div')
+    theseChunks.forEach(chunk => {
+        if (chunk.querySelector('textarea').value == '') {
+            noNullCheck = false
+        }
+    })
+
+    if (createTitle.value == '' || noNullCheck == false) {
+        alert('Fill in all blanks before attempting to save!')
+    } else {
+        console.log(`Book info: `, createTitle.value, targetLang, 'guest' )
+
+        const entryBookData = {
+            'title' : createTitle.value,
+            'author' : 'guest',
+            'lang' : targetLang
+        }
+        let entryPartsData = []
+
+        theseChunks.forEach (chunk => {
+            const newChunkObj = {
+                'award' : chunk.querySelector('.award-select').value,
+                'text' : chunk.querySelector('textarea').value.split('\n')
+            }
+
+            entryPartsData.push(newChunkObj)
+        })
+
+        const result = addBookWithParts(entryBookData, entryPartsData)
     }
 }

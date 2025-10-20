@@ -542,14 +542,63 @@ img {
   border-radius: 500px;
 }
 
-.text-input {
+.create-options {
   position: absolute;
   width: 100%;
   height: 90%;
-  border-radius: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
   padding: 20px;
+  background: darkgray
+}
+
+.chunk-title-bar {
+  display: flex
+}
+.chunk-title-bar > input {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   font-size: 1.5rem;
+  padding: 10px;
+}
+.chunk-title-bar > button {
+  background: blue;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.chunk-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chunk-area > .chunk-div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+}
+.chunk-area > .chunk-div > .chunk-side {
+  display: grid;
+  height: 70px;
+  margin: 5px;
+  grid-template-rows: 1fr 1fr;
+}
+.chunk-area > * > textarea {
+  border-radius: 5px;
+  grid-area: 1 / 1 / 3 / 1;
+  padding: 10px;
+  font-size: 1rem;
+  field-sizing: content;
   resize: none;
+}
+.create-options > button {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%
 }
 
 button {
