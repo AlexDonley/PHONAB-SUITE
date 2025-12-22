@@ -1,4 +1,4 @@
-// import {} from './js/eng-to-zhu.js'
+// import { wordToIpaArr } from './js/universal-phonics.js'
 
 // const userText = document.querySelector('.user-text');
 const transText = document.querySelector('.trans-text');
@@ -34,15 +34,60 @@ function fetchIPAtoZhu() {
         ipaToZhu = data;
 
         // test successful fetching and functions with the example "friday"
-        const testArr = wordToIpa('friday');
+        const testArr = wordToIpaArr('friday');
         const revArr = reviseIpaArr(testArr);
         console.log(ipaToZY(revArr));
     })
 }
 
-function wordToIpa(str) {
+export function wordToIpaArr(str) {
 
-    return engIpa[str];
+    const thisIpa = engIpa[str]
+    if (thisIpa) {
+        return thisIpa;
+    } else {
+        return null
+    }
+        
+}
+
+export function wordToIpaStr(str) {
+
+    const IpaWSyll = wordToIpaArr(str)
+
+    if (IpaWSyll) {
+        let buildStr = ''
+
+        IpaWSyll.forEach(syll => {
+            buildStr += syll.join('')
+        })
+
+        return buildStr
+    } else {
+        return null
+    }
+}
+
+export function reviseIpaArr(arr) {
+    let newArr = [...arr];
+    
+    newArr.forEach(syll => {
+        for (let i = 0; i < syll.length; i++){
+            if (consCheck.includes(syll[i]) && ['i', 'ɪ'].includes(syll[i+1])) {
+                const combined = syll[i] + syll[i + 1];
+                console.log(combined)
+                syll.splice(i, 1, combined);
+            }
+    
+            if (['n', 'ŋ'].includes(syll[i]) && vowCheck.includes(syll[i-1])) {
+                const combined = syll[i - 1] + syll[i];
+                syll.splice(i - 1, 2, combined);
+            }
+        }
+    })
+
+    console.log(newArr);
+    return newArr
 }
 
 function ipaToZY(arr) {
@@ -63,7 +108,7 @@ function translateText() {
     let zhuStr = '';
 
     textArr.forEach(word => {
-        const thisIpa = wordToIpa(word);
+        const thisIpa = wordToIpaArr(word);
         const revIpa = reviseIpaArr(thisIpa);
         const thisZY = ipaToZY(thisIpa);
 
@@ -78,7 +123,7 @@ function translateText() {
 export function wordToZhu(str) {
     let zhuStr = '';
 
-    const thisIpa = wordToIpa(str);
+    const thisIpa = wordToIpaArr(str);
     const revIpa = reviseIpaArr(thisIpa);
     const thisZY = ipaToZY(revIpa);
 
@@ -88,28 +133,6 @@ export function wordToZhu(str) {
 
     console.log(zhuStr)
     return zhuStr
-}
-
-function reviseIpaArr(arr) {
-    let newArr = [...arr];
-    
-    newArr.forEach(syll => {
-        for (let i = 0; i < syll.length; i++){
-            if (consCheck.includes(syll[i]) && ['i', 'ɪ'].includes(syll[i+1])) {
-                const combined = syll[i] + syll[i + 1];
-                console.log(combined)
-                syll.splice(i, 1, combined);
-            }
-    
-            if (['n', 'ŋ'].includes(syll[i]) && vowCheck.includes(syll[i-1])) {
-                const combined = syll[i - 1] + syll[i];
-                syll.splice(i - 1, 2, combined);
-            }
-        }
-    })
-
-    console.log(newArr);
-    return newArr
 }
 
 

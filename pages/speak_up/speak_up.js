@@ -1,4 +1,5 @@
 import { shuffle as myShuffle } from '../../js_modules/shuffle.js'
+import { wordToIpaArr, wordToIpaStr, wordToZhu } from '../../js_modules/universal-phonics.js'
 import {
     targetLang, speechRec, 
     setLanguage, startRecLoop, stopRecLoop
@@ -79,6 +80,7 @@ const timerBtn      = document.querySelector('#timer');
 const loopBtn       = document.querySelector('#loop');
 const goBtn         = document.querySelector('#goBtn');
 const leftBtn       = document.querySelector('#leftBtn');
+const capBtn        = document.querySelector('#capBtn')
 const playBtn       = document.querySelector('#playBtn');
 const homeBtn       = document.querySelector('#homeBtn');
 const userBtn       = document.querySelector('#userBtn');
@@ -109,6 +111,7 @@ loopBtn.addEventListener("click", toggleLoop);
 timerBtn.addEventListener("click", changeTimerMode);
 goBtn.addEventListener("click", startQueue);
 leftBtn.addEventListener("click", tryLeftRound);
+capBtn.addEventListener("click", toggleRT)
 playBtn.addEventListener("click", synthSpeakClosure('fullSent', targetLang));
 homeBtn.addEventListener("click", endQueue);
 userBtn.addEventListener("click", e => {
@@ -122,7 +125,7 @@ fullscreenBtn.addEventListener("click", toggleFullscreen);
 settingBtn.addEventListener("click", toggleSettings);
 saveBookBtn.addEventListener("click", trySaveBook)
 addChunkBtn.addEventListener("click", addChunk);
-pinyinDropdown.addEventListener("change", togglePinyinRT);
+//pinyinDropdown.addEventListener("change", togglePinyinRT);
 synthSpeed.addEventListener("pointermove", updateSpeed);
 synthVol.addEventListener("pointermove", updateVol);
 qrImg.addEventListener("click", cycleQRWrap);
@@ -216,12 +219,12 @@ function QRdictFromElem() {
     return thisDict;
 }
 
-function togglePinyinRT() {
+function toggleRT() {
     console.log('change')
-    const pinRT = Array.from(document.querySelectorAll('.pin-text'));
+    const pinRT = Array.from(document.querySelectorAll('rt'));
 
     pinRT.forEach(element => {
-        if (pinyinDropdown.value == 'pinyin') {
+        if (element.classList.contains('hide')) {
             element.classList.remove('hide')
         } else {
             element.classList.add('hide')
@@ -549,7 +552,7 @@ async function swapLang(lang) {
 
     // filter different preset options
     const langBooks = await getFilteredBooks({
-        'lang': 'en', 
+        'lang': targetLang, 
         'searchTerm': null,
         'limit': 40
     })
@@ -830,30 +833,40 @@ function loadSentence(sentN){
         }
 
         const text = arr[n]
-        let newContent
+        const newContent = document.createElement('ruby')
+        newContent.innerText = text
 
-        if (monocharLangs.includes(targetLang)) {
+        const newCaption = document.createElement('rt')
+        //newCaption.innerText = wordToIpaStr(text)
+        newCaption.innerText = wordToZhu(text)
+        newCaption.classList.add('hide')
+        newCaption.dataset.word = text
 
-            const thisPin = charToPin(text)
-            let pinWithTone = ''
+        newContent.append(newCaption)
+        
+        // if (monocharLangs.includes(targetLang)) {
 
-            if (thisPin) {
-                pinWithTone = pinNumToDiacritic(thisPin)
-            }
+        //     const thisPin = charToPin(text)
+        //     let pinWithTone = ''
 
-            newContent = constructPinRT(
-                text, pinWithTone, 'under'
-            )
+        //     if (thisPin) {
+        //         pinWithTone = pinNumToDiacritic(thisPin)
+        //     }
 
-            if ( ! (pinyinDropdown.value == 'pinyin') ) {
-                newContent.children[0].children[0].classList.add('hide')
-            }
+        //     newContent = constructPinRT(
+        //         text, pinWithTone, 'under'
+        //     )
 
-        } else {
-            newContent = document.createTextNode(text)
-        }
+        //     if ( ! (pinyinDropdown.value == 'pinyin') ) {
+        //         newContent.children[0].children[0].classList.add('hide')
+        //     }
+
+        // } else {
+        //     newContent = document.createTextNode(text)
+        // }
         
         newSpan.append(newContent)
+        
         newSpan.addEventListener('click', synthSpeakClosure(
             text, targetLang
         ))

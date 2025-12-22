@@ -729,6 +729,7 @@ button {
   font-size: min(5vw, 5vh);
   font-weight: bold;
   text-align: center;
+  ruby-position: under;
   transition: color 0.2s, 
               background-color 0.2s;
 }
@@ -937,10 +938,10 @@ input[type="checkbox"].preset-check:checked + label {
   text-align: center;
 }
 
-rt.pin-text {
+rt {
   transition: font-size 0.2s;
 }
-rt.pin-text.hide {
+rt.hide {
   font-size: 0px;
 }
 
