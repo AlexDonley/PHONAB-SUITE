@@ -1,10 +1,7 @@
-// import { wordToIpaArr } from './js/universal-phonics.js'
+// import { monocharLangs, parseAndCaption } from './js/universal-phonics.js'
 
-// const userText = document.querySelector('.user-text');
-const transText = document.querySelector('.trans-text');
 
-let engIpa = [];
-let ipaToZhu = [];
+// CONSTANTS FOR ENGLISH & IPA
 
 // check these consonants for combinations with the /i/ vowel
 const consCheck = ['dʒ', 'tʃ', 'ʃ'];
@@ -12,9 +9,40 @@ const consCheck = ['dʒ', 'tʃ', 'ʃ'];
 // /n/ or /ŋ/ sounds
 const vowCheck = ['ʌ', 'ɛ', 'i', 'ɪ', 'ɔ']
 
-// userText.addEventListener('keyup', translateText);
 
-fetchEngIPA()
+// CONSTANTS FOR CHINESE
+
+export const monocharLangs = [
+    'zh', 'cmn', 'cmn-Hans', 'cmn-Hant', 
+    'zh-TW', 'yue-Hant-HK', 'zh-CN', 
+    'cmn-Hans-CN', 'cmn-Hant-TW'
+]
+
+const umlaut = 'u' + '\u0308'
+const vowelHierarchy = ['a', 'o', 'e', 'i', 'u', 'v']
+const pinyinDiacritics = ['\u0304', '\u0301', '\u030C', '\u0300']
+const zhuyinDiacritics = ['⸍','∨','⸌','∙']
+const zhuyinDiacritics2 = ['ˊ','ˇ','ˋ','∙']
+const zhuyinDiacritics3 = ['╱⸝','ˇ','╲⸜','•']
+
+const pinyinCons = [
+    'b', 'p', 'm', 'f', 
+    'd', 't', 'n', 'l', 
+    'g', 'k', 'h',
+    'j', 'q', 'x',
+    'z', 'c', 's', 'r'
+]
+
+
+
+// const userText = document.querySelector('.user-text');
+// const transText = document.querySelector('.trans-text');
+
+
+// FETCH DATA
+
+let engIpa = [];
+let ipaToZhu = [];
 
 function fetchEngIPA() {
     fetch("../../data/syll_ipa.json")
@@ -22,6 +50,7 @@ function fetchEngIPA() {
     .then(data => {
         console.log('Successfully fetched English IPA syllables.');
         engIpa = data;
+        console.log(engToIPAArr("it's"))
         fetchIPAtoZhu();
     })
 }
@@ -34,13 +63,90 @@ function fetchIPAtoZhu() {
         ipaToZhu = data;
 
         // test successful fetching and functions with the example "friday"
-        const testArr = wordToIpaArr('friday');
+        const testArr = engToIPAArr('friday');
         const revArr = reviseIpaArr(testArr);
         console.log(ipaToZY(revArr));
     })
 }
 
-export function wordToIpaArr(str) {
+export let pinyinKeys
+let zhuyinDict
+
+function getZhChars() {
+    fetch('../../data/py_trad_monochars.json')
+    .then(res => {
+        if (res.ok) {
+            console.log("Fetched chars to Pinyin.")
+        } else {
+            console.log("Couldn't fetch chars to Pinyin.")
+        }
+        return res.json()
+    })
+    .then(data => {
+        pinyinKeys = data;
+    })
+    .catch(error => console.log(error))
+}
+
+function getPinZhuDict() {
+    fetch('../../data/py_to_zy.json')
+    .then(res => {
+        if (res.ok) {
+            console.log("Fetched Pinyin to Zhuyin.")
+        } else {
+            console.log("Couldn't fetch Pinyin to Zhuyin.")
+        }
+        return res.json()
+    })
+    .then(data => {
+        zhuyinDict = data;
+    })
+    .catch(error => console.log(error))
+}
+
+fetchEngIPA()
+getPinZhuDict()
+getZhChars()
+
+// END OF FETCH DATA
+
+export function parseAndCaption(word, caption, lang, elem) {
+    switch (lang){
+        case 'en':
+            switch (caption) {
+                case 'IPA':
+                    return engToIPAStr(word)
+                    break;
+                case 'Zhuyin':
+                    return engToZhuyin(word)
+                    break;
+            }
+            break;
+
+        case 'cmn-Hant':
+            switch (caption) {
+                case 'Pinyin':
+                    return pinNumToDiacritic(charToPin(word))
+                    break;
+                case 'Zhuyin':
+                    return charToZhu(word)
+                    break;
+                case 'Tai-lo':
+                    break;
+            }
+            break;
+
+        case 'fil-PH':
+            switch (caption) {
+                case 'Baybayin':
+                    break;
+            }
+            break;
+    }
+
+}
+
+export function engToIPAArr(str) {
 
     const thisIpa = engIpa[str]
     if (thisIpa) {
@@ -51,9 +157,9 @@ export function wordToIpaArr(str) {
         
 }
 
-export function wordToIpaStr(str) {
+function engToIPAStr(str) {
 
-    const IpaWSyll = wordToIpaArr(str)
+    const IpaWSyll = engToIPAArr(str)
 
     if (IpaWSyll) {
         let buildStr = ''
@@ -68,7 +174,7 @@ export function wordToIpaStr(str) {
     }
 }
 
-export function reviseIpaArr(arr) {
+function reviseIpaArr(arr) {
     let newArr = [...arr];
     
     newArr.forEach(syll => {
@@ -102,28 +208,10 @@ function ipaToZY(arr) {
     return newArr;
 }
 
-function translateText() {
-    const textArr = userText.value.toLowerCase().split(' ');
-
+export function engToZhuyin(str) {
     let zhuStr = '';
 
-    textArr.forEach(word => {
-        const thisIpa = wordToIpaArr(word);
-        const revIpa = reviseIpaArr(thisIpa);
-        const thisZY = ipaToZY(thisIpa);
-
-        thisZY.forEach(zhu => {
-            zhuStr = zhuStr.concat(zhu);
-        })
-    })
-
-    transText.innerText = zhuStr
-}
-
-export function wordToZhu(str) {
-    let zhuStr = '';
-
-    const thisIpa = wordToIpaArr(str);
+    const thisIpa = engToIPAArr(str);
     const revIpa = reviseIpaArr(thisIpa);
     const thisZY = ipaToZY(revIpa);
 
@@ -136,23 +224,127 @@ export function wordToZhu(str) {
 }
 
 
+// FUNCTIONS ON CHINESE, PINYIN, & ZHUYIN
 
-// obsolete functions used to condense and download the IPA dictionary
+export function splitPinyin(str) {
+    const letterStr = str.substring(0, str.length - 1)
+    const toneNum = str.substring(str.length - 1)
 
-// function arraysToDict(arrArr) {
-//     let newDict = {}
+    return [letterStr, toneNum]
+}
 
-//     arrArr.forEach(entry => {
-//         newDict[entry[0]] = entry[1]
-//     })
+export function charToPin(char) {
+    const pinIndex = pinyinKeys.findIndex(({ trad }) => trad === char)
+    
+    if (pinIndex >= 0) {
+        return pinyinKeys[pinIndex].pin1[0]
+    } else {
+        return false
+    }
+}
 
-//     return newDict
-// }
+export function charToZhu(char) {
+    const pinyin = charToPin(char)
+    const zhuyin = pinToZhu(pinyin)
 
-// function prepDownload(content, fileName, contentType) {
-//     var a = document.createElement("a");
-//     var file = new Blob([content], {type: contentType});
-//     a.href = URL.createObjectURL(file);
-//     a.download = fileName;
-//     a.click();
-// }
+    return zhuyin
+}
+
+export function pinToZhu(pin) {
+    
+    // console.log(pin)
+    const pinSplit = splitPinyin(pin)
+    const syll = pinSplit[0]
+    const tone = pinSplit[1]
+    
+    let divideIndex = 0
+    let zhuOnset = ''
+    let zhuCoda = ''
+
+    if (syll.substring(1, 2) == 'h') {
+        divideIndex = 2
+    } else if (pinyinCons.includes(syll.substring(0, 1))) {
+        divideIndex = 1
+    }
+
+    const pinOnset = syll.slice(0, divideIndex)
+    const pinCoda = syll.slice(divideIndex)
+
+    if (pinOnset.length > 0) {
+        zhuOnset = zhuyinDict[0][pinOnset]
+    }
+
+    // the pinyin syllables 'zhi', 'chi', 'shi', and 'ri' do not use a vowel in zhuyin
+    // they must be written without a coda
+    if (['zh', 'ch', 'sh', 'r'].includes(pinOnset) && pinCoda == 'i') {
+        zhuCoda = ''
+
+    // the pinyin codas 'u', 'un', and 'uan' translate to different zhuyin vowels depending on context
+    // if they come after 'j', 'q', or 'x', then they will begin with the vowel ㄩ
+    // otherwise, they will being with the vowel ㄨ
+    } else if (['u', 'un', 'uan'].includes(pinCoda)) {
+        if (['j', 'q', 'x'].includes(pinOnset)) {
+            zhuCoda = zhuyinDict[1][pinCoda][1]
+        } else {
+            zhuCoda = zhuyinDict[1][pinCoda][0]
+        }
+    
+    // if the pinyin doesn't fall into one of these exceptions, the coda may be translated normally
+    } else {
+        zhuCoda = zhuyinDict[1][pinCoda]
+    }
+
+    const fullZhuyin = zhuOnset + zhuCoda
+
+    return [fullZhuyin, tone]
+}
+
+export function pinNumToDiacritic(char) {
+
+    const charArr = splitPinyin(char)
+    const toneNum = charArr[1]
+
+    let thisDiacritic = ''
+    let newStr = charArr[0]
+    
+    if (toneNum < 5) {
+        thisDiacritic = pinyinDiacritics[toneNum - 1]
+
+        const letterArr = newStr.split('')
+
+        let i = 0
+
+        while (!(letterArr.includes(vowelHierarchy[i]))){
+            i++
+        }
+
+        const diaIndex = letterArr.indexOf(vowelHierarchy[i]) + 1
+
+        if (letterArr.includes('v')) {
+            newStr = newStr.slice(0, diaIndex - 1) 
+                    + umlaut 
+                    + thisDiacritic 
+                    + newStr.slice(diaIndex, newStr.length)
+        } else {
+            newStr = newStr.slice(0, diaIndex) 
+                    + thisDiacritic 
+                    + newStr.slice(diaIndex, newStr.length)
+        }
+    }
+
+    return newStr
+}
+
+function diacriticToPinNum(str){
+    if (str.includes('ˊ')) {
+        return 2;
+    } else if (str.includes('ˇ')) {
+        return 3;
+    } else if (str.includes('ˋ')) {
+        return 4;
+    } else if (str.includes('˙')) {
+        return 5;
+    } else {
+        return 1;
+    }
+}

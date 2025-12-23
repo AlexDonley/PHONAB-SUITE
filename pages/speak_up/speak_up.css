@@ -499,6 +499,14 @@ img {
   border-top-right-radius: 50%;
 }
 
+.cap-btn.active {
+  color: white;
+  background-color: green;
+}
+.cap-btn.active:not(:disabled) > * {
+  fill: white
+}
+
 .read-btn {
   transition: color 0.3s,
               background-color 0.3s;

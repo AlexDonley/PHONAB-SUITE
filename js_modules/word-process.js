@@ -1,5 +1,5 @@
 // import { omitPunctuation, omitWords, parseColon, numToTexts, genWPStrToArr } from './word-process.js'
-import { monocharLangs, charToPin } from './ruby-text.js'
+import { monocharLangs, charToPin } from './universal-phonics.js'
 
 
 // arrays for processing numbers (numerals to strings)

@@ -1,5 +1,5 @@
 import { shuffle as myShuffle } from '../../js_modules/shuffle.js'
-import { wordToIpaArr, wordToIpaStr, wordToZhu } from '../../js_modules/universal-phonics.js'
+import { monocharLangs, parseAndCaption } from '../../js_modules/universal-phonics.js'
 import {
     targetLang, speechRec, 
     setLanguage, startRecLoop, stopRecLoop
@@ -19,11 +19,11 @@ import {
     mapToAwardArr, trackCompletion,
     mapToFreqs, findPercent 
 } from '../../js_modules/completion-map.js'
-import { 
-    monocharLangs, splitPinyin, pinNumToDiacritic, 
-    charToPin, pinToZhu,
-    constructPinRT, constructZhuRT 
-} from '../../js_modules/ruby-text.js'
+// import { 
+//     splitPinyin, pinNumToDiacritic, 
+//     charToPin, pinToZhu,
+//     constructPinRT, constructZhuRT 
+// } from '../../js_modules/ruby-text.js'
 import { 
     defaultSteps, oscBeep, createChord,
     halfStepToHz, extendSteps
@@ -92,7 +92,7 @@ const addChunkBtn   = document.querySelector('#addChunkBtn');
 const searchTitles      = document.querySelector("#searchTitles");
 const titleCards        = document.querySelector("#titleCards");
 const partsCards        = document.querySelector("#partsCards");
-const pinyinDropdown    = document.querySelector('#pinyinDropdown');
+const captionDropdown    = document.querySelector('#captionDropdown');
 
 const targetColumn      = document.querySelector(".targetColumn");
 const utterTexts        = document.querySelector(".texts");
@@ -125,7 +125,7 @@ fullscreenBtn.addEventListener("click", toggleFullscreen);
 settingBtn.addEventListener("click", toggleSettings);
 saveBookBtn.addEventListener("click", trySaveBook)
 addChunkBtn.addEventListener("click", addChunk);
-//pinyinDropdown.addEventListener("change", togglePinyinRT);
+captionDropdown.addEventListener("change", swapCaptions);
 synthSpeed.addEventListener("pointermove", updateSpeed);
 synthVol.addEventListener("pointermove", updateVol);
 qrImg.addEventListener("click", cycleQRWrap);
@@ -172,6 +172,7 @@ let fullscreenBool  = false // false means the application is not fullscreen, tr
 let isLeftRound     = false // false means the speaker is practicing a normal speech chunk, true means they've returned to skipped words
 let isRecog         = false // false means speech recognition is not activated, true means it is activated
 let qrTrayBool      = false
+let capBool         = false
 
 // setting for P5 sawtooth frequency
 
@@ -186,6 +187,12 @@ const defaultFfText = {
     'en': "Hello! How are you?\nI'm fine thank you.\nIt's 3:00.",
     'cmn-Hant': "你好！你吃飯了嗎?\n我很好,謝謝!",
     'fil-PH': "Kumusta ka?\nMabuti ako, salamat po."
+}
+
+const availableCaptions = {
+    'en': ['IPA', 'Zhuyin'],
+    'cmn-Hant': ['Pinyin', 'Zhuyin'],
+    'fil-PH': ['Baybayin']
 }
 
 function QRgenWrap() {
@@ -220,11 +227,20 @@ function QRdictFromElem() {
 }
 
 function toggleRT() {
-    console.log('change')
+    console.log('toggle ruby text captions')
+
+    if (capBool) {
+        capBool = false
+        capBtn.classList.remove('active')
+    } else {
+        capBool = true
+        capBtn.classList.add('active')
+    }
+
     const pinRT = Array.from(document.querySelectorAll('rt'));
 
     pinRT.forEach(element => {
-        if (element.classList.contains('hide')) {
+        if (capBool) {
             element.classList.remove('hide')
         } else {
             element.classList.add('hide')
@@ -510,26 +526,26 @@ function populateUtterances(arr, elem) {
         inputWord.classList = 'one-word'
         inputWord.id = 'input' + n
 
-        if (monocharLangs.includes(targetLang)) {
-            const thisPin = charToPin(word)
-            let pinWithTone = ''
+        // if (monocharLangs.includes(targetLang)) {
+            // const thisPin = charToPin(word)
+            // let pinWithTone = ''
 
-            if (thisPin) {
-                pinWithTone = pinNumToDiacritic(thisPin)
-            }
+            // if (thisPin) {
+            //     pinWithTone = pinNumToDiacritic(thisPin)
+            // }
 
-            const newContent = constructPinRT(
-                word, pinWithTone, 'under'
-            )
+            // const newContent = constructPinRT(
+            //     word, pinWithTone, 'under'
+            // )
 
-            if ( ! (pinyinDropdown.value == 'pinyin') ) {
-                newContent.children[0].children[0].classList.add('hide')
-            }
+            // if ( ! (captionDropdown.value == 'pinyin') ) {
+            //     newContent.children[0].children[0].classList.add('hide')
+            // }
 
-            inputWord.append(newContent)
-        } else {
+            // inputWord.append(newContent)
+        //} else {
             inputWord.innerText = word
-        }
+        //}
 
         const wrapElem = document.createElement('div')
         wrapElem.classList = 'word-wrap'
@@ -558,6 +574,38 @@ async function swapLang(lang) {
     })
     
     populatePresets(langBooks)
+    populateCapOptions(lang)
+}
+
+function populateCapOptions(lang) {
+    captionDropdown.innerHTML = ''
+    
+    const nullOpt = document.createElement('option')
+    nullOpt.value = false
+    nullOpt.innerText = 'None'
+
+    captionDropdown.append(nullOpt)
+
+    availableCaptions[lang].forEach(caption => {
+        const newOpt = document.createElement('option')
+        newOpt.value = caption
+        newOpt.innerText = caption
+
+        captionDropdown.append(newOpt)
+    })
+}
+
+function swapCaptions() {
+    const pinRT = Array.from(document.querySelectorAll('rt'));
+
+    pinRT.forEach(element => {
+        console.log(element.dataset.word)
+        element.innerText = parseAndCaption(
+            element.dataset.word,
+            captionDropdown.value,
+            targetLang
+        )
+    })
 }
 
 async function startQueue() {
@@ -748,6 +796,10 @@ function endQueue() {
     // enable language dropdown
     ffLang.disabled = false
 
+    // turn off captions
+    capBool = false
+    capBtn.classList.remove('active')
+
     // set leftover round boolean to false
     isLeftRound = false
 
@@ -837,9 +889,13 @@ function loadSentence(sentN){
         newContent.innerText = text
 
         const newCaption = document.createElement('rt')
-        //newCaption.innerText = wordToIpaStr(text)
-        newCaption.innerText = wordToZhu(text)
-        newCaption.classList.add('hide')
+        // something weird about the boolean here, TODO: fix it idk
+        if (!(captionDropdown.value == 'false')) {
+            newCaption.innerText = parseAndCaption(text, captionDropdown.value, targetLang)
+        }
+        if (!capBool){
+            newCaption.classList.add('hide')
+        }
         newCaption.dataset.word = text
 
         newContent.append(newCaption)
@@ -894,26 +950,26 @@ function loadLeftovers(arr) {
         const text = arr[n]
         let newContent
 
-        if (monocharLangs.includes(targetLang)) {
+        // if (monocharLangs.includes(targetLang)) {
 
-            const thisPin = charToPin(text)
-            let pinWithTone = ''
+        //     const thisPin = charToPin(text)
+        //     let pinWithTone = ''
 
-            if (thisPin) {
-                pinWithTone = pinNumToDiacritic(thisPin)
-            }
+        //     if (thisPin) {
+        //         pinWithTone = pinNumToDiacritic(thisPin)
+        //     }
 
-            newContent = constructPinRT(
-                text, pinWithTone, 'under'
-            )
+        //     newContent = constructPinRT(
+        //         text, pinWithTone, 'under'
+        //     )
 
-            if (!(pinyinDropdown.value == 'pinyin') ) {
-                newContent.children[0].children[0].classList.add('hide')
-            }
+        //     if (!(pinyinDropdown.value == 'pinyin') ) {
+        //         newContent.children[0].children[0].classList.add('hide')
+        //     }
 
-        } else {
-            newContent = document.createTextNode(text)
-        }
+        // } else {
+             newContent = document.createTextNode(text)
+        // }
         
         newSpan.append(newContent)
         newSpan.addEventListener('click', synthSpeakClosure(
