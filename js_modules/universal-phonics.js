@@ -111,15 +111,16 @@ getZhChars()
 // END OF FETCH DATA
 
 export function parseAndCaption(word, caption, lang, elem) {
+    
+    elem.classList = ''
+    
     switch (lang){
         case 'en':
             switch (caption) {
                 case 'IPA':
                     return engToIPAStr(word)
-                    break;
                 case 'Zhuyin':
                     return engToZhuyin(word)
-                    break;
             }
             break;
 
@@ -127,10 +128,8 @@ export function parseAndCaption(word, caption, lang, elem) {
             switch (caption) {
                 case 'Pinyin':
                     return pinNumToDiacritic(charToPin(word))
-                    break;
                 case 'Zhuyin':
                     return charToZhu(word)
-                    break;
                 case 'Tai-lo':
                     break;
             }
@@ -139,7 +138,8 @@ export function parseAndCaption(word, caption, lang, elem) {
         case 'fil-PH':
             switch (caption) {
                 case 'Baybayin':
-                    break;
+                    elem.classList.add('baybayin')
+                    return romanToBBY93(word, true)
             }
             break;
     }
@@ -347,4 +347,70 @@ function diacriticToPinNum(str){
     } else {
         return 1;
     }
+}
+
+const filCons = ['b', 'c', 'k', 'd', 'g', 'h', 'l', 'm', 'n', 'N', 'p', 'r', 's', 't', 'w', 'y']
+const filVows = ['a', 'e', 'i', 'o', 'u']
+const filNonStandard = {
+    'c': 'k',
+    'f': 'p', 
+    'j': 'dy',
+    'q': 'kw', 
+    'v': '', 
+    'x': 'eks', 
+    'z': ''
+}
+
+function romanToBBY93(str, diacriticBool) {
+    const initArr = str.split('')
+    let finalArr = [];    
+
+    for (let i = 0; i < initArr.length; i++) {
+        switch (initArr[i]) {
+            // TO DO: change to address all non-standard cases
+            case 'c':
+                finalArr.push('k')
+                break;
+            case 'n':
+                if (initArr[i + 1] == 'g') {
+                    finalArr.push('N')
+                    i++
+                } else {
+                    finalArr.push(initArr[i])
+                }
+                break;
+            case 'a':
+                if (!filCons.includes(initArr[i - 1])) {
+                    finalArr.push('a')
+                }
+                break;
+            case 'i':
+            case 'e':
+                if (!filCons.includes(initArr[i - 1])) {
+                    finalArr.push('I')
+                } else if (diacriticBool) {
+                    finalArr.push(initArr[i])
+                }
+                break;
+            case 'o':
+            case 'u':
+                if (!filCons.includes(initArr[i - 1])) {
+                    finalArr.push('O')
+                } else if (diacriticBool) {
+                    finalArr.push(initArr[i])
+                }
+                break;
+            case ' ':
+                if (!filVows.includes(initArr[i - 1]) && diacriticBool) {
+                    finalArr.push('+')
+                }
+                break;
+            default:
+                finalArr.push(initArr[i])
+        }
+    }
+
+    const bbyStr = finalArr.join('');
+
+    return bbyStr
 }

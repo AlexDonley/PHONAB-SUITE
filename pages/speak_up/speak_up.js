@@ -603,7 +603,8 @@ function swapCaptions() {
         element.innerText = parseAndCaption(
             element.dataset.word,
             captionDropdown.value,
-            targetLang
+            targetLang,
+            element
         )
     })
 }
@@ -891,7 +892,7 @@ function loadSentence(sentN){
         const newCaption = document.createElement('rt')
         // something weird about the boolean here, TODO: fix it idk
         if (!(captionDropdown.value == 'false')) {
-            newCaption.innerText = parseAndCaption(text, captionDropdown.value, targetLang)
+            newCaption.innerText = parseAndCaption(text, captionDropdown.value, targetLang, newCaption)
         }
         if (!capBool){
             newCaption.classList.add('hide')

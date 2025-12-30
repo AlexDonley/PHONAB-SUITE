@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Century Gothic", Arial, sans-serif !important;
 }
 
 body {
@@ -10,9 +9,23 @@ body {
   display: flex;
   flex-direction: column;
   transition: background-color 0.3s;
+    font-family: "Century Gothic", Arial, sans-serif !important;
 }
 body.active-mic {
   background-color: rgb(57, 1, 1);
+}
+
+input {
+  font-family: inherit;
+}
+textarea {
+  font-family: inherit;
+}
+select {
+  font-family: inherit;
+}
+button {
+  font-family: inherit;
 }
 
 .left-sidebar {
@@ -124,6 +137,7 @@ svg {
   display: grid;
   justify-items: center;
   align-items: center;
+  font-family: inherit;
   grid-template-rows: 20px min(8vh, 8vw);
   grid-template-columns: 130px 3fr 2fr 1fr;
 }
@@ -241,7 +255,8 @@ svg {
 .lower-sect {
   height: 89vh;
   width: 100vw;
-  overflow-x: hidden
+  overflow-x: hidden;
+  font-family: inherit;
 }
 
 .view-QR {
@@ -969,4 +984,13 @@ rt.hide {
   font-weight: bold;
   font-size: 5vh;
   user-select: none;
+}
+
+@font-face {
+  font-family: bby-93;
+  src: url(../../fonts/TagDoc93.woff)
+}
+
+.baybayin {
+  font-family: bby-93;
 }
