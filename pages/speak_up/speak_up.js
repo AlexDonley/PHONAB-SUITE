@@ -34,7 +34,7 @@ import {
     addBook, addPart, addBookWithParts,
     getBookParts, getFilteredBooks, getPartById,
     fetchWithCache, loadAllBooks
-} from '../../js_modules/supabase_crud.js'
+} from '../../js_modules/supabase-crud.js'
 
 // - - - ELEMENTS - - - //
 // ux elements that show user progress through arrow movement, score, timer, and awards
@@ -94,11 +94,8 @@ const titleCards        = document.querySelector("#titleCards");
 const partsCards        = document.querySelector("#partsCards");
 const captionDropdown    = document.querySelector('#captionDropdown');
 
-const targetColumn      = document.querySelector(".targetColumn");
-const utterTexts        = document.querySelector(".texts");
-const userEntry         = document.querySelector('#userEntry');
-const availableUsers    = document.querySelector('#availableUsers');
-const userName          = document.querySelector('#userName');
+const targetColumn      = document.querySelector('.targetColumn');
+const utterTexts        = document.querySelector('.texts');
 const punchBtn          = document.querySelector('.punch-btn');
 
 const createTitle       = document.querySelector('#createTitle')
@@ -1403,7 +1400,6 @@ let userInfo = []
 if (localStorage.getItem("user_info")) {
     userInfo = JSON.parse(localStorage.getItem("user_info"))
 }
-populateUserButtons()
 
 function createUser() {
     inputName = userEntry.value
@@ -1428,39 +1424,12 @@ function createUser() {
         })
 
         saveUserDataLocally()
-        populateUserButtons()
     }
 }
 
 function saveUserDataLocally() {
     userDataString = JSON.stringify(userInfo)
     localStorage.setItem("user_info", userDataString)
-}
-
-function populateUserButtons() {
-    availableUsers.innerHTML = ''
-
-    userInfo.forEach(entry => {
-        const newButton = document.createElement('button')
-        newButton.innerText = entry.user_name
-        newButton.classList.add('name-btn')
-        newButton.setAttribute('onclick', 'setUser("' + entry.user_name + '")')
-      
-        availableUsers.append(newButton)
-    })
-}
-
-function setUser(str) {
-    currentUser = str
-    userName.innerText = str
-    userName.classList.add('show')
-
-    currentUserIndex = userInfo.findIndex(entry => entry.user_name == str)
-    console.log(currentUserIndex)
-
-    score = 0
-
-    reloadAwards(currentUserIndex)
 }
 
 function reloadAwards(index) {

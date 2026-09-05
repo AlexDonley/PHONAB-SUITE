@@ -1,11 +1,8 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js';
-
-// ⚠️ Use only the ANON key here
-const SUPABASE_URL = 'https://vhwsoclmscplhbawonmb.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZod3NvY2xtc2NwbGhiYXdvbm1iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk3MzEyMjIsImV4cCI6MjA3NTMwNzIyMn0.5-M_stfdkaAxSh0loboWOoha2dH0CeMYkTZQB9dFAQU'; // from Supabase dashboard
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
 
 
-const supabase = createClient(
+export const supabase = createClient(
     SUPABASE_URL,
     SUPABASE_ANON_KEY
 );
