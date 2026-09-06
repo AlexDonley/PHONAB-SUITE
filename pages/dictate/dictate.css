@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0
+}
+
+.two-col {
+    width: calc(100vw - 20px);
+    background-color: orange;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+}
+
+.col-text {
+    background-color: cornsilk;
+}
