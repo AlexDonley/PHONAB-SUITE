@@ -1,7 +1,6 @@
 [
     {
         "title": "Numbers Text",
-        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -14,7 +13,6 @@
     },
     {
         "title": "Instructions",
-        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -31,7 +29,6 @@
     },
     {
         "title": "Halloween Broadcast",
-        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -65,7 +62,6 @@
     },
     {
         "title": "Christmas Broadcast",
-        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -102,7 +98,6 @@
     },
     {
         "title": "Children's Day Broadcast",
-        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -141,7 +136,6 @@
     },
     {
         "title": "Dragon Boat Day Broadcast",
-        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -161,8 +155,8 @@
                 "text": [  
                     "They usually have ingredients inside like peanuts, shrimp, and pork. They're so yummy!",
                     "That sounds delicious! Why do people race boats?",
-                    "It's to remember a great man named Qu Yuan.",
-                    "Oh! I know Qu Yuan. Was he a famous poet?",
+                    "It's to remember a great man named QuYuan.",
+                    "Oh! I know QuYuan. Was he a famous poet?",
                     "That's right, people race to honor him.",
                     "That's very interesting. I want to see a dragon boat race!",
                     "Me, too. We can go to the river to watch them.",
@@ -172,8 +166,146 @@
         ]
     },
     {
-        "title": "ABCs",
+        "title": "Going to a Restaurant",
+        "author": "Teacher Kelly, Teacher Ann",
         "lang": "en",
+        "parts": [
+            {
+                "award": "🍽️",
+                "text": [  
+                    "Hi, Jordan!",
+                    "Hi, Leslie!",
+                    "Are you hungry?",
+                    "A little. How about you?",
+                    "I'm ready to eat!",
+                    "Ok! Let's go to a restaurant for lunch!"
+                ]
+            },
+            {
+                "award": "🍜",
+                "text": [  
+                    "I would like to have some chicken and rice. And you?",
+                    "I would like some beef noodles.",
+                    "Sounds good!",
+                    "Let's go to a Chinese restaurant!",
+                    "How about we go to the Great Wall Restaurant? ",
+                    "Sure! Let's go!"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "At School Dialogue",
+        "author": "Teacher Kelly, Teacher Ann",
+        "lang": "en",
+        "parts": [
+            {
+                "award": "📒",
+                "text": [  
+                    "Hi, Jordan! ",
+                    "Hi, Leslie! ",
+                    "How are you? ",
+                    "I'm good. How are you? ",
+                    "I'm fine, thank you. ",
+                    "What class do we have now? ",
+                    "We have English. ",
+                    "Do you have your book? ",
+                    "Yes, I have my book." 
+                ]
+            },
+            {
+                "award": "✏️",
+                "text": [  
+                    "Do you have your pencil?",
+                    "Yes, I have my pencil.",
+                    "Who is our teacher?",
+                    "Mrs. Lee is our teacher.",
+                    "Do you like English?",
+                    "Yes, I like English. Do you like English?",
+                    "Yes, I like English too!",
+                    "Let's go to class.",
+                    "Okay!"
+                ]
+            }
+        ]
+    },
+        {
+        "title": "Christmas Poem",
+        "author": "Teacher Kelly, Teacher Ann",
+        "lang": "en",
+        "parts": [
+            {
+                "award": "🧦",
+                "text": [  
+                    "It was Christmas Eve night, quiet everywhere",
+                    "The stockings were hanging with love and care.",
+                    "The children were sleeping in warm, cozy beds.",
+                    "Happy Christmas dreams danced in their heads.",
+                    "Then I heard a noise outside in the snow.",
+                    "I ran to the window to see what would show.",
+                    "A sleigh and eight reindeer flew fast through the sky.",
+                    "And Santa came down the chimney oh my!",
+                    "He gave us our gifts, then waved from his flight",
+                    "Merry Christmas to all, and to all a good night!" 
+                ]
+            }
+        ]
+    },
+    {
+        "title": "The Shoemaker and the Elves",
+        "author": "Teacher Kelly, Teacher Ann",
+        "lang": "en",
+        "parts": [
+            {
+                "award": "👞",
+                "text": [  
+                    "Long ago, there lived a kind shoemaker and his wife.",
+                    "They worked hard, but they were very poor.",
+                    "My dear, we have only enough leather for one pair of shoes.",
+                    "Do not worry. You make the shoes tomorrow. Let us sleep now.",
+                    "That night, while the shoemaker and his wife slept, something magical happened.",
+                    "Look! Leather and tools!",
+                    "Let's help the shoemaker."
+                ]
+            },
+            {
+                "award": "👠",
+                "text": [
+                    "The elves worked quickly and carefully.",
+                    "Cut here. Stitch there.",
+                    "These shoes will be beautiful!",
+                    "In the morning, the shoemaker was surprised.",
+                    "My shoes! They are finished, and perfect!",
+                    "Let us put them in the window."
+                ]
+            },
+            {
+                "award": "🥾",
+                "text": [
+                    "A customer came and paid good money for the shoes.",
+                    "Now we can buy more leather!",
+                    "Every night, the elves returned and made more shoes.",
+                    "Helping feels good.",
+                    "Yes! Let's keep helping.",
+                    "One night, the shoemaker's wife had an idea."
+                ]
+            },
+            {
+                "award": "🥿",
+                "text": [
+                    "We must thank the elves.",
+                    "They made small clothes and shoes.",
+                    "Clothes for me?",
+                    "And shoes for me!",
+                    "The elves danced with joy and never came back",
+                    "but the shoemaker and his wife were happy forever.",
+                    "Kindness brings kindness back!"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "ABCs",
         "author": "none",
         "parts": [
             {
@@ -222,7 +354,6 @@
     },
     {
         "title": "Kid Inspired Assessment",
-        "lang": "en",
         "author": "Kid Inspired",
         "parts": [
             {
@@ -282,7 +413,6 @@
     },
     {
         "title": "Vocabulary",
-        "lang": "en",
         "author": "none",
         "parts": [
             {
@@ -302,7 +432,6 @@
     },
     {
         "title": "Today is Monday",
-        "lang": "en",
         "author": "Eric Carle",
         "parts": [
             {
@@ -330,7 +459,6 @@
     },
     {
         "title": "Summer Camp",
-        "lang": "en",
         "author": "Alex Donley",
         "parts": [
             {
@@ -368,7 +496,6 @@
     },
     {
         "title": "Go Dog Go",
-        "lang": "en",
         "author": "P.D. Eastman",
         "parts": [
             {
@@ -526,7 +653,6 @@
     },
     {
         "title": "Big Green Monster",
-        "lang": "en",
         "author": "Ed Emberley",
         "parts": [
             {
@@ -559,7 +685,6 @@
     },
     {
         "title": "A New House",
-        "lang": "en",
         "author": "Arnold Lobel",
         "parts":[
             {
@@ -627,7 +752,6 @@
     },
     {
         "title": "Brown Bear",
-        "lang": "en",
         "author": "Eric Carle",
         "parts":[
             {
@@ -675,7 +799,6 @@
     },
     {
         "title": "Apple",
-        "lang": "en",
         "author": "Bad Time Stories",
         "parts": [
             {
@@ -730,9 +853,8 @@
             }
         ]
     },
-    {
+        {
         "title": "International Relations",
-        "lang": "en",
         "author": "Studio C",
         "parts": [
             {
@@ -857,7 +979,6 @@
     },
     {
         "title": "Sick",
-        "lang": "en",
         "author": "Shel Silverstein",
         "parts": [
             {
@@ -902,7 +1023,7 @@
             {
                 "award": "🌡️",
                 "text": [  
-                    "My elbow's bent, my spine ain't straight,",
+                    "My elbow's bent, my spine aingt straight,",
                     "My temperature is 108.",
                     "My brain is shrunk, I cannot hear,",
                     "There is a hole inside my ear.",
@@ -916,7 +1037,6 @@
     },
     {
         "title": "Pay It Forward",
-        "lang": "en",
         "author": "Tim Robinson",
         "parts": [
             {
@@ -981,13 +1101,12 @@
     },
     {
         "title": "When Will My Life Begin?",
-        "lang": "en",
         "author": "Glenn Slater",
         "parts": [
             {
                 "award": "🕖",
                 "text": [  
-                    "7:00 A.M., the usual morning lineup",
+                    "Seven A.M., the usual morning lineup",
                     "Start on the chores and sweep till the floor's all clean",
                     "Polish and wax, do laundry, and mop and shine up",
                     "Sweep again, and by then it's like 7:15"
@@ -1045,7 +1164,6 @@
     },
     {
         "title": "Fly",
-        "lang": "en",
         "author": "Bad Time Stories",
         "parts": [
             {
@@ -1079,7 +1197,6 @@
     },
     {
         "title": "I Never Go To Work",
-        "lang": "en",
         "author": "They Might Be Giants",
         "parts": [
             {
@@ -1115,8 +1232,128 @@
         ]
     },
     {
+        "title": "Hungry Mungry",
+        "author": "Shel Silverstein",
+        "mercy-words": {
+            "Mungry": ["hungry"],
+            "gulped": ["got"],
+            "Muenster": ["monster"]
+        },
+        "parts": [
+            {
+                "award": "🍴",
+                "text": [  
+                    "Hungry Mungry sat at supper",
+                    "Took his knife and spoon and fork,",
+                    "Ate a bowl of mushroom soup, ",
+                    "ate a slice of roasted pork,",
+                    "Ate a dozen stewed tomatoes, ",
+                    "twenty-seven deviled eggs,",
+                    "Fifteen shrimps, nine baked potatoes,",
+                    "Thirty-two fried chicken legs,"
+                ]
+            },
+            {
+                "award": "🐑",
+                "text": [  
+                    "A shank of lamb, a boiled ham,",
+                    "Two bowls of grits, some black-eyed peas,",
+                    "Four chocolate shakes, eight angel cakes,",
+                    "Nine custard pies with Muenster cheese,",
+                    "Ten pots of tea, and after he,",
+                    "Had eaten all that he was able,",
+                    "He poured some broth on the tablecloth",
+                    "And ate the kitchen table. "
+                ]
+            }, 
+            {
+                "award": "👪",
+                "text": [  
+                    "His parents said, Oh Hungry Mungry", 
+                    "stop these silly jokes.",
+                    "Mungry opened up his mouth, and Gulp,",
+                    "he ate his folks.",
+                    "And then he went and ate his house, ",
+                    "all the bricks and wood,",
+                    "And then he ate up all the people in the neighborhood."
+                ]
+            },
+            {
+                "award": "👮",
+                "text": [  
+                    "Up came twenty angry policemen shouting, Stop and cease.",
+                    "Mungry opened his mouth and Gulp, he ate the police.",
+                    "Soldiers came with tanks and guns.",
+                    "Said Mungry, They can't harm me.",
+                    "He just smiled and licked his lips and ate the U.S. Army."
+                ]
+            },
+            {
+                "award": "💣",
+                "text": [  
+                    "The President sent all his bombers, Mungry still was calm",
+                    "Put his head back, gulped the planes",
+                    "and gobbled up the bomb."
+                ]
+            },
+            {
+                "award": "🌆",
+                "text": [  
+                    "He ate his town and ate the city, ate and ate and ate",
+                    "And then he said, 'I think I'll eat the whole United States.'",
+                    "And so he ate Chicago first ",
+                    "and munched the Water Tower,",
+                    "And then he chewed on Pittsburgh",
+                    "but he found it rather sour."
+                ]
+            },
+            {
+                "award": "🗽",
+                "text": [  
+                    "He ate New York and Tennessee, and all of Boston town",
+                    "Then drank the Mississippi River just to wash it down.",
+                    "And when he'd eaten every state, ",
+                    "each puppy, boy and girl",
+                    "He wiped his mouth upon his sleeve ",
+                    "and went to eat the world."
+                ]
+            },
+            {
+                "award": "⛪",
+                "text": [  
+                    "He ate the Egypt pyramids and every church in Rome,",
+                    "And all the grass in Africa and all the ice in Nome.",
+                    "He ate each hill in green Brazil ",
+                    "and then to make things worse",
+                    "He decided for dessert he'd eat the universe."
+                ]
+            },
+            {
+                "award": "🌝",
+                "text": [  
+                    "He started with the moon and stars ",
+                    "and soon as he was done",
+                    "He gulped the clouds, he sipped the wind ",
+                    "and gobbled up the sun.",
+                    "Then sitting there in the cold dark air,"
+                ]
+            },
+            {
+                "award": "👄",
+                "text": [  
+                    "He started to nibble his feet,",
+                    "Then his legs, then his hips",
+                    "Then his neck, then his lips",
+                    "Till he sat there just gnashing his teeth",
+                    "Cuz nothing was nothing was",
+                    "Nothing was nothing was",
+                    "Nothing was left to eat."
+                ]
+            }
+        ]
+    },
+    {
         "title": "Joseph Had a Little Overcoat",
-        "lang": "en",
         "author": "Simms Taback",
         "parts": [
             {
@@ -1173,7 +1410,6 @@
     },
     {
         "title": "What Do People Do All Day?",
-        "lang": "en",
         "author": "Richard Scarry",
         "parts": [
             {
@@ -1374,8 +1610,7 @@
         ]
     },
     {
-        "title": "The Teacher from the Black Lagoon",
-        "lang": "en",
+        "title": "Black Lagoon",
         "author": "Mike Thaler",
         "parts": [
             {
@@ -1498,7 +1733,6 @@
     },
     {
         "title": "Hip Hip Hooray 1",
-        "lang": "en",
         "author": "Pearson",
         "parts": [
             {
@@ -1714,8 +1948,65 @@
         ]
     },
     {
+        "title": "Rainbow Fun",
+        "author": "Disney",
+        "parts": [
+            {
+                "award": "🌈",
+                "text": [  
+                    "Red, orange, yellow, green, blue.",
+                    "Don't forget there's purple too.",
+                    "Rainbow colors for me and you."
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Under the Sea",
+        "author": "Alan Menken",
+        "parts": [
+            {
+                "award": "🌊",
+                "text": [  
+                    "The seaweed is always greener",
+                    "In somebody else's lake",
+                    "You dream about going up there",
+                    "But that is a big mistake",
+                    "Just look at the world around you",
+                    "Right here on the ocean floor",
+                    "Such wonderful things surround you",
+                    "What more is you looking for?"
+                ]
+            },
+            {
+                "award": "🏖️",
+                "text": [  
+                    "Under the sea, under the sea",
+                    "Darling, it's better down where it's wetter",
+                    "Take it from me",
+                    "Up on the shore, they work all day",
+                    "Out in the sun they slave away",
+                    "While we devoting, full time to floating",
+                    "Under the sea"
+                ]
+            },
+            {
+                "award": "🐋",
+                "text": [  
+                    "Down here all the fish is happy",
+                    "As off through the waves they roll",
+                    "The fish on the land aren't happy",
+                    "They sad cause they in their bowl",
+                    "But fish in the bowl is lucky",
+                    "They in for a worser fate",
+                    "One day when the boss get hungry",
+                    "Guess who's going to be on the plate?"
+                ]
+            }
+        ]
+    },
+    {
         "title": "Hip Hip Hooray 2",
-        "lang": "en",
         "author": "Pearson",
         "parts": [
             {
@@ -1936,10 +2227,10 @@
         ]
 
     },
-        {
+    {
         "title": "Jerlyn Fruit Practice",
-        "lang": "en",
         "author": "KNSH",
+        "lang": "en",
         "parts":[
             {
                 "award": "🍊",
@@ -1962,7 +2253,6 @@
     },
     {
         "title": "Wonder World 1 Story",
-        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -2038,7 +2328,6 @@
     },
     {
         "title": "Wonder World 2 Story",
-        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -2118,7 +2407,6 @@
     },
     {
         "title": "Wonder World 3 Story",
-        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -2197,7 +2485,6 @@
     },
     {
         "title": "Wonder World 4 Story",
-        "lang": "en",
         "author": "KNSH",
         "parts": [
             {
@@ -2281,7 +2568,6 @@
     },
     {
         "title": "Wonder World 5 Story",
-        "lang": "en",
         "author": "KNSH",
         "parts": [
             {
@@ -2359,7 +2645,6 @@
     },
     {
         "title": "Wonder World 6 Story",
-        "lang": "en",
         "author": "KNSH",
         "parts":[
             {
@@ -2423,7 +2708,7 @@
                     "I need a tissue.",
                     "Keys? Whose keys are they?",
                     "An umbrella?",
-                    "It's Kevin's backpack!",
+                    "It's Kevings backpack!",
                     "Boka, this is your backpack.",
                     "Thank you, Kevin. And this is your backpack.",
                     "Where's my lunch?",
@@ -2434,7 +2719,6 @@
     },
     {
         "title": "Wonder World 7 Story",
-        "lang": "en",
         "author": "KNSH",
         "parts": [
             {
@@ -2546,14 +2830,10 @@
             {
                 "award": "🍯",
                 "text": [
-                    "如果沒有遇見你",
-                    "我將會是在那裡",
-                    "日子過的怎麼樣",
-                    "人生是否要珍惜",
-                    "也許認識某一人",
-                    "過著平凡的日子",
-                    "不知道會不會",
-                    "也有愛情甜如蜜"
+                    "如果沒有遇見你 我將會是在那裡",
+                    "日子過的怎麼樣 人生是否要珍惜",
+                    "也許認識某一人 過著平凡的日子",
+                    "不知道會不會 也有愛情甜如蜜"
                 ]
             },
             {

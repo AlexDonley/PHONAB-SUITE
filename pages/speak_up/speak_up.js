@@ -68,9 +68,9 @@ const goCheck         = document.querySelector('#goCheck');
 // elements contained in the setting section
 
 const contentBlocks = document.getElementById("contentBlocks");
-const startMenu = document.getElementById("startMenu");
-const createOpt = document.querySelector('#createOpt')
-const textInput = document.getElementById("textInput");
+const startMenu     = document.getElementById("startMenu");
+const createOpt     = document.querySelector('#createOpt')
+var textInput       = document.getElementById("textInput");
 
 // buttons and their fuunctions
 
@@ -86,8 +86,8 @@ const homeBtn       = document.querySelector('#homeBtn');
 const userBtn       = document.querySelector('#userBtn');
 const fullscreenBtn = document.querySelector('#fullscreenBtn');
 const settingBtn    = document.querySelector('#settingBtn');
-const saveBookBtn   = document.querySelector('#saveBookBtn');
-const addChunkBtn   = document.querySelector('#addChunkBtn');
+// const saveBookBtn   = document.querySelector('#saveBookBtn');
+// const addChunkBtn   = document.querySelector('#addChunkBtn');
 
 const searchTitles      = document.querySelector("#searchTitles");
 const titleCards        = document.querySelector("#titleCards");
@@ -120,8 +120,8 @@ readBtn.addEventListener("click", e => {
 })
 fullscreenBtn.addEventListener("click", toggleFullscreen);
 settingBtn.addEventListener("click", toggleSettings);
-saveBookBtn.addEventListener("click", trySaveBook)
-addChunkBtn.addEventListener("click", addChunk);
+// saveBookBtn.addEventListener("click", trySaveBook)
+// addChunkBtn.addEventListener("click", addChunk);
 captionDropdown.addEventListener("change", swapCaptions);
 synthSpeed.addEventListener("pointermove", updateSpeed);
 synthVol.addEventListener("pointermove", updateVol);
@@ -136,11 +136,11 @@ punchBtn.addEventListener("click", checkAndClear);
 
 // arrays for sentences and subdivisions
 
-let bookIndex = 0 
-let targIterations = 0
+var bookIndex = 0 
+var targIterations = 0
 
-let complObjs = {}
-let globCurrents = {
+var complObjs = {}
+var globCurrents = {
     'book': null,
     'chunk': null,
     'sent': 0,
@@ -162,23 +162,23 @@ function setGlobalCurrents(chunkStr, sentN, iterN) {
 
 // settings booleans
 
-let presetBool      = false // false means freeform, true means preset
-let shuffleBool     = false // false means chronological targets, true means shuffled targets
-let loopBool        = false // false means finishes after 1 iteration, true means continues iterating until the user stops
-let fullscreenBool  = false // false means the application is not fullscreen, true means it is fullscreen
-let isLeftRound     = false // false means the speaker is practicing a normal speech chunk, true means they've returned to skipped words
-let isRecog         = false // false means speech recognition is not activated, true means it is activated
-let qrTrayBool      = false
-let capBool         = false
+var presetBool      = false // false means freeform, true means preset
+var shuffleBool     = false // false means chronological targets, true means shuffled targets
+var loopBool        = false // false means finishes after 1 iteration, true means continues iterating until the user stops
+var fullscreenBool  = false // false means the application is not fullscreen, true means it is fullscreen
+var isLeftRound     = false // false means the speaker is practicing a normal speech chunk, true means they've returned to skipped words
+var isRecog         = false // false means speech recognition is not activated, true means it is activated
+var qrTrayBool      = false
+var capBool         = false
 
 // setting for P5 sawtooth frequency
 
-let defaultFreq = 100
+var defaultFreq = 100
 
 // variables to fill with JSON data using fetch
 
-let bookList;
-let utteredWords = [];
+var bookList;
+var utteredWords = [];
 
 const defaultFfText = {
     'en': "Hello! How are you?\nI'm fine thank you.\nIt's 3:00.",
@@ -256,7 +256,7 @@ searchTitles.addEventListener("input", e => {
 // elements contained in the action section
 // reading section contains two columns, one for target words and the other for user input
 
-const booksDataPath = "../../data/speak_up_books.json"
+const booksDataPath = "../../data/spup_backup.json"
 
 function loadBooks(){
     fetch(booksDataPath)
@@ -319,6 +319,81 @@ perfectWow.volume = 0.2
 
 let score = 0
 scoreMarker.innerText = score
+
+
+async function startQueue() {
+    
+    // disable language change
+    ffLang.disabled = true
+
+    // reset oscillator frequency to low frequency
+    // TO DO: change this so that it resets on each load to a random value
+    defaultFreq = 100
+
+    // start timer countdown if mode dictates it
+    if (!timerMode == 0) {
+        startTimer(stopWatch)
+    }
+  
+    // check if the sentence queue will be preset or freeform
+    if (presetBool) {
+        
+        globCurrents['iter'] = targIterations
+        globCurrents['chunk'] = null
+        
+        // see which boxes are checked
+        const checkboxes = document.querySelectorAll('.preset-check')
+
+        for (let n = 0; n < checkboxes.length; n++){
+            if (checkboxes[n].checked) {
+
+                const thisId = checkboxes[n].id
+                if (globCurrents['chunk'] == null) {
+                    globCurrents['chunk'] = thisId
+                }
+                const chunkData = await getPartById(thisId)
+                console.log(chunkData)
+
+                const fullId = thisId + "*" + targIterations
+                complObjs[fullId] = genPresetObj(chunkData)
+
+                const newAward = awardProgElem(fullId, chunkData.award)
+                awardDiv.prepend(newAward)
+
+                targIterations++
+            }
+        }
+
+        loadChunk(globCurrents['chunk'] + "*" + globCurrents['iter'])
+
+    } else {
+
+        // FREEFORM INPUT
+        // The following grabs the text entered by the user and eliminates blank lines
+
+        // remove excess spaces
+        console.log(textInput)
+        var freeformText = textInput.value.replace(/^\s*\n/gm, "");
+        // split text by line break
+        var freeformArr = freeformText.split(/\r?\n|\r|\n/g)
+        var thisTextID = 'freef*' + 0
+
+        console.log(complObjs)
+        complObjs[thisTextID] = genFreefObj(freeformArr)
+        globCurrents['chunk'] = thisTextID
+
+        console.log(complObjs[thisTextID])
+        globCurrents['iter'] = targIterations
+        targIterations++
+
+        awardDiv.prepend(awardProgElem(thisTextID, '👍'))
+        loadChunk(thisTextID)
+    }
+
+    toggRecogAndElem(true)
+
+    shiftContentBlocks('game')
+}
 
 //const safariBool = window.navigator.userAgent.includes('Safari');
 const safariBool = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
@@ -606,77 +681,7 @@ function swapCaptions() {
     })
 }
 
-async function startQueue() {
-    
-    // disable language change
-    ffLang.disabled = true
 
-    // reset oscillator frequency to low frequency
-    // TO DO: change this so that it resets on each load to a random value
-    defaultFreq = 100
-
-    // start timer countdown if mode dictates it
-    if (!timerMode == 0) {
-        startTimer(stopWatch)
-    }
-  
-    // check if the sentence queue will be preset or freeform
-    if (presetBool) {
-        
-        globCurrents['iter'] = targIterations
-        globCurrents['chunk'] = null
-        
-        // see which boxes are checked
-        const checkboxes = document.querySelectorAll('.preset-check')
-
-        for (let n = 0; n < checkboxes.length; n++){
-            if (checkboxes[n].checked) {
-
-                const thisId = checkboxes[n].id
-                if (globCurrents['chunk'] == null) {
-                    globCurrents['chunk'] = thisId
-                }
-                const chunkData = await getPartById(thisId)
-                console.log(chunkData)
-
-                const fullId = thisId + "*" + targIterations
-                complObjs[fullId] = genPresetObj(chunkData)
-
-                const newAward = awardProgElem(fullId, chunkData.award)
-                awardDiv.prepend(newAward)
-
-                targIterations++
-            }
-        }
-
-        loadChunk(globCurrents['chunk'] + "*" + globCurrents['iter'])
-
-    } else {
-
-        // FREEFORM INPUT
-        // The following grabs the text entered by the user and eliminates blank lines
-
-        // remove excess spaces
-        const freeformText = textInput.value.replace(/^\s*\n/gm, "");
-        // split text by line break
-        const freeformArr = freeformText.split(/\r?\n|\r|\n/g)
-        const thisTextID = 'freef*' + targIterations
-
-        complObjs[thisTextID] = genFreefObj(freeformArr)
-        globCurrents['chunk'] = thisTextID
-
-        console.log(complObjs[thisTextID])
-        globCurrents['iter'] = targIterations
-        targIterations++
-
-        awardDiv.prepend(awardProgElem(thisTextID, '👍'))
-        loadChunk(thisTextID)
-    }
-
-    toggRecogAndElem(true)
-
-    shiftContentBlocks('game')
-}
 
 // FUNCTIONS FOR CREATING COMPLETION OBJECTS
 

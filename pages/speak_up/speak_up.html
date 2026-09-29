@@ -88,15 +88,9 @@
                             <div class="parts-cards" id="partsCards"></div>
                         </div>
                     </div>
+
                     <div class="create-options" id="createOpt">
-                        <div class="chunk-title-bar">
-                            <input type="text" id="createTitle" placeholder="Title"> 
-                            <button class="save-chunk" id="saveBookBtn">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#dddddd"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/></svg>
-                            </button>
-                        </div>
-                        <div class="chunk-area" id="chunkArea"></div>
-                        <button class="add-chunk" id="addChunkBtn">+</button>
+                        <textarea class="text-input" id="textInput" placeholder="Type one chunk of text here"></textarea>
                     </div>
                     
                     <div class="menu-btns">
@@ -209,6 +203,18 @@
             <label for="goOpt">GO!</label>
         </div>
     </div>
+    <!-- 
+    TO DO: CONVERT THESE TEMPLATES INTO PAGE FOR MAKING / SAVING BOOKS
+    <template id="chunkArea">
+        <div class="chunk-title-bar">
+                <input type="text" id="createTitle" placeholder="Title"> 
+                <button class="save-chunk" id="saveBookBtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#dddddd"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/></svg>
+                </button>
+        </div>
+        <div class="chunk-area" id="chunkArea"></div>
+        <button class="add-chunk" id="addChunkBtn">+</button>
+    </template>
     <template id="chunkTemplate">
         <div class="chunk-div">
             <textarea class="text-input" id="textInput" placeholder="Type one chunk of text here"></textarea>
@@ -228,6 +234,7 @@
                 </select>
             </div>
         </div>
-    </template>
+    </template> 
+    -->
 </body>
 </html>
