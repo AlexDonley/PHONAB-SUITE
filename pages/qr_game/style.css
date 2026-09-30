@@ -1,0 +1,39 @@
+* {
+    font-family: Century Gothic, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 15px;
+}
+
+.display-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    min-height: 100px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 33vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.team.red {
+    color: white;
+    background-color: red;
+}
+.team.blue {
+    color: white;
+    background-color: blue;
+}
