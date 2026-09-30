@@ -3,10 +3,10 @@ const displayBox = document.getElementById('displayBox');
 
 
 // general mode can be "display" or "game"
-var mode = "display";
+var mode = "game";
 
 // game mode can be "match" or "battle"
-var gameMode = null;
+var gameMode = "match";
 
 // SINGLES can match:
 // lowercase to uppercase AND vice-cersa
@@ -18,8 +18,10 @@ var gameMode = null;
 // word to picture AND vice versa (NOT case-sensitive)
 
 // input mode can be "single" or "multi"
-var inputMode = null;
+var inputMode = "single";
 
+// trigger mode can be "auto", "manual", or "timed"
+var triggerMode = "auto";
 
 var timeoutId;
 
@@ -29,6 +31,37 @@ var teamScores = {
     "red": 0,
     "blue": 0
 }
+
+
+const lettersPath = "../../data/abc_let.json"
+const imgsPath = "../../data/abc_img.json"
+var abcLets
+var abcImgs
+
+function loadData(path){
+    fetch(path)
+    .then(res => {
+        if (res.ok) {
+            console.log('Fetched data from ' + path);
+        } else {
+            console.log('Couldnt fetch data from ' + path)
+        }
+        return res.json()
+    })
+    .then(data => {
+        if (data.a) {
+            abcLets = data;
+        } else if (data.apple) {
+            abcImgs = data;
+        }
+        
+        return data
+    })
+    .catch(error => console.log(error))
+}
+
+loadData(lettersPath);
+loadData(imgsPath);
 
 
 function processInput(str) {
@@ -85,6 +118,27 @@ inputText.addEventListener('input', (event) => {
                 }
             } else if (mode === "game") { 
 
+                if (gameMode === "match") {
+                    if (matchQueue.length === 0) {
+                        matchQueue = createMatchQueue(["A", "B", "C", "T"], 10);
+                        console.log("New match queue created: ", matchQueue);
+
+                        imgToDisplay(matchQueue[0].toLowerCase());
+                    }
+
+                    if(processedData.value.toLowerCase() === matchQueue[0].toLowerCase()) {
+                        console.log("Correct match for: ", processedData.value);
+
+                        teamScores[processedData.team] += 1;
+                        document.getElementById(`score${processedData.team === "red" ? 1 : 2}`).textContent = teamScores[processedData.team];
+                        
+                        matchQueue.shift();
+                        if (matchQueue.length > 0) {
+                            imgToDisplay(matchQueue[0].toLowerCase());
+                        }
+                    }
+
+                }
             }
     }, 10);
 
@@ -107,4 +161,23 @@ function createMatchQueue(charArr, len) {
     return newArr;
 }
 
+function iconPriority(dict) {
+    if (dict.svg_col) {
+        return dict.svg_col;
+    } else if (dict.svg_bw) {
+        return dict.svg_bw;
+    } else if (dict.icon_bw) {
+        return dict.icon_bw;
+    } else if (dict.icon_col) {
+        return dict.icon_col;
+    }
+}
+
 console.log(createMatchQueue(["A", "B", "C", "T"], 10));
+
+function imgToDisplay(char) {
+    displayBox.innerHTML = "";
+    var newImg = document.createElement('img');
+    newImg.src = iconPriority(abcImgs[abcLets[char].Action]);
+    displayBox.appendChild(newImg);
+}

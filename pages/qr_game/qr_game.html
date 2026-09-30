@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QR Code Game</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
 </head>
 <body>
     <div class="display-box" id="displayBox"></div>
     <div class="team-box">
         <div class="team red" id="team1">
-            <h2>Team 1</h2>
-            <p>Score: <span id="score1">0</span></p>
+            <span id="score1" class="score">0</span>
         </div>
         <div class="team blue" id="team2">
-            <h2>Team 2</h2>
-            <p>Score: <span id="score2">0</span></p>
+            <span id="score2" class="score">0</span>
         </div>
     </div>
     <textarea id="inputText" placeholder="Enter text here..."></textarea>

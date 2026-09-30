@@ -1,0 +1,450 @@
+{
+  "apple": {
+    "chinese": "蘋果",
+    "svg_col": "https://www.svgrepo.com/show/530203/apple.svg",
+    "unsplash": "https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "gif": "https://i.giphy.com/sST6lxYUtf79v0rpCm.webp, https://i.giphy.com/i6JLRbk4f2gIU.webp"
+  },
+  "ape":{
+    "chinese": "猿猴",
+    "svg_col": "https://www.svgrepo.com/show/396574/gorilla.svg",
+    "unsplash": "https://images.unsplash.com/photo-1563188619-10c06d0471ec?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "attention": {
+    "chinese": "注意 (+ 敬禮)",
+    "svg_bw": "https://www.svgrepo.com/show/212770/salute-military.svg",
+    "unsplash": "https://images.unsplash.com/photo-1621960883367-214c94d4a99a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "bird": {
+    "chinese": "小鳥",
+    "svg_col": "https://www.svgrepo.com/show/417433/bird.svg",
+    "unsplash": "https://images.unsplash.com/photo-1520808663317-647b476a81b9?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "book": {
+    "chinese": "書",
+    "svg_col": "https://www.svgrepo.com/show/513273/book-opened.svg",
+    "unsplash": "https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=1129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "bow": {
+    "chinese": "敬禮",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/14454/14454650.png",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/9929/9929922.png",
+    "unsplash": "https://images.unsplash.com/photo-1603809010710-5317a868c894?q=80&w=1156&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "cat": {
+    "chinese": "貓",
+    "svg_col": "https://www.svgrepo.com/show/500106/cat.svg",
+    "unsplash": "https://images.unsplash.com/photo-1494256997604-768d1f608cac?q=80&w=929&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "cup": {
+    "chinese": "杯子",
+    "svg_col": "https://www.svgrepo.com/show/130803/cup.svg",
+    "unsplash": "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "clap": {
+    "chinese": "拍手",
+    "svg_col": "https://www.svgrepo.com/show/400086/clap.svg",
+    "svg_bw": "https://www.svgrepo.com/show/54416/clap-hands.svg",
+    "unsplash": "https://images.unsplash.com/photo-1655236882470-92c36d0f0abd?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "climb": {
+    "chinese": "爬",
+    "svg_bw": "https://www.svgrepo.com/show/18172/climbing.svg"
+  },
+  "dog": {
+    "chinese": "狗",
+    "svg_col": "https://www.svgrepo.com/show/405227/dog.svg",
+    "unsplash": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "desk": {
+    "chinese": "桌子",
+    "svg_col": "https://www.svgrepo.com/show/380379/desk-furniture-interior-table-decoration-13.svg",
+    "unsplash": "https://images.unsplash.com/photo-1740635341299-3b8e3490f546?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "dance": {
+    "chinese": "跳舞",
+    "svg_col": "https://www.svgrepo.com/show/402922/woman-dancing.svg",
+    "svg_bw": "https://www.svgrepo.com/show/484021/flamenco.svg",
+    "unsplash": "https://images.unsplash.com/photo-1502519144081-acca18599776?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "elephant": {
+    "chinese": "大象",
+    "svg_col": "https://www.svgrepo.com/show/396361/elephant.svg",
+    "unsplash": "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "egg": {
+    "chinese": "蛋",
+    "svg_col": "https://www.svgrepo.com/show/405269/egg.svg",
+    "unsplash": "https://images.unsplash.com/photo-1642451378137-7bf98fb6a65a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "eat": {
+    "chinese": "吃",
+    "svg_col": "https://www.svgrepo.com/show/287688/eat.svg",
+    "svg_bw": "https://www.svgrepo.com/show/307286/eat-dinner-food-eat-restaurant.svg",
+    "unsplash": "https://images.unsplash.com/photo-1564228511783-821f2f547f44?q=80&w=1091&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "fish": {
+    "chinese": "魚",
+    "svg_col": "https://www.svgrepo.com/show/405395/fish.svg",
+    "unsplash": "https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "folder": {
+    "chinese": "資料夾",
+    "svg_col": "https://www.svgrepo.com/show/489663/folder.svg",
+    "unsplash": "https://images.unsplash.com/photo-1699275303964-a9a1a8ae8c6b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "fan": {
+    "chinese": "風扇",
+    "svg_col": "https://www.svgrepo.com/show/444259/fan.svg",
+    "svg_bw": "https://www.svgrepo.com/show/478411/fan-2.svg",
+    "unsplash": "https://images.unsplash.com/photo-1718815416565-c65944a5ec14?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },  
+  "fist-bump": {
+    "chinese": "擊拳",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/4957/4957223.png",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/10062/10062499.png",
+    "unsplash": "https://images.unsplash.com/photo-1582578598774-a377d4b32223?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "goat": {
+    "chinese": "山羊",
+    "svg_col": "https://www.svgrepo.com/show/396571/goat.svg",
+    "unsplash": "https://images.unsplash.com/photo-1531844433520-e9ad31be6ffd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "girl": {
+    "chinese": "女孩",
+    "svg_col": "https://www.svgrepo.com/show/405203/girl-medium-dark-skin-tone.svg",
+    "unsplash": "https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "group": {
+    "chinese": "團體",
+    "svg_col": "https://www.svgrepo.com/show/195505/group.svg",
+    "svg_bw": "https://www.svgrepo.com/show/500882/group.svg",
+    "unsplash": "https://images.unsplash.com/photo-1622037022824-0c71d511ef3c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "hippo": {
+    "chinese": "河馬",
+    "svg_col": "https://www.svgrepo.com/show/500095/hippo.svg",
+    "unsplash": "https://images.unsplash.com/photo-1676223429937-55000586c046?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "hat": {
+    "chinese": "帽子",
+    "svg_col": "https://www.svgrepo.com/show/426957/hat.svg",
+    "unsplash": "https://images.unsplash.com/photo-1592367630397-65872fe016e9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "high-five": {
+    "chinese": "擊掌",
+    "svg_col": "https://www.svgrepo.com/show/407300/raising-hands.svg",
+    "svg_bw": "https://www.svgrepo.com/show/199647/high-five-child.svg",
+    "unsplash": "https://images.unsplash.com/photo-1752650735509-58f11eaa2e10?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "iguana": {
+    "chinese": "鬣蜥",
+    "svg_col": "https://www.svgrepo.com/show/289019/lizard.svg",
+    "unsplash": "https://images.unsplash.com/photo-1573855510930-516a446a839f?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "iPad": {
+    "chinese": "iPad",
+    "svg_col": "https://www.svgrepo.com/show/474879/ipad.svg",
+    "unsplash": "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1084&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "itch": {
+    "chinese": "癢",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/16779/16779696.png",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/10047/10047348.png",
+    "unsplash": "https://images.unsplash.com/photo-1769117327556-cb33587c5298?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "jaguar": {
+    "chinese": "美洲豹",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/15622/15622709.png",
+    "unsplash": "https://images.unsplash.com/photo-1734121512475-2e063f8d9769?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "juice": {
+    "chinese": "果汁",
+    "svg_col": "https://www.svgrepo.com/show/505208/juice.svg",
+    "unsplash": "https://images.unsplash.com/photo-1650292390827-51240d74eb0a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "jump": {
+    "chinese": "跳",
+    "svg_col": "https://www.svgrepo.com/show/230476/jumping-rope-sports-and-competition.svg",
+    "svg_bw": "https://www.svgrepo.com/show/322630/jump-across.svg",
+    "unsplash": "https://images.unsplash.com/photo-1613122707153-070406e9fd27?q=80&w=1104&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "kangaroo": {
+    "chinese": "袋鼠",
+    "svg_col": "https://www.svgrepo.com/show/396218/kangaroo.svg",
+    "unsplash": "https://images.unsplash.com/photo-1605583953063-972168057f1a?q=80&w=1209&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "king": {
+    "chinese": "國王",
+    "svg_col": "https://www.svgrepo.com/show/156408/king.svg",
+    "unsplash": "https://images.unsplash.com/photo-1578322346816-1da22d132069?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "kick": {
+    "chinese": "踢",
+    "svg_bw": "https://www.svgrepo.com/show/322533/high-kick.svg",
+    "unsplash": "https://images.unsplash.com/photo-1514050566906-8d077bae7046?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "lion" : {
+    "chinese": "獅子",
+    "svg_col": "https://www.svgrepo.com/show/396923/lion.svg",
+    "unsplash": "https://images.unsplash.com/photo-1519066629447-267fffa62d4b?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "library": {
+    "chinese": "圖書館",
+    "svg_col": "https://www.svgrepo.com/show/277499/library-book.svg",
+    "unsplash": "https://images.unsplash.com/photo-1562932831-afcfe48b5786?q=80&w=915&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "look": {
+    "chinese": "看",
+    "svg_col": "https://www.svgrepo.com/show/405298/eyes.svg",
+    "svg_bw": "https://www.svgrepo.com/show/307926/look-into-telescope-see-watch-view.svg",
+    "unsplash": "https://images.unsplash.com/photo-1515598379512-b60132823a9d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "monkey": {
+    "chinese": "猴子",
+    "svg_col": "https://www.svgrepo.com/show/397525/monkey.svg",
+    "unsplash": "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "marker": {
+    "chinese": "記號筆",
+    "svg_col": "https://www.svgrepo.com/show/269323/marker.svg",
+    "unsplash": "https://images.unsplash.com/photo-1587117266184-2fbb10ccc05e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "march": {
+    "chinese": "行軍",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/11622/11622321.png",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/2027/2027802.png",
+    "unsplash": "https://images.unsplash.com/photo-1585802540432-60662b65ca62?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "narwhal": {
+    "chinese": "獨角鯨",
+    "svg_col": "https://www.svgrepo.com/show/312662/narwhal.svg",
+    "unsplash": "https://images.unsplash.com/photo-1754416189419-fb673d49ecb0?q=80&w=976&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "nose": {
+    "chinese": "鼻子",
+    "svg_col": "https://www.svgrepo.com/show/406732/nose.svg",
+    "unsplash": "https://images.unsplash.com/photo-1679147002824-096bb82424f7?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "no": {
+    "chinese": "不",
+    "emoji": "🙅‍♂️",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/2822/2822009.png",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/9926/9926980.png",
+    "unsplash": "https://images.unsplash.com/photo-1757884490976-0b2bdcef4089?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "nudge": {
+    "chinese": "輕推",
+    "svg_bw": "https://www.svgrepo.com/show/490298/push-door.svg",
+    "unsplash": "https://images.unsplash.com/photo-1726937430110-b039597fd54d?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "otter": {
+    "chinese": "水獺",
+    "svg_col": "https://www.svgrepo.com/show/397685/otter.svg",
+    "unsplash": "https://images.unsplash.com/photo-1633967920376-33b2d94f091f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "on / off": {
+    "chinese": "開  /關",
+    "svg_col": "https://www.svgrepo.com/show/362174/switch-on.svg \nhttps://www.svgrepo.com/show/362172/switch-off.svg",
+    "svg_bw": "https://www.svgrepo.com/show/441672/light-switch-on.svg",
+    "unsplash": "https://images.unsplash.com/photo-1650508311049-31f2d0b83507?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "open": {
+    "chinese": "打開",
+    "svg_col": "https://www.svgrepo.com/show/281468/open-door-doorway.svg",
+    "svg_bw": "https://www.svgrepo.com/show/490703/door-open.svg",
+    "unsplash": "https://images.unsplash.com/photo-1635945416566-6302b54c056b?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "pig": {
+    "chinese": "豬",
+    "svg_col": "https://www.svgrepo.com/show/407186/pig.svg",
+    "unsplash": "https://images.unsplash.com/photo-1541689221361-ad95003448dc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "pencil": {
+    "chinese": "鉛筆",
+    "svg_col": "https://www.svgrepo.com/show/513326/pencil.svg",
+    "unsplash": "https://images.unsplash.com/photo-1565359184520-fcff70f99c24?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "point": {
+    "chinese": "指向",
+    "svg_bw": "https://www.svgrepo.com/show/412249/point.svg",
+    "unsplash": "https://images.unsplash.com/photo-1520006507663-f34ed4a17b4c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "quail": {
+    "chinese": "鵪鶉",
+    "svg_bw": "https://www.svgrepo.com/show/61067/quail-bird-shape.svg",
+    "unsplash": "https://images.unsplash.com/photo-1675999712745-91572311f913?q=80&w=967&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "queen": {
+    "chinese": "女王",
+    "svg_col": "https://www.svgrepo.com/show/317456/queen-side.svg",
+    "unsplash": "https://images.unsplash.com/photo-1615162818882-14d8d6330fd3?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "question": {
+    "chinese": "問題",
+    "svg_col": "https://www.svgrepo.com/show/408117/woman-shrugging.svg",
+    "svg_bw": "https://www.svgrepo.com/show/535588/question-mark.svg",
+    "unsplash": "https://images.unsplash.com/photo-1765112879694-04d88759cb19?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "rabbit": {
+    "chinese": "兔子",
+    "svg_col": "https://www.svgrepo.com/show/398148/rabbit.svg",
+    "unsplash": "https://images.unsplash.com/photo-1638255402906-e838358069ab?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "ruler": {
+    "chinese": "尺子",
+    "svg_col": "https://www.svgrepo.com/show/513348/ruler.svg",
+    "unsplash": "https://images.unsplash.com/photo-1529651795107-e5a141e34843?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "run": {
+    "chinese": "跑",
+    "svg_col": "https://www.svgrepo.com/show/189274/running-run.svg",
+    "svg_bw": "https://www.svgrepo.com/show/355210/run.svg",
+    "unsplash": "https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=1185&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "snake": {
+    "chinese": "蛇",
+    "svg_col": "https://www.svgrepo.com/show/400742/snake.svg",
+    "unsplash": "https://images.unsplash.com/photo-1596763950802-1d88da92758a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "sun": {
+    "chinese": "太陽",
+    "svg_col": "https://www.svgrepo.com/show/484356/sun.svg",
+    "unsplash": "https://images.unsplash.com/photo-1526066843114-f1623fde3476?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "squat": {
+    "chinese": "蹲",
+    "svg_bw": "https://www.svgrepo.com/show/307124/squat-exercise-dance-workout.svg",
+    "unsplash": "https://images.unsplash.com/photo-1541600383005-565c949cf777?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "sit": {
+    "chinese": "坐著",
+    "svg_bw": "https://www.svgrepo.com/show/307795/exercise-ball-ergonomic.svg",
+    "unsplash": "https://images.unsplash.com/photo-1550504630-cc20eca3b23e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "tiger": {
+    "chinese": "老虎",
+    "svg_col": "https://www.svgrepo.com/show/398493/tiger.svg",
+    "unsplash": "https://images.unsplash.com/photo-1551972251-12070d63502a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "taco": {
+    "chinese": "墨西哥捲餅",
+    "svg_col": "https://www.svgrepo.com/show/475228/taco.svg",
+    "unsplash": "https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "twist": {
+    "chinese": "扭動",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/5776/5776293.png",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/84/84756.png",
+    "unsplash": "https://images.unsplash.com/photo-1712928058036-55864bf79511?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "talk": {
+    "chinese": "談話",
+    "svg_bw": "https://www.svgrepo.com/show/32639/talking.svg",
+    "unsplash": "https://images.unsplash.com/photo-1694878981888-7a526050b455?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "unicorn": {
+    "chinese": "獨角獸",
+    "svg_col": "https://www.svgrepo.com/show/402847/unicorn-face.svg",
+    "unsplash": "https://images.unsplash.com/photo-1562037283-072818fb6d8f?q=80&w=913&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "umbrella": {
+    "chinese": "雨傘",
+    "svg_col": "https://www.svgrepo.com/show/492661/umbrella.svg",
+    "unsplash": "https://images.unsplash.com/photo-1519692933481-e162a57d6721?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "up": {
+    "chinese": "向上",
+    "svg_col": "https://www.svgrepo.com/show/475013/up.svg",
+    "svg_bw": "https://www.svgrepo.com/show/460130/up-alt.svg",
+    "unsplash": "https://images.unsplash.com/photo-1663493222186-e411eb3d8ec9?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "vulture": {
+    "chinese": "禿鷹",
+    "svg_col": "https://www.svgrepo.com/show/34924/vulture.svg",
+    "unsplash": "https://images.unsplash.com/photo-1559916551-b9bea52d4687?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "van": {
+    "chinese": "貨車",
+    "svg_col": "https://www.svgrepo.com/show/235465/van.svg",
+    "unsplash": "https://images.unsplash.com/photo-1665521032636-e8d2f6927053?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "vote": {
+    "chinese": "投票",
+    "svg_col": "https://www.svgrepo.com/show/398962/woman-raising-hand.svg",
+    "svg_bw": "https://www.svgrepo.com/show/323598/vote.svg",
+    "unsplash": "https://images.unsplash.com/photo-1730808822974-b21a29d64055?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "wolf": { 
+    "chinese": "狼",
+    "svg_col": "https://www.svgrepo.com/show/398624/wolf.svg",
+    "unsplash": "https://images.unsplash.com/photo-1517993037474-692208825419?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "water": {
+    "chinese": "水",
+    "svg_col": "https://www.svgrepo.com/show/407718/water-wave.svg",
+    "unsplash": "https://images.unsplash.com/photo-1615529328331-f8917597711f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "walk": {
+    "chinese": "走",
+    "svg_col": "https://www.svgrepo.com/show/406538/man-walking.svg",
+    "svg_bw": "https://www.svgrepo.com/show/308380/walk-to-left-walk-move-stroll.svg",
+    "unsplash": "https://images.unsplash.com/photo-1592727995117-4cdc7ee6fcb4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "x-ray fish":{
+    "chinese": "X光魚",
+    "svg_col": "https://www.svgrepo.com/show/426221/fish-bone.svg",
+    "svg_bw": "https://www.svgrepo.com/show/118527/x-ray-of-a-man.svg",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/8372/8372343.png",
+    "unsplash": "https://images.unsplash.com/photo-1503519153213-879f7fd28142?q=80&w=1168&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "xerox": {
+    "chinese": "複印",
+    "svg_col": "https://www.svgrepo.com/show/288673/copy-machine-copier.svg",
+    "unsplash": "https://images.unsplash.com/photo-1666101041092-468eb2818c87?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "x-jump": {
+    "chinese": "X跳",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/11430/11430710.png",
+    "unsplash": "https://images.unsplash.com/photo-1648010973526-21d12c5f493d?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "yak": {
+    "chinese": "犛牛",
+    "svg_col": "https://www.svgrepo.com/show/402884/water-buffalo.svg",
+    "unsplash": "https://images.unsplash.com/photo-1551606712-68b0c97d1635?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "yo-yo": {
+    "chinese": "溜溜球",
+    "svg_col": "https://www.svgrepo.com/show/277516/yoyo.svg",
+    "unsplash": "https://images.unsplash.com/photo-1646954843635-126c0fe8f3d7?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "yawn": {
+    "chinese": "打哈欠",
+    "svg_col": "https://www.svgrepo.com/show/343418/emoji-face-sleep-sleeping-snore-tired.svg",
+    "unsplash": "https://images.unsplash.com/photo-1618517047922-d18a5a36c109?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "yes": {
+    "chinese": "對",
+    "emoji": "🙂‍↕️",
+    "svg_col": "https://www.svgrepo.com/show/416291/checklist-check-yes.svg",
+    "icon_col": "https://cdn-icons-png.flaticon.com/128/6276/6276686.png",
+    "icon_bw": "https://cdn-icons-png.flaticon.com/128/9924/9924416.png",
+    "unsplash": "https://images.unsplash.com/photo-1623150109608-2c00fdf2f016?q=80&w=1242&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "zebra": {
+    "chinese": "斑馬",
+    "svg_col": "https://www.svgrepo.com/show/398726/zebra.svg",
+    "unsplash": "https://images.unsplash.com/photo-1598755257130-c2aaca1f061c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "zero": {
+    "chinese": "零",
+    "svg_bw": "https://www.svgrepo.com/show/311916/circled-zero-with-slash.svg",
+    "unsplash": "https://images.unsplash.com/photo-1600065621656-889fe211b7c8?q=80&w=1057&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  "zip": {
+    "chinese": "拉鍊",
+    "svg_col": "https://www.svgrepo.com/show/398722/zipper-mouth-face.svg",
+    "svg_bw": "https://www.svgrepo.com/show/181496/zipper-material.svg",
+    "unsplash": "https://images.unsplash.com/photo-1531376653594-e9bcf0f0c65b?q=80&w=1177&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  }
+}
