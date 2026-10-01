@@ -1,6 +1,7 @@
 const inputText = document.getElementById('inputText');
 const displayBox = document.getElementById('displayBox');
 
+const matchSelect = document.getElementById('match-select');
 
 // general mode can be "display" or "game"
 var mode = "game";
@@ -22,6 +23,10 @@ var inputMode = "single";
 
 // trigger mode can be "auto", "manual", or "timed"
 var triggerMode = "auto";
+
+var matchPrompt = "capital"; // can be "audio", "picture", "action", or "capital"
+
+var currentQueue = [];
 
 var timeoutId;
 
@@ -120,10 +125,10 @@ inputText.addEventListener('input', (event) => {
 
                 if (gameMode === "match") {
                     if (matchQueue.length === 0) {
-                        matchQueue = createMatchQueue(["A", "B", "C", "T"], 10);
+                        matchQueue = createMatchQueue(currentQueue, 10);
                         console.log("New match queue created: ", matchQueue);
 
-                        imgToDisplay(matchQueue[0].toLowerCase());
+                        nextInQueue(matchQueue[0].toLowerCase());
                     }
 
                     if(processedData.value.toLowerCase() === matchQueue[0].toLowerCase()) {
@@ -134,7 +139,7 @@ inputText.addEventListener('input', (event) => {
                         
                         matchQueue.shift();
                         if (matchQueue.length > 0) {
-                            imgToDisplay(matchQueue[0].toLowerCase());
+                            nextInQueue(matchQueue[0].toLowerCase());
                         }
                     }
 
@@ -143,6 +148,25 @@ inputText.addEventListener('input', (event) => {
     }, 10);
 
 });
+
+function nextInQueue(char) {
+    console.log(matchPrompt);
+    
+    switch (matchPrompt) {
+        case "audio":
+            // play audio for char
+            break;
+        case "picture":
+            imgToDisplay(char);
+            break;
+        case "action":
+            imgToDisplay(char, 'Action');
+            break;
+        case "capital":
+            displayBox.innerHTML = char.toUpperCase();
+            break;
+    }   
+}
 
 function createMatchQueue(charArr, len) {
     var baseArr = [...charArr];
@@ -175,9 +199,251 @@ function iconPriority(dict) {
 
 console.log(createMatchQueue(["A", "B", "C", "T"], 10));
 
-function imgToDisplay(char) {
+function imgToDisplay(char, type) {
     displayBox.innerHTML = "";
     var newImg = document.createElement('img');
-    newImg.src = iconPriority(abcImgs[abcLets[char].Action]);
+
+    console.log("Displaying image for char: ", char, " with type: ", type);
+
+    if (type) {
+        newImg.src = iconPriority(abcImgs[abcLets[char][type]]);
+    } else {
+        let typesArr = ["Animal", "Misc", "Action"];
+        let randomType = typesArr[Math.floor(Math.random() * typesArr.length)];
+
+        newImg.src = iconPriority(abcImgs[abcLets[char][randomType]]);
+    }
+
     displayBox.appendChild(newImg);
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- STATE MANAGEMENT ---
+            const state = {
+                letters: new Set(['A', 'B', 'C', 'D', 'E']), // Default selected letters
+                mode: 'display',           // 'display' | 'game'
+                input: 'single',           // 'single' | 'multi'
+                triggerMode: 'auto',       // 'auto' | 'timed'
+                displayPrompt: 'audio'      // 'audio' | 'picture' | 'action' | 'capital'
+            };
+
+            const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+            const VOWELS = ['A', 'E', 'I', 'O', 'U'];
+
+            // --- DOM ELEMENTS ---
+            const overlay = document.getElementById('modal-overlay');
+            const openModalBtn = document.getElementById('open-modal-btn');
+            const closeModalX = document.getElementById('close-modal-x');
+            const alphabetGrid = document.getElementById('alphabet-grid');
+            const gameOptionsContainer = document.getElementById('game-options-container');
+            const btnStart = document.getElementById('btn-start');
+            const letterErrorMsg = document.getElementById('letter-error-msg');
+            
+            const jsonOutput = document.getElementById('json-output');
+            const outputPlaceholder = document.getElementById('output-placeholder');
+            const timestampBadge = document.getElementById('timestamp-badge');
+
+            // --- 1. RENDER ALPHABET GRID ---
+            function renderAlphabetGrid() {
+                alphabetGrid.innerHTML = '';
+                ALPHABET.forEach(letter => {
+                    const isSelected = state.letters.has(letter);
+                    const tile = document.createElement('button');
+                    tile.type = 'button';
+                    tile.dataset.letter = letter;
+                    tile.className = `letter-tile aspect-square rounded-xl text-sm font-bold flex flex-col items-center justify-center relative border transition-all ${
+                        isSelected 
+                            ? 'bg-brand-600 text-white border-brand-600 shadow-md shadow-brand-600/20' 
+                            : 'bg-white text-slate-700 border-slate-200 hover:border-brand-500 hover:bg-slate-50'
+                    }`;
+
+                    tile.innerHTML = `
+                        <span>${letter}</span>
+                        ${isSelected ? '<i class="fa-solid fa-check text-[10px] absolute top-1 right-1 opacity-80"></i>' : ''}
+                    `;
+
+                    tile.addEventListener('click', () => toggleLetter(letter));
+                    alphabetGrid.appendChild(tile);
+                });
+            }
+
+            function toggleLetter(letter) {
+                if (state.letters.has(letter)) {
+                    state.letters.delete(letter);
+                } else {
+                    state.letters.add(letter);
+                }
+                letterErrorMsg.classList.add('hidden');
+                renderAlphabetGrid();
+            }
+
+            // Quick select handlers
+            document.getElementById('btn-select-all').addEventListener('click', () => {
+                ALPHABET.forEach(l => state.letters.add(l));
+                letterErrorMsg.classList.add('hidden');
+                renderAlphabetGrid();
+            });
+
+            document.getElementById('btn-select-none').addEventListener('click', () => {
+                state.letters.clear();
+                renderAlphabetGrid();
+            });
+
+            document.getElementById('btn-select-vowels').addEventListener('click', () => {
+                state.letters.clear();
+                VOWELS.forEach(v => state.letters.add(v));
+                letterErrorMsg.classList.add('hidden');
+                renderAlphabetGrid();
+            });
+
+            // --- 2. SEGMENTED CONTROL SWITCH LOGIC ---
+            function setupSegmentedControl(containerId, sliderId, initialValue, onChange) {
+                const container = document.getElementById(containerId);
+                const slider = document.getElementById(sliderId);
+                const options = container.querySelectorAll('.segmented-option');
+
+                function updateUI(value) {
+                    options.forEach((opt, index) => {
+                        const matches = opt.dataset.value === value;
+                        if (matches) {
+                            opt.classList.add('text-slate-900');
+                            opt.classList.remove('text-slate-500');
+                            // Move slider
+                            slider.style.width = `${100 / options.length}%`;
+                            slider.style.transform = `translateX(${index * 100}%)`;
+                        } else {
+                            opt.classList.remove('text-slate-900');
+                            opt.classList.add('text-slate-500');
+                        }
+                    });
+                }
+
+                options.forEach(opt => {
+                    opt.addEventListener('click', () => {
+                        const val = opt.dataset.value;
+                        updateUI(val);
+                        onChange(val);
+                    });
+                });
+
+                // Initial positioning
+                updateUI(initialValue);
+            }
+
+            // Initialize Mode Switch
+            setupSegmentedControl('mode-segmented', 'mode-slider', state.mode, (val) => {
+                state.mode = val;
+                if (val === 'game') {
+                    gameOptionsContainer.classList.add('open');
+                } else {
+                    gameOptionsContainer.classList.remove('open');
+                }
+            });
+
+            // Initialize Input Switch
+            setupSegmentedControl('input-segmented', 'input-slider', state.input, (val) => {
+                state.input = val;
+            });
+
+            // Initialize Trigger Mode Switch
+            setupSegmentedControl('trigger-segmented', 'trigger-slider', state.triggerMode, (val) => {
+                state.triggerMode = val;
+            });
+
+            // Dropdown prompt handler
+            const displayPromptSelect = document.getElementById('display-prompt-select');
+            displayPromptSelect.value = state.displayPrompt;
+            displayPromptSelect.addEventListener('change', (e) => {
+                state.displayPrompt = e.target.value;
+            });
+
+
+            // --- 3. MODAL CONTROLS & SUBMIT HANDLER ---
+            function openModal() {
+                overlay.classList.remove('hidden', 'modal-hidden');
+                document.body.style.overflow = 'hidden'; // Block background scroll
+            }
+
+            function closeModal() {
+                overlay.classList.add('modal-hidden');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 200);
+            }
+
+            // openModalBtn.addEventListener('click', openModal);
+            closeModalX.addEventListener('click', closeModal);
+
+            // Close on overlay backdrop click
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeModal();
+                }
+            });
+
+            // Start Button Click Handler
+            btnStart.addEventListener('click', () => {
+                // Validation: At least 1 letter selected
+                if (state.letters.size === 0) {
+                    letterErrorMsg.classList.remove('hidden');
+                    return;
+                }
+
+                // Construct Result Object
+                const resultObject = {
+                    letters: Array.from(state.letters).sort(),
+                    mode: state.mode,
+                    input: state.input
+                };
+
+                // Append conditional properties if mode === 'game'
+                if (state.mode === 'game') {
+                    resultObject.triggerMode = state.triggerMode;
+                    resultObject.displayPrompt = state.displayPrompt;
+                }
+
+                // Log output to browser console
+                console.log('Menu Submitted Object:', resultObject);
+                currentQueue = resultObject.letters;
+                matchPrompt = matchSelect.value;
+                console.log (matchPrompt);
+
+                // Render JSON to code block on website
+                // outputPlaceholder.classList.add('hidden');
+                // jsonOutput.classList.remove('hidden');
+                // jsonOutput.textContent = JSON.stringify(resultObject, null, 2);
+                //timestampBadge.textContent = `Updated: ${new Date().toLocaleTimeString()}`;
+
+                // Close Modal
+                closeModal();
+            });
+
+            // --- INITIAL RENDER ---
+            renderAlphabetGrid();
+});
+
+
+
+
+tailwind.config = {
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                mono: ['Fira Code', 'monospace'],
+            },
+            colors: {
+                brand: {
+                    50: '#f0f9ff',
+                    100: '#e0f2fe',
+                    500: '#0ea5e9',
+                    600: '#0284c7',
+                    700: '#0369a1',
+                }
+            }
+        }
+    }
 }

@@ -3,19 +3,22 @@
     "Animal": "ape",
     "Misc": "apple",
     "Action": "attention",
-    "Discarded": "applaud"
+    "Discarded": "applaud",
+    "ipa": ["æ","eɪ"]
   },
   "b": {
     "Animal": "bird",
     "Misc": "book",
     "Action": "bow",
-    "Discarded": "bag"
+    "Discarded": "bag",
+    "ipa": ["b"]
   },
   "c": {
     "Animal": "cat",
     "Misc": "cup",
     "Action": "clap",
-    "Discarded": "chair, climb"
+    "Discarded": "chair, climb",
+    "ipa": ["k","s"]
   },
   "d": {
     "Animal": "dog",
@@ -109,7 +112,8 @@
     "Animal": "tiger",
     "Misc": "taco",
     "Action": "talk",
-    "Discarded": "twist, tea"
+    "Discarded": "twist, tea",
+    "ipa": ["t"]
   },
   "u": {
     "Animal": "unicorn",
