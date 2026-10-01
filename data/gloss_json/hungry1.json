@@ -1,0 +1,462 @@
+[
+  {
+    "english": "Hungry",
+    "chinese": "餓",
+    "pos": "adj"
+  },
+  {
+    "english": "Mungry",
+    "chinese": "(鬼)芒格利",
+    "pos": "noun"
+  },
+  {
+    "english": "sat",
+    "chinese": "坐",
+    "pos": "verb"
+  },
+  {
+    "english": "at",
+    "chinese": "在",
+    "pos": "prep"
+  },
+  {
+    "english": "supper",
+    "chinese": "晚餐",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "took",
+    "chinese": "拿起",
+    "pos": "verb"
+  },
+  {
+    "english": "his",
+    "chinese": "他的",
+    "pos": "pro"
+  },
+  {
+    "english": "knife",
+    "chinese": "刀",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "spoon",
+    "chinese": "湯匙",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "fork",
+    "chinese": "叉子",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ate",
+    "chinese": "喝了",
+    "pos": "verb"
+  },
+  {
+    "english": "a bowl of",
+    "chinese": "一碗",
+    "pos": "noun"
+  },
+  {
+    "english": "mushroom",
+    "chinese": "蘑菇",
+    "pos": "noun"
+  },
+  {
+    "english": "soup",
+    "chinese": "湯",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "a slice of",
+    "chinese": "一片",
+    "pos": "noun"
+  },
+  {
+    "english": "roasted",
+    "chinese": "烤",
+    "pos": "adj"
+  },
+  {
+    "english": "pork",
+    "chinese": "豬肉",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "a dozen",
+    "chinese": "十二個",
+    "pos": "noun"
+  },
+  {
+    "english": "stewed",
+    "chinese": "燉的",
+    "pos": "adj"
+  },
+  {
+    "english": "tomatoes",
+    "chinese": "番茄",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "twenty-seven",
+    "chinese": "二十七個",
+    "pos": "noun"
+  },
+  {
+    "english": "deviled",
+    "chinese": "魔鬼",
+    "pos": "adj"
+  },
+  {
+    "english": "eggs",
+    "chinese": "蛋",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "fifteen",
+    "chinese": "十五隻",
+    "pos": "noun"
+  },
+  {
+    "english": "shrimps",
+    "chinese": "蝦",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "nine",
+    "chinese": "九個",
+    "pos": "noun"
+  },
+  {
+    "english": "baked",
+    "chinese": "烤",
+    "pos": "adj"
+  },
+  {
+    "english": "potatoes",
+    "chinese": "馬鈴薯",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "thirty-two",
+    "chinese": "三十二個",
+    "pos": "noun"
+  },
+  {
+    "english": "fried",
+    "chinese": "炸",
+    "pos": "adj"
+  },
+  {
+    "english": "chicken legs",
+    "chinese": "雞腿",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "A shank of",
+    "chinese": "一塊_腿",
+    "pos": "noun"
+  },
+  {
+    "english": "lamb",
+    "chinese": "羊",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "a",
+    "chinese": "一塊",
+    "pos": "det"
+  },
+  {
+    "english": "boiled",
+    "chinese": "煮過",
+    "pos": "adj"
+  },
+  {
+    "english": "ham",
+    "chinese": "火腿",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "two",
+    "chinese": "兩",
+    "pos": "noun"
+  },
+  {
+    "english": "bowls of",
+    "chinese": "碗",
+    "pos": "noun"
+  },
+  {
+    "english": "grits",
+    "chinese": "粗玉米粉",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "some",
+    "chinese": "一些",
+    "pos": "det"
+  },
+  {
+    "english": "black-eye peas",
+    "chinese": "黑眼豆",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "four",
+    "chinese": "四杯",
+    "pos": "noun"
+  },
+  {
+    "english": "chocolate",
+    "chinese": "巧克力",
+    "pos": "noun"
+  },
+  {
+    "english": "shakes",
+    "chinese": "奶昔",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "eight",
+    "chinese": "八個",
+    "pos": "noun"
+  },
+  {
+    "english": "angel cakes",
+    "chinese": "天使蛋糕",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "nine",
+    "chinese": "九個",
+    "pos": "noun"
+  },
+  {
+    "english": "custard",
+    "chinese": "蛋奶",
+    "pos": "noun"
+  },
+  {
+    "english": "pies",
+    "chinese": "派",
+    "pos": "noun"
+  },
+  {
+    "english": "with",
+    "chinese": "和",
+    "pos": "prep"
+  },
+  {
+    "english": "Muenster cheese",
+    "chinese": "蒙斯特起司",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ten",
+    "chinese": "十",
+    "pos": "noun"
+  },
+  {
+    "english": "pots of",
+    "chinese": "壺",
+    "pos": "noun"
+  },
+  {
+    "english": "tea",
+    "chinese": "茶",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and after",
+    "chinese": "後",
+    "pos": "prep"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "had eaten",
+    "chinese": "吃完",
+    "pos": "verb"
+  },
+  {
+    "english": "all that he",
+    "chinese": "所有_的東西",
+    "pos": "phrase"
+  },
+  {
+    "english": "was able",
+    "chinese": "能(吃)",
+    "pos": "phrase"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "he",
+    "chinese": "他 ",
+    "pos": "pro"
+  },
+  {
+    "english": "poured",
+    "chinese": "倒了",
+    "pos": "verb"
+  },
+  {
+    "english": "some",
+    "chinese": "一些",
+    "pos": "det"
+  },
+  {
+    "english": "broth",
+    "chinese": "肉湯",
+    "pos": "noun"
+  },
+  {
+    "english": "on",
+    "chinese": "在_上",
+    "pos": "prep"
+  },
+  {
+    "english": "the tablecloth",
+    "chinese": "桌布",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "the kitchen",
+    "chinese": "廚房",
+    "pos": "noun"
+  },
+  {
+    "english": "table",
+    "chinese": "桌子",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]

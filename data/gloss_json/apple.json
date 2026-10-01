@@ -1,0 +1,837 @@
+[
+  {
+    "english": "Hello",
+    "chinese": "你好",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "am",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "an apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "am",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "an apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "But",
+    "chinese": "但是",
+    "pos": "conj"
+  },
+  {
+    "english": "…",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "don't",
+    "chinese": "不",
+    "pos": "adv"
+  },
+  {
+    "english": "look like",
+    "chinese": "看起來_像",
+    "pos": "verb"
+  },
+  {
+    "english": "an apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "…",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "the wax apple",
+    "chinese": "蓮霧",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "is like",
+    "chinese": "和_一樣",
+    "pos": "verb"
+  },
+  {
+    "english": "me",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "it's",
+    "chinese": "它是",
+    "pos": "phrase"
+  },
+  {
+    "english": "red",
+    "chinese": "紅色的",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "am",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "an apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "re",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "not",
+    "chinese": "不",
+    "pos": "adv"
+  },
+  {
+    "english": "an apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes I am",
+    "chinese": "是的，我是",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "am",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "an apple",
+    "chinese": "個蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "just like",
+    "chinese": "跟_一樣",
+    "pos": "prep"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "am",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "an apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Who",
+    "chinese": "誰",
+    "pos": "quest"
+  },
+  {
+    "english": "are",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "am",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a pineapple",
+    "chinese": "鳳梨",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Pineapple",
+    "chinese": "鳳梨",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "But",
+    "chinese": "但是",
+    "pos": "conj"
+  },
+  {
+    "english": "apples",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "don't have",
+    "chinese": "沒有",
+    "pos": "verb"
+  },
+  {
+    "english": "hair",
+    "chinese": "頭髮",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes, I have",
+    "chinese": "我有！",
+    "pos": "phrase"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "don't",
+    "chinese": "沒有",
+    "pos": "verb"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yes",
+    "chinese": "是的",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "am",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "the apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Because",
+    "chinese": "因為",
+    "pos": "conj"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "a pineapple",
+    "chinese": "鳳梨",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Pineapple",
+    "chinese": "鳳梨",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Hello",
+    "chinese": "你好",
+    "pos": "ex"
+  },
+  {
+    "english": "apples",
+    "chinese": "蘋果們",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Hi",
+    "chinese": "嗨",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Are you",
+    "chinese": "你_是_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "an apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "too",
+    "chinese": "也",
+    "pos": "adv"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yeah,",
+    "chinese": "是的",
+    "pos": "ex"
+  },
+  {
+    "english": "I'm a, I'm… I'm",
+    "chinese": "我是，我是… 我是",
+    "pos": "phrase"
+  },
+  {
+    "english": "a sugar apple",
+    "chinese": "釋迦果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Sugar apple",
+    "chinese": "釋迦果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Sugar",
+    "chinese": "糖",
+    "pos": "noun"
+  },
+  {
+    "english": "apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": "you",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "are",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "not",
+    "chinese": "不",
+    "pos": "adv"
+  },
+  {
+    "english": "apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "But",
+    "chinese": "但",
+    "pos": "conj"
+  },
+  {
+    "english": "we",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "are",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "re",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "we're all",
+    "chinese": "我們都是",
+    "pos": "phrase"
+  },
+  {
+    "english": "apples",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Yeah",
+    "chinese": "耶",
+    "pos": "ex"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "You",
+    "chinese": "你",
+    "pos": "pro"
+  },
+  {
+    "english": "are so",
+    "chinese": "真",
+    "pos": "adv"
+  },
+  {
+    "english": "sweet",
+    "chinese": "甜",
+    "pos": "adj"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Thank you",
+    "chinese": "謝謝",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "like",
+    "chinese": "喜歡",
+    "pos": "verb"
+  },
+  {
+    "english": "sweet",
+    "chinese": "甜",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "No",
+    "chinese": "不",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "the apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "We",
+    "chinese": "我們",
+    "pos": "pro"
+  },
+  {
+    "english": "are",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "apples",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Apples",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Hey",
+    "chinese": "嘿",
+    "pos": "ex"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "do you",
+    "chinese": "你_嗎",
+    "pos": "quest"
+  },
+  {
+    "english": "wanna",
+    "chinese": "想",
+    "pos": "verb"
+  },
+  {
+    "english": "eat",
+    "chinese": "吃",
+    "pos": "verb"
+  },
+  {
+    "english": "some",
+    "chinese": "點",
+    "pos": "det"
+  },
+  {
+    "english": "apples",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "?",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "Sure",
+    "chinese": "當然",
+    "pos": "ex"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "m",
+    "chinese": "是",
+    "pos": "verb"
+  },
+  {
+    "english": "not",
+    "chinese": "不",
+    "pos": "adv"
+  },
+  {
+    "english": "apple",
+    "chinese": "蘋果",
+    "pos": "noun"
+  },
+  {
+    "english": "!",
+    "chinese": "",
+    "pos": ""
+  }
+]

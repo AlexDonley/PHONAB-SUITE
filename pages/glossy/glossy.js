@@ -1,7 +1,9 @@
 import { 
-    splitPinyin, pinNumToDiacritic, charToPin,
-    constructPinRT, constructZhuRT 
+    constructPinRT
 } from '../../js_modules/ruby-text.js'
+import { 
+    charToPin, parseAndCaption
+} from '../../js_modules/universal-phonics.js'
 import { fillMaxFontSize } from '../../js_modules/resize-text.js'
 
 const highLight         = document.querySelector('#highLight');
@@ -38,15 +40,16 @@ let gloss_size = 40;
 let menuTog = true;
 
 const availableGlosses = [
-    'p3', 'p6', 'p7', 'p8', 'p9', 
-    'p10', 'p11', 'p12', 'p13', 'p14', 
-    'p15', 'p16', 'p17', 'p18', 'p19',
-    'p20', 'p21', 'halloween', 'christmas', 'children', 'dragonboat'
+    'apple', 'hungry1',
+    'tangled1', 'tangled2', 'joseph1', 'joseph2', 
+    'pay_it1', 'pay_it2', 'sick1', 'sick2', 'work', 
+    'fly', 'busytown1', 'busytown2', 'busytown3', 'busytown4',
+    'busytown5', 'busytown6', 'halloween', 'christmas', 'children', 'dragonboat'
 ]
 const sessionKeys = Object.keys(sessionStorage)
 
 let translated = []
-const punctuation = ".,!?:;'\"/(){}[]~`|-—_+=@#$%^&*"
+const punctuation = ".…,!?:;'\"/(){}[]~`|-—_+=@#$%^&*"
 let currentSentences;
 
 
@@ -70,6 +73,8 @@ function loadTextOptions() {
 }
 
 loadTextOptions()
+const jsonDataPath = "../../data/gloss_json/"
+
 
 function getSentenceJSON(name) {
     const keyIndex = sessionKeys.indexOf("entry_" + name)
@@ -85,7 +90,7 @@ function getSentenceJSON(name) {
         toggleMenu()
 
     } else {
-        fetch("../../data/gloss_json/" + name + ".json")
+        fetch(jsonDataPath + name + ".json")
         .then(res => res.json())
         .then(data => {
             currentSentences = data
@@ -196,10 +201,11 @@ function addGloss(n) {
         if (thisPin) {
             const newPinyin = constructPinRT(
                 char,
-                pinNumToDiacritic(thisPin),
+                parseAndCaption(char, 'Pinyin', 'cmn-Hant'),
                 'under'
             )
             chinSpan.append(newPinyin) 
+ 
         } else {
             chinSpan.append(char)
         }

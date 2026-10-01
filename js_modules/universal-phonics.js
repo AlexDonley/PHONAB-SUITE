@@ -112,7 +112,9 @@ getZhChars()
 
 export function parseAndCaption(word, caption, lang, elem) {
     
-    elem.classList = ''
+    if (elem) {
+        elem.classList = ''
+    }
     
     switch (lang){
         case 'en':
