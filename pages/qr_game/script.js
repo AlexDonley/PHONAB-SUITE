@@ -162,6 +162,9 @@ function nextInQueue(char) {
         case "action":
             imgToDisplay(char, 'Action');
             break;
+        case "animal":
+            imgToDisplay(char, 'Animal');
+            break;
         case "capital":
             displayBox.innerHTML = char.toUpperCase();
             break;
