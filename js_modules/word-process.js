@@ -31,15 +31,15 @@ const wordsToOmit = [
 
 // Data to fetch
 
-let engHomophones;
+export var engHomophones;
 
 function loadHomophones(){
-    fetch('../../data/en_homophones.json')
+    fetch('../../data/homo_en.json')
     .then(res => {
         if (res.ok) {
-            console.log('Fetched English homophones');
+            console.log("Fetched English homophones");
         } else {
-            console.log('Couldnt fetch English homophones')
+            console.log("Couldn't fetch English homophones")
         }
         return res.json()
     })
@@ -51,28 +51,16 @@ function loadHomophones(){
 
 loadHomophones();
 
-// NON-MAINTAINED, PROBABLY OMIT
-  
-// let zhZhuyin;
-
-// function loadZhuyin() {
-//     fetch('../../data/zy_monochars.json')
-//     .then(res => {
-//         if (res.ok) {
-//             console.log('Fetched chars to Zhuyin');
-//         } else {
-//             console.log('Couldnt fetch chars to Zhuyin')
-//         }
-//         return res.json()
-//     })
-//     .then(data => {
-//         zhZhuyin = data;
-//     })
-//     .catch(error => console.log(error))
+// export function buildHomophoneDict(arrArr) {
+//   const dict = {};
+//   for (const group of arrArr) {
+//     for (const word of group) {
+//       // Everything in the group except the word itself
+//       dict[word] = group.filter(other => other !== word);
+//     }
+//   }
+//   return dict;
 // }
-
-
-// loadZhuyin();
 
 // Functions
 
@@ -113,15 +101,12 @@ export function compareWords(targStr, utterStr, lang) {
             }
 
         } else {
-            let correct = false
-            
-            engHomophones.forEach((set) =>{
-                if (set.includes(targStr) && set.includes(utterStr)){
-                    correct = true;
-                }
-            })
 
-            return correct
+            if (engHomophones[targStr] && engHomophones[targStr].includes(utterStr)) {
+                return true
+            } else {
+                return false
+            }
         }
     }
 }

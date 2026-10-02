@@ -279,23 +279,6 @@ function loadBooks(){
 
 loadBooks();
 
-//const supaBooks = loadAllBooks()
-
-// async function extractSupaTitles() {
-//     try {
-//         const data = await supaBooks
-        
-//         let titleArr = []
-//         data.forEach(entry => {
-//             titleArr.push(data.title)
-//         })
-
-//         return titleArr
-//     } catch (error) {
-//         console.error('Error fetchign data: ', error)
-//     }
-// }
-
 function filterBooks(dataset, attr, cond) {
     let indArr = []
 
@@ -395,9 +378,10 @@ async function startQueue() {
     shiftContentBlocks('game')
 }
 
-//const safariBool = window.navigator.userAgent.includes('Safari');
-const safariBool = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
-console.log(safariBool)
+// TO DO: Probably delete these
+// const safariBool = window.navigator.userAgent.includes('Safari');
+// const safariBool = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
+// console.log(safariBool)
 
 speechRec.addEventListener("result", (e) => {
   
@@ -1571,4 +1555,16 @@ function trySaveBook() {
 
         const result = addBookWithParts(entryBookData, entryPartsData)
     }
+}
+
+
+function buildHomophoneDict(groups) {
+    const dict = {};
+    for (const group of groups) {
+        for (const word of group) {
+            // Everything in the group except the word itself
+            dict[word] = group.filter(other => other !== word);
+        }
+    }
+    return dict;
 }

@@ -623,6 +623,7 @@ img {
   font-size: 1rem;
   field-sizing: content;
   resize: none;
+  min-height: 500px;
 }
 .create-options > button {
   height: 25px;
