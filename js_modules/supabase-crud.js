@@ -1,6 +1,9 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js';
 // import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js';
 
+// TO DO: convert 
+// to source -> section -> fragment -> token
+
 const SUPABASE_URL = 'https://vhwsoclmscplhbawonmb.supabase.co'
 const SUPABASE_PUBLIC_KEY = 'sb_publishable_xJTWezcmsCfP4TfYf4wmEA_WdDfgkO5'
 

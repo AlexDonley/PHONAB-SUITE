@@ -1,0 +1,17 @@
+{
+    "i'm": ["i", "am"],
+    "you're": ["you", "are"],
+    "we're": ["we", "are"],
+    "they're": ["they", "are"],
+    "it's": [["it", "is"], ["it", "has"]],
+    "he's": [["he", "is"], ["he", "has"]],
+    "she's": [["she", "is"], ["she", "has"]],
+    "that's": ["that", "is"],
+    "don't": ["do", "not"],
+    "can't": [["can", "not"], ["cannot"]],
+    "won't": ["will", "not"],
+    "i'll": ["i", "will"],
+    "i've": ["i", "have"],
+    "could've": ["could", "have"],
+    "would've": ["would", "have"]
+}

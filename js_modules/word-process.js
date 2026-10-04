@@ -434,3 +434,59 @@ export function checkArrOverlap(targArr, utterArr) {
         return false
     }
 }
+
+
+
+
+import { createComparer, toScoreArray, makeFuzzyMatcher } from "../../js_modules/word-matcher.js";
+
+const words = (s) => s.split(" ");
+const show = (label, result) =>
+  console.log(
+    label.padEnd(34),
+    JSON.stringify(toScoreArray(result)),
+    `completion=${result.completion.toFixed(2)}`,
+    `accuracy=${result.accuracy.toFixed(2)}`,
+    result.extraneous.length ? `extra=[${result.extraneous.map((e) => e.token)}]` : ""
+  );
+
+// Your original cases, default config
+const base = createComparer();
+const target = words("I am Sam");
+show("Sam I am", base.compare(target, words("Sam I am")));          // [1,1,0.5]
+show("I am Dave", base.compare(target, words("I am Dave")));        // [1,1,0]
+show("I am not Sam", base.compare(target, words("I am not Sam")));  // [1,1,1], accuracy < 1
+
+// Contractions, both directions
+show("target I'm / said I am", base.compare(words("I'm Sam"), words("I am Sam")));
+show("target I am / said I'm", base.compare(words("I am Sam"), words("I'm Sam")));
+
+// Homophones and compounds
+show("their/there", base.compare(words("their dog"), words("there dog")));
+show("well-known / well known", base.compare(words("a well-known author"), words("a well known author")));
+show("well-known / wellknown", base.compare(words("a well-known author"), words("a wellknown author")));
+show("every body / everybody", base.compare(words("every body"), words("everybody")));
+
+// Text profile with mercy words
+const hungryMungry = {
+  dictionaries: { mercy: { mungry: ["hungry"] } },
+  wordOverrides: { read: { equivalence: { homophones: false } } }, // "read" must be "read"
+};
+const hm = createComparer(hungryMungry);
+show("Hungry Mungry w/ mercy", hm.compare(words("Hungry Mungry"), words("hungry hungry")));
+show("Hungry Mungry no mercy", base.compare(words("Hungry Mungry"), words("hungry hungry")));
+
+// Per-call strictness: out-of-order not recognized at all
+const strict = createComparer({ outOfOrder: { mode: "none" } });
+show("strict: Sam I am", strict.compare(target, words("Sam I am")));
+
+// Proportional out-of-order credit + fuzzy fallback tier
+const loose = createComparer({
+  outOfOrder: { mode: "proportional" },
+  matchers: [(a, b) => (a === b ? "exact" : false), makeFuzzyMatcher({ maxDistance: 1 })],
+});
+show("proportional: Sam I am", loose.compare(target, words("Sam I am")));
+show("fuzzy: hungary", loose.compare(words("the hungry cat"), words("the hungary cat")));
+
+// Rich result for UI use
+console.log(JSON.stringify(hm.compare(words("Hungry Mungry sat at supper"), words("hungry hungry sat super")).words, null, 1));
