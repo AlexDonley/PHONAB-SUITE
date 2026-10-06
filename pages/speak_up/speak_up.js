@@ -19,11 +19,6 @@ import {
     mapToAwardArr, trackCompletion,
     mapToFreqs, findPercent 
 } from '../../js_modules/completion-map.js'
-// import { 
-//     splitPinyin, pinNumToDiacritic, 
-//     charToPin, pinToZhu,
-//     constructPinRT, constructZhuRT 
-// } from '../../js_modules/ruby-text.js'
 import { 
     defaultSteps, oscBeep, createChord,
     halfStepToHz, extendSteps
@@ -31,7 +26,6 @@ import {
 import { urlConfigs } from '../../js_modules/url-query.js'
 import { cycleQRWrap, toggleShowQR, genQRstr, genNewQR } from '../../js_modules/qr.js'
 import { 
-    addBook, addPart, addBookWithParts,
     getBookParts, getFilteredBooks, getPartById,
     fetchWithCache, loadAllBooks
 } from '../../js_modules/supabase-crud.js'
@@ -86,8 +80,6 @@ const homeBtn       = document.querySelector('#homeBtn');
 const userBtn       = document.querySelector('#userBtn');
 const fullscreenBtn = document.querySelector('#fullscreenBtn');
 const settingBtn    = document.querySelector('#settingBtn');
-// const saveBookBtn   = document.querySelector('#saveBookBtn');
-// const addChunkBtn   = document.querySelector('#addChunkBtn');
 
 const searchTitles      = document.querySelector("#searchTitles");
 const titleCards        = document.querySelector("#titleCards");
@@ -97,10 +89,6 @@ const captionDropdown    = document.querySelector('#captionDropdown');
 const targetColumn      = document.querySelector('.targetColumn');
 const utterTexts        = document.querySelector('.texts');
 const punchBtn          = document.querySelector('.punch-btn');
-
-const createTitle       = document.querySelector('#createTitle')
-const chunkArea         = document.querySelector('#chunkArea');
-const chunkTemplate     = document.querySelector('#chunkTemplate')
 
 presetBtn.addEventListener("click", togglePresets);
 shuffleBtn.addEventListener("click", toggleShuffle);
@@ -120,8 +108,6 @@ readBtn.addEventListener("click", e => {
 })
 fullscreenBtn.addEventListener("click", toggleFullscreen);
 settingBtn.addEventListener("click", toggleSettings);
-// saveBookBtn.addEventListener("click", trySaveBook)
-// addChunkBtn.addEventListener("click", addChunk);
 captionDropdown.addEventListener("change", swapCaptions);
 synthSpeed.addEventListener("pointermove", updateSpeed);
 synthVol.addEventListener("pointermove", updateVol);
@@ -256,28 +242,31 @@ searchTitles.addEventListener("input", e => {
 // elements contained in the action section
 // reading section contains two columns, one for target words and the other for user input
 
-const booksDataPath = "../../data/spup_backup.json"
+// const booksDataPath = "../../data/spup_backup.json"
 
-function loadBooks(){
-    fetch(booksDataPath)
-    .then(res => {
-        if (res.ok) {
-            console.log('Fetched books');
-        } else {
-            console.log('Couldnt fetch books')
-        }
-        return res.json()
-    })
-    .then(data => {
-        bookList = data;
+// function loadBooks(){
+//     fetch(booksDataPath)
+//     .then(res => {
+//         if (res.ok) {
+//             console.log('Fetched books');
+//         } else {
+//             console.log('Couldnt fetch books')
+//         }
+//         return res.json()
+//     })
+//     .then(data => {
+//         bookList = data;
 
-        swapLang('en')
-        processQueries();
-    })
-    .catch(error => console.log(error))
-}
+        
+        
+//     })
+//     .catch(error => console.log(error))
+// }
 
-loadBooks();
+// loadBooks();
+
+processQueries();
+swapLang('en')
 
 function filterBooks(dataset, attr, cond) {
     let indArr = []
@@ -304,7 +293,7 @@ let score = 0
 scoreMarker.innerText = score
 
 
-async function startQueue() {
+async function startQueue(setId) {
     
     // disable language change
     ffLang.disabled = true
@@ -327,24 +316,45 @@ async function startQueue() {
         // see which boxes are checked
         const checkboxes = document.querySelectorAll('.preset-check')
 
-        for (let n = 0; n < checkboxes.length; n++){
-            if (checkboxes[n].checked) {
+        if (!setId) {
+            for (let n = 0; n < checkboxes.length; n++){
+                if (checkboxes[n].checked) {
 
-                const thisId = checkboxes[n].id
-                if (globCurrents['chunk'] == null) {
-                    globCurrents['chunk'] = thisId
+                    let thisId = checkboxes[n].id
+
+                    if (globCurrents['chunk'] == null) {
+                        globCurrents['chunk'] = thisId
+                    }
+                    const chunkData = await getPartById(thisId)
+                    console.log(thisId, chunkData)
+
+                    const fullId = thisId + "*" + targIterations
+                    complObjs[fullId] = genPresetObj(chunkData)
+
+                    //console.log(complObjs[fullId])
+
+                    const newAward = awardProgElem(fullId, chunkData.award)
+                    awardDiv.prepend(newAward)
+
+                    targIterations++
                 }
-                const chunkData = await getPartById(thisId)
-                console.log(chunkData)
-
-                const fullId = thisId + "*" + targIterations
-                complObjs[fullId] = genPresetObj(chunkData)
-
-                const newAward = awardProgElem(fullId, chunkData.award)
-                awardDiv.prepend(newAward)
-
-                targIterations++
             }
+        } else {
+
+            globCurrents['chunk'] = setId
+            let thisId = setId
+
+            const chunkData = await getPartById(thisId)
+            console.log(thisId, chunkData)
+
+            const fullId = thisId + "*" + targIterations
+            complObjs[fullId] = genPresetObj(chunkData)
+
+
+            const newAward = awardProgElem(fullId, chunkData.award)
+            awardDiv.prepend(newAward)
+
+            targIterations++
         }
 
         loadChunk(globCurrents['chunk'] + "*" + globCurrents['iter'])
@@ -1444,37 +1454,25 @@ function inchUpSound(n) {
     defaultFreq += n
 }
 
-console.log(urlConfigs)
-
-function processQueries(data) {
+async function processQueries(data) {
     const fullWordlist = data
 
     if (urlConfigs) {
-        if (urlConfigs.fs == 'true') {
-            createFSInteractor()
-        }
+        // if (urlConfigs.fs == 'true') {
+        //     createFSInteractor()
+        // }
         
-        if (urlConfigs.psidx) {
-            const splitOne = urlConfigs.psidx.split('_');
-            const bookIdx = splitOne[0];
-            const splitTwo = splitOne[1].split('-');
+        if (urlConfigs.p) {
             
             togglePresets('preset')
-
-            bookIndex = bookIdx;
-            populateChunks(bookIdx);
-            const allChecks = partsCards.querySelectorAll('input[type="checkbox"]');
-
-            splitTwo.forEach(val => {
-                if (allChecks[val]) {
-                    allChecks[val].checked = true;
-                }
-            })
+            // const results = await getPartById(urlConfigs.p)
+            // console.log(results)
+            startQueue(urlConfigs.p)
         }
     
-        if (urlConfigs.go == 'true') {
-            startQueue()
-        }
+        // if (urlConfigs.go == 'true') {
+        //     startQueue()
+        // }
     }
 }
 
@@ -1492,79 +1490,4 @@ function FSwrapper(bool) {
         toggleFullscreen(bool);
         e.target.remove()
     }
-}
-
-function addChunk() {
-    const newChunk = chunkTemplate.content.cloneNode(true);
-    newChunk.querySelector('.del-chunk').addEventListener("click", (e) => {
-        e.target.parentNode.parentNode.remove()
-
-        const chunkArr = Array.from(chunkArea.children)
-        
-        if (chunkArr.length < 2) {
-            const thisButton = document.querySelector('.del-chunk')
-            thisButton.disabled = true
-        }
-    })
-
-    chunkArea.append(newChunk)
-
-    const chunkArr = Array.from(chunkArea.children)
-    if (chunkArr.length > 1) {
-        const allButtons = document.querySelectorAll('.del-chunk')
-
-        allButtons.forEach(button => {
-            button.disabled = false
-        })
-    }
-}
-
-addChunk()
-
-function trySaveBook() {
-
-    let noNullCheck = true
-
-    const theseChunks = document.querySelectorAll('.chunk-div')
-    theseChunks.forEach(chunk => {
-        if (chunk.querySelector('textarea').value == '') {
-            noNullCheck = false
-        }
-    })
-
-    if (createTitle.value == '' || noNullCheck == false) {
-        alert('Fill in all blanks before attempting to save!')
-    } else {
-        console.log(`Book info: `, createTitle.value, targetLang, 'guest' )
-
-        const entryBookData = {
-            'title' : createTitle.value,
-            'author' : 'guest',
-            'lang' : targetLang
-        }
-        let entryPartsData = []
-
-        theseChunks.forEach (chunk => {
-            const newChunkObj = {
-                'award' : chunk.querySelector('.award-select').value,
-                'text' : chunk.querySelector('textarea').value.split('\n')
-            }
-
-            entryPartsData.push(newChunkObj)
-        })
-
-        const result = addBookWithParts(entryBookData, entryPartsData)
-    }
-}
-
-
-function buildHomophoneDict(groups) {
-    const dict = {};
-    for (const group of groups) {
-        for (const word of group) {
-            // Everything in the group except the word itself
-            dict[word] = group.filter(other => other !== word);
-        }
-    }
-    return dict;
 }

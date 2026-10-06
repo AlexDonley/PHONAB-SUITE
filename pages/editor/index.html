@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Editor</title>
+    <script type="module" src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="chunk-title-bar">
+            <input type="text" id="createTitle" placeholder="Title"> 
+            <input type="text" id="createAuthor" placeholder="Author">
+            <div id="mercyContainer">
+                <div class="mercy-lines">
+
+                </div>
+                <button class="add-mercy" id="addMercyBtn">new mercy word</button>
+            </div>
+    </div>
+    <div class="chunk-area" id="chunkArea"></div>
+    <button class="add-chunk" id="addChunkBtn">+</button>
+    <br>
+    <button class="save-chunk" id="saveBookBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#dddddd"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/></svg>
+    </button>
+
+    <template id="chunkTemplate">
+        <div class="chunk-div">
+            <textarea class="text-input" placeholder="Type one chunk of text here"></textarea>
+            <div class="chunk-side">
+                <button class="del-chunk" disabled="true">x</button>
+                <!-- <select class="award-select">
+                    <option value="🤓">🤓</option>
+                    <option value="🥶">🥶</option>
+                    <option value="🤠">🤠</option>
+                    <option value="💪">💪</option>
+                    <option value="💅">💅</option>
+                    <option value="💃">💃</option>
+                    <option value="🕺">🕺</option>
+                    <option value="🩰">🩰</option>
+                    <option value="👌">👌</option>
+                    <option value="🫵">🫵</option>
+                </select> -->
+                <input type="text" class="award" placeholder="Award"> 
+            </div>
+        </div>
+    </template> 
+    <template id="mercyTemplate">
+        <div class="mercy-line">
+            <button class="del-mercy-line">x</button>
+            <input type="text" class="mercy-input" placeholder="word in passage">
+             : 
+            <input type="text" class="mercy-translation" placeholder="substitute">
+            <button class="del-mercy-word">x</button>
+
+        </div>
+    </template> 
+</body>
+</html>
