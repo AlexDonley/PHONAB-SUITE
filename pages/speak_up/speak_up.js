@@ -81,7 +81,7 @@ const userBtn       = document.querySelector('#userBtn');
 const fullscreenBtn = document.querySelector('#fullscreenBtn');
 const settingBtn    = document.querySelector('#settingBtn');
 
-const searchTitles      = document.querySelector("#searchTitles");
+// const searchTitles      = document.querySelector("#searchTitles");
 const titleCards        = document.querySelector("#titleCards");
 const partsCards        = document.querySelector("#partsCards");
 const captionDropdown    = document.querySelector('#captionDropdown');
@@ -231,13 +231,14 @@ function toggleRT() {
     })
 }
 
-searchTitles.addEventListener("input", e => {
-    const value = e.target.value.toLowerCase()
+// TO DO: Repair search, it's currently unusable
+// searchTitles.addEventListener("input", e => {
+//     const value = e.target.value.toLowerCase()
 
-    let searchList = filterBooks(bookList, 'title', value)
+//     let searchList = filterBooks(bookList, 'title', value)
 
-    populatePresets(searchList);
-})
+//     populatePresets(searchList);
+// })
 
 // elements contained in the action section
 // reading section contains two columns, one for target words and the other for user input
@@ -426,6 +427,13 @@ function checkAnswer() {
             thisCompletionObj.lang, 
             thisSent
         )
+        console.log(uttToScore, trackCompletion(
+            thisCompletionObj.text[globCurrents['sent']], 
+            utteredWords, 
+            'linear', 
+            thisCompletionObj.lang, 
+            thisSent
+        ))
 
         switch (thisCompletionObj.mode){
             case 'cluster':

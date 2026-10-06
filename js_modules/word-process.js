@@ -180,7 +180,7 @@ export function clusterCompArr(targetArrLocal, utterArrLocal) {
     let scoreMap = []
     
     const arrIntersect = targetArrLocal.filter(value => utterArrLocal.includes(value));
-    //console.log(arrIntersect)
+    console.log(arrIntersect)
 
     for (const word of targetArrLocal) {
         targetOccs[word] = targetOccs[word] ? targetOccs[word] + 1 : 1;
