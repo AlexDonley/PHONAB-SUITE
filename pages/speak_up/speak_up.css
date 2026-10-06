@@ -364,19 +364,12 @@ img {
   height: 50px;
   padding: 0% 5%;
   display: grid;
-  grid-template-columns: 1fr 50px;
+  gap: 3px
 }
 .progress-click > *:last-child {
-  border-bottom-right-radius: 50%;
+  border-bottom-right-radius: 25px;
 }
-
-.progress-btns{
-  height: 100%;
-  display: grid;
-  gap: 3px;
-  padding-right: 3px
-}
-.progress-btns > *:nth-child(1) {
+.progress-click > *:nth-child(1) {
   border-bottom-left-radius: 25px;
 }
 

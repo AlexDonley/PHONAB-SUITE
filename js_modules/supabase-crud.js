@@ -151,6 +151,26 @@ export async function getBookParts(bookId) {
     return data;
 }
 
+export async function getBookById(bookId) {
+    if (!bookId) {
+        console.error('❌ Missing part ID');
+        return null;
+    }
+
+    const { data, error } = await supabase
+        .from('books')
+        .select('*')
+        .eq('id', bookId)
+        .single(); // expects only one record
+
+    if (error) {
+        console.error('Error fetching part:', error);
+        return null;
+    }
+
+    return data;
+}
+
 export async function getPartById(partId) {
     if (!partId) {
         console.error('❌ Missing part ID');

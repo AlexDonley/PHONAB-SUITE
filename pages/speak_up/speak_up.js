@@ -7,7 +7,8 @@ import {
 import { 
     genWPStrToArr, 
     compareWords, linearCompArr,
-    clusterCompArr, queueToArr 
+    clusterCompArr, queueToArr,
+    createComparer, toScoreArray, makeFuzzyMatcher 
 } from '../../js_modules/word-process.js'
 import { synthSpeak } from '../../js_modules/speech-synth.js'
 import { startRainbow, genCompGrad, genStepConicGrad } from '../../js_modules/gradients.js'
@@ -26,14 +27,15 @@ import {
 import { urlConfigs } from '../../js_modules/url-query.js'
 import { cycleQRWrap, toggleShowQR, genQRstr, genNewQR } from '../../js_modules/qr.js'
 import { 
-    getBookParts, getFilteredBooks, getPartById,
+    getBookParts, getFilteredBooks, 
+    getBookById, getPartById,
     fetchWithCache, loadAllBooks
 } from '../../js_modules/supabase-crud.js'
 
 // - - - ELEMENTS - - - //
 // ux elements that show user progress through arrow movement, score, timer, and awards
 
-const progBtns        = document.querySelector('#progBtns');
+const progBtns        = document.querySelector('.progress-click');
 const stopWatch       = document.querySelector('#stopWatch');
 const awardDiv        = document.querySelector('#awardDiv');
 const scoreMarker     = document.querySelector('#scoreMarker');
@@ -73,7 +75,6 @@ const shuffleBtn    = document.querySelector('#shuffle');
 const timerBtn      = document.querySelector('#timer');
 const loopBtn       = document.querySelector('#loop');
 const goBtn         = document.querySelector('#goBtn');
-const leftBtn       = document.querySelector('#leftBtn');
 const capBtn        = document.querySelector('#capBtn')
 const playBtn       = document.querySelector('#playBtn');
 const homeBtn       = document.querySelector('#homeBtn');
@@ -94,8 +95,7 @@ presetBtn.addEventListener("click", togglePresets);
 shuffleBtn.addEventListener("click", toggleShuffle);
 loopBtn.addEventListener("click", toggleLoop);
 timerBtn.addEventListener("click", changeTimerMode);
-goBtn.addEventListener("click", startQueue);
-leftBtn.addEventListener("click", tryLeftRound);
+goBtn.addEventListener("click", checkAndStart);
 capBtn.addEventListener("click", toggleRT)
 playBtn.addEventListener("click", synthSpeakClosure('fullSent', targetLang));
 homeBtn.addEventListener("click", endQueue);
@@ -152,7 +152,6 @@ var presetBool      = false // false means freeform, true means preset
 var shuffleBool     = false // false means chronological targets, true means shuffled targets
 var loopBool        = false // false means finishes after 1 iteration, true means continues iterating until the user stops
 var fullscreenBool  = false // false means the application is not fullscreen, true means it is fullscreen
-var isLeftRound     = false // false means the speaker is practicing a normal speech chunk, true means they've returned to skipped words
 var isRecog         = false // false means speech recognition is not activated, true means it is activated
 var qrTrayBool      = false
 var capBool         = false
@@ -293,8 +292,33 @@ perfectWow.volume = 0.2
 let score = 0
 scoreMarker.innerText = score
 
+let currentCompare = await createComparer()
 
-async function startQueue(setId) {
+async function checkAndStart() {
+    
+    if (presetBool) {
+        const checkboxes = document.querySelectorAll('.preset-check')
+        let idArr = []
+
+        for (let n = 0; n < checkboxes.length; n++){
+            if (checkboxes[n].checked) {
+
+                let thisId = checkboxes[n].id
+                idArr.push(thisId)
+            }
+        }
+
+        startQueue(idArr)
+        return idArr
+
+    } else {
+
+        startFreef()
+
+    }
+}
+
+async function startQueue(idArr) {
     
     // disable language change
     ffLang.disabled = true
@@ -307,85 +331,66 @@ async function startQueue(setId) {
     if (!timerMode == 0) {
         startTimer(stopWatch)
     }
-  
-    // check if the sentence queue will be preset or freeform
-    if (presetBool) {
-        
-        globCurrents['iter'] = targIterations
-        globCurrents['chunk'] = null
-        
-        // see which boxes are checked
-        const checkboxes = document.querySelectorAll('.preset-check')
+   
+    globCurrents['iter'] = targIterations
+    globCurrents['chunk'] = null
 
-        if (!setId) {
-            for (let n = 0; n < checkboxes.length; n++){
-                if (checkboxes[n].checked) {
+    for (let n = 0; n < idArr.length; n++){
 
-                    let thisId = checkboxes[n].id
+        const thisId = idArr[n]
 
-                    if (globCurrents['chunk'] == null) {
-                        globCurrents['chunk'] = thisId
-                    }
-                    const chunkData = await getPartById(thisId)
-                    console.log(thisId, chunkData)
-
-                    const fullId = thisId + "*" + targIterations
-                    complObjs[fullId] = genPresetObj(chunkData)
-
-                    //console.log(complObjs[fullId])
-
-                    const newAward = awardProgElem(fullId, chunkData.award)
-                    awardDiv.prepend(newAward)
-
-                    targIterations++
-                }
-            }
-        } else {
-
-            globCurrents['chunk'] = setId
-            let thisId = setId
-
-            const chunkData = await getPartById(thisId)
-            console.log(thisId, chunkData)
-
-            const fullId = thisId + "*" + targIterations
-            complObjs[fullId] = genPresetObj(chunkData)
-
-
-            const newAward = awardProgElem(fullId, chunkData.award)
-            awardDiv.prepend(newAward)
-
-            targIterations++
+        if (globCurrents['chunk'] == null) {
+            globCurrents['chunk'] = thisId
         }
+        const chunkData = await getPartById(thisId)
 
-        loadChunk(globCurrents['chunk'] + "*" + globCurrents['iter'])
+        // grab mercy words
+        console.log(chunkData.book_id)
+        const thisBook = await getBookById(chunkData.book_id)
+        const thisMercy = thisBook.mercy_words
 
-    } else {
+        currentCompare = await createComparer( {
+            outOfOrder: { mode: "proportional" },
+            dictionaries: {
+                mercy: thisMercy
+            }
+        })
 
-        // FREEFORM INPUT
-        // The following grabs the text entered by the user and eliminates blank lines
+        const fullId = thisId + "*" + targIterations
+        complObjs[fullId] = genPresetObj(chunkData)
 
-        // remove excess spaces
-        console.log(textInput)
-        var freeformText = textInput.value.replace(/^\s*\n/gm, "");
-        // split text by line break
-        var freeformArr = freeformText.split(/\r?\n|\r|\n/g)
-        var thisTextID = 'freef*' + 0
+        const newAward = awardProgElem(fullId, chunkData.award)
+        awardDiv.prepend(newAward)
 
-        console.log(complObjs)
-        complObjs[thisTextID] = genFreefObj(freeformArr)
-        globCurrents['chunk'] = thisTextID
-
-        console.log(complObjs[thisTextID])
-        globCurrents['iter'] = targIterations
         targIterations++
-
-        awardDiv.prepend(awardProgElem(thisTextID, '👍'))
-        loadChunk(thisTextID)
     }
 
+    loadSect(globCurrents['chunk'] + "*" + globCurrents['iter'])
     toggRecogAndElem(true)
+    shiftContentBlocks('game')
+}
 
+async function startFreef() {
+    // FREEFORM INPUT
+    // The following grabs the text entered by the user and eliminates blank lines
+
+    // remove excess spaces
+    console.log(textInput)
+    var freeformText = textInput.value.replace(/^\s*\n/gm, "");
+    // split text by line break
+    var freeformArr = freeformText.split(/\r?\n|\r|\n/g)
+    var thisTextID = 'freef*' + 0
+
+    complObjs[thisTextID] = genFreefObj(freeformArr)
+    globCurrents['chunk'] = thisTextID
+
+    globCurrents['iter'] = targIterations
+    targIterations++
+
+    awardDiv.prepend(awardProgElem(thisTextID, '👍'))
+    loadSect(thisTextID)
+
+    toggRecogAndElem(true)
     shiftContentBlocks('game')
 }
 
@@ -412,108 +417,52 @@ speechRec.addEventListener("result", (e) => {
 
 function checkAnswer() {
 
-    if (!isLeftRound) {
+    globCurrents['attempt'] += 1
 
-        globCurrents['attempt'] = globCurrents['attempt'] + 1
+    const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
+    let thisSent = thisCompletionObj.completionMap[0][globCurrents['sent']]
 
-        const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
-        let thisSent = thisCompletionObj.completionMap[0][globCurrents['sent']]
+    // console.log(thisCompletionObj)
+    // const uttToScoreOld = trackCompletion(
+    //     thisCompletionObj.text[globCurrents['sent']], 
+    //     utteredWords, 
+    //     thisCompletionObj.mode, 
+    //     thisCompletionObj.lang, 
+    //     thisSent
+    // )
 
-        //console.log(thisCompletionObj)
-        const uttToScore = trackCompletion(
-            thisCompletionObj.text[globCurrents['sent']], 
-            utteredWords, 
-            thisCompletionObj.mode, 
-            thisCompletionObj.lang, 
-            thisSent
-        )
-        console.log(uttToScore, trackCompletion(
-            thisCompletionObj.text[globCurrents['sent']], 
-            utteredWords, 
-            'linear', 
-            thisCompletionObj.lang, 
-            thisSent
-        ))
+    const compare2 = currentCompare.compare(
+        thisCompletionObj.text[globCurrents['sent']], 
+        utteredWords
+    )
+    console.log(compare2)
+    const uttToScore = [toScoreArray(compare2)]
 
-        switch (thisCompletionObj.mode){
-            case 'cluster':
-                let newSent = [...thisSent]
+    let newSent = [...thisSent]
 
-                for (let n=0; n < newSent.length; n++) {
-                    if (uttToScore[0][n] > newSent[n]) {
-                        newSent[n] = uttToScore[0][n]
-                    }
-                }
-
-                thisCompletionObj.completionMap[0][globCurrents['sent']] = newSent
-                break;
-            case 'linear':
-                thisCompletionObj.completionMap[0][globCurrents['sent']] = uttToScore[0]
-                break;
+    for (let n=0; n < newSent.length; n++) {
+        if (uttToScore[0][n] > newSent[n]) {
+            newSent[n] = uttToScore[0][n]
         }
+    }
 
+    thisCompletionObj.completionMap[0][globCurrents['sent']] = newSent
 
-        updateScore(Math.round(uttToScore[1] *10) / 10)
-        logProgress()
+    // TO DO: fix update score
+    // updateScore(Math.round(uttToScore[1] *10) / 10)
+    logProgress()
 
-        if (
-            thisCompletionObj.completionMap[0][globCurrents['sent']].every(value => value == 1) ||
-            (autoCheck.checked && globCurrents['attempt'] > parseInt(autoLimit.value))
-        ) {
-            // to determine whether the utterance gets a perfect score,
-            // it must be fully complete (its completion map is all 1s)
-            // and it must be the same length as the target utterance
-            if (uttToScore[1] == thisSent.length) {
-                
-                // play an animation to reward the perfect performance
-                perfectAnim()
-            }
-            
-            setTimeout(() => {
-                nextSentence()
-            }, 50 * thisSent.length + 500)
+    if (
+        newSent.every(item => item == 1)
+    ) {
+
+        if (compare2.accuracy == 1) {
+            perfectAnim()
         }
         
-
-    } else {
-
-        const thisChunk = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
-        const coord = returnAllIntFromMap(thisChunk.completionMap[0], -1)
-        const targWordElemArr = Array.from(targetColumn.children)
-        
-        let newCompArr = []
-        const leftArr = grabLeftovers(coord)
-        console.log(leftArr)
-
-        const uttToScore = linearCompArr(
-            leftArr, 
-            utteredWords, 
-            targetLang, 
-            3
-        )
-
-        for (let h = 0; h < targWordElemArr.length - leftArr.length; h++) {
-            newCompArr.push(1)
-        }
-        for (let i = 0; i < uttToScore; i++) {
-            thisChunk.completionMap[0][coord[i][0]][coord[i][1]] = 1
-            newCompArr.push(1)
-        }
-        while (newCompArr.length < targWordElemArr.length) {
-            newCompArr.push(0)
-        }
-
-        console.log(newCompArr, checkArrForZero(newCompArr))
-        logProgress(newCompArr)
-
-        if (!checkArrForZero(newCompArr)) {
-
-            setTimeout(() => {
-                nextSentence()
-                isLeftRound = false
-                leftBtn.classList.remove('active')
-            }, 50 * uttToScore + 500)
-        }
+        setTimeout(() => {
+            nextSentence()
+        }, 50 * thisSent.length + 500)
     }
 }
 
@@ -521,26 +470,6 @@ function checkAndClear() {
     checkAnswer();
     utterTexts.innerHTML = '';
     utteredWords = [];
-}
-
-function tryLeftRound() {
-
-    const coord = returnAllIntFromMap(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0], -1)
-
-    if (coord.length > 0) {
-
-        isLeftRound = true
-
-        const leftArr = grabLeftovers(coord)
-        console.log(leftArr)
-
-        loadLeftovers(leftArr)
-
-    } else {
-
-        isLeftRound = false
-        return false
-    }
 }
 
 function logProgress(customArr) {
@@ -557,28 +486,14 @@ function logProgress(customArr) {
 
     grabAward.style.background = conGradient
 
-    if (!isLeftRound) {
-        // update one navigation progress bar
-        const grabProgBar = document.getElementById(globCurrents['chunk'] + "*" + globCurrents['iter'] + "." + sentIdx)
+    // update one navigation progress bar
+    const grabProgBar = document.getElementById(globCurrents['chunk'] + "*" + globCurrents['iter'] + "." + sentIdx)
 
-        const horizGradient = genCompGrad(arr)
-        grabProgBar.style.background = horizGradient
+    const horizGradient = genCompGrad(arr)
+    grabProgBar.style.background = horizGradient
 
-        // update target words to turn green
-        updateTargVisual(arr, 50)
-
-    } else {
-        // update all navigation progress bars
-        const allProgBars = Array.from(document.querySelectorAll('.prog'))
-
-        for (let i = 0; i < allProgBars.length; i++) {
-            const updatedGrad = genCompGrad(thisMap[i])
-            allProgBars[i].style.background = updatedGrad
-        }
-        
-        // update leftover words to turn green
-        updateTargVisual(customArr, 50)
-    }
+    // update target words to turn green
+    updateTargVisual(arr, 50)
 
     // update arrow size
     updateArrow(thisMap)
@@ -762,26 +677,7 @@ function nextSentence() {
 
         loadSentence(prevIncomp[0])
 
-    } else {
-
-        tryLeftRound()
-        if (!isLeftRound) {
-            // mark completion object as complete
-            complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].status = 'complete'
-            console.log(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']])
-
-            // look for any incomplete completion objects
-            let stillIncomp = findIncompObj(complObjs)
-
-            console.log(stillIncomp)
-            if (stillIncomp) {
-                loadChunk(stillIncomp)
-            } else {
-                // if there are none, end the queue
-                endQueue()
-            }
-        }
-    }
+    } 
 }
 
 function findIncompObj(objDict) {
@@ -804,9 +700,6 @@ function endQueue() {
     // turn off captions
     capBool = false
     capBtn.classList.remove('active')
-
-    // set leftover round boolean to false
-    isLeftRound = false
 
     // stop speech recognition
     toggRecogAndElem(false)
@@ -855,31 +748,6 @@ function loadSentence(sentN){
         const newSpan = document.createElement('span')
         newSpan.id = 'target' + n
         newSpan.classList = 'one-word target'
-
-        // add a skip button only in linear mode
-        if(thisCompletionObj.mode == 'linear') {
-
-            const leftButton = document.createElement('div')
-            leftButton.classList.add('skip-btn')
-            leftButton.id = "skip" + n
-
-            const miniTri = document.createElement('div')
-            miniTri.classList.add('mini-tri')
-
-            leftButton.append(miniTri)
-
-            if (thisSentMap[n] <= 0) {
-
-                leftButton.addEventListener('click', toggleLeftover, true)
-
-                if (thisSentMap[n] == -1) {
-                    targWrap.classList.add('grayed-out')
-                }
-            }
-        
-            targWrap.appendChild(leftButton)
-
-        }
 
         if (thisSentMap[n] > 0) {
             targWrap.style.background = "hsl(120, 100%, " + (100 - 75 * thisSentMap[n]) + "%)"
@@ -937,56 +805,7 @@ function loadSentence(sentN){
     }
 }
 
-function loadLeftovers(arr) {
-    
-    console.log("Leftover system in progress")
-    targetColumn.innerHTML = ''
-
-    for (let n = 0; n < arr.length; n++){
-
-        const targWrap = document.createElement('div')
-        targWrap.classList.add('word-wrap')
-        targWrap.dataset.score = 0
-
-        const newSpan = document.createElement('span')
-        newSpan.id = 'target' + n
-        newSpan.classList = 'one-word target'      
-        
-        const text = arr[n]
-        let newContent
-
-        // if (monocharLangs.includes(targetLang)) {
-
-        //     const thisPin = charToPin(text)
-        //     let pinWithTone = ''
-
-        //     if (thisPin) {
-        //         pinWithTone = pinNumToDiacritic(thisPin)
-        //     }
-
-        //     newContent = constructPinRT(
-        //         text, pinWithTone, 'under'
-        //     )
-
-        //     if (!(pinyinDropdown.value == 'pinyin') ) {
-        //         newContent.children[0].children[0].classList.add('hide')
-        //     }
-
-        // } else {
-             newContent = document.createTextNode(text)
-        // }
-        
-        newSpan.append(newContent)
-        newSpan.addEventListener('click', synthSpeakClosure(
-            text, targetLang
-        ))
-
-        targWrap.append(newSpan)
-        targetColumn.appendChild(targWrap)
-    }
-}
-
-function loadChunk(idStr) {
+function loadSect(idStr) {
 
     // for now, the ID string will be bookIdx_chunkIdx
     // in the future, it will be a UUID
@@ -1022,11 +841,6 @@ function updateTargVisual(arr, delay) {
     for (let i = 0; i < arr.length; i++) {
 
         console.log(allTargs[i].dataset.score)
-
-        if (arr[i] == 1 && !isLeftRound && thisCompletionObj.mode == 'linear') {
-            const skipBtn = document.querySelector('#skip' + i)
-            skipBtn.removeEventListener('click', toggleLeftover, true)
-        }
 
         setTimeout(() => {
             switch(arr[i]) {
@@ -1080,21 +894,6 @@ function updateArrow(map) {
     arrowPerc.innerText = Math.round(percentNow, 1) + "%"
 }
 
-function grabLeftovers(leftoversIdx) {
-
-    const thisChunk = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].text
-    let leftoversList = []
-    
-    for (let n = 0; n < leftoversIdx.length; n++) {
-        const sentN = leftoversIdx[n][0]
-        const wordN = leftoversIdx[n][1]
-        
-        leftoversList.push(thisChunk[sentN][wordN])
-    }
-
-    return leftoversList
-}
-
 function updateScore(n) {
     score += n
     scoreMarker.innerText = score
@@ -1115,7 +914,7 @@ function awardProgElem(awardID, awardEmote) {
 
     // a click navigates to partially-completed round
     gradCirc.addEventListener('click', e => {
-        loadChunk(gradCirc.id)
+        loadSect(gradCirc.id)
     })
 
 
@@ -1236,38 +1035,6 @@ async function populatePresets(data) {
     });
 }
 
-function toggleLeftover(event) {
-    
-    const n = event.currentTarget.id.replace("skip", "")
-    const checkWordComp = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n]
-
-    const targElem = document.querySelector('#target' + n).parentNode
-
-    if (checkWordComp == 0) {
-        // ASSIGN THIS WORD TO LEFTOVERS
-        
-        complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n] = -1
-        
-        targElem.classList.add('grayed-out')
-        leftBtn.classList.add('active')
-
-    } else {
-        // BRING THIS WORD BACK FROM LEFTOVERS
-
-        complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']][n] = 0
-
-        targElem.classList.remove('grayed-out')
-        leftBtn.classList.remove('active')
-
-    }
-
-    logProgress()
-
-    if (findInt(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][globCurrents['sent']], 0) < 0) {
-        nextSentence()
-    }
-}
-
 function synthSpeakClosure(str, lang) {
     
     return function executeOnEvent(event) {
@@ -1301,7 +1068,7 @@ async function populateChunks(id, clickedElem) {
     console.log(partsData)
 
     partsData.forEach(entry => {
-        constructChunkCheckbox(entry.id, entry.text, entry.award)
+        buildFragCheckbox(entry.id, entry.text, entry.award)
     })
 }
 
@@ -1337,7 +1104,7 @@ function populateProgressParts([arr, total]) {
     progBtns.style.gridTemplateColumns = rowTempStr
 }
 
-function constructChunkCheckbox(chunkId, textArr, awardStr) {
+function buildFragCheckbox(chunkId, textArr, awardStr) {
 
     const currentID = chunkId;
     // TO DO: add indeces to the parts and place the index number in the preview
@@ -1473,9 +1240,9 @@ async function processQueries(data) {
         if (urlConfigs.p) {
             
             togglePresets('preset')
-            // const results = await getPartById(urlConfigs.p)
-            // console.log(results)
-            startQueue(urlConfigs.p)
+            const pArr = urlConfigs.p.split('+')
+
+            startQueue(pArr)
         }
     
         // if (urlConfigs.go == 'true') {
