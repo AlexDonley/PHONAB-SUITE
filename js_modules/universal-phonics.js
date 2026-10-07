@@ -116,36 +116,39 @@ export function parseAndCaption(word, caption, lang, elem) {
         elem.classList = ''
     }
     
-    switch (lang){
-        case 'en':
-            switch (caption) {
-                case 'IPA':
-                    return engToIPAStr(word)
-                case 'Zhuyin':
-                    return engToZhuyin(word)
-            }
-            break;
+    if (!(caption == 'false')) {
+        switch (lang){
+            case 'en':
+                switch (caption) {
+                    case 'IPA':
+                        return engToIPAStr(word)
+                    case 'Zhuyin':
+                        return engToZhuyin(word)
+                }
+                break;
 
-        case 'cmn-Hant':
-            switch (caption) {
-                case 'Pinyin':
-                    return pinNumToDiacritic(charToPin(word))
-                case 'Zhuyin':
-                    return charToZhu(word)
-                case 'Tai-lo':
-                    break;
-            }
-            break;
+            case 'cmn-Hant':
+                switch (caption) {
+                    case 'Pinyin':
+                        return pinNumToDiacritic(charToPin(word))
+                    case 'Zhuyin':
+                        return charToZhu(word)
+                    case 'Tai-lo':
+                        break;
+                }
+                break;
 
-        case 'fil-PH':
-            switch (caption) {
-                case 'Baybayin':
-                    elem.classList.add('baybayin')
-                    return romanToBBY93(word, true)
-            }
-            break;
+            case 'fil-PH':
+                switch (caption) {
+                    case 'Baybayin':
+                        elem.classList.add('baybayin')
+                        return romanToBBY93(word, true)
+                }
+                break;
+        }
+    } else {
+        return ""
     }
-
 }
 
 export function engToIPAArr(str) {
@@ -214,15 +217,21 @@ export function engToZhuyin(str) {
     let zhuStr = '';
 
     const thisIpa = engToIPAArr(str);
-    const revIpa = reviseIpaArr(thisIpa);
-    const thisZY = ipaToZY(revIpa);
 
-    thisZY.forEach(zhu => {
-        zhuStr = zhuStr.concat(zhu);
-    })
+    if (thisIpa) {
+        const revIpa = reviseIpaArr(thisIpa);
+        const thisZY = ipaToZY(revIpa);
 
-    console.log(zhuStr)
-    return zhuStr
+        thisZY.forEach(zhu => {
+            zhuStr = zhuStr.concat(zhu);
+        })
+
+        console.log(zhuStr)
+        return zhuStr
+    } else {
+        return ""
+    }
+
 }
 
 

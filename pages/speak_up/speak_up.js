@@ -41,7 +41,6 @@ const awardDiv        = document.querySelector('#awardDiv');
 const scoreMarker     = document.querySelector('#scoreMarker');
 const settingsMenu    = document.querySelector('.settings-menu');
 const ffLang          = document.querySelector('#ffLang');
-const recType         = document.querySelector('#recType')
 const oscType         = document.querySelector('#oscType')
 const cumulCheck      = document.querySelector('#cumulCheck')
 const autoCheck       = document.querySelector('#autoCheck')
@@ -208,8 +207,7 @@ function QRdictFromElem() {
     return thisDict;
 }
 
-function toggleRT() {
-    console.log('toggle ruby text captions')
+function toggleRT(overrideBool) {
 
     if (capBool) {
         capBool = false
@@ -426,7 +424,6 @@ function checkAnswer() {
     // const uttToScoreOld = trackCompletion(
     //     thisCompletionObj.text[globCurrents['sent']], 
     //     utteredWords, 
-    //     thisCompletionObj.mode, 
     //     thisCompletionObj.lang, 
     //     thisSent
     // )
@@ -587,8 +584,16 @@ function populateCapOptions(lang) {
 function swapCaptions() {
     const pinRT = Array.from(document.querySelectorAll('rt'));
 
+    console.log(captionDropdown.value, capBool, (captionDropdown.value == 'false'), (captionDropdown.value && capBool == false))
+    if (
+        captionDropdown.value == 'false' && capBool == true ||
+        captionDropdown.value && capBool == false
+    ) {
+        toggleRT()
+    }
+
     pinRT.forEach(element => {
-        console.log(element.dataset.word)
+        
         element.innerText = parseAndCaption(
             element.dataset.word,
             captionDropdown.value,
@@ -611,7 +616,6 @@ function genCompletionObj(textArrs) {
         'status': 'incomplete',
         'startTime': 0,
         'endTime': 0,
-        'mode': recType.value,
         'text': textArrs,
         'completionMap': newCompletionMap
     }
