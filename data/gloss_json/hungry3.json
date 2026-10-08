@@ -1,0 +1,612 @@
+[
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "his",
+    "chinese": "自己的",
+    "pos": "pro"
+  },
+  {
+    "english": "town",
+    "chinese": "小鎮",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "the city",
+    "chinese": "城市",
+    "pos": "noun"
+  },
+  {
+    "english": "—",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "ate",
+    "chinese": "吃",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃",
+    "pos": "verb"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃",
+    "pos": "verb"
+  },
+  {
+    "english": "—",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and then",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "said",
+    "chinese": "說",
+    "pos": "verb"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+    {
+    "english": "'",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "think",
+    "chinese": "想",
+    "pos": "verb"
+  },
+  {
+    "english": "I",
+    "chinese": "我",
+    "pos": "pro"
+  },
+  {
+    "english": "ll eat",
+    "chinese": "要吃",
+    "pos": "verb"
+  },
+  {
+    "english": "the whole",
+    "chinese": "整個",
+    "pos": "adj"
+  },
+  {
+    "english": "United States",
+    "chinese": "美國",
+    "pos": "noun"
+  },
+  {
+    "english": ".'",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "'",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And so",
+    "chinese": "於是",
+    "pos": "conj"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "Chicago",
+    "chinese": "芝加哥",
+    "pos": "noun"
+  },
+  {
+    "english": "first",
+    "chinese": "先",
+    "pos": "adverb"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "munched",
+    "chinese": "嚼碎了",
+    "pos": "verb"
+  },
+  {
+    "english": "the Water Tower",
+    "chinese": "水塔",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and then",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "chewed on",
+    "chinese": "咀嚼",
+    "pos": "verb"
+  },
+  {
+    "english": "Pittsburgh",
+    "chinese": "匹茲堡",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "but",
+    "chinese": "但他",
+    "pos": "conj"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "found",
+    "chinese": "發現",
+    "pos": "verb"
+  },
+  {
+    "english": "it",
+    "chinese": "它",
+    "pos": "pro"
+  },
+  {
+    "english": "rather",
+    "chinese": "有點",
+    "pos": "adj"
+  },
+  {
+    "english": "sour",
+    "chinese": "酸",
+    "pos": "adj"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "New York",
+    "chinese": "紐約",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "Tennessee",
+    "chinese": "田納西",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and",
+    "chinese": "還有",
+    "pos": "conj"
+  },
+  {
+    "english": "all of",
+    "chinese": "整個",
+    "pos": "adj"
+  },
+  {
+    "english": "Boston town",
+    "chinese": "波士頓",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "then",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "drank",
+    "chinese": "喝了",
+    "pos": "verb"
+  },
+  {
+    "english": "the Mississippi River",
+    "chinese": "密西西比河",
+    "pos": "noun"
+  },
+  {
+    "english": "just to wash it down",
+    "chinese": "吞下",
+    "pos": "phrase"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "And when",
+    "chinese": "當",
+    "pos": "conj"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "d eaten",
+    "chinese": "吃掉了",
+    "pos": "verb"
+  },
+  {
+    "english": "every",
+    "chinese": "每個",
+    "pos": "adj"
+  },
+  {
+    "english": "state",
+    "chinese": "州",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "each",
+    "chinese": "每一隻",
+    "pos": "adj"
+  },
+  {
+    "english": "puppy",
+    "chinese": "小狗",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "boy",
+    "chinese": "男孩",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "girl",
+    "chinese": "女孩",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "wiped",
+    "chinese": "擦了擦",
+    "pos": "verb"
+  },
+  {
+    "english": "his mouth",
+    "chinese": "嘴",
+    "pos": "noun"
+  },
+  {
+    "english": "upon his sleeve",
+    "chinese": "用袖子擦嘴",
+    "pos": "phrase"
+  },
+  {
+    "english": "and",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "went",
+    "chinese": "去",
+    "pos": "verb"
+  },
+  {
+    "english": "to eat",
+    "chinese": "吃",
+    "pos": "verb"
+  },
+  {
+    "english": "the world",
+    "chinese": "世界",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "the Egypt",
+    "chinese": "埃及(的)",
+    "pos": "noun"
+  },
+  {
+    "english": "pyramids",
+    "chinese": "金字塔",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "every",
+    "chinese": "每一",
+    "pos": "adj"
+  },
+  {
+    "english": "church",
+    "chinese": "座教堂",
+    "pos": "noun"
+  },
+  {
+    "english": "in Rome",
+    "chinese": "羅馬的",
+    "pos": "noun"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "and all",
+    "chinese": "還有",
+    "pos": "adj"
+  },
+  {
+    "english": "the grass",
+    "chinese": "草地",
+    "pos": "noun"
+  },
+  {
+    "english": "in Africa",
+    "chinese": "非洲所(有的)",
+    "pos": "noun"
+  },
+  {
+    "english": "and",
+    "chinese": "和",
+    "pos": "conj"
+  },
+  {
+    "english": "all",
+    "chinese": "所有的",
+    "pos": "adj"
+  },
+  {
+    "english": "the ice",
+    "chinese": "冰",
+    "pos": "noun"
+  },
+  {
+    "english": "in Nome",
+    "chinese": "諾姆",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "He",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "ate",
+    "chinese": "吃了",
+    "pos": "verb"
+  },
+  {
+    "english": "each",
+    "chinese": "每一",
+    "pos": "adj"
+  },
+  {
+    "english": "hill",
+    "chinese": "小山",
+    "pos": "noun"
+  },
+  {
+    "english": "in",
+    "chinese": "在",
+    "pos": "prep"
+  },
+  {
+    "english": "green",
+    "chinese": "綠",
+    "pos": "adj"
+  },
+  {
+    "english": "Brazil",
+    "chinese": "巴西",
+    "pos": "noun"
+  },
+  {
+    "english": "and then",
+    "chinese": "然後",
+    "pos": "conj"
+  },
+  {
+    "english": "to",
+    "chinese": "為了",
+    "pos": "prep"
+  },
+  {
+    "english": "make things",
+    "chinese": "讓__變得",
+    "pos": "phrase"
+  },
+  {
+    "english": "worse",
+    "chinese": "更糟",
+    "pos": "adj"
+  },
+  {
+    "english": ",",
+    "chinese": "",
+    "pos": ""
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "decided",
+    "chinese": "決定",
+    "pos": "verb"
+  },
+  {
+    "english": "for",
+    "chinese": "把_當",
+    "pos": "prep"
+  },
+  {
+    "english": "dessert",
+    "chinese": "甜點",
+    "pos": "noun"
+  },
+  {
+    "english": "he",
+    "chinese": "他",
+    "pos": "pro"
+  },
+  {
+    "english": "d eat",
+    "chinese": "吃掉",
+    "pos": "verb"
+  },
+  {
+    "english": "the universe",
+    "chinese": "宇宙",
+    "pos": "noun"
+  },
+  {
+    "english": ".",
+    "chinese": "",
+    "pos": ""
+  }
+]
