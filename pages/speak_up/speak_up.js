@@ -81,16 +81,16 @@ const userBtn       = document.querySelector('#userBtn');
 const fullscreenBtn = document.querySelector('#fullscreenBtn');
 const settingBtn    = document.querySelector('#settingBtn');
 
-// const searchTitles      = document.querySelector("#searchTitles");
-const titleCards        = document.querySelector("#titleCards");
-const partsCards        = document.querySelector("#partsCards");
-const captionDropdown    = document.querySelector('#captionDropdown');
+const searchTitles      = document.querySelector("#searchTitles");
+const sourceDiv         = document.querySelector("#sourceDiv");
+const sectDiv           = document.querySelector("#sectDiv");
+const captionDropdown   = document.querySelector('#captionDropdown');
 
 const targetColumn      = document.querySelector('.targetColumn');
 const utterTexts        = document.querySelector('.texts');
 const punchBtn          = document.querySelector('.punch-btn');
 
-presetBtn.addEventListener("click", togglePresets);
+presetBtn.addEventListener("click", togSources);
 shuffleBtn.addEventListener("click", toggleShuffle);
 loopBtn.addEventListener("click", toggleLoop);
 timerBtn.addEventListener("click", changeTimerMode);
@@ -127,15 +127,15 @@ var targIterations = 0
 var complObjs = {}
 var globCurrents = {
     'book': null,
-    'chunk': null,
+    'sect': null,
     'sent': 0,
     'iter': 0,
     'attempt': 1
 }
 
-function setGlobalCurrents(chunkStr, sentN, iterN) {
-    if (chunkStr) {
-        globCurrents['chunk'] = chunkStr
+function setGlobalCurrents(sectStr, sentN, iterN) {
+    if (sectStr) {
+        globCurrents['sect'] = sectStr
     }
     if (sentN || sentN === 0) {
         globCurrents['sent'] = sentN
@@ -184,14 +184,14 @@ function QRgenWrap() {
 function QRdictFromElem() {
     let thisDict = {};
 
-    const chunkIdx = document.querySelectorAll('.preset-check:checked')
-    if (presetBool && chunkIdx.length > 0) {
+    const sectIndex = document.querySelectorAll('.preset-check:checked')
+    if (presetBool && sectIndex.length > 0) {
         let thisIdx = bookIndex + "_";
 
-        for (let n = 0; n < chunkIdx.length; n++){
-            thisIdx += chunkIdx[n].id.substring(4);
+        for (let n = 0; n < sectIndex.length; n++){
+            thisIdx += sectIndex[n].id.substring(4);
 
-            if(n < chunkIdx.length - 1) {
+            if(n < sectIndex.length - 1) {
                 thisIdx += "-"
             }
         }
@@ -229,55 +229,23 @@ function toggleRT(overrideBool) {
 }
 
 // TO DO: Repair search, it's currently unusable
-// searchTitles.addEventListener("input", e => {
-//     const value = e.target.value.toLowerCase()
+searchTitles.addEventListener("input", e => {
+    const value = e.target.value.toLowerCase()
+    asyncSearchTitles(value)
+})
 
-//     let searchList = filterBooks(bookList, 'title', value)
+async function asyncSearchTitles(str) {
+    let searchSources = await getFilteredBooks({
+        'lang': targetLang, 
+        'searchTerm': str,
+        'limit': 40
+    })
 
-//     populatePresets(searchList);
-// })
-
-// elements contained in the action section
-// reading section contains two columns, one for target words and the other for user input
-
-// const booksDataPath = "../../data/spup_backup.json"
-
-// function loadBooks(){
-//     fetch(booksDataPath)
-//     .then(res => {
-//         if (res.ok) {
-//             console.log('Fetched books');
-//         } else {
-//             console.log('Couldnt fetch books')
-//         }
-//         return res.json()
-//     })
-//     .then(data => {
-//         bookList = data;
-
-        
-        
-//     })
-//     .catch(error => console.log(error))
-// }
-
-// loadBooks();
+    populateSources(searchSources);
+}
 
 processQueries();
 swapLang('en')
-
-function filterBooks(dataset, attr, cond) {
-    let indArr = []
-
-    // TO DO: modify to accomodate multiple filter conditions
-    for (let i = 0; i < dataset.length; i++) {
-        if (dataset[i][attr].toLowerCase().includes(cond.toLowerCase())) {
-            indArr.push(i)
-        }
-    }
-
-    return indArr
-}
 
 // sound effects
 
@@ -331,20 +299,20 @@ async function startQueue(idArr) {
     }
    
     globCurrents['iter'] = targIterations
-    globCurrents['chunk'] = null
+    globCurrents['sect'] = null
 
     for (let n = 0; n < idArr.length; n++){
 
         const thisId = idArr[n]
 
-        if (globCurrents['chunk'] == null) {
-            globCurrents['chunk'] = thisId
+        if (globCurrents['sect'] == null) {
+            globCurrents['sect'] = thisId
         }
-        const chunkData = await getPartById(thisId)
+        const sectData = await getPartById(thisId)
 
         // grab mercy words
-        console.log(chunkData.book_id)
-        const thisBook = await getBookById(chunkData.book_id)
+        console.log(sectData.book_id)
+        const thisBook = await getBookById(sectData.book_id)
         const thisMercy = thisBook.mercy_words
 
         currentCompare = await createComparer( {
@@ -355,15 +323,15 @@ async function startQueue(idArr) {
         })
 
         const fullId = thisId + "*" + targIterations
-        complObjs[fullId] = genPresetObj(chunkData)
+        complObjs[fullId] = genPresetObj(sectData)
 
-        const newAward = awardProgElem(fullId, chunkData.award)
+        const newAward = awardProgElem(fullId, sectData.award)
         awardDiv.prepend(newAward)
 
         targIterations++
     }
 
-    loadSect(globCurrents['chunk'] + "*" + globCurrents['iter'])
+    loadSect(globCurrents['sect'] + "*" + globCurrents['iter'])
     toggRecogAndElem(true)
     shiftContentBlocks('game')
 }
@@ -373,14 +341,14 @@ async function startFreef() {
     // The following grabs the text entered by the user and eliminates blank lines
 
     // remove excess spaces
-    console.log(textInput)
     var freeformText = textInput.value.replace(/^\s*\n/gm, "");
+
     // split text by line break
     var freeformArr = freeformText.split(/\r?\n|\r|\n/g)
     var thisTextID = 'freef*' + 0
 
     complObjs[thisTextID] = genFreefObj(freeformArr)
-    globCurrents['chunk'] = thisTextID
+    globCurrents['sect'] = thisTextID
 
     globCurrents['iter'] = targIterations
     targIterations++
@@ -417,49 +385,46 @@ function checkAnswer() {
 
     globCurrents['attempt'] += 1
 
-    const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
-    let thisSent = thisCompletionObj.completionMap[0][globCurrents['sent']]
-
-    // console.log(thisCompletionObj)
-    // const uttToScoreOld = trackCompletion(
-    //     thisCompletionObj.text[globCurrents['sent']], 
-    //     utteredWords, 
-    //     thisCompletionObj.lang, 
-    //     thisSent
-    // )
+    const thisCompletionObj = complObjs[globCurrents['sect'] + "*" + globCurrents['iter']]
+    let thisFrag = thisCompletionObj.completionMap[0][globCurrents['sent']]
 
     const compare2 = currentCompare.compare(
         thisCompletionObj.text[globCurrents['sent']], 
         utteredWords
     )
-    console.log(compare2)
+    
     const uttToScore = [toScoreArray(compare2)]
 
-    let newSent = [...thisSent]
+    let newFrag = [...thisFrag]
 
-    for (let n=0; n < newSent.length; n++) {
-        if (uttToScore[0][n] > newSent[n]) {
-            newSent[n] = uttToScore[0][n]
+    for (let n=0; n < newFrag.length; n++) {
+        if (uttToScore[0][n] > newFrag[n]) {
+            newFrag[n] = uttToScore[0][n]
         }
     }
 
-    thisCompletionObj.completionMap[0][globCurrents['sent']] = newSent
+    thisCompletionObj.completionMap[0][globCurrents['sent']] = newFrag
 
     // TO DO: fix update score
     // updateScore(Math.round(uttToScore[1] *10) / 10)
-    logProgress()
+    let finishedCheck = logProgress()
 
     if (
-        newSent.every(item => item == 1)
+        newFrag.every(item => item == 1)
     ) {
 
         if (compare2.accuracy == 1) {
             perfectAnim()
         }
         
+
         setTimeout(() => {
-            nextSentence()
-        }, 50 * thisSent.length + 500)
+            if (finishedCheck) {
+                endQueue()
+            } else {
+                nextFragment()
+            }
+        }, 50 * thisFrag.length + 500)
     }
 }
 
@@ -471,12 +436,12 @@ function checkAndClear() {
 
 function logProgress(customArr) {
 
-    const thisMap = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0]
+    const thisMap = complObjs[globCurrents['sect'] + "*" + globCurrents['iter']].completionMap[0]
     let sentIdx = globCurrents['sent']
     let arr = thisMap[sentIdx]    
 
     // update award buttons
-    const grabAward = document.getElementById(globCurrents['chunk'] + "*" + globCurrents['iter'])
+    const grabAward = document.getElementById(globCurrents['sect'] + "*" + globCurrents['iter'])
 
     const progArr = mapToAwardArr(thisMap)
     const conGradient = genStepConicGrad(['gray', 'yellow', 'green'], progArr)
@@ -484,7 +449,7 @@ function logProgress(customArr) {
     grabAward.style.background = conGradient
 
     // update one navigation progress bar
-    const grabProgBar = document.getElementById(globCurrents['chunk'] + "*" + globCurrents['iter'] + "." + sentIdx)
+    const grabProgBar = document.getElementById(globCurrents['sect'] + "*" + globCurrents['iter'] + "." + sentIdx)
 
     const horizGradient = genCompGrad(arr)
     grabProgBar.style.background = horizGradient
@@ -493,7 +458,9 @@ function logProgress(customArr) {
     updateTargVisual(arr, 50)
 
     // update arrow size
-    updateArrow(thisMap)
+    let finishedBool = updateArrow(thisMap)
+
+    return finishedBool
 }
 
 function perfectAnim() {
@@ -553,13 +520,13 @@ async function swapLang(lang) {
     // textInput.value = defaultFfText[lang]
 
     // filter different preset options
-    const langBooks = await getFilteredBooks({
+    const langSources = await getFilteredBooks({
         'lang': targetLang, 
         'searchTerm': null,
         'limit': 40
     })
     
-    populatePresets(langBooks)
+    populateSources(langSources)
     populateCapOptions(lang)
 }
 
@@ -623,9 +590,9 @@ function genCompletionObj(textArrs) {
     return newObj
 }
 
-function genPresetObj(chunkData) {
+function genPresetObj(sectData) {
     
-    const textArrs = queueToArr(chunkData.text, targetLang)
+    const textArrs = queueToArr(sectData.text, targetLang)
 
     return genCompletionObj(textArrs)
 }
@@ -664,22 +631,22 @@ export function toggRecogAndElem(bool) {
 
 micBtn.addEventListener('click', toggRecogAndElem)
 
-function nextSentence() {
+function nextFragment() {
   
     // check for the next incomplete word,
     // then check for any previous incomplete word
     // TO DO: this is broken, fix
-    const thisMap = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0]
+    const thisMap = complObjs[globCurrents['sect'] + "*" + globCurrents['iter']].completionMap[0]
     const nextIncomp = checkMapForZero(thisMap, parseInt(globCurrents['sent']) + 1)
     const prevIncomp = checkMapForZero(thisMap, 0)
 
     if (nextIncomp) {
 
-        loadSentence(nextIncomp[0])
+        loadFrag(nextIncomp[0])
 
     } else if (prevIncomp) {
 
-        loadSentence(prevIncomp[0])
+        loadFrag(prevIncomp[0])
 
     } 
 }
@@ -715,7 +682,7 @@ function endQueue() {
     shiftContentBlocks('menu')
 
     // uncheck all checkboxes for story parts
-    const checkboxes = partsCards.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = sectDiv.querySelectorAll('input[type="checkbox"]');
 
     checkboxes.forEach(box => {
       box.checked = false
@@ -732,14 +699,14 @@ function endQueue() {
     // eventually transition to using backend database
 }
 
-function loadSentence(sentN){
+function loadFrag(sentN){
     
     globCurrents['attempt'] = 1
 
-    const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
+    const thisCompletionObj = complObjs[globCurrents['sect'] + "*" + globCurrents['iter']]
     const thisSentMap = thisCompletionObj.completionMap[0][sentN]
     setGlobalCurrents(null, sentN, null)
-    const arr = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].text[sentN]
+    const arr = complObjs[globCurrents['sect'] + "*" + globCurrents['iter']].text[sentN]
     
     targetColumn.innerHTML = ''
 
@@ -811,11 +778,11 @@ function loadSentence(sentN){
 
 function loadSect(idStr) {
 
-    // for now, the ID string will be bookIdx_chunkIdx
+    // for now, the ID string will be bookIdx_sectIndex
     // in the future, it will be a UUID
     
     const idArr = idStr.split('*')
-    globCurrents['chunk'] = idArr[0]
+    globCurrents['sect'] = idArr[0]
     globCurrents['sent'] = 0
     globCurrents['iter'] = idArr[1]
 
@@ -831,12 +798,12 @@ function loadSect(idStr) {
     populateProgressParts(thisCompData)
     updateArrow(thisCompData[0])
 
-    loadSentence(globCurrents['sent'])
+    loadFrag(globCurrents['sent'])
 }
 
 function updateTargVisual(arr, delay) {
     
-    const thisCompletionObj = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']]
+    const thisCompletionObj = complObjs[globCurrents['sect'] + "*" + globCurrents['iter']]
     // highlight correct words
     const allTargs = Array.from(targetColumn.children)
 
@@ -884,6 +851,8 @@ function updateTargVisual(arr, delay) {
 
 function updateArrow(map) {
 
+    let finishedBool = false
+
     const freqsNow = mapToFreqs(map)
     const percentNow = findPercent(freqsNow[0][1], freqsNow[1])
     const heightStr = 
@@ -896,6 +865,12 @@ function updateArrow(map) {
     greenArrow.style.height = heightStr
 
     arrowPerc.innerText = Math.round(percentNow, 1) + "%"
+
+    if (percentNow >= 100) {
+        finishedBool = true
+    }
+
+    return finishedBool
 }
 
 function updateScore(n) {
@@ -928,7 +903,7 @@ function awardProgElem(awardID, awardEmote) {
     return gradCirc
 }
 
-function togglePresets(str) {
+function togSources(str) {
 
     if (str == 'preset') {
         presetBool = false
@@ -1021,8 +996,9 @@ function toggleQRTray() {
     }
 }
 
-async function populatePresets(data) {
-    titleCards.innerHTML = ''
+async function populateSources(data) {
+    sourceDiv.innerHTML = ''
+    sectDiv.innerHTML = ''
 
     data.forEach((entry) => {
         const newTitle = document.createElement('div')
@@ -1032,10 +1008,10 @@ async function populatePresets(data) {
         newTitle.classList.add('one-title')
 
         newTitle.addEventListener('click', (e) => {
-            console.log('get chunks for: ' + entry.id)
-            populateChunks(entry.id, e.target)
+            console.log('get sections for: ' + entry.id)
+            populateSections(entry.id, e.target)
         })
-        titleCards.appendChild(newTitle)
+        sourceDiv.appendChild(newTitle)
     });
 }
 
@@ -1046,7 +1022,7 @@ function synthSpeakClosure(str, lang) {
         let thisSent = str
         
         if (str == 'fullSent') {
-            const currArr = complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].text[globCurrents['sent']]
+            const currArr = complObjs[globCurrents['sect'] + "*" + globCurrents['iter']].text[globCurrents['sent']]
             thisSent = currArr.join(' ')
         } 
         
@@ -1056,7 +1032,7 @@ function synthSpeakClosure(str, lang) {
     }
 }
 
-async function populateChunks(id, clickedElem) {
+async function populateSections(id, clickedElem) {
       
     const clearHighlight = document.querySelector('.title-highlight')
 
@@ -1066,13 +1042,13 @@ async function populateChunks(id, clickedElem) {
 
     clickedElem.classList.add('title-highlight')
 
-    partsCards.innerHTML = ''
+    sectDiv.innerHTML = ''
 
     const partsData = await getBookParts(id)
     console.log(partsData)
 
     partsData.forEach(entry => {
-        buildFragCheckbox(entry.id, entry.text, entry.award)
+        buildSectCheckbox(entry.id, entry.text, entry.award)
     })
 }
 
@@ -1084,12 +1060,12 @@ function populateProgressParts([arr, total]) {
     for (let i = 0; i < arr.length; i++) {
         const progPart = document.createElement('div')
         progPart.classList.add('prog')
-        progPart.id = globCurrents['chunk'] + "*" + globCurrents['iter'] + "." + i
+        progPart.id = globCurrents['sect'] + "*" + globCurrents['iter'] + "." + i
         
-        progPart.style.background = genCompGrad(complObjs[globCurrents['chunk'] + "*" + globCurrents['iter']].completionMap[0][i])
+        progPart.style.background = genCompGrad(complObjs[globCurrents['sect'] + "*" + globCurrents['iter']].completionMap[0][i])
         progPart.addEventListener('pointerdown', e => {
             
-            // on click, switch to the selected chunk
+            // on click, switch to the selected section
             // first get an array from the part's id
             const idArr = e.target.id.split('.')
             const objId = idArr[0]
@@ -1097,7 +1073,7 @@ function populateProgressParts([arr, total]) {
 
             const pickedSent = complObjs[objId].text[sentId]
             console.log(pickedSent)
-            loadSentence(sentId)
+            loadFrag(sentId)
 
         })
         progBtns.append(progPart)
@@ -1108,20 +1084,20 @@ function populateProgressParts([arr, total]) {
     progBtns.style.gridTemplateColumns = rowTempStr
 }
 
-function buildFragCheckbox(chunkId, textArr, awardStr) {
+function buildSectCheckbox(sectId, textArr, awardStr) {
 
-    const currentID = chunkId;
+    const thisSect = sectId;
     // TO DO: add indeces to the parts and place the index number in the preview
     const preview = "- " + textArr[0]
 
     let preset = document.createElement('input')
     preset.classList.add('preset-check')
     preset.type = 'checkbox'
-    preset.id = currentID
+    preset.id = thisSect
 
     let preLabel = document.createElement('label')
     preLabel.classList.add('preset-label')
-    preLabel.htmlFor = currentID
+    preLabel.htmlFor = thisSect
     preLabel.innerText = awardStr + preview
 
     let divWrap = document.createElement('div')
@@ -1131,7 +1107,7 @@ function buildFragCheckbox(chunkId, textArr, awardStr) {
     divWrap.classList.add('one-part')
     divWrap.classList.add('preset-line')
 
-    partsCards.appendChild(divWrap)
+    sectDiv.appendChild(divWrap)
 }
 
 function updateSpeed() {
@@ -1217,7 +1193,6 @@ function reloadAwards(index) {
 }
 
 function toggleSettings() {
-
     
     if (settingsMenu.classList.contains('show')) {
         settingsMenu.classList.remove('show')
@@ -1243,7 +1218,7 @@ async function processQueries(data) {
         
         if (urlConfigs.p) {
             
-            togglePresets('preset')
+            togSources('preset')
             const pArr = urlConfigs.p.split('+')
 
             startQueue(pArr)
