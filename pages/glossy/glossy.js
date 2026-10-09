@@ -40,7 +40,7 @@ let gloss_size = 40;
 let menuTog = true;
 
 const availableGlosses = [
-    'apple', 'hungry1',
+    'apple', 'hungry1', 'hungry3',
     'tangled1', 'tangled2', 'joseph1', 'joseph2', 
     'pay_it1', 'pay_it2', 'sick1', 'sick2', 'work', 
     'fly', 'busytown1', 'busytown2', 'busytown3', 'busytown4',
