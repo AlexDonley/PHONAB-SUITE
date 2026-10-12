@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonabulary</title>
+    <link rel="stylesheet" href="phonabulary.css">
+    <script type="module" src="phonabulary.js" defer></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Toggle Switch -->
+        <div class="toggle-container" id="menuToggle" role="button" aria-label="Toggle menu">
+            <div class="toggle-pill"></div>
+            <span class="toggle-label active" id="labelLeft">ABCs</span>
+            <span class="toggle-label" id="labelRight">Phonics</span>
+        </div>
+
+        <!-- Menu Section 1 (Shown by default) -->
+        <div class="menu-section active" id="menuLeftContent">
+            <h2>Left Menu Options</h2>
+            <ul>
+                <li>Dashboard Overview</li>
+                <li>Profile Settings</li>
+                <li>Notifications</li>
+                <li>Account Security</li>
+            </ul>
+        </div>
+
+        <!-- Menu Section 2 (Hidden by default) -->
+        <div class="menu-section" id="menuRightContent">
+            <h2>Right Menu Options</h2>
+            <ul>
+                <li>Analytics & Reports</li>
+                <li>Billing & Subscriptions</li>
+                <li>Team Management</li>
+                <li>API Integrations</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

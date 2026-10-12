@@ -8,9 +8,11 @@
     "she's": [["she", "is"], ["she", "has"]],
     "that's": ["that", "is"],
     "don't": ["do", "not"],
-    "can't": ["can", "not"],
+    "can't": [["can", "not"], ["cannot"]],
     "won't": ["will", "not"],
     "i'll": ["i", "will"],
     "i've": ["i", "have"],
-    "would've": ["would", "have"]
+    "could've": ["could", "have"],
+    "would've": ["would", "have"],
+    "should've": ["should", "have"]
 }

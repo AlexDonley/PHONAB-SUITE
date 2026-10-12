@@ -1,0 +1,112 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Toggle Switch Wrapper */
+.toggle-container {
+    display: inline-flex;
+    align-items: center;
+    background: #e2e8f0;
+    border-radius: 30px;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+/* Labels on left and right */
+.toggle-label {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+/* Active label text color */
+.toggle-label.active {
+    color: #ffffff;
+}
+
+/* Sliding pill background */
+.toggle-pill {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: #3b82f6;
+    border-radius: 26px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+/* State when toggled to the right */
+.toggle-container.right .toggle-pill {
+    transform: translateX(100%);
+}
+
+/* Menu Display Sections */
+.menu-section {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: none; /* Hidden by default */
+    text-align: left;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Active menu is visible */
+.menu-section.active {
+    display: block;
+}
+
+.menu-section h2 {
+    margin-top: 0;
+    color: #1e293b;
+    font-size: 1.25rem;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+}
+
+.menu-section ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #475569;
+}
+
+.menu-section li {
+    margin: 8px 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
