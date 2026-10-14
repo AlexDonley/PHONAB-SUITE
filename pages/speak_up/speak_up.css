@@ -15,6 +15,15 @@ body.active-mic {
   background-color: rgb(57, 1, 1);
 }
 
+@font-face {
+  font-family: bby-93;
+  src: url(../../fonts/TagDoc93.woff)
+}
+
+.baybayin {
+  font-family: bby-93;
+}
+
 input {
   font-family: inherit;
 }
@@ -26,6 +35,7 @@ select {
 }
 button {
   font-family: inherit;
+  transition: background-color 0.3s;
 }
 
 .left-sidebar {
@@ -207,6 +217,12 @@ svg {
   grid-row-end: 3;
 }
 
+.stop-watch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px
+}
 .stop-watch.flip {
   background: radial-gradient(circle at center, maroon, 70%, red);;
 }
@@ -624,10 +640,6 @@ img {
   border-radius: 50%
 }
 
-button {
-  transition: background-color 0.3s;
-}
-
 .preset-options {
   position: absolute;
   width: 100%;
@@ -638,57 +650,21 @@ button {
   overflow: hidden;
 }
 
-.preset {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 35%;
-  height: 15%;
-  border-bottom-left-radius: 2vh;
-  background-color: maroon;
-  color: white;
-  font-size: 2rem;
-}
 
-.shuffle {
-  position: absolute;
-  bottom: 0;
-  left: 35%;
-  width: 10%;
-  height: 15%;
-  background-color: gray;
-  color: white;
-  font-size: 2rem;
-}
-.shuffle.flip{
+
+.shuffle-btn.flip{
   background-color: orangered;
 }
-
-.repeat {
-  position: absolute;
-  bottom: 0;
-  left: 45%;
-  width: 10%;
-  height: 15%;
-  background-color: gray;
-  color: white;
-  font-size: 2rem;
-}
-.repeat.flip{
+.loop-btn.flip{
   background-color: coral;
 }
 
-.timer {
-  position: absolute;
-  bottom: 0;
-  left: 55%;
-  width: 10%;
-  height: 15%;
+.timer-btn {
   background-color: gray;
   color: white;
   font-size: 2rem;
 }
-.timer.flip{
+.timer-btn.flip{
   background-color: limegreen;
 }
 
@@ -704,15 +680,26 @@ button {
   clip-path: polygon(0 33%, 50% 0, 100% 33%, 80% 33%, 80% 100%, 20% 100%, 20% 33%)
 }
 
-.go {
+.menu-btns {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 35%;
+  bottom: 20px;
+  left: 0;
   height: 15%;
+  width: 100%;
+  display: flex;
+}
+.menu-btns > button {
+  flex: 1;
+  color: white;
+}
+.menu-btns > button:nth-child(1) {
+  border-bottom-left-radius: 2vh;
+  background-color: maroon;
+  font-size: 2rem;
+}
+.menu-btns > button:nth-child(2) {
   border-bottom-right-radius: 2vh;
   background-color: hsl(120, 100%, 25%);
-  color: white;
   font-size: 3rem;
 }
 
@@ -954,7 +941,7 @@ input[type="checkbox"].preset-check:checked + label {
   width: 100%;
   display: grid;
   font-size: min(3vh, 2vw);
-  grid-template-columns: 1fr 1fr 1fr 1fr
+  grid-template-columns: 1fr 1fr
 }
 .setting-panels > div > h2 {
   font-size: max(4vh, 2vw);
@@ -984,13 +971,4 @@ rt.hide {
   font-weight: bold;
   font-size: 5vh;
   user-select: none;
-}
-
-@font-face {
-  font-family: bby-93;
-  src: url(../../fonts/TagDoc93.woff)
-}
-
-.baybayin {
-  font-family: bby-93;
 }

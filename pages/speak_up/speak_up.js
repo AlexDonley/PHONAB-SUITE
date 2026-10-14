@@ -70,16 +70,16 @@ var textInput       = document.getElementById("textInput");
 // buttons and their fuunctions
 
 const presetBtn     = document.querySelector('#preset');
-const shuffleBtn    = document.querySelector('#shuffle');
-const timerBtn      = document.querySelector('#timer');
-const loopBtn       = document.querySelector('#loop');
 const goBtn         = document.querySelector('#goBtn');
+const shuffleBtn    = document.querySelector('#shuffleBtn');
+const loopBtn       = document.querySelector('#loopBtn');
+const timerBtn      = document.querySelector('#timerBtn');
 const capBtn        = document.querySelector('#capBtn')
 const playBtn       = document.querySelector('#playBtn');
 const homeBtn       = document.querySelector('#homeBtn');
 const userBtn       = document.querySelector('#userBtn');
 const fullscreenBtn = document.querySelector('#fullscreenBtn');
-const settingBtn    = document.querySelector('#settingBtn');
+const settingsBtns  = document.querySelectorAll('.settings-btn');
 
 const searchTitles      = document.querySelector("#searchTitles");
 const sourceDiv         = document.querySelector("#sourceDiv");
@@ -106,7 +106,9 @@ readBtn.addEventListener("click", e => {
     shiftContentBlocks('game')
 })
 fullscreenBtn.addEventListener("click", toggleFullscreen);
-settingBtn.addEventListener("click", toggleSettings);
+settingsBtns.forEach(button => {
+    button.addEventListener("click", toggleSettings)
+});
 captionDropdown.addEventListener("change", swapCaptions);
 synthSpeed.addEventListener("pointermove", updateSpeed);
 synthVol.addEventListener("pointermove", updateVol);

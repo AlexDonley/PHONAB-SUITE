@@ -35,7 +35,7 @@
     "pos": "noun"
   },
   {
-    "english": "—",
+    "english": "-",
     "chinese": "",
     "pos": ""
   },
@@ -65,7 +65,7 @@
     "pos": "verb"
   },
   {
-    "english": "—",
+    "english": "-",
     "chinese": "",
     "pos": ""
   },
@@ -89,8 +89,8 @@
     "chinese": "",
     "pos": ""
   },
-    {
-    "english": "'",
+  {
+    "english": "",
     "chinese": "",
     "pos": ""
   },
@@ -125,12 +125,12 @@
     "pos": "noun"
   },
   {
-    "english": ".'",
+    "english": ".",
     "chinese": "",
     "pos": ""
   },
   {
-    "english": "'",
+    "english": "",
     "chinese": "",
     "pos": ""
   },
@@ -395,9 +395,14 @@
     "pos": "noun"
   },
   {
-    "english": "upon his sleeve",
-    "chinese": "用袖子擦嘴",
-    "pos": "phrase"
+    "english": "upon",
+    "chinese": "用",
+    "pos": "prep"
+  },
+  {
+    "english": "his sleeve",
+    "chinese": "袖子",
+    "pos": "noun"
   },
   {
     "english": "and",
@@ -491,7 +496,7 @@
   },
   {
     "english": "all",
-    "chinese": "所有的",
+    "chinese": "所有",
     "pos": "adj"
   },
   {
@@ -501,7 +506,7 @@
   },
   {
     "english": "in Nome",
-    "chinese": "諾姆",
+    "chinese": "諾姆(的)",
     "pos": "noun"
   },
   {
