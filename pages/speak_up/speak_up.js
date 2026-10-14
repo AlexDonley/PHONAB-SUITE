@@ -53,7 +53,7 @@ const volReader       = document.querySelector('#volReader');
 const greenArrow      = document.querySelector('#greenArrow');
 const arrowPerc       = document.querySelector('#arrowPerc');
 const arrowOverlay    = document.querySelector('.arrow-overlay')
-const viewQR          = document.querySelector('.view-QR');
+const viewQR          = document.querySelector('#viewQR');
 const qrImg           = document.querySelector('#qrImg');
 const showQR          = document.querySelector('.show-QR-btn');
 const trayTogg        = document.querySelector('.tray-toggle')
@@ -180,7 +180,8 @@ const availableCaptions = {
 
 function QRgenWrap() {
     const newURL = genQRstr(QRdictFromElem());
-    genNewQR(newURL, qrImg);
+    console.log(viewQR)
+    genNewQR(newURL, viewQR);
 }
 
 function QRdictFromElem() {
@@ -336,6 +337,11 @@ async function startQueue(idArr) {
     loadSect(globCurrents['sect'] + "*" + globCurrents['iter'])
     toggRecogAndElem(true)
     shiftContentBlocks('game')
+
+    const newQR = genQRstr({
+        "p" : globCurrents['sect']
+    })
+    genNewQR(newQR, viewQR)
 }
 
 async function startFreef() {
@@ -956,18 +962,21 @@ function changeTimerMode() {
 
         timerBtn.classList.remove('flip')
       
-        timerBtn.children[0].style.clipPath = 
-        "polygon(0% 0%, 33% 0%, 50% 20%, 66% 0%, 100% 0%, 100% 33%, 80% 50%, 100% 66%, 100% 100%, 66% 100%, 50% 80%, 33% 100%, 0% 100%, 0% 66%, 20% 50%, 0% 33%)"
+        timerBtn.children[0].classList.remove('up-arrow')
+        timerBtn.children[0].classList.remove('down-arrow')
+        timerBtn.children[0].classList.add('x')
 
     } else {
         timerBtn.classList.add('flip')
 
         if (timerMode == 1) {
-            timerBtn.children[0].style.clipPath = 
-            "polygon(0% 33%, 50% 0%, 100% 33%, 80% 33%, 80% 100%, 20% 100%, 20% 33%)"
+            timerBtn.children[0].classList.remove('x')
+            timerBtn.children[0].classList.remove('down-arrow')
+            timerBtn.children[0].classList.add('up-arrow')
         } else {
-            timerBtn.children[0].style.clipPath = 
-            "polygon(20% 0%, 20% 66%, 0% 66%, 50% 100%, 100% 66%, 80% 66%, 80% 0%)"
+            timerBtn.children[0].classList.remove('up-arrow')
+            timerBtn.children[0].classList.remove('x')
+            timerBtn.children[0].classList.add('down-arrow')
         }
     }
 }

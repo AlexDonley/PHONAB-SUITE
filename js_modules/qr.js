@@ -1,6 +1,7 @@
 // import { cycleQRWrap, toggleShowQR } from './js/qr.js'
 
-const mainURL = 'alexdonley.github.io/speak_up';
+const noQueryUrl = window.location.href.split('?')[0];
+console.log(noQueryUrl); 
 
 let startQRsize = 1;
 let showQR = 0;
@@ -40,13 +41,22 @@ export function genNewQR(url, elem) {
     //     colorLight: "#fffffff",
     //     margin: 2,
     // })
+
+    const qrImg = elem.querySelector('#qrImg')
+    const qrURL = elem.querySelector('#urlDisplay')
     
     QRCode.toDataURL(url).then(dataURL => {
-        elem.src = dataURL;
+        
+        qrImg.src = dataURL;
     })
-}
 
-genNewQR(mainURL, qrImg)
+    const qrAnchor = document.createElement('a')
+    qrAnchor.href = url
+    qrAnchor.innerText = url
+    
+    qrURL.innerHTML = ''
+    qrURL.append(qrAnchor)
+}
 
 export function toggleShowQR() {
     if (showQR == 0) {
@@ -60,19 +70,25 @@ export function toggleShowQR() {
 }
 
 export function genQRstr(dataDict) {
-    let urlStr = mainURL + "?"
+    
+    let urlStr = noQueryUrl
     const keysArr = Object.keys(dataDict)
 
-    for (let i = 0; i < keysArr.length; i++) {
-        const onset = keysArr[i];
-        const coda = dataDict[keysArr[i]];
-
-        urlStr += onset + "=" + coda;
+    if (keysArr.length > 0) {
+        urlStr += "?"
         
-        if (i < keysArr.length - 1) {
-            urlStr += "&";
+        for (let i = 0; i < keysArr.length; i++) {
+            const onset = keysArr[i];
+            const coda = dataDict[keysArr[i]];
+
+            urlStr += onset + "=" + coda;
+            
+            if (i < keysArr.length - 1) {
+                urlStr += "&";
+            }
         }
     }
+
 
     console.log(urlStr);
     return urlStr;

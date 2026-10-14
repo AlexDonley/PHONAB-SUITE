@@ -667,17 +667,29 @@ img {
 .timer-btn.flip{
   background-color: limegreen;
 }
+.timer-btn > * > svg {
+  height: 4vh;
+  width: 4vh;
+  padding: 0.5vh
+}
 
-.arrow-frame {
+.timer-frame {
   background: rgb(255, 255, 255);
-  height: 75%;
-  width: 75%;
-  margin: auto;
+  margin: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: limegreen;
-  clip-path: polygon(0 33%, 50% 0, 100% 33%, 80% 33%, 80% 100%, 20% 100%, 20% 33%)
+  transition: clip-path .1s;
+}
+.timer-frame.up-arrow {
+  clip-path: polygon(0 40%, 25% 20%, 50% 0, 75% 20%, 100% 40%, 80% 40%, 80% 60%, 80% 100%, 50% 100%, 20% 100%, 20% 60%, 20% 40%)
+}
+.timer-frame.down-arrow {
+  clip-path: polygon(20% 20%, 20% 0%, 50% 0, 80% 0%, 80% 40%, 80% 60%, 100% 60%, 80% 75%, 50% 100%, 20% 75%, 0% 60%, 20% 60%)
+}
+.timer-frame.x {
+  clip-path: polygon(0% 0%, 33% 0%, 50% 20%, 66% 0%, 100% 0%, 66% 50%, 100% 100%, 66% 100%, 50% 80%, 33% 100%, 0% 100%, 33% 50%)
 }
 
 .menu-btns {
@@ -755,15 +767,6 @@ img {
   align-items: center;
   background: linear-gradient(90deg, rgb(182, 182, 182), rgba(255, 255, 255, 1));
   transition: background 0.3s
-}
-
-.mini-tri {
-  height: 60%;
-  width: 60%;
-  user-select: none;
-  background-color: rgb(121, 121, 121);
-  clip-path: polygon(0 50%, 50% 25%, 100% 0, 100% 100%);
-  transition: clip-path 0.3s, background-color 0.3s;
 }
 
 .target {

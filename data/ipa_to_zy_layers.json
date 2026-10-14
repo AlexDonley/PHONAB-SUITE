@@ -1,0 +1,268 @@
+{
+  "b" : {
+    "align_zy": "ㄅ",
+    "align_abc": "ㄅ",
+    "align_ipa": "ㄅ"
+  },
+  "p" : {
+    "align_zy": "ㄆ",
+    "align_abc": "ㄆ",
+    "align_ipa": "ㄆ"
+  },
+  "m" : {
+    "align_zy": "ㄇ",
+    "align_abc": "ㄇ",
+    "align_ipa": "ㄇ"
+  },
+  "f" : {
+    "align_zy": "ㄈ",
+    "align_abc": "ㄈ",
+    "align_ipa": "ㄈ"
+  },
+  "d" : {
+    "align_zy": "ㄉ",
+    "align_abc": "ㄉ",
+    "align_ipa": "ㄉ"
+  },
+  "t" : {
+    "align_zy": "ㄊ",
+    "align_abc": "ㄊ",
+    "align_ipa": "ㄊ"
+  },
+  "n" : {
+    "align_zy": "ㄋ",
+    "align_abc": "ㄋ",
+    "align_ipa": "ㄋ"
+  },
+  "l" : {
+    "align_zy": "ㄌ",
+    "align_abc": "ㄌ",
+    "align_ipa": "ㄌ"
+  },
+  "g" : {
+    "align_zy": "ㄍ",
+    "align_abc": "ㄍ",
+    "align_ipa": "ㄍ"
+  },
+  "k" : {
+    "align_zy": "ㄎ",
+    "align_abc": "ㄎ",
+    "align_ipa": "ㄎ"
+  },
+  "h" : {
+    "align_zy": "ㄏ",
+    "align_abc": "ㄏ",
+    "align_ipa": "ㄏ"
+  },
+  "dʒi" : {
+    "align_zy": "ㄐ",
+    "align_abc": "ㄐ",
+    "align_ipa": "ㄐ"
+  },
+  "dʒɪ" : {
+    "align_zy": "ㄐ",
+    "align_abc": "ㄐ",
+    "align_ipa": "ㄐ"
+  },
+  "dʒ" : {
+    "align_zy": "ㄓ",
+    "align_abc": "ㄓ",
+    "align_ipa": "ㄓ"
+  },
+  "ʒ" : {
+    "align_zy": "ㄓ",
+    "align_abc": "ㄓ",
+    "align_ipa": "ㄓ"
+  },
+  "tʃi" : {
+    "align_zy": "ㄑ",
+    "align_abc": "ㄑ",
+    "align_ipa": "ㄑ"
+  },
+  "tʃɪ" : {
+    "align_zy": "ㄑ",
+    "align_abc": "ㄑ",
+    "align_ipa": "ㄑ"
+  },
+  "tʃ" : {
+    "align_zy": "ㄔ",
+    "align_abc": "ㄔ",
+    "align_ipa": "ㄔ"
+  },
+  "ʃi" : {
+    "align_zy": "ㄒ",
+    "align_abc": "ㄒ",
+    "align_ipa": "ㄒ"
+  },
+  "ʃɪ" : {
+    "align_zy": "ㄒ",
+    "align_abc": "ㄒ",
+    "align_ipa": "ㄒ"
+  },
+  "ʃ" : {
+    "align_zy": "ㄕ",
+    "align_abc": "ㄕ",
+    "align_ipa": "ㄕ"
+  },
+  "r" : {
+    "align_zy": "ㄖ",
+    "align_abc": "ㄖ",
+    "align_ipa": "ㄖ"
+  },
+  "z" : {
+    "": "z",
+    "align_zy": "ㄗ",
+    "align_abc": "ㄗ",
+    "align_ipa": "ㄗ"
+  },
+  "s" : {
+    "align_zy": "ㄙ",
+    "align_abc": "ㄙ",
+    "align_ipa": "ㄙ"
+  },
+  "ð" : {
+    "align_zy": "ㄉ",
+    "align_abc": "th",
+    "align_ipa": "ð"
+  },
+  "θ" : {
+    "align_zy": "ㄊ",
+    "align_abc": "th",
+    "align_ipa": "θ"
+  },
+  "v" : {
+    "align_zy": "ㄈ",
+    "align_abc": "v",
+    "align_ipa": "v"
+  },
+  "j" : {
+    "align_zy": "一",
+    "align_abc": "一",
+    "align_ipa": "一"
+  },
+  "i" : {
+    "align_zy": "一",
+    "align_abc": "一",
+    "align_ipa": "一"
+  },
+  "w" : {
+    "align_zy": "ㄨ",
+    "align_abc": "ㄨ",
+    "align_ipa": "ㄨ"
+  },
+  "u" : {
+    "align_zy": "ㄨ",
+    "align_abc": "ㄨ",
+    "align_ipa": "ㄨ"
+  },
+  "ɑ" : {
+    "align_zy": "ㄚ",
+    "align_abc": "ㄚ",
+    "align_ipa": "ㄚ"
+  },
+  "oʊ" : {
+    "align_zy": "ㄡ",
+    "align_abc": "ㄡ",
+    "align_ipa": "ㄡ"
+  },
+  "eɪ" : {
+    "align_zy": "ㄟ",
+    "align_abc": "ㄟ",
+    "align_ipa": "ㄟ"
+  },
+  "æ" : {
+    "align_zy": "ㄟ",
+    "align_abc": "a",
+    "align_ipa": "æ"
+  },
+  "ɛ" : {
+    "align_zy": "ㄝ",
+    "align_abc": "ㄝ",
+    "align_ipa": "ㄝ"
+  },
+  "ɪ" : {
+    "align_zy": "一",
+    "align_abc": "i",
+    "align_ipa": "ɪ"
+  },
+  "ɔ" : {
+    "align_zy": "ㄛ",
+    "align_abc": "aw",
+    "align_ipa": "ɔ"
+  },
+  "ʌ" : {
+    "align_zy": "ㄜ",
+    "align_abc": "ㄜ",
+    "align_ipa": "ㄜ"
+  },
+  "ʊ" : {
+    "align_zy": "ㄨ",
+    "align_abc": "oo",
+    "align_ipa": "ʊ"
+  },
+  "ɹ" : {
+    "align_zy": ["ㄖ","ㄦ"],
+    "align_abc": ["ㄖ","ㄦ"],
+    "align_ipa": ["ㄖ","ㄦ"]
+  },
+  "ɛɹ" : {
+    "align_zy": "ㄦ",
+    "align_abc": "ㄦ",
+    "align_ipa": "ㄦ"
+  },
+  "aɪ" : {
+    "align_zy": "ㄞ",
+    "align_abc": "ㄞ",
+    "align_ipa": "ㄞ"
+  },
+  "ɔɪ" : {
+    "align_zy": "ㄛ一",
+    "align_abc": "oi",
+    "align_ipa": "ɔɪ"
+  },
+  "aʊ" : {
+    "align_zy": "ㄠ",
+    "align_abc": "ㄠ",
+    "align_ipa": "ㄠ"
+  },
+  "ʌn" : {
+    "align_zy": "ㄣ",
+    "align_abc": "ㄣ",
+    "align_ipa": "ㄣ"
+  },
+  "ɛn" : {
+    "align_zy": "ㄝㄣ",
+    "align_abc": "ㄝㄣ",
+    "align_ipa": "ㄝㄣ"
+  },
+  "ɪn" : {
+    "align_zy": "一ㄣ",
+    "align_abc": "iㄣ",
+    "align_ipa": "ɪㄣ"
+  },
+  "in" : {
+    "align_zy": "一ㄣ",
+    "align_abc": "一ㄣ",
+    "align_ipa": "一ㄣ"
+  },
+  "ŋ" : {
+    "align_zy": "ㄥ",
+    "align_abc": "ㄥ",
+    "align_ipa": "ㄥ"
+  },
+  "ʌŋ" : {
+    "align_zy": "ㄥ",
+    "align_abc": "ㄥ",
+    "align_ipa": "ㄥ"
+  },
+  "ɪŋ" : {
+    "align_zy": "一ㄥ",
+    "align_abc": "一ㄥ",
+    "align_ipa": "一ㄥ"
+  },
+  "ɔŋ" : {
+    "align_zy": "ㄨㄥ",
+    "align_abc": "ㄨㄥ",
+    "align_ipa": "ㄨㄥ"
+  }
+}

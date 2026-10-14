@@ -41,8 +41,6 @@ export function nextTimerMode() {
     } else {
         timerMode = 0
     }
-
-    console.log(timerMode)
 }
 
 function grabTimeHMS() {
