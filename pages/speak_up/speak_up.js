@@ -57,8 +57,8 @@ const viewQR          = document.querySelector('#viewQR');
 const qrImg           = document.querySelector('#qrImg');
 const showQR          = document.querySelector('.show-QR-btn');
 const trayTogg        = document.querySelector('.tray-toggle')
-const presetCheck     = document.querySelector('#presetCheck')
-const goCheck         = document.querySelector('#goCheck');
+// const presetCheck     = document.querySelector('#presetCheck')
+// const goCheck         = document.querySelector('#goCheck');
 
 // elements contained in the setting section
 
@@ -115,8 +115,8 @@ synthVol.addEventListener("pointermove", updateVol);
 qrImg.addEventListener("click", cycleQRWrap);
 showQR.addEventListener("click", toggleShowQR);
 trayTogg.addEventListener("click", toggleQRTray);
-presetCheck.addEventListener("change", QRgenWrap);
-goCheck.addEventListener("change", QRgenWrap);
+// presetCheck.addEventListener("change", QRgenWrap);
+// goCheck.addEventListener("change", QRgenWrap);
 punchBtn.addEventListener("click", checkAndClear);
 
 // - - - VARIABLES - - - //
@@ -202,9 +202,9 @@ function QRdictFromElem() {
         thisDict.psidx = thisIdx;
     }
 
-    if (goCheck.checked) {
-        thisDict.go = true;
-    }
+    // if (goCheck.checked) {
+    //     thisDict.go = true;
+    // }
 
     console.log(thisDict);
     return thisDict;
@@ -247,8 +247,13 @@ async function asyncSearchTitles(str) {
     populateSources(searchSources);
 }
 
+// functions on page load
+
 processQueries();
-swapLang('en')
+swapLang('en');
+
+var defaultQR = genQRstr({})
+genNewQR(defaultQR, viewQR)
 
 // sound effects
 

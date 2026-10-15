@@ -141,7 +141,7 @@ export async function getBookParts(bookId) {
         .from('parts')
         .select('*')
         .eq('book_id', bookId)
-        .order('id', { ascending: true }); // optional: keep parts in consistent order
+        .order('idx', { ascending: true }); // optional: keep parts in consistent order
 
     if (error) {
         console.error('Error fetching parts:', error);

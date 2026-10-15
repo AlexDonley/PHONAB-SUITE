@@ -663,6 +663,7 @@ img {
   background-color: gray;
   color: white;
   font-size: 2rem;
+  border-radius: 5px;
 }
 .timer-btn.flip{
   background-color: limegreen;

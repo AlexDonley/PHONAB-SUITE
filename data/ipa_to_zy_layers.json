@@ -30,9 +30,9 @@
     "align_ipa": "ㄊ"
   },
   "n" : {
-    "align_zy": "ㄋ",
-    "align_abc": "ㄋ",
-    "align_ipa": "ㄋ"
+    "align_zy": ["ㄋ", "ㄣ"],
+    "align_abc": ["ㄋ", "ㄣ"],
+    "align_ipa": ["ㄋ", "ㄣ"]
   },
   "l" : {
     "align_zy": "ㄌ",

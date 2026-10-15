@@ -2,6 +2,11 @@
 
 // http://127.0.0.1:5500/index.html?t=2&g=3&vocabs=[22,23,24]&gonow=true
 
+// TO DO: create a set of consistent query data structures
+// p = part, hash string to identify
+// c = config, stringified dictionary data
+// l = lang, short string
+// u = user login, bool
 
 const defaultConfigs = {
     'fs': false,

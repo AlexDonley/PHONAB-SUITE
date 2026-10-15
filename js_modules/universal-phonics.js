@@ -42,7 +42,7 @@ const pinyinCons = [
 // FETCH DATA
 
 let engIpa = [];
-let ipaToZhu = [];
+let ipaZyDict = [];
 
 function fetchEngIPA() {
     fetch("../../data/syll_ipa.json")
@@ -50,20 +50,20 @@ function fetchEngIPA() {
     .then(data => {
         console.log('Successfully fetched English IPA syllables.');
         engIpa = data;
-        console.log(engToIPAArr("it's"))
-        fetchIPAtoZhu();
+
+        fetchIpaZyDict();
     })
 }
 
-function fetchIPAtoZhu() {
-    fetch("../../data/ipa_to_zhu.json")
+function fetchIpaZyDict() {
+    fetch("../../data/ipa_to_zy_layers.json")
     .then(res => res.json())
     .then(data => {
         console.log('Successfully fetched IPA to zhuyin dict.');
-        ipaToZhu = data;
+        ipaZyDict = data;
 
         // test successful fetching and functions with the example "friday"
-        const testArr = engToIPAArr('friday');
+        const testArr = engToIPAArr('in');
         const revArr = reviseIpaArr(testArr);
         console.log(ipaToZY(revArr));
     })
@@ -206,7 +206,22 @@ function ipaToZY(arr) {
     
     arr.forEach(syll => {
         syll.forEach(letter => {
-            newArr.push(ipaToZhu[0][letter]);
+
+            var thisZy = ipaZyDict[letter]['align_abc']
+
+            // parse which R or N to use
+            // word-initial Rs should use ㄖ, while other Rs should use ㄦ
+            // word-initial Ns should use ㄋ, whiel other Ns should use ㄣ
+            if (letter == "ɹ" || letter == "n") {
+
+                if (newArr.length < 1) {
+                    thisZy = thisZy[0]
+                } else {
+                    thisZy = thisZy[1]
+                }
+            }
+            
+            newArr.push(thisZy);
         })
     });
 
