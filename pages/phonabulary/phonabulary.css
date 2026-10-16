@@ -6,13 +6,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     margin: 0;
 }
 
 .container {
-    width: 100%;
-    max-width: 500px;
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
@@ -29,7 +26,7 @@ body {
     cursor: pointer;
     user-select: none;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 /* Labels on left and right */
@@ -77,11 +74,6 @@ body {
     animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Active menu is visible */
-.menu-section.active {
-    display: block;
-}
-
 .menu-section h2 {
     margin-top: 0;
     color: #1e293b;
@@ -98,6 +90,79 @@ body {
 
 .menu-section li {
     margin: 8px 0;
+}
+
+.sub-menu {
+    display: none;
+}
+
+/* Active menu is visible */
+.active {
+    display: block;
+}
+
+/* Hide the default native checkbox */
+.custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Style the container box */
+.custom-checkbox {
+    display: grid;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* The visual box acting as the button */
+.custom-checkbox .box-label {
+    display: inline-flex;
+    /* height: 100%;
+    width: 100%; */
+    align-items: center;
+    justify-content: center;
+    /* padding: 12px 24px; */
+    font-family: sans-serif;
+    /* font-weight: 600;
+    font-size: 14px; */
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #3b82f6;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Flipped colors when checked */
+.custom-checkbox input[type="checkbox"]:checked + .box-label {
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+
+.grid-square {
+display: inline-grid; /* Prevents the grid from stretching 100% wide */
+    grid-template-columns: repeat(12, 50px); /* Exactly 12 columns, each 50px wide */
+    max-width: calc((50px * 12) + (3px * 11)); /* Caps width at 12 items + gaps */
+    gap: 3px;
+    margin-bottom: 10px;
+}
+.grid-square > * {
+    aspect-ratio: 1/1;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    height: 50px;
+    width: 50px;
+}
+
+.grid-rect {
+    display: flex;
+    gap: 3px;
+}
+.grid-rect > * > * {
+    padding: 10px;
 }
 
 @keyframes fadeIn {
