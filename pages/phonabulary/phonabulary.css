@@ -15,6 +15,15 @@ body {
     text-align: center;
 }
 
+button {
+    color: white;
+    background-color: navy;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    /* border: purple; */
+}
+
 /* Toggle Switch Wrapper */
 .toggle-container {
     display: inline-flex;
@@ -72,6 +81,7 @@ body {
     display: none; /* Hidden by default */
     text-align: left;
     animation: fadeIn 0.3s ease-in-out;
+    margin-bottom: 30px;
 }
 
 .menu-section h2 {
@@ -142,7 +152,7 @@ body {
 }
 
 .grid-square {
-display: inline-grid; /* Prevents the grid from stretching 100% wide */
+    display: inline-grid; /* Prevents the grid from stretching 100% wide */
     grid-template-columns: repeat(12, 50px); /* Exactly 12 columns, each 50px wide */
     max-width: calc((50px * 12) + (3px * 11)); /* Caps width at 12 items + gaps */
     gap: 3px;
@@ -157,12 +167,89 @@ display: inline-grid; /* Prevents the grid from stretching 100% wide */
     width: 50px;
 }
 
-.grid-rect {
-    display: flex;
+.flex-rect {
+    display: inline-flex;
     gap: 3px;
+    margin-bottom: 10px;
 }
-.grid-rect > * > * {
+.flex-rect > * > * {
     padding: 10px;
+}
+
+.queue-bar {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    text-align: left;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.queue {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+/* Container styling for Flexbox reordering */
+.drag-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 0px; /* Vertical gap, horizontal handled with spacing */
+    padding: 16px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    max-width: 100%; /* Prevents stretching past screen bounds */
+    box-sizing: border-box;
+}
+
+/* Draggable item card */
+.drag-item {
+    padding: 8px 16px;
+    background-color: #ffffff;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.drag-item:hover {
+    border-color: #94a3b8;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.drag-item:active {
+    cursor: grabbing;
+}
+
+/* Styles during dragging */
+.drag-item.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+    border-color: #3b82f6;
+}
+
+/* Target highlight when dragging over an item */
+.drag-item.drag-over {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+    transform: scale(1.05);
+}
+
+/* Non-clickable separator arrow */
+.drag-arrow {
+    margin: 0 8px;
+    font-size: 16px;
+    color: #94a3b8;
+    user-select: none;
+    pointer-events: none; /* Disables mouse clicks and interactions */
 }
 
 @keyframes fadeIn {

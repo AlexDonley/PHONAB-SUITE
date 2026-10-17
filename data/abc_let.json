@@ -1,151 +1,151 @@
 {
   "a": {
-    "Animal": "ape",
-    "Misc": "apple",
-    "Action": "attention",
-    "Discarded": "applaud",
+    "animal": "ape",
+    "misc": "apple",
+    "action": "attention",
+    "discarded": "applaud",
     "ipa": ["æ","eɪ"]
   },
   "b": {
-    "Animal": "bird",
-    "Misc": "book",
-    "Action": "bow",
-    "Discarded": "bag",
+    "animal": "bird",
+    "misc": "book",
+    "action": "bow",
+    "discarded": "bag",
     "ipa": ["b"]
   },
   "c": {
-    "Animal": "cat",
-    "Misc": "cup",
-    "Action": "clap",
-    "Discarded": "chair, climb",
+    "animal": "cat",
+    "misc": "cup",
+    "action": "clap",
+    "discarded": "chair, climb",
     "ipa": ["k","s"]
   },
   "d": {
-    "Animal": "dog",
-    "Misc": "desk",
-    "Action": "dance",
-    "Discarded": "door"
+    "animal": "dog",
+    "misc": "desk",
+    "action": "dance",
+    "discarded": "door"
   },
   "e": {
-    "Animal": "elephant",
-    "Misc": "egg",
-    "Action": "eat"
+    "animal": "elephant",
+    "misc": "egg",
+    "action": "eat"
   },
   "f": {
-    "Animal": "fish",
-    "Misc": "fan",
-    "Action": "fist-bump",
-    "Discarded": "folder"
+    "animal": "fish",
+    "misc": "fan",
+    "action": "fist-bump",
+    "discarded": "folder"
   },
   "g": {
-    "Animal": "goat",
-    "Misc": "girl",
-    "Action": "group"
+    "animal": "goat",
+    "misc": "girl",
+    "action": "group"
   },
   "h": {
-    "Animal": "hippo",
-    "Misc": "hat",
-    "Action": "high-five"
+    "animal": "hippo",
+    "misc": "hat",
+    "action": "high-five"
   },
   "i": {
-    "Animal": "iguana",
-    "Misc": "iPad",
-    "Action": "itch",
-    "Discarded": "ink"
+    "animal": "iguana",
+    "misc": "iPad",
+    "action": "itch",
+    "discarded": "ink"
   },
   "j": {
-    "Animal": "jaguar",
-    "Misc": "juice",
-    "Action": "jump"
+    "animal": "jaguar",
+    "misc": "juice",
+    "action": "jump"
   },
   "k": {
-    "Animal": "kangaroo",
-    "Misc": "king",
-    "Action": "kick"
+    "animal": "kangaroo",
+    "misc": "king",
+    "action": "kick"
   },
   "l": {
-    "Animal": "lion",
-    "Misc": "library",
-    "Action": "look",
-    "Discarded": "lunge"
+    "animal": "lion",
+    "misc": "library",
+    "action": "look",
+    "discarded": "lunge"
   },
   "m": {
-    "Animal": "monkey",
-    "Misc": "marker",
-    "Action": "march"
+    "animal": "monkey",
+    "misc": "marker",
+    "action": "march"
   },
   "n": {
-    "Animal": "narwhal",
-    "Misc": "nose",
-    "Action": "no",
-    "Discarded": "nudge"
+    "animal": "narwhal",
+    "misc": "nose",
+    "action": "no",
+    "discarded": "nudge"
   },
   "o": {
-    "Animal": "otter",
-    "Misc": "on / off",
-    "Action": "open",
-    "Discarded": "ox"
+    "animal": "otter",
+    "misc": "on / off",
+    "action": "open",
+    "discarded": "ox"
   },
   "p": {
-    "Animal": "pig",
-    "Misc": "pencil",
-    "Action": "point",
-    "Discarded": "pen"
+    "animal": "pig",
+    "misc": "pencil",
+    "action": "point",
+    "discarded": "pen"
   },
   "q": {
-    "Animal": "quail",
-    "Misc": "queen",
-    "Action": "question"
+    "animal": "quail",
+    "misc": "queen",
+    "action": "question"
   },
   "r": {
-    "Animal": "rabbit",
-    "Misc": "ruler",
-    "Action": "run"
+    "animal": "rabbit",
+    "misc": "ruler",
+    "action": "run"
   },
   "s": {
-    "Animal": "snake",
-    "Misc": "sun",
-    "Action": "sit",
-    "Discarded": "squat"
+    "animal": "snake",
+    "misc": "sun",
+    "action": "sit",
+    "discarded": "squat"
   },
   "t": {
-    "Animal": "tiger",
-    "Misc": "taco",
-    "Action": "talk",
-    "Discarded": "twist, tea",
+    "animal": "tiger",
+    "misc": "taco",
+    "action": "talk",
+    "discarded": "twist, tea",
     "ipa": ["t"]
   },
   "u": {
-    "Animal": "unicorn",
-    "Misc": "umbrella",
-    "Action": "up"
+    "animal": "unicorn",
+    "misc": "umbrella",
+    "action": "up"
   },
   "v": {
-    "Animal": "vulture",
-    "Misc": "van",
-    "Action": "vote"
+    "animal": "vulture",
+    "misc": "van",
+    "action": "vote"
   },
   "w": {
-    "Animal": "wolf",
-    "Misc": "water",
-    "Action": "walk"
+    "animal": "wolf",
+    "misc": "water",
+    "action": "walk"
   },
   "x": {
-    "Animal": "x-ray fish",
-    "Misc": "xerox",
-    "Action": "x-jump",
-    "Discarded": "box"
+    "animal": "x-ray fish",
+    "misc": "xerox",
+    "action": "x-jump",
+    "discarded": "box"
   },
   "y": {
-    "Animal": "yak",
-    "Misc": "yo-yo",
-    "Action": "yes",
-    "Discarded": "yawn"
+    "animal": "yak",
+    "misc": "yo-yo",
+    "action": "yes",
+    "discarded": "yawn"
   },
   "z": {
-    "Animal": "zebra",
-    "Misc": "zero",
-    "Action": "zip",
-    "Discarded": "zoo"
+    "animal": "zebra",
+    "misc": "zero",
+    "action": "zip",
+    "discarded": "zoo"
   }
 }
