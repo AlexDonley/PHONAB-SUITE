@@ -66,5 +66,58 @@
             </div>
         </div>
     </div>
+
+    <!-- Canvas Overlay -->
+    <div id="flashcardOverlay">
+        <canvas id="cardCanvas"></canvas>
+
+        <!-- Top Navigation Controls -->
+        <div class="top-bar">
+        <div class="progress-pill">
+            <span id="counterText">1 / 5</span>
+            <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <button id="closeBtn" class="icon-btn" title="Close (Esc)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        </div>
+
+        <!-- Completion Modal -->
+        <div id="finishModal" class="modal-backdrop">
+        <div class="modal-box">
+            <div class="modal-emoji">🎉</div>
+            <h2 class="modal-title">Deck Completed!</h2>
+            <p class="modal-text">You have reviewed all flashcards in this set.</p>
+            <div class="modal-actions">
+            <button id="repeatBtn" class="btn btn-primary">Restart</button>
+            <button id="modalExitBtn" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+        </div>
+
+        <!-- Floating Glass Bottom Toolbar -->
+        <div class="bottom-toolbar">
+        <button id="prevBtn" class="toolbar-btn">
+            <i class="fa-solid fa-chevron-up"></i>
+            <span>Prev</span>
+        </button>
+
+        <div class="divider"></div>
+
+        <button id="nextBtn" class="toolbar-btn">
+            <span>Next</span>
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+        <div class="divider"></div>
+
+        <button id="fullscreenBtn" class="toolbar-btn icon-only" title="Toggle Fullscreen">
+            <i id="fsIcon" class="fa-solid fa-expand"></i>
+        </button>
+        </div>
+    </div>
 </body>
 </html>
