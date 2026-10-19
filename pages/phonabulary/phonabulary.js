@@ -11,19 +11,21 @@ const startQueueBtn = document.getElementById('startQueueBtn');
 // const menuLeftAbcs = document.getElementById('menuLeftAbcs');
 // const menuRightPhonics = document.getElementById('menuRightPhonics');
 
-const abcArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const drillOpts = ['Upper', 'Lower', 'ASL', 'Animal', 'Misc', 'Action']
-const queueOpts = ['Shuffle', 'Hide']
-
 let defaultAbcs = {}
 let defaultCards = {}
 
 getAbcDefaults()
 getCardDefaults()
 
+const abcArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+const drillOpts = ['Upper', 'Lower', 'ASL', 'Animal', 'Misc', 'Action', 'Default']
+const queueOpts = ['Shuffle', 'Hide']
+
 populateCheckboxes(abcArr, abcGrid)
 populateCheckboxes(drillOpts, drillGrid)
 populateCheckboxes(queueOpts, queueSettings)
+
+document.getElementById('shuffleCheck').addEventListener('click', toggleShuffle)
 
 menuToggle.addEventListener('click', (e) => {
     parseToggle(e)
@@ -47,7 +49,6 @@ function getAbcDefaults() {
     })
     .then(data => {
         defaultAbcs = data
-        console.log(defaultAbcs['a'])
     })
     .catch(error => console.log(error))
 }
@@ -64,7 +65,6 @@ function getCardDefaults() {
     })
     .then(data => {
         defaultCards = data
-        console.log(defaultCards)
     })
     .catch(error => console.log(error))
 }
@@ -108,6 +108,7 @@ function constructCheckbox(text, value) {
     const newCheck = document.createElement('input');
     newCheck.type = 'checkbox';
     newCheck.value = value;
+    newCheck.id = value + "Check"
 
     const newSpan = document.createElement('span');
     newSpan.classList.add('box-label')
@@ -132,31 +133,13 @@ function populateDragList(arr, containerElem) {
     // containerElem.classList.add('drag-container')
     containerElem.addEventListener('dragover', (e) => e.preventDefault());
 
-    // Helper function to re-render separator arrows dynamically
-    function updateArrows() {
-        // Remove existing arrows
-        containerElem.querySelectorAll('.drag-arrow').forEach(arrow => arrow.remove());
-
-        // Get current draggable items in order
-        const items = Array.from(containerElem.querySelectorAll('.drag-item'));
-        
-        items.forEach((item, index) => {
-            // Insert arrow after every item except the last one
-            if (index < items.length - 1) {
-            const arrow = document.createElement('span');
-            arrow.className = 'drag-arrow';
-            arrow.textContent = '→';
-            item.after(arrow);
-            }
-        });
-    }
-
     // Create draggable boxes
     arr.forEach((dict) => {
         const item = document.createElement('div');
         item.className = 'drag-item';
         item.textContent = dict.text;
         item.dataset.cardType = dict.type;
+        item.dataset.defaultIdx = containerElem.querySelectorAll('div').length
 
         if (dict.type == 'img') {
             const thisUrl = defaultCards[dict.text]['unsplash'];
@@ -177,7 +160,7 @@ function populateDragList(arr, containerElem) {
             // Clear all drop target highlights
             containerElem.querySelectorAll('.drag-item').forEach(el => el.classList.remove('drag-over'));
             // Re-calculate arrows in case order changed
-            updateArrows();
+            updateArrows(containerElem);
         });
 
         item.addEventListener('dragenter', (e) => {
@@ -213,14 +196,33 @@ function populateDragList(arr, containerElem) {
             containerElem.insertBefore(draggingItem, item.nextSibling);
             }
 
-            updateArrows();
+            updateArrows(containerElem);
         });
 
         containerElem.appendChild(item);
     });
 
     // Initial arrow layout
-    updateArrows();
+    updateArrows(containerElem);
+}
+
+// Helper function to re-render separator arrows dynamically
+function updateArrows(containerElem) {
+    // Remove existing arrows
+    containerElem.querySelectorAll('.drag-arrow').forEach(arrow => arrow.remove());
+
+    // Get current draggable items in order
+    const items = Array.from(containerElem.querySelectorAll('.drag-item'));
+    
+    items.forEach((item, index) => {
+        // Insert arrow after every item except the last one
+        if (index < items.length - 1) {
+        const arrow = document.createElement('span');
+        arrow.className = 'drag-arrow';
+        arrow.textContent = '→';
+        item.after(arrow);
+        }
+    });
 }
 
 function clearQueue() {
@@ -263,6 +265,10 @@ function gatherQueue() {
                             break;
                         case 'asl':
                             break;
+                        case 'default':
+                            thisDict.text = defaultAbcs[letter][defaultAbcs[letter][checked.value]]
+                            thisDict.type = 'img'
+                            break;
                         default:
                             thisDict.text = defaultAbcs[letter][checked.value]
                             thisDict.type = 'img'
@@ -276,6 +282,46 @@ function gatherQueue() {
     }
 
     return finalQueue
+}
+
+function toggleShuffle() {
+
+    let container = queueDiv
+
+
+    // Get all direct child div elements with the data-default-idx attribute
+    const divs = Array.from(container.querySelectorAll(':scope > div'));
+    
+    // Check the current state from the container's dataset
+    const isShuffled = container.dataset.shuffled === 'true';
+
+    if (!isShuffled) {
+        // --- SHUFFLE ---
+        // Randomize the array of divs using Math.random()
+        const shuffledDivs = [...divs].sort(() => Math.random() - 0.5);
+        
+        // Re-append them in the new shuffled order
+        shuffledDivs.forEach(div => container.appendChild(div));
+        
+        // Update state flag
+        container.dataset.shuffled = 'true';
+    } else {
+        // --- UNSHUFFLE ---
+        // Sort divs back based on their data-default-idx value
+        const sortedDivs = [...divs].sort((a, b) => {
+            const indexA = parseInt(a.dataset.defaultIdx, 10);
+            const indexB = parseInt(b.dataset.defaultIdx, 10);
+            return indexA - indexB;
+        });
+        
+        // Re-append them in their original order
+        sortedDivs.forEach(div => container.appendChild(div));
+        
+        // Update state flag
+        container.dataset.shuffled = 'false';
+    }
+
+    updateArrows(container)
 }
 
 function applyQueue() {

@@ -3,6 +3,7 @@
     "animal": "ape",
     "misc": "apple",
     "action": "attention",
+    "default": "misc",
     "discarded": "applaud",
     "ipa": ["æ","eɪ"]
   },
@@ -10,6 +11,7 @@
     "animal": "bird",
     "misc": "book",
     "action": "bow",
+    "default": "animal",
     "discarded": "bag",
     "ipa": ["b"]
   },
@@ -17,6 +19,7 @@
     "animal": "cat",
     "misc": "cup",
     "action": "clap",
+    "default": "animal",
     "discarded": "chair, climb",
     "ipa": ["k","s"]
   },
@@ -24,128 +27,151 @@
     "animal": "dog",
     "misc": "desk",
     "action": "dance",
+    "default": "animal",
     "discarded": "door"
   },
   "e": {
     "animal": "elephant",
     "misc": "egg",
-    "action": "eat"
+    "action": "eat",
+    "default": "animal"
   },
   "f": {
     "animal": "fish",
     "misc": "fan",
     "action": "fist-bump",
+    "default": "animal",
     "discarded": "folder"
   },
   "g": {
     "animal": "goat",
     "misc": "girl",
-    "action": "group"
+    "action": "group",
+    "default": "animal"
   },
   "h": {
     "animal": "hippo",
     "misc": "hat",
-    "action": "high-five"
+    "action": "high-five",
+    "default": "animal"
   },
   "i": {
     "animal": "iguana",
     "misc": "iPad",
     "action": "itch",
+    "default": "animal",
     "discarded": "ink"
   },
   "j": {
     "animal": "jaguar",
     "misc": "juice",
-    "action": "jump"
+    "action": "jump",
+    "default": "animal"
   },
   "k": {
     "animal": "kangaroo",
     "misc": "king",
-    "action": "kick"
+    "action": "kick",
+    "default": "animal"
   },
   "l": {
     "animal": "lion",
     "misc": "library",
     "action": "look",
+    "default": "animal",
     "discarded": "lunge"
   },
   "m": {
     "animal": "monkey",
     "misc": "marker",
-    "action": "march"
+    "action": "march",
+    "default": "animal"
   },
   "n": {
     "animal": "narwhal",
     "misc": "nose",
     "action": "no",
+    "default": "action",
     "discarded": "nudge"
   },
   "o": {
     "animal": "otter",
     "misc": "on / off",
     "action": "open",
+    "default": "animal",
     "discarded": "ox"
   },
   "p": {
     "animal": "pig",
     "misc": "pencil",
     "action": "point",
+    "default": "animal",
     "discarded": "pen"
   },
   "q": {
     "animal": "quail",
     "misc": "queen",
-    "action": "question"
+    "action": "question",
+    "default": "misc"
   },
   "r": {
     "animal": "rabbit",
     "misc": "ruler",
-    "action": "run"
+    "action": "run",
+    "default": "animal"
   },
   "s": {
     "animal": "snake",
     "misc": "sun",
     "action": "sit",
+    "default": "animal",
     "discarded": "squat"
   },
   "t": {
     "animal": "tiger",
     "misc": "taco",
     "action": "talk",
+    "default": "animal",
     "discarded": "twist, tea",
     "ipa": ["t"]
   },
   "u": {
     "animal": "unicorn",
     "misc": "umbrella",
-    "action": "up"
+    "action": "up",
+    "default": "misc"
   },
   "v": {
     "animal": "vulture",
     "misc": "van",
-    "action": "vote"
+    "action": "vote",
+    "default": "action"
   },
   "w": {
     "animal": "wolf",
     "misc": "water",
-    "action": "walk"
+    "action": "walk",
+    "default": "misc"
   },
   "x": {
     "animal": "x-ray fish",
     "misc": "xerox",
     "action": "x-jump",
+    "default": "animal",
     "discarded": "box"
   },
   "y": {
     "animal": "yak",
     "misc": "yo-yo",
     "action": "yes",
+    "default": "animal",
     "discarded": "yawn"
   },
   "z": {
     "animal": "zebra",
     "misc": "zero",
     "action": "zip",
+    "default": "animal",
     "discarded": "zoo"
   }
 }
