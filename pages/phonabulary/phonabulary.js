@@ -8,8 +8,6 @@ const queueSettings = document.getElementById('queueSettings');
 const addToQueueBtn = document.getElementById('addToQueueBtn');
 const clearQueueBtn = document.getElementById('clearQueueBtn');
 const startQueueBtn = document.getElementById('startQueueBtn');
-// const menuLeftAbcs = document.getElementById('menuLeftAbcs');
-// const menuRightPhonics = document.getElementById('menuRightPhonics');
 
 let defaultAbcs = {}
 let defaultCards = {}
@@ -288,7 +286,6 @@ function toggleShuffle() {
 
     let container = queueDiv
 
-
     // Get all direct child div elements with the data-default-idx attribute
     const divs = Array.from(container.querySelectorAll(':scope > div'));
     
@@ -324,37 +321,42 @@ function toggleShuffle() {
     updateArrows(container)
 }
 
+let cardDicts = []
+
 function applyQueue() {
     
-    images = []
-
+    cardDicts = []
     const cardDivs = queueDiv.querySelectorAll('div')
 
     cardDivs.forEach((div, i) => {
-        if (div.dataset.imgUrl) {
-            const img = new Image();
-            img.src = div.dataset.imgUrl;
-            img.onload = () => { if (i === currentIndex) renderCard(); };
-            images.push(img);
+        let thisDict = {
+            "text": div.innerText,
+            "types": [div.dataset.cardType],
+            "url": div.dataset.imgUrl,
+            "img": buildImageElem(div.dataset.imgUrl, i),
+            "fx": {},
+            "configs": {
+                "size": "fill"
+            }
         }
+
+        cardDicts.push(thisDict)
     })
 }
 
+function buildImageElem(url, i) {
+    const img = new Image();
+    img.src = url;
+    img.onload = () => { if (i === currentIndex) renderCard(); };
+
+    return img
+}
 
 // CANVAS FUNCTIONS
 
-// 1. Array of Image Links
-const IMAGE_URLS = [
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1600&q=80"
-];
-
 // State
 let currentIndex = 0;
-let images = [];
+let images = {};
 const overlay = document.getElementById('flashcardOverlay');
 const canvas = document.getElementById('cardCanvas');
 const ctx = canvas.getContext('2d');
@@ -366,14 +368,6 @@ const nextBtn = document.getElementById('nextBtn');
 const counterText = document.getElementById('counterText');
 const progressBar = document.getElementById('progressBar');
 const fsIcon = document.getElementById('fsIcon');
-
-// Preload Images
-IMAGE_URLS.forEach((url, i) => {
-    const img = new Image();
-    img.src = url;
-    img.onload = () => { if (i === currentIndex) renderCard(); };
-    images.push(img);
-});
 
 // Resize Handling
 function resizeCanvas() {
@@ -394,32 +388,78 @@ function renderCard() {
 
     ctx.clearRect(0, 0, width, height);
 
-    const img = images[currentIndex];
-    if (img && img.complete && img.naturalWidth !== 0) {
-    // Compute "contain" aspect ratio scaling
-    const imgRatio = img.naturalWidth / img.naturalHeight;
-    const canvasRatio = width / height;
+    const dict = cardDicts[currentIndex]
 
-    let drawW, drawH, drawX, drawY;
+    if (dict.types.includes("img")) {
+        const img = dict['img']
+        if (img && img.complete && img.naturalWidth !== 0) {
+            // Compute "contain" aspect ratio scaling
+            const imgRatio = img.naturalWidth / img.naturalHeight;
+            const canvasRatio = width / height;
 
-    if (imgRatio > canvasRatio) {
-        drawW = width;
-        drawH = width / imgRatio;
-    } else {
-        drawH = height;
-        drawW = height * imgRatio;
-    }
+            let drawW, drawH, drawX, drawY;
 
-    drawX = (width - drawW) / 2;
-    drawY = (height - drawH) / 2;
+            // if (dict.config.size == "fit") {
+            //     // for image fit
+            //     if (imgRatio > canvasRatio) {
+            //         drawW = width;
+            //         drawH = width / imgRatio;
+            //     } else {
+            //         drawH = height;
+            //         drawW = height * imgRatio;
+            //     }
 
-    ctx.drawImage(img, drawX, drawY, drawW, drawH);
-    } else {
-    // Loading Fallback Spinner
-    ctx.fillStyle = '#6366f1';
-    ctx.font = '600 16px "Plus Jakarta Sans", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('Loading Image...', width / 2, height / 2);
+            // } else {
+                // for image fill
+                if (imgRatio < canvasRatio) {
+                    drawW = width;
+                    drawH = width / imgRatio;
+                } else {
+                    drawH = height;
+                    drawW = height * imgRatio;
+                }
+            // }
+
+            drawX = (width - drawW) / 2;
+            drawY = (height - drawH) / 2;
+
+            ctx.drawImage(img, drawX, drawY, drawW, drawH);
+        }
+
+        if (dict.types.includes("text")) {
+            // Loading Fallback Spinner
+            const textX = width / 2;
+            const textY = height * 3 / 4;
+            const thisText = dict.text
+            
+            // fill
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '600 200px "Century Gothic", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(thisText, textX, textY);
+
+            // border
+            ctx.strokeStyle = "#000000"; // Black border color
+            ctx.lineWidth = 2;           // Border thickness
+            ctx.strokeText(thisText, textX, textY);
+        }
+
+    } else if (dict.types.includes("text")) {
+        // Loading Fallback Spinner
+        const textX = width / 2;
+        const textY = height / 2;
+        const thisText = dict.text
+        
+        // fill
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '600 600px "Century Gothic", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(thisText, textX, textY);
+
+        // border
+        // ctx.strokeStyle = "#000000"; // Black border color
+        // ctx.lineWidth = 2;           // Border thickness
+        // ctx.strokeText(thisText, textX, textY);
     }
 
     updateUI();
@@ -434,25 +474,26 @@ function updateUI() {
 // Navigation Logic
 function nextCard() {
     if (currentIndex < queueDiv.querySelectorAll('div').length - 1) {
-    currentIndex++;
-    renderCard();
+        currentIndex++;
+        renderCard();
     } else {
-    finishModal.classList.remove('hidden');
+        finishModal.classList.remove('hidden');
     }
 }
 
 function prevCard() {
     if (finishModal.classList.contains('hidden') && currentIndex > 0) {
-    currentIndex--;
-    renderCard();
+        currentIndex--;
+        renderCard();
     } else if (!finishModal.classList.contains('hidden')) {
-    finishModal.classList.add('hidden');
+        finishModal.classList.add('hidden');
     }
 }
 
 // App Control Functions
 function openApp() {
     applyQueue()    
+    renderCard()
     currentIndex = 0;
     finishModal.classList.add('hidden');
     overlay.classList.add('active');
