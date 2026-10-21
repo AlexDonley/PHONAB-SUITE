@@ -17,13 +17,15 @@ getCardDefaults()
 
 const abcArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 const drillOpts = ['Upper', 'Lower', 'ASL', 'Animal', 'Misc', 'Action', 'Default']
-const queueOpts = ['Shuffle', 'Hide']
+const queueOpts = ['Shuffle', 'Hide', 'Swirl', 'Pixelate']
 
 populateCheckboxes(abcArr, abcGrid)
 populateCheckboxes(drillOpts, drillGrid)
 populateCheckboxes(queueOpts, queueSettings)
 
 document.getElementById('shuffleCheck').addEventListener('click', toggleShuffle)
+const swirlCheck = document.getElementById('swirlCheck')
+const pixelateCheck = document.getElementById('pixelateCheck')
 
 menuToggle.addEventListener('click', (e) => {
     parseToggle(e)
@@ -39,7 +41,7 @@ function getAbcDefaults() {
     fetch('../../data/abc_let.json')
     .then(res => {
         if (res.ok) {
-            console.log("Fetched default cards.")
+            console.log("Fetched default ABC words.")
         } else {
             console.log("Couldn't fetch default cards.")
         }
@@ -332,7 +334,6 @@ function applyQueue() {
         let thisDict = {
             "text": div.innerText,
             "types": [div.dataset.cardType],
-            "url": div.dataset.imgUrl,
             "img": buildImageElem(div.dataset.imgUrl, i),
             "fx": {},
             "configs": {
@@ -345,11 +346,75 @@ function applyQueue() {
 }
 
 function buildImageElem(url, i) {
-    const img = new Image();
-    img.src = url;
-    img.onload = () => { if (i === currentIndex) renderCard(); };
+    
+    const img = loadImage(url, () => {
+        // This callback triggers once the image has successfully loaded
+        if (i === currentIndex) {
+            renderCardToBuffer(pg);
+        }
+    });
 
     return img
+}
+
+
+
+
+// P5 inclusion
+
+let spriteShader;
+let pg;
+
+function preload() {
+    // Load your single pair of unified shaders
+    spriteShader = loadShader(
+        '../../shaders/canv.vert', 
+        '../../shaders/canv.frag'
+    );
+}
+
+function setup() {
+    const myCanvasElement = document.getElementById('cardCanvas');
+    createCanvas(windowWidth, windowHeight, WEBGL, myCanvasElement);
+    pg = createGraphics(windowWidth, windowHeight);
+}
+
+function draw() {
+    
+    background(0);
+
+    // 1. Render your flashcard (images, text, borders) to the offscreen buffer
+    renderCardToBuffer(pg);
+
+    // 2. Activate the uber-shader
+    shader(spriteShader);
+    spriteShader.setUniform('tex', pg);
+
+    // 3. Set your visual effects dynamically (e.g., mapped to mouse or flashcard states)
+    if (pixelateCheck.checked) {
+        spriteShader.setUniform('uPixelate', 10.0);
+    } else {
+        spriteShader.setUniform('uPixelate', 0.0);
+    }
+    
+    // spriteShader.setUniform('uFisheye', 1.2);    // Bulge effect
+    
+    if (swirlCheck.checked) {
+        spriteShader.setUniform('uSwirl', 3.0 * sin(millis() / 1000));
+    } else {
+        spriteShader.setUniform('uSwirl', 0.0);
+    }
+
+    spriteShader.setUniform('uAlpha', 1.0);      // Opacity / Ghost effect
+
+    // 4. Draw the full-screen quad to render the effect
+    rect(-width/2, -height/2, width, height);
+}
+
+function windowResized() {
+    // Keep everything responsive when the window changes size
+    resizeCanvas(windowWidth, windowHeight);
+    pg.resizeCanvas(windowWidth, windowHeight);
 }
 
 // CANVAS FUNCTIONS
@@ -358,8 +423,8 @@ function buildImageElem(url, i) {
 let currentIndex = 0;
 let images = {};
 const overlay = document.getElementById('flashcardOverlay');
-const canvas = document.getElementById('cardCanvas');
-const ctx = canvas.getContext('2d');
+// const canvas = document.getElementById('cardCanvas');
+// const ctx = canvas.getContext('2d');
 const finishModal = document.getElementById('finishModal');
 
 // UI Controls
@@ -369,32 +434,25 @@ const counterText = document.getElementById('counterText');
 const progressBar = document.getElementById('progressBar');
 const fsIcon = document.getElementById('fsIcon');
 
-// Resize Handling
-function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    ctx.scale(dpr, dpr);
-    renderCard();
-}
-window.addEventListener('resize', resizeCanvas);
-
 // Render Current Image Fitted to Canvas Background
-function renderCard() {
+function renderCardToBuffer(ctx) {
     if (!overlay.classList.contains('active')) return;
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = ctx.width;
+    const height = ctx.height;
 
-    ctx.clearRect(0, 0, width, height);
+    //ctx.clearRect(0, 0, width, height);
+    ctx.background(0)
 
     const dict = cardDicts[currentIndex]
 
     if (dict.types.includes("img")) {
         const img = dict['img']
-        if (img && img.complete && img.naturalWidth !== 0) {
+
+        if (img && img.width > 1 && img.height > 1) {
+            // console.log(img.width, img.height)
             // Compute "contain" aspect ratio scaling
-            const imgRatio = img.naturalWidth / img.naturalHeight;
+            const imgRatio = img.width / img.height;
             const canvasRatio = width / height;
 
             let drawW, drawH, drawX, drawY;
@@ -423,7 +481,11 @@ function renderCard() {
             drawX = (width - drawW) / 2;
             drawY = (height - drawH) / 2;
 
-            ctx.drawImage(img, drawX, drawY, drawW, drawH);
+            ctx.push();
+            ctx.translate(drawX + drawW / 2, drawY + drawH / 2);
+            ctx.scale(-1, -1); 
+            ctx.image(img, -drawW / 2, -drawH / 2, drawW, drawH);
+            ctx.pop();
         }
 
         if (dict.types.includes("text")) {
@@ -433,15 +495,29 @@ function renderCard() {
             const thisText = dict.text
             
             // fill
-            ctx.fillStyle = '#FFFFFF';
-            ctx.font = '600 200px "Century Gothic", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText(thisText, textX, textY);
+            // ctx.fillStyle = '#FFFFFF';
+            // ctx.font = '600 200px "Century Gothic", sans-serif';
+            // ctx.textAlign = 'center';
+            // ctx.fillText(thisText, textX, textY);
 
             // border
-            ctx.strokeStyle = "#000000"; // Black border color
-            ctx.lineWidth = 2;           // Border thickness
-            ctx.strokeText(thisText, textX, textY);
+            // ctx.strokeStyle = "#000000"; // Black border color
+            // ctx.lineWidth = 2;           // Border thickness
+            // ctx.strokeText(thisText, textX, textY);
+
+            ctx.push(); // Save state
+
+            ctx.translate(0, height);
+            ctx.scale(1, -1);
+
+            ctx.fill(255);
+            ctx.stroke(0);
+            ctx.strokeWeight(2);
+            ctx.textSize(200);
+
+            ctx.textAlign(CENTER, CENTER);
+            ctx.text(thisText, textX, textY);
+            ctx.pop(); // Restore state
         }
 
     } else if (dict.types.includes("text")) {
@@ -451,15 +527,27 @@ function renderCard() {
         const thisText = dict.text
         
         // fill
-        ctx.fillStyle = '#FFFFFF';
-        ctx.font = '600 600px "Century Gothic", sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(thisText, textX, textY);
+        // ctx.fillStyle = '#FFFFFF';
+        // ctx.font = '600 600px "Century Gothic", sans-serif';
+        // ctx.textAlign = 'center';
+        // ctx.fillText(thisText, textX, textY);
 
         // border
         // ctx.strokeStyle = "#000000"; // Black border color
         // ctx.lineWidth = 2;           // Border thickness
         // ctx.strokeText(thisText, textX, textY);
+        
+        ctx.push();
+
+        ctx.translate(0, height);
+        ctx.scale(1, -1);
+
+        ctx.fill(255);
+        ctx.noStroke();
+        ctx.textSize(600);
+        ctx.textAlign(CENTER, CENTER);
+        ctx.text(thisText, textX, textY);
+        ctx.pop();
     }
 
     updateUI();
@@ -475,7 +563,7 @@ function updateUI() {
 function nextCard() {
     if (currentIndex < queueDiv.querySelectorAll('div').length - 1) {
         currentIndex++;
-        renderCard();
+        renderCardToBuffer(pg);
     } else {
         finishModal.classList.remove('hidden');
     }
@@ -484,7 +572,7 @@ function nextCard() {
 function prevCard() {
     if (finishModal.classList.contains('hidden') && currentIndex > 0) {
         currentIndex--;
-        renderCard();
+        renderCardToBuffer(pg);
     } else if (!finishModal.classList.contains('hidden')) {
         finishModal.classList.add('hidden');
     }
@@ -493,11 +581,11 @@ function prevCard() {
 // App Control Functions
 function openApp() {
     applyQueue()    
-    renderCard()
     currentIndex = 0;
     finishModal.classList.add('hidden');
     overlay.classList.add('active');
-    resizeCanvas();
+    renderCardToBuffer(pg)
+    //resizeCanvas();
 }
 
 function closeApp() {
@@ -540,3 +628,9 @@ window.addEventListener('keydown', (e) => {
     closeApp();
     }
 });
+
+// Global declarations to allow for modularity
+window.preload = preload;
+window.setup = setup;
+window.draw = draw;
+window.windowResized = windowResized;
