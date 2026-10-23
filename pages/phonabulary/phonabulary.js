@@ -9,23 +9,26 @@ const addToQueueBtn = document.getElementById('addToQueueBtn');
 const clearQueueBtn = document.getElementById('clearQueueBtn');
 const startQueueBtn = document.getElementById('startQueueBtn');
 
-let defaultAbcs = {}
-let defaultCards = {}
+let defaultAbcs = {};
+let defaultCards = {};
 
-getAbcDefaults()
-getCardDefaults()
+getAbcDefaults();
+getCardDefaults();
 
-const abcArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const drillOpts = ['Upper', 'Lower', 'ASL', 'Animal', 'Misc', 'Action', 'Default']
-const queueOpts = ['Shuffle', 'Hide', 'Swirl', 'Pixelate']
+const abcArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const drillOpts = ['Upper', 'Lower', 'ASL', 'Animal', 'Misc', 'Action', 'Default'];
+const queueOpts = ['Shuffle', 'Hide', 'Swirl', 'Pixelate', 'Wave', 'Tunnel', 'Mirror'];
 
-populateCheckboxes(abcArr, abcGrid)
-populateCheckboxes(drillOpts, drillGrid)
-populateCheckboxes(queueOpts, queueSettings)
+populateCheckboxes(abcArr, abcGrid);
+populateCheckboxes(drillOpts, drillGrid);
+populateCheckboxes(queueOpts, queueSettings);
 
-document.getElementById('shuffleCheck').addEventListener('click', toggleShuffle)
-const swirlCheck = document.getElementById('swirlCheck')
-const pixelateCheck = document.getElementById('pixelateCheck')
+document.getElementById('shuffleCheck').addEventListener('click', toggleShuffle);
+const swirlCheck = document.getElementById('swirlCheck');
+const pixelateCheck = document.getElementById('pixelateCheck');
+const waveCheck = document.getElementById('waveCheck');
+const tunnelCheck = document.getElementById('tunnelCheck');
+const mirrorCheck = document.getElementById('mirrorCheck');
 
 menuToggle.addEventListener('click', (e) => {
     parseToggle(e)
@@ -403,6 +406,24 @@ function draw() {
         spriteShader.setUniform('uSwirl', 3.0 * sin(millis() / 1000));
     } else {
         spriteShader.setUniform('uSwirl', 0.0);
+    }
+
+    if (waveCheck.checked) {
+        spriteShader.setUniform('uWave', 3.0 * millis() / 1000);
+    } else {
+        spriteShader.setUniform('uWave', 0.0);
+    }
+
+    if (tunnelCheck.checked) {
+        spriteShader.setUniform('uTunnel', 0.5);
+    } else {
+        spriteShader.setUniform('uTunnel', 0.0);
+    }
+
+    if (mirrorCheck.checked) {
+        spriteShader.setUniform('uMirror', 1.0 + sin(millis()/1000));
+    } else {
+        spriteShader.setUniform('uMirror', 0.0);
     }
 
     spriteShader.setUniform('uAlpha', 1.0);      // Opacity / Ghost effect
