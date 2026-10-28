@@ -17,18 +17,13 @@ getCardDefaults();
 
 const abcArr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const drillOpts = ['Upper', 'Lower', 'ASL', 'Animal', 'Misc', 'Action', 'Default'];
-const queueOpts = ['Shuffle', 'Hide', 'Swirl', 'Pixelate', 'Wave', 'Tunnel', 'Mirror'];
+const queueOpts = ['Shuffle', 'Hide'];
 
 populateCheckboxes(abcArr, abcGrid);
 populateCheckboxes(drillOpts, drillGrid);
 populateCheckboxes(queueOpts, queueSettings);
 
 document.getElementById('shuffleCheck').addEventListener('click', toggleShuffle);
-const swirlCheck = document.getElementById('swirlCheck');
-const pixelateCheck = document.getElementById('pixelateCheck');
-const waveCheck = document.getElementById('waveCheck');
-const tunnelCheck = document.getElementById('tunnelCheck');
-const mirrorCheck = document.getElementById('mirrorCheck');
 
 menuToggle.addEventListener('click', (e) => {
     parseToggle(e)
@@ -394,7 +389,7 @@ function draw() {
     spriteShader.setUniform('tex', pg);
 
     // 3. Set your visual effects dynamically (e.g., mapped to mouse or flashcard states)
-    if (pixelateCheck.checked) {
+    if (false) {
         spriteShader.setUniform('uPixelate', 10.0);
     } else {
         spriteShader.setUniform('uPixelate', 0.0);
@@ -402,25 +397,25 @@ function draw() {
     
     // spriteShader.setUniform('uFisheye', 1.2);    // Bulge effect
     
-    if (swirlCheck.checked) {
+    if (false) {
         spriteShader.setUniform('uSwirl', 3.0 * sin(millis() / 1000));
     } else {
         spriteShader.setUniform('uSwirl', 0.0);
     }
 
-    if (waveCheck.checked) {
+    if (false) {
         spriteShader.setUniform('uWave', 3.0 * millis() / 1000);
     } else {
         spriteShader.setUniform('uWave', 0.0);
     }
 
-    if (tunnelCheck.checked) {
+    if (false) {
         spriteShader.setUniform('uTunnel', 0.5);
     } else {
         spriteShader.setUniform('uTunnel', 0.0);
     }
 
-    if (mirrorCheck.checked) {
+    if (false) {
         spriteShader.setUniform('uMirror', 1.0 + sin(millis()/1000));
     } else {
         spriteShader.setUniform('uMirror', 0.0);
@@ -655,3 +650,161 @@ window.preload = preload;
 window.setup = setup;
 window.draw = draw;
 window.windowResized = windowResized;
+
+
+
+
+
+
+// VFX drag and drop element
+
+const vfxDragAndDrop = {
+    "draggables": ["pixelate", "whirl", "fisheye", "wave", "tunnel", "mirror"],
+    "dropdowns": {
+        "process": ["stacked", "shuffled", "sequential"],
+        "interpolation": ["static", "linear", "looped"]
+    }
+};
+
+/**
+ * Builds and attaches the Drag and Drop VFX Configurator
+ * @param {HTMLElement|string} targetContainer - DOM element or query selector string
+ * @param {Object} config - Configuration object containing draggables and dropdowns
+ */
+function createVfxConfigurator(targetContainer, config) {
+    const root = typeof targetContainer === 'string' 
+    ? document.querySelector(targetContainer) 
+    : targetContainer;
+
+    root.innerHTML = ''; // Clear container
+
+    // Main Wrapper
+    const mainWrapper = document.createElement('div');
+    mainWrapper.className = 'vfx-container';
+
+    // 1. Create Top Palette (Available items)
+    const palette = document.createElement('div');
+    palette.className = 'vfx-palette';
+    palette.id = 'vfx-palette';
+
+    config.draggables.forEach(itemText => {
+    const item = createDraggableItem(itemText);
+    palette.appendChild(item);
+    });
+
+    // 2. Create Target Dropzone Box
+    const dropzoneContainer = document.createElement('div');
+    dropzoneContainer.className = 'vfx-dropzone-container';
+
+    // 2a. Add Config Dropdowns to the top of the active box
+    const controlsHeader = document.createElement('div');
+    controlsHeader.className = 'vfx-controls-header';
+
+    for (const [key, options] of Object.entries(config.dropdowns)) {
+    const group = document.createElement('div');
+    group.className = 'vfx-control-group';
+
+    const label = document.createElement('label');
+    label.innerText = key;
+    label.htmlFor = `vfx-select-${key}`;
+
+    const select = document.createElement('select');
+    select.id = `vfx-select-${key}`;
+    select.dataset.dropdownKey = key;
+
+    options.forEach(optionText => {
+        const opt = document.createElement('option');
+        opt.value = optionText;
+        opt.innerText = optionText;
+        select.appendChild(opt);
+    });
+
+    group.appendChild(label);
+    group.appendChild(select);
+    controlsHeader.appendChild(group);
+    }
+
+    // 2b. Active Dropzone Area
+    const dropzone = document.createElement('div');
+    dropzone.className = 'vfx-dropzone';
+    dropzone.id = 'vfx-active-dropzone';
+
+    dropzoneContainer.appendChild(controlsHeader);
+    dropzoneContainer.appendChild(dropzone);
+
+    // Assemble UI
+    mainWrapper.appendChild(palette);
+    mainWrapper.appendChild(dropzoneContainer);
+    root.appendChild(mainWrapper);
+
+    // 3. Attach Drag & Drop Event Listeners
+    setupDragAndDropHandlers([palette, dropzone]);
+}
+
+// Helper: Create individual draggable item node
+function createDraggableItem(text) {
+    const item = document.createElement('div');
+    item.className = 'vfx-item';
+    item.draggable = true;
+    item.innerText = text;
+    item.dataset.value = text;
+
+    item.addEventListener('dragstart', (e) => {
+    item.classList.add('dragging');
+    e.dataTransfer.setData('text/plain', text);
+    });
+
+    item.addEventListener('dragend', () => {
+    item.classList.remove('dragging');
+    });
+
+    return item;
+}
+
+// Helper: Configure dragover, dragleave, and drop events for containers
+function setupDragAndDropHandlers(containers) {
+    containers.forEach(container => {
+    container.addEventListener('dragover', (e) => {
+        e.preventDefault(); // Necessary to allow drop
+        container.classList.add('drag-over');
+    });
+
+    container.addEventListener('dragleave', () => {
+        container.classList.remove('drag-over');
+    });
+
+    container.addEventListener('drop', (e) => {
+        e.preventDefault();
+        container.classList.remove('drag-over');
+
+        const draggingElement = document.querySelector('.vfx-item.dragging');
+        if (draggingElement) {
+        container.appendChild(draggingElement);
+        }
+    });
+    });
+}
+
+/**
+ * Reads the current UI state to pass to a subsequent page/process
+ * @returns {Object} Object containing active items and select values
+ */
+function getActiveVFXState() {
+    const activeDropzone = document.getElementById('vfx-active-dropzone');
+    const activeItems = Array.from(activeDropzone.querySelectorAll('.vfx-item'))
+                            .map(item => item.dataset.value);
+
+    const dropdowns = {};
+    const selectElements = document.querySelectorAll('.vfx-controls-header select');
+    selectElements.forEach(select => {
+    dropdowns[select.dataset.dropdownKey] = select.value;
+    });
+
+    return {
+    activeDraggables: activeItems,
+    options: dropdowns
+    };
+}
+
+// Initialize the component
+createVfxConfigurator('#vfx-app', vfxDragAndDrop);

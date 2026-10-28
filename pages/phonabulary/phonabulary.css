@@ -2,17 +2,38 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #f4f6f9;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    min-height: 100vh;
     margin: 0;
+    box-sizing: border-box;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* Landscape Ratio: 3 Columns, 1 Row */
+@media (orientation: landscape) {
+  body {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+}
+
+/* Portrait Ratio: 1 Column, 3 Rows */
+@media (orientation: portrait) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .container {
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
+    min-width: 0;       /* Crucial: allows the container to shrink below its content size */
+    max-width: 100%;    /* Never wider than its grid column */
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 button {
@@ -73,12 +94,16 @@ button {
     transform: translateX(100%);
 }
 
-/* Menu Display Sections */
-.menu-section {
+/* White box */
+.white-box {
     background: #ffffff;
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Menu Display Sections */
+.menu-section {
     display: none; /* Hidden by default */
     text-align: left;
     animation: fadeIn 0.3s ease-in-out;
@@ -131,8 +156,6 @@ button {
 /* The visual box acting as the button */
 .custom-checkbox .box-label {
     display: inline-flex;
-    /* height: 100%;
-    width: 100%; */
     align-items: center;
     justify-content: center;
     /* padding: 12px 24px; */
@@ -153,9 +176,10 @@ button {
 }
 
 .grid-square {
-    display: inline-grid; /* Prevents the grid from stretching 100% wide */
-    grid-template-columns: repeat(12, 50px); /* Exactly 12 columns, each 50px wide */
-    max-width: calc((50px * 12) + (3px * 11)); /* Caps width at 12 items + gaps */
+    display: grid; /* Prevents the grid from stretching 100% wide */
+    /*grid-template-columns: repeat(12, 50px); /* Exactly 12 columns, each 50px wide */
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    /* max-width: calc((50px * 12) + (3px * 11)); Caps width at 12 items + gaps */
     gap: 3px;
     margin-bottom: 10px;
 }
@@ -169,7 +193,8 @@ button {
 }
 
 .flex-rect {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
     gap: 3px;
     margin-bottom: 10px;
 }
@@ -560,4 +585,119 @@ canvas {
 
 .modal-actions .btn {
     flex: 1;
+}
+
+
+
+
+
+.vfx-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Available Items Palette */
+.vfx-palette {
+    background: #EEE;
+    border: 2px dashed #BBB;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 50px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Draggable Chips */
+.vfx-item {
+    background: orangered;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: grab;
+    user-select: none;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.vfx-item:active {
+    cursor: grabbing;
+}
+
+.vfx-item.dragging {
+    opacity: 0.5;
+}
+
+/* Active Target Box */
+.vfx-dropzone-container {
+    background: #eee;
+    border: 2px solid orangered;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.vfx-controls-header {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #BBB;
+    flex-wrap: wrap;
+}
+
+.vfx-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.vfx-control-group label {
+    font-size: 12px;
+    color: #aaaaaa;
+    text-transform: uppercase;
+}
+
+.vfx-control-group select {
+    background: #fff;
+    color: #000;
+    border: 1px solid #bbb;
+    padding: 6px 10px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.vfx-dropzone {
+    min-height: 100px;
+    background: #fff;
+    border: 2px dashed #bbb;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.vfx-dropzone.drag-over {
+    border-color: orangered;
+    background: rgb(255, 238, 207);
+}
+
+/* Action button */
+.btn-submit {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: orangered;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background: orange;
 }
