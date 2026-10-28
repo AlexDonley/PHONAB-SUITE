@@ -560,9 +560,14 @@
     "pos": "prep"
   },
   {
-    "english": "make things",
+    "english": "make",
     "chinese": "讓__變得",
-    "pos": "phrase"
+    "pos": "verb"
+  },
+  {
+    "english": "things",
+    "chinese": "事情",
+    "pos": "noun"
   },
   {
     "english": "worse",
