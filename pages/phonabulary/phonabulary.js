@@ -321,26 +321,43 @@ function toggleShuffle() {
     updateArrows(container)
 }
 
-let cardDicts = []
+let queueDict = {
+    "cards" : [],
+    "fx": {
+        "types" : [],
+        "process" : "stacked",
+        "interpolation" : "loop"
+    }
+};
 
 function applyQueue() {
     
-    cardDicts = []
-    const cardDivs = queueDiv.querySelectorAll('div')
+    queueDict.cards = [];
+
+    const cardDivs = queueDiv.querySelectorAll('div');
+    const vfxDivs = document.getElementById('vfxActiveDropzone').querySelectorAll('div');
 
     cardDivs.forEach((div, i) => {
         let thisDict = {
             "text": div.innerText,
             "types": [div.dataset.cardType],
             "img": buildImageElem(div.dataset.imgUrl, i),
-            "fx": {},
             "configs": {
                 "size": "fill"
             }
         }
 
-        cardDicts.push(thisDict)
+        queueDict.cards.push(thisDict)
     })
+
+    let theseVfx = [];
+
+    vfxDivs.forEach(div => {
+        theseVfx.push(div.dataset.value)
+    })
+
+    console.log(theseVfx)
+    queueDict.fx.types = theseVfx
 }
 
 function buildImageElem(url, i) {
@@ -389,7 +406,7 @@ function draw() {
     spriteShader.setUniform('tex', pg);
 
     // 3. Set your visual effects dynamically (e.g., mapped to mouse or flashcard states)
-    if (false) {
+    if (queueDict.fx.types.includes('pixelate')) {
         spriteShader.setUniform('uPixelate', 10.0);
     } else {
         spriteShader.setUniform('uPixelate', 0.0);
@@ -397,25 +414,25 @@ function draw() {
     
     // spriteShader.setUniform('uFisheye', 1.2);    // Bulge effect
     
-    if (false) {
+    if (queueDict.fx.types.includes('swirl')) {
         spriteShader.setUniform('uSwirl', 3.0 * sin(millis() / 1000));
     } else {
         spriteShader.setUniform('uSwirl', 0.0);
     }
 
-    if (false) {
+    if (queueDict.fx.types.includes('wave')) {
         spriteShader.setUniform('uWave', 3.0 * millis() / 1000);
     } else {
         spriteShader.setUniform('uWave', 0.0);
     }
 
-    if (false) {
+    if (queueDict.fx.types.includes('tunnel')) {
         spriteShader.setUniform('uTunnel', 0.5);
     } else {
         spriteShader.setUniform('uTunnel', 0.0);
     }
 
-    if (false) {
+    if (queueDict.fx.types.includes('mirror')) {
         spriteShader.setUniform('uMirror', 1.0 + sin(millis()/1000));
     } else {
         spriteShader.setUniform('uMirror', 0.0);
@@ -460,7 +477,7 @@ function renderCardToBuffer(ctx) {
     //ctx.clearRect(0, 0, width, height);
     ctx.background(0)
 
-    const dict = cardDicts[currentIndex]
+    const dict = queueDict.cards[currentIndex]
 
     if (dict.types.includes("img")) {
         const img = dict['img']
@@ -659,7 +676,7 @@ window.windowResized = windowResized;
 // VFX drag and drop element
 
 const vfxDragAndDrop = {
-    "draggables": ["pixelate", "whirl", "fisheye", "wave", "tunnel", "mirror"],
+    "draggables": ["pixelate", "swirl", "fisheye", "wave", "tunnel", "mirror"],
     "dropdowns": {
         "process": ["stacked", "shuffled", "sequential"],
         "interpolation": ["static", "linear", "looped"]
@@ -727,7 +744,7 @@ function createVfxConfigurator(targetContainer, config) {
     // 2b. Active Dropzone Area
     const dropzone = document.createElement('div');
     dropzone.className = 'vfx-dropzone';
-    dropzone.id = 'vfx-active-dropzone';
+    dropzone.id = 'vfxActiveDropzone';
 
     dropzoneContainer.appendChild(controlsHeader);
     dropzoneContainer.appendChild(dropzone);

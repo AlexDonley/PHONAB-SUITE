@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-    padding: 20px;
+    padding: 5px;
     box-sizing: border-box;
     text-align: center;
     min-width: 0;       /* Crucial: allows the container to shrink below its content size */
