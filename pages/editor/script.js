@@ -62,10 +62,11 @@ function trySaveBook() {
         }
         let entryPartsData = []
 
-        theseChunks.forEach (chunk => {
+        theseChunks.forEach ((chunk, i) => {
             const newChunkObj = {
                 'award' : chunk.querySelector('.award').value,
-                'text' : chunk.querySelector('textarea').value.split('\n')
+                'text' : chunk.querySelector('textarea').value.split('\n'),
+                'idx' : i
             }
 
             entryPartsData.push(newChunkObj)

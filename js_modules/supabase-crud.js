@@ -49,48 +49,49 @@ export async function addPart(bookId, award = null, text = []) {
 
 
 export async function addBookWithParts(bookData, partsData = []) {
-  // Step 1: Insert the book
-  const { data: book, error: bookError } = await supabase
-    .from('books')
-    .insert([{
-      title: bookData.title,
-      author: bookData.author,
-      lang: bookData.lang,
-      mercy_words: bookData.mercy_words || {}
-    }])
-    .select()
-    .single();
+    // Step 1: Insert the book
+    const { data: book, error: bookError } = await supabase
+        .from('books')
+        .insert([{
+            title: bookData.title,
+            author: bookData.author,
+            lang: bookData.lang,
+            mercy_words: bookData.mercy_words || {}
+        }])
+        .select()
+        .single();
 
-  if (bookError) {
-    console.error('❌ Error creating book:', bookError);
-    return null;
-  }
-
-  console.log('✅ Book created:', book.id);
-
-  // Step 2: Insert any parts (if provided)
-  let parts = [];
-  if (partsData.length > 0) {
-    const partsToInsert = partsData.map(p => ({
-      book_id: book.id,
-      award: p.award || null,
-      text: p.text || []
-    }));
-
-    const { data: insertedParts, error: partsError } = await supabase
-      .from('parts')
-      .insert(partsToInsert)
-      .select();
-
-    if (partsError) {
-      console.error('❌ Error creating parts:', partsError);
-    } else {
-      parts = insertedParts;
-      console.log(`✅ Created ${parts.length} parts for book ${book.id}`);
+    if (bookError) {
+        console.error('❌ Error creating book:', bookError);
+        return null;
     }
-  }
 
-  return { book, parts };
+    console.log('✅ Book created:', book.id);
+
+    // Step 2: Insert any parts (if provided)
+    let parts = [];
+    if (partsData.length > 0) {
+        const partsToInsert = partsData.map(p => ({
+            book_id: book.id,
+            award: p.award || null,
+            text: p.text || [],
+            idx: p.idx || 0
+        }));
+
+        const { data: insertedParts, error: partsError } = await supabase
+        .from('parts')
+        .insert(partsToInsert)
+        .select();
+
+        if (partsError) {
+            console.error('❌ Error creating parts:', partsError);
+        } else {
+            parts = insertedParts;
+            console.log(`✅ Created ${parts.length} parts for book ${book.id}`);
+        }
+    }
+
+    return { book, parts };
 }
 
 
