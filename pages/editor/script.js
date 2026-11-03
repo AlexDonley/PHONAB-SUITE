@@ -1,21 +1,28 @@
 import { 
-    addBook, addPart, addBookWithParts,
-    getBookParts, getFilteredBooks, getPartById,
-    fetchWithCache, loadAllBooks
+    addSourceWithParts, getSourceParts,
+    getFilteredSources, getPartById,
+    fetchWithCache
 } from '../../js_modules/supabase-crud.js'
 
+const modeText = document.querySelector('.mode-text');
+
 const addMercyBtn   = document.querySelector('#addMercyBtn');
-const saveBookBtn   = document.querySelector('#saveBookBtn');
+const saveSourceBtn   = document.querySelector('#saveSourceBtn');
 const addChunkBtn   = document.querySelector('#addChunkBtn');
 const mercyLines    = document.querySelector('.mercy-lines');
 
 const createTitle       = document.querySelector('#createTitle');
 const createAuthor      = document.querySelector('#createAuthor');
 const chunkArea         = document.querySelector('#chunkArea');
-const chunkTemplate     = document.querySelector('#chunkTemplate')
+const chunkTemplate     = document.querySelector('#chunkTemplate');
 
+const searchBtn = document.querySelector('#searchBtn'); 
+const searchSource = document.querySelector('#searchSource');
+const searchResults = document.querySelector('#searchResults');
+
+searchBtn.addEventListener("click", searchWrap);
 addMercyBtn.addEventListener("click", addMercyLine)
-saveBookBtn.addEventListener("click", trySaveBook)
+saveSourceBtn.addEventListener("click", trySaveSource)
 addChunkBtn.addEventListener("click", addChunk);
 
 function addMercyLine() {
@@ -24,7 +31,7 @@ function addMercyLine() {
     mercyLines.append(newLine);
 }
 
-function trySaveBook() {
+function trySaveSource() {
 
     let noNullCheck = true
 
@@ -39,42 +46,44 @@ function trySaveBook() {
         alert('Fill in all blanks before attempting to save!')
     } else {
 
-        let mercyDict = {}
+        const [newSourceData, newPartsData] = scrapeElemsForData();
 
-        const mercyLines = document.querySelectorAll('.mercy-line')
-        mercyLines.forEach(line => {
-            const word = line.querySelector('.mercy-input').value
-            const substituteElems = line.querySelectorAll('.mercy-translation')
-            let subArr = []
-            substituteElems.forEach(elem => {
-                if (elem.value != '') {
-                    subArr.push(elem.value)
-                }
-            })
-            mercyDict[word] = subArr
-        })
-
-        const entryBookData = {
-            'title' : createTitle.value,
-            'author' : createAuthor.value || 'guest',
-            'lang' : 'en',
-            'mercy_words' : mercyDict
-        }
-        let entryPartsData = []
-
-        theseChunks.forEach ((chunk, i) => {
-            const newChunkObj = {
-                'award' : chunk.querySelector('.award').value,
-                'text' : chunk.querySelector('textarea').value.split('\n'),
-                'idx' : i
-            }
-
-            entryPartsData.push(newChunkObj)
-        })
-
-        console.log(entryBookData, entryPartsData)
-        addBookWithParts(entryBookData, entryPartsData)
+        console.log(newSourceData, newPartsData)
+        addSourceWithParts(newSourceData, newPartsData)
     }
+}
+
+function scrapeElemsForData() {
+    let mercyDict = {}
+
+    const mercyLines = document.querySelectorAll('.mercy-line');
+    mercyLines.forEach(line => {
+        const word = line.querySelector('.mercy-input').value;
+        const substituteElems = line.querySelectorAll('.mercy-substitute');
+        const subArr = substituteElems[0].value.split(',').map(item => item.trim()).filter(item => item !== '');
+
+        mercyDict[word] = subArr;
+    })
+
+    const entrySourceData = {
+        'title' : createTitle.value,
+        'author' : createAuthor.value || 'guest',
+        'lang' : 'en',
+        'mercy_words' : mercyDict
+    }
+    let entryPartsData = []
+
+    theseChunks.forEach ((chunk, i) => {
+        const newChunkObj = {
+            'award' : chunk.querySelector('.award').value,
+            'text' : chunk.querySelector('textarea').value.split('\n'),
+            'idx' : i
+        }
+
+        entryPartsData.push(newChunkObj)
+    })
+
+    return [entrySourceData, entryPartsData]
 }
 
 function addChunk() {
@@ -92,6 +101,7 @@ function addChunk() {
 
     chunkArea.append(newChunk)
 
+    // check and enable or disable delete buttons
     const chunkArr = Array.from(chunkArea.children)
     if (chunkArr.length > 1) {
         const allButtons = document.querySelectorAll('.del-chunk')
@@ -100,6 +110,81 @@ function addChunk() {
             button.disabled = false
         })
     }
+
+    return newChunk
 }
 
 addChunk()
+
+async function searchWrap() {
+    let searchSources = await getFilteredSources({
+        'lang': 'en', 
+        'searchTerm': searchSource.value,
+        'limit': 40
+    })
+
+    console.log(searchSources)
+
+    if (searchSources.length > 0) {
+
+        searchResults.innerHTML = ''
+
+        searchSources.forEach(source => {
+            const sourceDiv = document.createElement('button')
+            sourceDiv.classList.add('source-result')
+            sourceDiv.innerHTML = `
+                <h3>${source.title}</h3>
+                <p>Author: ${source.author}</p>
+                <p>Language: ${source.lang}</p>
+            `
+
+            sourceDiv.addEventListener("click", () => {
+                loadPartsToUpdate(source)
+            })
+            searchResults.append(sourceDiv)
+        }) 
+    }
+}
+
+async function loadPartsToUpdate(source) {
+
+    // load title and author
+    createTitle.value = source.title;
+    createAuthor.value = source.author;
+    modeText.innerText = 'Update: ' + source.id;
+
+    // load mercy words
+    const thisMercy = source.mercy_words;
+    const mercyKeys = Object.keys(thisMercy);
+
+    mercyKeys.forEach(key => {
+
+        const newLine = mercyTemplate.content.cloneNode(true);
+        newLine.querySelector('.mercy-input').value = key;
+        newLine.querySelector('.mercy-substitute').value = thisMercy[key].join(', ');
+        mercyLines.append(newLine);
+    })
+    
+
+    // load parts
+    const parts = await getSourceParts(source.id);
+    console.log(parts);
+
+    parts.forEach((part, i) => {
+
+        if (i > 0) {
+            addChunk();
+        }
+
+        const thisChunk = chunkArea.children[i];
+        thisChunk.dataset.partId = part.id;        
+
+        console.log(thisChunk);
+
+        const thisTextArea = thisChunk.querySelector('textarea');
+        const thisAward = thisChunk.querySelector('.award');
+
+        thisTextArea.value = part.text.join('\n');
+        thisAward.value = part.award || '';
+    });
+}

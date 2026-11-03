@@ -27,24 +27,24 @@ export async function addSource(title, lang, author) {
 }
 
 export async function addPart(sourceId, award = null, text = []) {
-  if (!sourceId) {
-    console.error('❌ Missing source ID.');
-    return null;
-  }
+    if (!sourceId) {
+        console.error('❌ Missing source ID.');
+        return null;
+    }
 
-  const { data, error } = await supabase
-    .from('parts')
-    .insert([{ source_id: sourceId, award, text }])
-    .select()
-    .single(); // return the inserted row
+    const { data, error } = await supabase
+        .from('parts')
+        .insert([{ source_id: sourceId, award, text }])
+        .select()
+        .single(); // return the inserted row
 
-  if (error) {
-    console.error('Error creating part:', error);
-    return null;
-  }
+    if (error) {
+        console.error('Error creating part:', error);
+        return null;
+    }
 
-  console.log('✅ Part created:', data);
-  return data;
+    console.log('✅ Part created:', data);
+    return data;
 }
 
 
@@ -199,6 +199,59 @@ export async function getPartById(partId) {
 export async function updateSource(id, newTitle) {
     await supabase.from('sources').update({ title: newTitle }).eq('id', id);
 }
+
+export async function updateSourceWithParts(sourceId, sourceData, partsData = []) {
+    // Step 1: Update the source row that matches sourceId
+    const { data: source, error: sourceError } = await supabase
+        .from('sources')
+        .update({
+            title: sourceData.title,
+            author: sourceData.author,
+            // lang: sourceData.lang,
+            mercy_words: sourceData.mercy_words ?? {}
+        })
+        .eq('id', sourceId)      // <-- the "which row?" filter
+        .select()
+        .single();
+
+    if (sourceError) {
+        console.error('❌ Error updating source:', sourceError);
+        return null;
+    }
+
+    console.log('✅ Source updated:', source.id);
+
+    // Step 2: Update each provided part, matched by its own id
+    let parts = [];
+    if (partsData.length > 0) {
+        const results = await Promise.all(
+            partsData.map(p =>
+                supabase
+                    .from('parts')
+                    .update({
+                        award: p.award ?? null,
+                        text: p.text ?? [],
+                    })
+                    .eq('id', p.id)              // which part
+                    .eq('source_id', sourceId)   // safety: must belong to this source
+                    .select()
+                    .single()
+            )
+        );
+
+        const failed = results.filter(r => r.error);
+        if (failed.length > 0) {
+            console.error('❌ Error updating parts:', failed.map(r => r.error));
+        }
+
+        parts = results.filter(r => !r.error).map(r => r.data);
+        console.log(`✅ Updated ${parts.length}/${partsData.length} parts for source ${source.id}`);
+    }
+
+    return { source, parts };
+}
+
+
 
 // Example: Delete a source
 export async function deleteSource(id) {
