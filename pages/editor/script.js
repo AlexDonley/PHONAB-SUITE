@@ -72,7 +72,6 @@ function trySaveBook() {
             entryPartsData.push(newChunkObj)
         })
 
-
         console.log(entryBookData, entryPartsData)
         addBookWithParts(entryBookData, entryPartsData)
     }

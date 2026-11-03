@@ -22,7 +22,6 @@ export function genBlankCompMap(arrOfArrs) {
         compMap.push(sentMap)
     })
 
-    console.log(compMap, wordCount)
     return [compMap, wordCount]
 }
 

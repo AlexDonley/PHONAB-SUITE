@@ -13,28 +13,28 @@ export const supabase = createClient(
 );
 
 // CREATE functions
-export async function addBook(title, lang, author) {
+export async function addSource(title, lang, author) {
     const { data, error } = await supabase
-        .from('books')
+        .from('sources')
         .insert([{ title, lang, author }])
         .select()
         .single();
     if (error) console.error(error);
     else {
-        console.log('Book added:', data)
+        console.log('Source added:', data)
         return data.id
     };
 }
 
-export async function addPart(bookId, award = null, text = []) {
-  if (!bookId) {
-    console.error('❌ Missing book ID.');
+export async function addPart(sourceId, award = null, text = []) {
+  if (!sourceId) {
+    console.error('❌ Missing source ID.');
     return null;
   }
 
   const { data, error } = await supabase
     .from('parts')
-    .insert([{ book_id: bookId, award, text }])
+    .insert([{ source_id: sourceId, award, text }])
     .select()
     .single(); // return the inserted row
 
@@ -48,31 +48,31 @@ export async function addPart(bookId, award = null, text = []) {
 }
 
 
-export async function addBookWithParts(bookData, partsData = []) {
-    // Step 1: Insert the book
-    const { data: book, error: bookError } = await supabase
-        .from('books')
+export async function addSourceWithParts(sourceData, partsData = []) {
+    // Step 1: Insert the source
+    const { data: source, error: sourceError } = await supabase
+        .from('sources')
         .insert([{
-            title: bookData.title,
-            author: bookData.author,
-            lang: bookData.lang,
-            mercy_words: bookData.mercy_words || {}
+            title: sourceData.title,
+            author: sourceData.author,
+            lang: sourceData.lang,
+            mercy_words: sourceData.mercy_words || {}
         }])
         .select()
         .single();
 
-    if (bookError) {
-        console.error('❌ Error creating book:', bookError);
+    if (sourceError) {
+        console.error('❌ Error creating source:', sourceError);
         return null;
     }
 
-    console.log('✅ Book created:', book.id);
+    console.log('✅ Source created:', source.id);
 
     // Step 2: Insert any parts (if provided)
     let parts = [];
     if (partsData.length > 0) {
         const partsToInsert = partsData.map(p => ({
-            book_id: book.id,
+            source_id: source.id,
             award: p.award || null,
             text: p.text || [],
             idx: p.idx || 0
@@ -87,25 +87,25 @@ export async function addBookWithParts(bookData, partsData = []) {
             console.error('❌ Error creating parts:', partsError);
         } else {
             parts = insertedParts;
-            console.log(`✅ Created ${parts.length} parts for book ${book.id}`);
+            console.log(`✅ Created ${parts.length} parts for source ${source.id}`);
         }
     }
 
-    return { book, parts };
+    return { source, parts };
 }
 
 
 // READ functions
-export async function loadAllBooks() {
-    const { data, error } = await supabase.from('books').select('*');
+export async function loadAllSources() {
+    const { data, error } = await supabase.from('sources').select('*');
     if (error) console.error(error);
     console.log(data);
 
     return data
 }
 
-export async function getFilteredBooks({ lang, searchTerm, limit = 20 } = {}) {
-    let query = supabase.from('books').select('*');
+export async function getFilteredSources({ lang, searchTerm, limit = 20 } = {}) {
+    let query = supabase.from('sources').select('*');
 
     // Filter by language if provided
     if (lang) {
@@ -125,23 +125,23 @@ export async function getFilteredBooks({ lang, searchTerm, limit = 20 } = {}) {
     const { data, error } = await query;
 
     if (error) {
-        console.error('Error fetching books:', error);
+        console.error('Error fetching sources:', error);
         return [];
     }
 
     return data;
 }
 
-export async function getBookParts(bookId) {
-    if (!bookId) {
-        console.error('❌ Missing book ID');
+export async function getSourceParts(sourceId) {
+    if (!sourceId) {
+        console.error('❌ Missing source ID');
         return [];
     }
 
     const { data, error } = await supabase
         .from('parts')
         .select('*')
-        .eq('book_id', bookId)
+        .eq('source_id', sourceId)
         .order('idx', { ascending: true }); // optional: keep parts in consistent order
 
     if (error) {
@@ -152,16 +152,16 @@ export async function getBookParts(bookId) {
     return data;
 }
 
-export async function getBookById(bookId) {
-    if (!bookId) {
+export async function getSourceById(sourceId) {
+    if (!sourceId) {
         console.error('❌ Missing part ID');
         return null;
     }
 
     const { data, error } = await supabase
-        .from('books')
+        .from('sources')
         .select('*')
-        .eq('id', bookId)
+        .eq('id', sourceId)
         .single(); // expects only one record
 
     if (error) {
@@ -192,17 +192,17 @@ export async function getPartById(partId) {
     return data;
 }
 
-// Example: Create a new book
+// Example: Create a new source
 
 
-// Example: Update a book
-export async function updateBook(id, newTitle) {
-    await supabase.from('books').update({ title: newTitle }).eq('id', id);
+// Example: Update a source
+export async function updateSource(id, newTitle) {
+    await supabase.from('sources').update({ title: newTitle }).eq('id', id);
 }
 
-// Example: Delete a book
-export async function deleteBook(id) {
-    await supabase.from('books').delete().eq('id', id);
+// Example: Delete a source
+export async function deleteSource(id) {
+    await supabase.from('sources').delete().eq('id', id);
 }
 
 // Incorporating a local cache

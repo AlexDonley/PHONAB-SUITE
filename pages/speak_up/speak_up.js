@@ -27,9 +27,9 @@ import {
 import { urlConfigs } from '../../js_modules/url-query.js'
 import { cycleQRWrap, toggleShowQR, genQRstr, genNewQR } from '../../js_modules/qr.js'
 import { 
-    getBookParts, getFilteredBooks, 
-    getBookById, getPartById,
-    fetchWithCache, loadAllBooks
+    getSourceParts, getFilteredSources, 
+    getSourceById, getPartById,
+    fetchWithCache, loadAllSources
 } from '../../js_modules/supabase-crud.js'
 
 // - - - ELEMENTS - - - //
@@ -123,12 +123,12 @@ punchBtn.addEventListener("click", checkAndClear);
 
 // arrays for sentences and subdivisions
 
-var bookIndex = 0 
+var sourceIndex = 0 
 var targIterations = 0
 
 var complObjs = {}
 var globCurrents = {
-    'book': null,
+    'source': null,
     'sect': null,
     'sent': 0,
     'iter': 0,
@@ -163,7 +163,7 @@ var defaultFreq = 100
 
 // variables to fill with JSON data using fetch
 
-var bookList;
+var sourceList;
 var utteredWords = [];
 
 const defaultFfText = {
@@ -189,7 +189,7 @@ function QRdictFromElem() {
 
     const sectIndex = document.querySelectorAll('.preset-check:checked')
     if (presetBool && sectIndex.length > 0) {
-        let thisIdx = bookIndex + "_";
+        let thisIdx = sourceIndex + "_";
 
         for (let n = 0; n < sectIndex.length; n++){
             thisIdx += sectIndex[n].id.substring(4);
@@ -238,7 +238,7 @@ searchTitles.addEventListener("input", e => {
 })
 
 async function asyncSearchTitles(str) {
-    let searchSources = await getFilteredBooks({
+    let searchSources = await getFilteredSources({
         'lang': targetLang, 
         'searchTerm': str,
         'limit': 40
@@ -319,9 +319,9 @@ async function startQueue(idArr) {
         const sectData = await getPartById(thisId)
 
         // grab mercy words
-        console.log(sectData.book_id)
-        const thisBook = await getBookById(sectData.book_id)
-        const thisMercy = thisBook.mercy_words
+        console.log(sectData.source_id)
+        const thisSource = await getSourceById(sectData.source_id)
+        const thisMercy = thisSource.mercy_words
 
         currentCompare = await createComparer( {
             outOfOrder: { mode: "proportional" },
@@ -533,7 +533,7 @@ async function swapLang(lang) {
     // textInput.value = defaultFfText[lang]
 
     // filter different preset options
-    const langSources = await getFilteredBooks({
+    const langSources = await getFilteredSources({
         'lang': targetLang, 
         'searchTerm': null,
         'limit': 40
@@ -664,18 +664,6 @@ function nextFragment() {
     } 
 }
 
-function findIncompObj(objDict) {
-    const keysArr = Object.keys(objDict)
-
-    for (let i = 0; i < keysArr.length; i++) {
-        if (objDict[keysArr[i]].status == 'incomplete') {
-            console.log(keysArr[i])
-            return keysArr[i]
-        }
-    }
-    return null
-}
-
 function endQueue() {
     
     // enable language dropdown
@@ -791,7 +779,7 @@ function loadFrag(sentN){
 
 function loadSect(idStr) {
 
-    // for now, the ID string will be bookIdx_sectIndex
+    // for now, the ID string will be sourceIdx_sectIndex
     // in the future, it will be a UUID
     
     const idArr = idStr.split('*')
@@ -808,7 +796,7 @@ function loadSect(idStr) {
 
     const thisCompData = thisCompletionObj.completionMap
 
-    populateProgressParts(thisCompData)
+    populateProgressBtns(thisCompData)
     updateArrow(thisCompData[0])
 
     loadFrag(globCurrents['sent'])
@@ -1060,7 +1048,7 @@ async function populateSections(id, clickedElem) {
 
     sectDiv.innerHTML = ''
 
-    const partsData = await getBookParts(id)
+    const partsData = await getSourceParts(id)
     console.log(partsData)
 
     partsData.forEach(entry => {
@@ -1068,7 +1056,7 @@ async function populateSections(id, clickedElem) {
     })
 }
 
-function populateProgressParts([arr, total]) {
+function populateProgressBtns([arr, total]) {
 
     let rowTempStr = ''
     progBtns.innerHTML = ''
@@ -1097,6 +1085,7 @@ function populateProgressParts([arr, total]) {
         rowTempStr += 100 * arr[i].length / total + "fr "
     }
 
+    console.log(rowTempStr)
     progBtns.style.gridTemplateColumns = rowTempStr
 }
 

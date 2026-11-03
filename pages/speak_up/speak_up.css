@@ -382,12 +382,13 @@ img {
   display: grid;
   gap: 3px
 }
-.progress-click > *:last-child {
-  border-bottom-right-radius: 25px;
-}
 .progress-click > *:nth-child(1) {
   border-bottom-left-radius: 25px;
 }
+.progress-click > *:last-child {
+  border-bottom-right-radius: 25px;
+}
+
 
 .prog {
   height: 100%;
@@ -405,27 +406,11 @@ img {
   transform: translateY(-8.3%)
 }
 
-.leftover-btn {
-  background: gray;
-  opacity: 0.3;
-  height: 100%;
-  width: 50px;
-  transition: height 0.5s, opacity 0.5s, transform 0.5s, background 0.5s;
-}
-.leftover-btn.active {
-  background: pink
-}
-.leftover-btn.active:hover {
-  height: 120%;
-  opacity: 1;
-  transform: translateY(-8.3%)
-}
 
 .column-block {
   display: flex;
   justify-content: center;
 }
-
 
 .line-of-words {
   background-color: #999999;
