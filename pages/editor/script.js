@@ -65,6 +65,13 @@ function trySaveSource() {
     }
 }
 
+// TO DO
+// Allow for adding / deleting fragments of parts with updates
+// Link sources to User UUID
+// Allow for deleting sources and accompanying parts, glosses, etc.
+// Allow for gloss editing and saving
+// Emoji grid popout menu
+
 function tryUpdateSource() {
     let newData = pullDatafromElems();
 
@@ -224,6 +231,8 @@ async function pushDataToElems(source) {
 
 function resetPage() {
     createTitle.value = '';
+    createTitle.dataset.sourceId = '';
+
     createAuthor.value = '';
     langSelect.value = 'en';
     mercyLines.innerHTML = '';
