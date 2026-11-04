@@ -1,44 +1,56 @@
 import { 
     addSourceWithParts, getSourceParts,
     getFilteredSources, getPartById,
-    fetchWithCache
+    updateSourceWithParts
 } from '../../js_modules/supabase-crud.js'
 
 const modeText = document.querySelector('.mode-text');
 
 const addMercyBtn   = document.querySelector('#addMercyBtn');
+
+const resetSourcBtn = document.querySelector('#resetSourceBtn');
 const saveSourceBtn   = document.querySelector('#saveSourceBtn');
-const addChunkBtn   = document.querySelector('#addChunkBtn');
+const updateSourceBtn = document.querySelector('#updateSourceBtn');
+const deleteSourceBtn = document.querySelector('#deleteSourceBtn');
+
+const addPartBtn   = document.querySelector('#addPartBtn');
 const mercyLines    = document.querySelector('.mercy-lines');
 
 const createTitle       = document.querySelector('#createTitle');
 const createAuthor      = document.querySelector('#createAuthor');
-const chunkArea         = document.querySelector('#chunkArea');
-const chunkTemplate     = document.querySelector('#chunkTemplate');
+const langSelect         = document.querySelector('.lang-select');
+const partArea         = document.querySelector('#partArea');
+const partTemplate     = document.querySelector('#partTemplate');
 
 const searchBtn = document.querySelector('#searchBtn'); 
 const searchSource = document.querySelector('#searchSource');
 const searchResults = document.querySelector('#searchResults');
 
 searchBtn.addEventListener("click", searchWrap);
-addMercyBtn.addEventListener("click", addMercyLine)
-saveSourceBtn.addEventListener("click", trySaveSource)
-addChunkBtn.addEventListener("click", addChunk);
+addMercyBtn.addEventListener("click", addMercyLine);
+resetSourcBtn.addEventListener("click", resetPage);
+saveSourceBtn.addEventListener("click", trySaveSource);
+updateSourceBtn.addEventListener("click", tryUpdateSource);
+addPartBtn.addEventListener("click", addPart);
 
 function addMercyLine() {
     const newLine = mercyTemplate.content.cloneNode(true);
-    console.log(newLine, mercyLines)
+
+    newLine.querySelector('.del-mercy-line').addEventListener("click", (e) => {
+        e.target.parentNode.remove()
+    })
+    
     mercyLines.append(newLine);
 }
 
 function trySaveSource() {
 
-    let noNullCheck = true
+    let noNullCheck = true;
 
-    const theseChunks = document.querySelectorAll('.chunk-div')
-    theseChunks.forEach(chunk => {
-        if (chunk.querySelector('textarea').value == '') {
-            noNullCheck = false
+    const theseParts = document.querySelectorAll('.part-div');
+    theseParts.forEach(part => {
+        if (part.querySelector('textarea').value == '') {
+            noNullCheck = false;
         }
     })
 
@@ -46,16 +58,25 @@ function trySaveSource() {
         alert('Fill in all blanks before attempting to save!')
     } else {
 
-        const [newSourceData, newPartsData] = scrapeElemsForData();
+        const [newSourceData, newPartsData] = pullDatafromElems();
 
-        console.log(newSourceData, newPartsData)
-        addSourceWithParts(newSourceData, newPartsData)
+        console.log(newSourceData, newPartsData);
+        addSourceWithParts(newSourceData, newPartsData);
     }
 }
 
-function scrapeElemsForData() {
-    let mercyDict = {}
+function tryUpdateSource() {
+    let newData = pullDatafromElems();
 
+    if (newData.length == 3) {
+        updateSourceWithParts(newData[0], newData[1], newData[2]);
+    }
+}
+
+function pullDatafromElems() {
+    let mercyDict = {};
+
+    // prepare mercy words dictionary
     const mercyLines = document.querySelectorAll('.mercy-line');
     mercyLines.forEach(line => {
         const word = line.querySelector('.mercy-input').value;
@@ -65,60 +86,69 @@ function scrapeElemsForData() {
         mercyDict[word] = subArr;
     })
 
+    // prepare source data from all on-page elements
     const entrySourceData = {
         'title' : createTitle.value,
         'author' : createAuthor.value || 'guest',
-        'lang' : 'en',
+        'lang' : langSelect.value,
         'mercy_words' : mercyDict
     }
+    
+    // prepare parts data
     let entryPartsData = []
+    const theseParts = document.querySelectorAll('.part-div')
 
-    theseChunks.forEach ((chunk, i) => {
-        const newChunkObj = {
-            'award' : chunk.querySelector('.award').value,
-            'text' : chunk.querySelector('textarea').value.split('\n'),
-            'idx' : i
+    theseParts.forEach ((part, i) => {
+        const newPartObj = {
+            'award' : part.querySelector('.award').value,
+            'text' : part.querySelector('textarea').value.split('\n'),
+            'idx' : i,
+            'id' : part.dataset.partId || null
         }
 
-        entryPartsData.push(newChunkObj)
+        entryPartsData.push(newPartObj)
     })
 
-    return [entrySourceData, entryPartsData]
+    const updateCheck = createTitle.dataset.sourceId || null;
+    if (updateCheck) {
+        return [updateCheck, entrySourceData, entryPartsData]
+    } else {
+        return [entrySourceData, entryPartsData]
+    }
 }
 
-function addChunk() {
-    const newChunk = chunkTemplate.content.cloneNode(true);
-    newChunk.querySelector('.del-chunk').addEventListener("click", (e) => {
+function addPart() {
+    const newPart = partTemplate.content.cloneNode(true);
+    newPart.querySelector('.del-part').addEventListener("click", (e) => {
         e.target.parentNode.parentNode.remove()
 
-        const chunkArr = Array.from(chunkArea.children)
+        const partArr = Array.from(partArea.children)
         
-        if (chunkArr.length < 2) {
-            const thisButton = document.querySelector('.del-chunk')
+        if (partArr.length < 2) {
+            const thisButton = document.querySelector('.del-part')
             thisButton.disabled = true
         }
     })
 
-    chunkArea.append(newChunk)
+    partArea.append(newPart)
 
     // check and enable or disable delete buttons
-    const chunkArr = Array.from(chunkArea.children)
-    if (chunkArr.length > 1) {
-        const allButtons = document.querySelectorAll('.del-chunk')
+    const partArr = Array.from(partArea.children)
+    if (partArr.length > 1) {
+        const allButtons = document.querySelectorAll('.del-part')
 
         allButtons.forEach(button => {
             button.disabled = false
         })
     }
 
-    return newChunk
+    return newPart
 }
 
-addChunk()
+addPart()
 
 async function searchWrap() {
     let searchSources = await getFilteredSources({
-        'lang': 'en', 
         'searchTerm': searchSource.value,
         'limit': 40
     })
@@ -139,18 +169,23 @@ async function searchWrap() {
             `
 
             sourceDiv.addEventListener("click", () => {
-                loadPartsToUpdate(source)
+                pushDataToElems(source)
             })
             searchResults.append(sourceDiv)
         }) 
     }
 }
 
-async function loadPartsToUpdate(source) {
+async function pushDataToElems(source) {
+
+    resetPage();
 
     // load title and author
     createTitle.value = source.title;
+    createTitle.dataset.sourceId = source.id;
+
     createAuthor.value = source.author;
+    langSelect.value = source.lang;
     modeText.innerText = 'Update: ' + source.id;
 
     // load mercy words
@@ -173,18 +208,26 @@ async function loadPartsToUpdate(source) {
     parts.forEach((part, i) => {
 
         if (i > 0) {
-            addChunk();
+            addPart();
         }
 
-        const thisChunk = chunkArea.children[i];
-        thisChunk.dataset.partId = part.id;        
+        const thisPart = partArea.children[i];
+        thisPart.dataset.partId = part.id;        
 
-        console.log(thisChunk);
-
-        const thisTextArea = thisChunk.querySelector('textarea');
-        const thisAward = thisChunk.querySelector('.award');
+        const thisTextArea = thisPart.querySelector('textarea');
+        const thisAward = thisPart.querySelector('.award');
 
         thisTextArea.value = part.text.join('\n');
         thisAward.value = part.award || '';
     });
+}
+
+function resetPage() {
+    createTitle.value = '';
+    createAuthor.value = '';
+    langSelect.value = 'en';
+    mercyLines.innerHTML = '';
+    partArea.innerHTML = '';
+    addPart();
+    modeText.innerText = 'New';
 }

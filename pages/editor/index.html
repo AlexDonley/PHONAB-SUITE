@@ -7,10 +7,18 @@
     <script type="module" src="script.js" defer></script>
 </head>
 <body>
+    <button class="reset-source" id="resetSourceBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="40px" width="40px" fill="#666"><path d="M12,20q-3.35,0-5.68-2.32T4,12T6.33,6.32T12,4q1.73,0 3.3,0.71Q16.88,5.43 18,6.75V4h2v7H13V9h4.2q-0.8-1.4-2.19-2.2T12,6Q9.5,6 7.75,7.75T6,12t1.75,4.25T12,18q1.93,0 3.48-1.1T17.65,14h2.1q-0.7,2.65-2.85,4.32T12,20Z"/></svg>
+    </button>
     <div>Mode: <span class="mode-text">New</span></div>
-    <div class="chunk-title-bar">
+    <div class="part-title-bar">
             <input type="text" id="createTitle" placeholder="Title"> 
             <input type="text" id="createAuthor" placeholder="Author">
+            <select class="lang-select">
+                <option value="en">English</option>
+                <option value="cmn-Hant">Mandarin</option>
+                <option value="fil-PH">Tagalog</option>
+            </select>
             <div id="mercyContainer">
                 <div class="mercy-lines">
 
@@ -18,13 +26,19 @@
                 <button class="add-mercy" id="addMercyBtn">new mercy word</button>
             </div>
     </div>
-    <div class="chunk-area" id="chunkArea"></div>
-    <button class="add-chunk" id="addChunkBtn">+</button>
+    <div class="part-area" id="partArea"></div>
+    <button class="add-part" id="addPartBtn">+</button>
 
     <br>
 
-    <button class="save-chunk" id="saveSourceBtn">
+    <button class="save-part" id="saveSourceBtn">
         <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#666"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/></svg>
+    </button>
+    <button class="update-part" id="updateSourceBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="40px" width="40px" fill="#666"><path d="M11,20V11.85l-2.6,2.6L7,13l5-5l5,5l-1.4,1.45L13,11.85V20H11ZM4,9V6Q4,5.18 4.59,4.59T6,4H18q0.82,0 1.41,0.59Q20,5.18 20,6V9H18V6H6V9H4Z"/></svg>
+    </button>
+    <button class="delete-source" id="deleteSourceBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="40px" width="40px" fill="#666"><path d="M9.4,16.5L12,13.9l2.6,2.6L16,15.1l-2.6-2.6L16,9.9L14.6,8.5L12,11.1L9.4,8.5L8,9.9l2.6,2.6L8,15.1l1.4,1.4ZM7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM7,6V19V6Z"/></svg>
     </button>
 
     <br>
@@ -35,23 +49,11 @@
     </button>
     <div id="searchResults"></div>
 
-    <template id="chunkTemplate">
-        <div class="chunk-div">
-            <textarea class="text-input" placeholder="Type one chunk of text here"></textarea>
-            <div class="chunk-side">
-                <button class="del-chunk" disabled="true">x</button>
-                <!-- <select class="award-select">
-                    <option value="🤓">🤓</option>
-                    <option value="🥶">🥶</option>
-                    <option value="🤠">🤠</option>
-                    <option value="💪">💪</option>
-                    <option value="💅">💅</option>
-                    <option value="💃">💃</option>
-                    <option value="🕺">🕺</option>
-                    <option value="🩰">🩰</option>
-                    <option value="👌">👌</option>
-                    <option value="🫵">🫵</option>
-                </select> -->
+    <template id="partTemplate">
+        <div class="part-div">
+            <textarea class="text-input" placeholder="Type one part of text here"></textarea>
+            <div class="part-side">
+                <button class="del-part" disabled="true">x</button>
                 <input type="text" class="award" placeholder="Award"> 
             </div>
         </div>

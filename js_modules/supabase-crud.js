@@ -231,6 +231,7 @@ export async function updateSourceWithParts(sourceId, sourceData, partsData = []
                     .update({
                         award: p.award ?? null,
                         text: p.text ?? [],
+                        idx: p.idx ?? 0
                     })
                     .eq('id', p.id)              // which part
                     .eq('source_id', sourceId)   // safety: must belong to this source
