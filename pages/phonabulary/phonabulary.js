@@ -403,11 +403,12 @@ function draw() {
 
     // 2. Activate the uber-shader
     shader(spriteShader);
+    spriteShader.setUniform('uAspect', width / height);
     spriteShader.setUniform('tex', pg);
 
     // 3. Set your visual effects dynamically (e.g., mapped to mouse or flashcard states)
     if (queueDict.fx.types.includes('pixelate')) {
-        spriteShader.setUniform('uPixelate', 10.0);
+        spriteShader.setUniform('uPixelate', 50.0);
     } else {
         spriteShader.setUniform('uPixelate', 0.0);
     }
