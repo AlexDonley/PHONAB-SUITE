@@ -8,6 +8,7 @@ const queueSettings = document.getElementById('queueSettings');
 const addToQueueBtn = document.getElementById('addToQueueBtn');
 const clearQueueBtn = document.getElementById('clearQueueBtn');
 const startQueueBtn = document.getElementById('startQueueBtn');
+const hintSelect = document.getElementById('hintSelect');
 
 let defaultAbcs = {};
 let defaultCards = {};
@@ -323,28 +324,37 @@ function toggleShuffle() {
 
 let queueDict = {
     "cards" : [],
+    "hint" : null,
     "fx": {
         "types" : [],
         "process" : "stacked",
         "interpolation" : "loop"
-    }
+    },
+    "cardIdx": 0,
 };
 
 function applyQueue() {
     
     queueDict.cards = [];
+    queueDict.hint = hintSelect.value;
 
     const cardDivs = queueDiv.querySelectorAll('div');
     const vfxDivs = document.getElementById('vfxActiveDropzone').querySelectorAll('div');
 
     cardDivs.forEach((div, i) => {
+
+        const thisHint = parseTextToHint(div.innerText, queueDict.hint)
+
         let thisDict = {
             "text": div.innerText,
             "types": [div.dataset.cardType],
             "img": buildImageElem(div.dataset.imgUrl, i),
+            "hint": thisHint,
             "configs": {
                 "size": "fill"
-            }
+            },
+            "step": 0,
+            "limit": thisHint.length || 0
         }
 
         queueDict.cards.push(thisDict)
@@ -360,11 +370,27 @@ function applyQueue() {
     queueDict.fx.types = theseVfx
 }
 
+function parseTextToHint(text, hintType) {
+    switch (hintType) {
+        case "first-letter":
+            return [text.charAt(0)]; 
+            break;
+        case "each-letter":
+            return text.split(''); 
+            break;
+        case "phonics":
+            return [text]; 
+            break;
+        default:
+            return [];
+    }
+}
+
 function buildImageElem(url, i) {
     
     const img = loadImage(url, () => {
         // This callback triggers once the image has successfully loaded
-        if (i === currentIndex) {
+        if (i === queueDict.cardIdx) {
             renderCardToBuffer(pg);
         }
     });
@@ -454,7 +480,6 @@ function windowResized() {
 // CANVAS FUNCTIONS
 
 // State
-let currentIndex = 0;
 let images = {};
 const overlay = document.getElementById('flashcardOverlay');
 // const canvas = document.getElementById('cardCanvas');
@@ -468,24 +493,30 @@ const counterText = document.getElementById('counterText');
 const progressBar = document.getElementById('progressBar');
 const fsIcon = document.getElementById('fsIcon');
 
+let slidingVal = 0;
+
 // Render Current Image Fitted to Canvas Background
 function renderCardToBuffer(ctx) {
     if (!overlay.classList.contains('active')) return;
+
+    if (slidingVal != queueDict.cards[queueDict.cardIdx].step) {
+        let thisDiff = queueDict.cards[queueDict.cardIdx].step - slidingVal;
+        slidingVal += thisDiff / 3;
+    }
 
     const width = ctx.width;
     const height = ctx.height;
 
     //ctx.clearRect(0, 0, width, height);
-    ctx.background(0)
+    ctx.background(0);
 
-    const dict = queueDict.cards[currentIndex]
+    const dict = queueDict.cards[queueDict.cardIdx];
 
     if (dict.types.includes("img")) {
-        const img = dict['img']
+        const img = dict['img'];
 
         if (img && img.width > 1 && img.height > 1) {
-            // console.log(img.width, img.height)
-            // Compute "contain" aspect ratio scaling
+
             const imgRatio = img.width / img.height;
             const canvasRatio = width / height;
 
@@ -522,43 +553,17 @@ function renderCardToBuffer(ctx) {
             ctx.pop();
         }
 
-        if (dict.types.includes("text")) {
-            // Loading Fallback Spinner
-            const textX = width / 2;
-            const textY = height * 3 / 4;
-            const thisText = dict.text
-            
-            // fill
-            // ctx.fillStyle = '#FFFFFF';
-            // ctx.font = '600 200px "Century Gothic", sans-serif';
-            // ctx.textAlign = 'center';
-            // ctx.fillText(thisText, textX, textY);
+    } 
+    
+    if (dict.hint.length > 0) {
 
-            // border
-            // ctx.strokeStyle = "#000000"; // Black border color
-            // ctx.lineWidth = 2;           // Border thickness
-            // ctx.strokeText(thisText, textX, textY);
-
-            ctx.push(); // Save state
-
-            ctx.translate(0, height);
-            ctx.scale(1, -1);
-
-            ctx.fill(255);
-            ctx.stroke(0);
-            ctx.strokeWeight(2);
-            ctx.textSize(200);
-
-            ctx.textAlign(CENTER, CENTER);
-            ctx.text(thisText, textX, textY);
-            ctx.pop(); // Restore state
-        }
-
-    } else if (dict.types.includes("text")) {
+        let renderText = dict.hint[0];
+        let thisStep = slidingVal%1
+        
         // Loading Fallback Spinner
         const textX = width / 2;
         const textY = height / 2;
-        const thisText = dict.text
+        const thisText = renderText;
         
         // fill
         // ctx.fillStyle = '#FFFFFF';
@@ -576,9 +581,9 @@ function renderCardToBuffer(ctx) {
         ctx.translate(0, height);
         ctx.scale(1, -1);
 
-        ctx.fill(255);
+        ctx.fill(255, thisStep * 255);
         ctx.noStroke();
-        ctx.textSize(600);
+        ctx.textSize(fitTextSize(thisText, ctx));
         ctx.textAlign(CENTER, CENTER);
         ctx.text(thisText, textX, textY);
         ctx.pop();
@@ -587,16 +592,37 @@ function renderCardToBuffer(ctx) {
     updateUI();
 }
 
+function fitTextSize(str, ctx, maxSize = 600, padding = 20) {
+    const refSize = 100;
+    ctx.textSize(refSize);
+    const w = ctx.textWidth(str);
+
+    // Scale so the width fits inside the canvas (minus padding)
+    const fitted = refSize * (ctx.width - padding * 2) / w;
+
+    return min(maxSize, fitted);
+}
+
 function updateUI() {
-    counterText.textContent = `${currentIndex + 1} / ${queueDiv.querySelectorAll('div').length}`;
-    progressBar.style.width = `${((currentIndex + 1) / queueDiv.querySelectorAll('div').length) * 100}%`;
-    prevBtn.disabled = currentIndex === 0;
+    counterText.textContent = `${queueDict.cardIdx + 1} / ${queueDiv.querySelectorAll('div').length}`;
+    progressBar.style.width = `${((queueDict.cardIdx + 1) / queueDiv.querySelectorAll('div').length) * 100}%`;
+    prevBtn.disabled = queueDict.cardIdx === 0;
+}
+
+function nextStep() {
+    const dict = queueDict.cards[queueDict.cardIdx];
+
+    dict.step++;
+    if (dict.step > dict.limit) { 
+        queueDict.cards[queueDict.cardIdx].step = 0;
+        nextCard();
+    }
 }
 
 // Navigation Logic
 function nextCard() {
-    if (currentIndex < queueDiv.querySelectorAll('div').length - 1) {
-        currentIndex++;
+    if (queueDict.cardIdx < queueDict.cards.length - 1) {
+        queueDict.cardIdx++;
         renderCardToBuffer(pg);
     } else {
         finishModal.classList.remove('hidden');
@@ -604,8 +630,8 @@ function nextCard() {
 }
 
 function prevCard() {
-    if (finishModal.classList.contains('hidden') && currentIndex > 0) {
-        currentIndex--;
+    if (finishModal.classList.contains('hidden') && queueDict.cardIdx > 0) {
+        queueDict.cardIdx--;
         renderCardToBuffer(pg);
     } else if (!finishModal.classList.contains('hidden')) {
         finishModal.classList.add('hidden');
@@ -615,7 +641,6 @@ function prevCard() {
 // App Control Functions
 function openApp() {
     applyQueue()    
-    currentIndex = 0;
     finishModal.classList.add('hidden');
     overlay.classList.add('active');
     renderCardToBuffer(pg)
@@ -625,7 +650,7 @@ function openApp() {
 function closeApp() {
     overlay.classList.remove('active');
     if (document.fullscreenElement) {
-    document.exitFullscreen().catch(() => {});
+        document.exitFullscreen().catch(() => {});
     }
 }
 
@@ -653,13 +678,13 @@ window.addEventListener('keydown', (e) => {
     if (!overlay.classList.contains('active')) return;
 
     if (e.key === 'ArrowUp') {
-    prevCard();
-    e.preventDefault();
+        prevCard();
+        e.preventDefault();
     } else if (e.key === 'ArrowDown') {
-    nextCard();
-    e.preventDefault();
+        nextStep();
+        e.preventDefault();
     } else if (e.key === 'Escape') {
-    closeApp();
+        closeApp();
     }
 });
 
