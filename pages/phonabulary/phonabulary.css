@@ -203,10 +203,6 @@ button {
 }
 
 .queue-bar {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     text-align: left;
     animation: fadeIn 0.3s ease-in-out;
 }
@@ -371,6 +367,7 @@ button {
     background: #000000;
     opacity: 0;
     visibility: hidden;
+    display: none;
     transform: scale(0.96);
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -381,6 +378,7 @@ button {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
+    display: block;
 }
 
 canvas {
@@ -390,27 +388,8 @@ canvas {
 }
 
 /* Header Bar Controls */
-.top-bar {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    right: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.top-bar > * {
-    pointer-events: auto;
-}
 
 .progress-pill {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
     padding: 8px 16px;
     border-radius: var(--radius-full);
     display: flex;
@@ -419,7 +398,10 @@ canvas {
     font-size: 13px;
     font-weight: 600;
     color: var(--text-muted);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.counter-text {
+    white-space: nowrap
 }
 
 .progress-track {
@@ -533,14 +515,16 @@ canvas {
     justify-content: center;
     padding: 24px;
     z-index: 20;
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    height: 100%;
+    visibility: visible;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.modal-backdrop.show {
-    opacity: 1;
-    visibility: visible;
+.modal-backdrop.hidden {
+    opacity: 0;
+    visibility: none;
+    display: none;
 }
 
 .modal-box {
@@ -569,6 +553,7 @@ canvas {
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 8px;
+    color: white;
 }
 
 .modal-text {

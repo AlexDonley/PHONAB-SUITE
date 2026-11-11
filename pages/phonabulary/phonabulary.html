@@ -11,52 +11,55 @@
 <body>
 
     <div class="container">
-        <!-- Toggle Switch -->
-        <div class="toggle-container" id="menuToggle" role="button" aria-label="Toggle menu">
-            <div class="toggle-pill"></div>
-            <span class="toggle-label active" id="labelLeft" data-toggle="menuLeftAbcs">ABCs</span>
-            <span class="toggle-label" id="labelRight" data-toggle="menuRightPhonics">Phonics</span>
-        </div>
-
-        <!-- Menu Section 1 (Shown by default) -->
-        <div class="menu-section white-box active" id="menuLeftAbcs">
-
-            <div class="grid-square" id="abcGrid">
-            </div>
-
-            <br>
-
-            <div class="toggle-container" id="abcDrillToggle" role="button" aria-label="Toggle menu">
+        <div class="white-box">
+            <div class="toggle-container" id="menuToggle" role="button" aria-label="Toggle menu">
                 <div class="toggle-pill"></div>
-                <span class="toggle-label active" id="labelDrill" data-toggle="subMenuDrill">Drills</span>
-                <span class="toggle-label" id="labelCvcs" data-toggle="subMenuCvcs">CVCs</span>
+                <span class="toggle-label active" id="labelLeft" data-toggle="menuLeftAbcs">ABCs</span>
+                <span class="toggle-label" id="labelRight" data-toggle="menuRightPhonics">Phonics</span>
             </div>
-            
-            <div class="sub-menu active" id="subMenuDrill">
-                <div class="flex-rect" id="drillGrid">
 
+            <div class="menu-section active" id="menuLeftAbcs">
+
+                <div class="grid-square" id="abcGrid">
+                </div>
+
+                <br>
+
+                <div class="toggle-container" id="abcDrillToggle" role="button" aria-label="Toggle menu">
+                    <div class="toggle-pill"></div>
+                    <span class="toggle-label active" id="labelDrill" data-toggle="subMenuDrill">Drills</span>
+                    <span class="toggle-label" id="labelCvcs" data-toggle="subMenuCvcs">CVCs</span>
+                </div>
+                
+                <div class="sub-menu active" id="subMenuDrill">
+                    <div class="flex-rect" id="drillGrid">
+
+                    </div>
+                </div>
+                <div class="sub-menu" id="subMenuCvcs">
+                    CVCs
                 </div>
             </div>
-            <div class="sub-menu" id="subMenuCvcs">
-                CVCs
+
+            <!-- Menu Section 2 (Hidden by default) -->
+            <div class="menu-section" id="menuRightPhonics">
+                <h2>Phonics</h2>
+                <div class="flex-rect" id="abcGrid">
+
+                </div>
             </div>
 
             <button id="addToQueueBtn">
                 Add to Queue →
             </button>
-        </div>
-
-        <!-- Menu Section 2 (Hidden by default) -->
-        <div class="menu-section white-box" id="menuRightPhonics">
-            <h2>Phonics</h2>
-            <div class="flex-rect" id="abcGrid">
-
-            </div>
+            <button id="clearQueueBtn">
+                Clear Queue
+            </button>
         </div>
     </div>
 
     <div class="container">
-        <div class="queue-bar" id="queueBar">
+        <div class="queue-bar white-box" id="queueBar">
             <div class="queue drag-container" id="queueDiv" data-shuffled=false>
 
             </div>
@@ -71,7 +74,6 @@
                 <option value="phonics">Phonics</option>
             </select>
             <div class="queue-actions" id="queueActions">
-                <button id="clearQueueBtn">Clear Queue</button>
                 <button id="startQueueBtn">Start Queue</button>
             </div>
         </div>
@@ -83,65 +85,65 @@
 
             </div>
         </div>
-        
-        <!-- Submit / Next Page Button Demo -->
-        <!-- <div style="max-width: 600px; margin: 10px auto;">
-            <button class="btn-submit" onclick="console.log(getActiveVFXState())">
-            Log Active Config (Check Console)
-            </button>
-        </div> -->
     </div>
+
+
 
     <!-- Canvas Overlay -->
     <div id="flashcardOverlay">
         <canvas id="cardCanvas"></canvas>
 
-        <!-- Top Navigation Controls -->
-        <div class="top-bar">
-        <div class="progress-pill">
-            <span id="counterText">1 / 5</span>
-            <div class="progress-track">
-            <div id="progressBar" class="progress-bar"></div>
-            </div>
-        </div>
-
-        <button id="closeBtn" class="icon-btn" title="Close (Esc)">
-            <i class="fa-solid fa-xmark">X</i>
-        </button>
-        </div>
-
         <!-- Completion Modal -->
-        <div id="finishModal" class="modal-backdrop">
-        <div class="modal-box">
-            <div class="modal-emoji">🎉</div>
-            <h2 class="modal-title">Deck Completed!</h2>
-            <p class="modal-text">You have reviewed all flashcards in this set.</p>
-            <div class="modal-actions">
-            <button id="repeatBtn" class="btn btn-primary">Restart</button>
-            <button id="modalExitBtn" class="btn btn-secondary">Close</button>
+        <div id="finishModal" class="modal-backdrop hidden">
+            <div class="modal-box">
+                <div class="modal-emoji">🎉</div>
+                <h2 class="modal-title">Deck Completed!</h2>
+                <p class="modal-text">You have reviewed all flashcards in this set.</p>
+                <div class="modal-actions">
+                    <button id="repeatBtn" class="btn btn-primary">Restart</button>
+                    <button id="modalExitBtn" class="btn btn-secondary">Close</button>
+                </div>
             </div>
-        </div>
         </div>
 
         <!-- Floating Glass Bottom Toolbar -->
         <div class="bottom-toolbar">
-        <button id="prevBtn" class="toolbar-btn">
-            <i class="fa-solid fa-chevron-up"></i>
-            <span>Prev</span>
-        </button>
+            <button id="fullscreenBtn" class="toolbar-btn icon-only" title="Toggle Fullscreen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px" fill="#e3e3e3"><path d="M3,21V16H5v3H8v2H3Zm13,0V19h3V16h2v5H16ZM3,8V3H8V5H5V8H3ZM19,8V5H16V3h5V8H19Z"/></svg>
+            </button>
 
-        <div class="divider"></div>
+            <div class="divider"></div>
 
-        <button id="nextBtn" class="toolbar-btn">
-            <span>Next</span>
-            <i class="fa-solid fa-chevron-down"></i>
-        </button>
+            <div class="progress-pill">
+                <span id="counterText" class="counter-text">1 / 5</span>
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
 
-        <div class="divider"></div>
+            <button id="prevBtn" class="toolbar-btn">
+                <span>Prev</span>
+            </button>
 
-        <button id="fullscreenBtn" class="toolbar-btn icon-only" title="Toggle Fullscreen">
-            <i id="fsIcon" class="fa-solid fa-expand"></i>
-        </button>
+            <div class="divider"></div>
+
+            <button id="stepBtn" class="toolbar-btn">
+                <span>Step</span>
+            </button>
+            
+            <div class="divider"></div>
+
+            <button id="nextBtn" class="toolbar-btn">
+                <span>Next</span>
+            </button>
+
+            <div class="divider"></div>
+
+            <button id="closeBtn" class="toolbar-btn" title="Close (Esc)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="20px" width="20px" fill="#e3e3e3"><path d="M6.4,19L5,17.6L10.6,12L5,6.4L6.4,5L12,10.6L17.6,5L19,6.4L13.4,12L19,17.6L17.6,19L12,13.4L6.4,19Z"/></svg>
+            </button>
         </div>
     </div>
 </body>

@@ -324,7 +324,7 @@ function toggleShuffle() {
 
 let queueDict = {
     "cards" : [],
-    "hint" : null,
+    "hint" : [],
     "fx": {
         "types" : [],
         "process" : "stacked",
@@ -337,6 +337,7 @@ function applyQueue() {
     
     queueDict.cards = [];
     queueDict.hint = hintSelect.value;
+    queueDict.cardIdx = 0;
 
     const cardDivs = queueDiv.querySelectorAll('div');
     const vfxDivs = document.getElementById('vfxActiveDropzone').querySelectorAll('div');
@@ -368,6 +369,8 @@ function applyQueue() {
 
     console.log(theseVfx)
     queueDict.fx.types = theseVfx
+    queueDict.fx.process = document.getElementById('vfx-select-interpolation').value
+    queueDict.fx.interpolation = document.getElementById('vfx-select-interpolation').value
 }
 
 function parseTextToHint(text, hintType) {
@@ -405,6 +408,8 @@ function buildImageElem(url, i) {
 
 let spriteShader;
 let pg;
+let textPg;
+let myFont;
 
 function preload() {
     // Load your single pair of unified shaders
@@ -412,12 +417,19 @@ function preload() {
         '../../shaders/canv.vert', 
         '../../shaders/canv.frag'
     );
+
+    myFont = loadFont('https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-regular-webfont.ttf');
 }
 
 function setup() {
     const myCanvasElement = document.getElementById('cardCanvas');
     createCanvas(windowWidth, windowHeight, WEBGL, myCanvasElement);
     pg = createGraphics(windowWidth, windowHeight);
+
+    textPg = createGraphics(width, height);   // 2D, not WEBGL
+    textPg.pixelDensity(pixelDensity());      // keeps it crisp on retina screens
+    textPg.textFont(myFont);
+    textPg.strokeJoin(ROUND); 
 }
 
 function draw() {
@@ -432,49 +444,166 @@ function draw() {
     spriteShader.setUniform('uAspect', width / height);
     spriteShader.setUniform('tex', pg);
 
-    // 3. Set your visual effects dynamically (e.g., mapped to mouse or flashcard states)
-    if (queueDict.fx.types.includes('pixelate')) {
-        spriteShader.setUniform('uPixelate', 50.0);
-    } else {
-        spriteShader.setUniform('uPixelate', 0.0);
-    }
-    
-    // spriteShader.setUniform('uFisheye', 1.2);    // Bulge effect
-    
-    if (queueDict.fx.types.includes('swirl')) {
-        spriteShader.setUniform('uSwirl', 3.0 * sin(millis() / 1000));
-    } else {
-        spriteShader.setUniform('uSwirl', 0.0);
+    const types = queueDict.fx.types;
+
+    switch (queueDict.fx.interpolation) {
+        case 'static':
+            for (const type of types) {
+                switch (type) {
+                    case 'pixelate':
+                        spriteShader.setUniform('uPixelate', 50.0);
+                        break;
+                    case 'swirl':
+                        spriteShader.setUniform('uSwirl', 3.0);
+                        break;
+                    case 'wave':
+                        spriteShader.setUniform('uWave', 3.0);
+                        break;
+                    case 'tunnel':
+                        spriteShader.setUniform('uTunnel', 0.5);
+                        break;
+                    case 'mirror':
+                        spriteShader.setUniform('uMirror', 1.0);
+                        break;
+                    case 'fisheye':
+                        spriteShader.setUniform('uFisheye', 1.2);
+                        break;
+                    case 'ghost':
+                        spriteShader.setUniform('uAlpha', 0.5);
+                        break;
+                }            
+            }
+
+            break;
+        case 'linear':
+            
+            break;
+        case 'loop':
+            for (const type of types) {
+                switch (type) {
+                    case 'pixelate':
+                        spriteShader.setUniform('uPixelate', 50.0);
+                        break;
+                    case 'swirl':
+                        spriteShader.setUniform('uSwirl', 3.0 * sin(millis() / 1000));
+                        break;
+                    case 'wave':
+                        spriteShader.setUniform('uWave', 3.0 * millis() / 1000);
+                        break;
+                    case 'tunnel':
+                        spriteShader.setUniform('uTunnel', 0.5);
+                        break;
+                    case 'mirror':
+                        spriteShader.setUniform('uMirror', 1.0 + sin(millis()/1000));
+                        break;
+                    case 'fisheye':
+                        spriteShader.setUniform('uFisheye', 1.2);
+                        break;
+                    case 'ghost':
+                        spriteShader.setUniform('uAlpha', 0.5);
+                        break;
+                }            
+            }
+
+            break;
     }
 
-    if (queueDict.fx.types.includes('wave')) {
-        spriteShader.setUniform('uWave', 3.0 * millis() / 1000);
-    } else {
-        spriteShader.setUniform('uWave', 0.0);
-    }
+    // console.log(queueDict.cards)
 
-    if (queueDict.fx.types.includes('tunnel')) {
-        spriteShader.setUniform('uTunnel', 0.5);
-    } else {
-        spriteShader.setUniform('uTunnel', 0.0);
-    }
+    // if (
+    //     queueDict.cards.length > 0 &&
+    //     queueDict.cards[queueDict.cardIdx].hint.length > 0
+    // ) {
 
-    if (queueDict.fx.types.includes('mirror')) {
-        spriteShader.setUniform('uMirror', 1.0 + sin(millis()/1000));
-    } else {
-        spriteShader.setUniform('uMirror', 0.0);
-    }
+    //     const textArr = queueDict.cards[queueDict.cardIdx].hint;
+    //     const fullText = textArr.join('');
+    //     const midStep = slidingVal%1;        
+        
+    //     push();
 
-    spriteShader.setUniform('uAlpha', 1.0);      // Opacity / Ghost effect
+    //     const thisHeight = 50 //fitTextSize(fullText, pg)
+    //     textSize(thisHeight);
+    //     textAlign(LEFT, BASELINE);
+
+    //     const startX = 0 - textWidth(fullText) / 2;
+    //     const b = myFont.textBounds(fullText, 0, 0, thisHeight);
+    //     const textY = -(b.y + b.h / 2);
+
+    //     for (let i = 0; i < textArr.length; i++) {
+    //         // Measure the prefix so kerning is respected
+    //         const textX = startX + textWidth(textArr.slice(0, i).join(""));
+    //         let transVal = 0;
+            
+    //         if (slidingVal >= i + 1) {
+    //             transVal = 1;
+    //         } else if (slidingVal < i) {
+    //             transVal = 0;
+    //         } else {
+    //             transVal = midStep;
+    //         }
+
+    //         fill(255, transVal * 255);
+    //         stroke(50);
+    //         strokeWeight(20);
+
+    //         text(textArr[i], textX, textY);
+    //     }
+
+    //     pop()
+    // }
 
     // 4. Draw the full-screen quad to render the effect
     rect(-width/2, -height/2, width, height);
+
+    if (queueDict.cards.length > 0 && queueDict.cards[queueDict.cardIdx].hint.length > 0) {
+        const textArr = queueDict.cards[queueDict.cardIdx].hint;
+        const fullText = textArr.join('');
+        const midStep = slidingVal % 1;
+        const thisHeight = fitTextSize(fullText, textPg);
+
+        textPg.clear();
+        textPg.push();
+        textPg.translate(width / 2, height / 2);   // so (0,0) is the center, like WEBGL
+        textPg.textSize(thisHeight);
+        textPg.textAlign(LEFT, BASELINE);
+
+        const startX = -textPg.textWidth(fullText) / 2;
+        const b = myFont.textBounds(fullText, 0, 0, thisHeight);
+        const textY = -(b.y + b.h / 2);
+
+        // pass 1: all strokes, pass 2: all fills, so one letter's
+        // outline never cuts into its neighbor's fill
+        for (const pass of ['stroke', 'fill']) {
+            for (let i = 0; i < textArr.length; i++) {
+                const textX = startX + textPg.textWidth(textArr.slice(0, i).join(''));
+                let transVal = slidingVal >= i + 1 ? 1 : slidingVal < i ? 0 : midStep;
+
+                if (pass === 'stroke') {
+                    textPg.stroke(50, transVal * 255);
+                    textPg.strokeWeight(6);
+                    textPg.noFill();
+                } else {
+                    textPg.noStroke();
+                    textPg.fill(255, transVal * 255);
+                }
+                textPg.text(textArr[i], textX, textY);
+            }
+        }
+        textPg.pop();
+
+        resetShader();                       // turn the effect shader off
+        noStroke();
+        drawingContext.disable(drawingContext.DEPTH_TEST);  // prevents z-fighting with the quad
+        image(textPg, -width / 2, -height / 2, width, height);
+        drawingContext.enable(drawingContext.DEPTH_TEST);
+    }
 }
 
 function windowResized() {
     // Keep everything responsive when the window changes size
     resizeCanvas(windowWidth, windowHeight);
     pg.resizeCanvas(windowWidth, windowHeight);
+    textPg.resizeCanvas(width, height);
 }
 
 // CANVAS FUNCTIONS
@@ -482,12 +611,11 @@ function windowResized() {
 // State
 let images = {};
 const overlay = document.getElementById('flashcardOverlay');
-// const canvas = document.getElementById('cardCanvas');
-// const ctx = canvas.getContext('2d');
 const finishModal = document.getElementById('finishModal');
 
 // UI Controls
 const prevBtn = document.getElementById('prevBtn');
+const stepBtn = document.getElementById('stepBtn');
 const nextBtn = document.getElementById('nextBtn');
 const counterText = document.getElementById('counterText');
 const progressBar = document.getElementById('progressBar');
@@ -555,39 +683,7 @@ function renderCardToBuffer(ctx) {
 
     } 
     
-    if (dict.hint.length > 0) {
 
-        let renderText = dict.hint[0];
-        let thisStep = slidingVal%1
-        
-        // Loading Fallback Spinner
-        const textX = width / 2;
-        const textY = height / 2;
-        const thisText = renderText;
-        
-        // fill
-        // ctx.fillStyle = '#FFFFFF';
-        // ctx.font = '600 600px "Century Gothic", sans-serif';
-        // ctx.textAlign = 'center';
-        // ctx.fillText(thisText, textX, textY);
-
-        // border
-        // ctx.strokeStyle = "#000000"; // Black border color
-        // ctx.lineWidth = 2;           // Border thickness
-        // ctx.strokeText(thisText, textX, textY);
-        
-        ctx.push();
-
-        ctx.translate(0, height);
-        ctx.scale(1, -1);
-
-        ctx.fill(255, thisStep * 255);
-        ctx.noStroke();
-        ctx.textSize(fitTextSize(thisText, ctx));
-        ctx.textAlign(CENTER, CENTER);
-        ctx.text(thisText, textX, textY);
-        ctx.pop();
-    }
 
     updateUI();
 }
@@ -610,26 +706,41 @@ function updateUI() {
 }
 
 function nextStep() {
-    const dict = queueDict.cards[queueDict.cardIdx];
+    
+    if (finishModal.classList.contains('hidden')) {
+        const dict = queueDict.cards[queueDict.cardIdx];
 
-    dict.step++;
-    if (dict.step > dict.limit) { 
-        queueDict.cards[queueDict.cardIdx].step = 0;
-        nextCard();
+        dict.step++;
+        if (dict.step > dict.limit) { 
+            queueDict.cards[queueDict.cardIdx].step = 0;
+            nextCard();
+        }
+    } else {
+        restartQueue();
     }
 }
 
 // Navigation Logic
 function nextCard() {
-    if (queueDict.cardIdx < queueDict.cards.length - 1) {
-        queueDict.cardIdx++;
-        renderCardToBuffer(pg);
+    
+    if (finishModal.classList.contains('hidden')) {
+        slidingVal = 0;
+
+        if (queueDict.cardIdx < queueDict.cards.length - 1) {
+            queueDict.cardIdx++;
+            renderCardToBuffer(pg);
+        } else {
+            finishModal.classList.remove('hidden');
+        }
     } else {
-        finishModal.classList.remove('hidden');
+        restartQueue();
     }
 }
 
 function prevCard() {
+    slidingVal = 0;
+    queueDict.cards[queueDict.cardIdx].step = 0;
+
     if (finishModal.classList.contains('hidden') && queueDict.cardIdx > 0) {
         queueDict.cardIdx--;
         renderCardToBuffer(pg);
@@ -647,6 +758,12 @@ function openApp() {
     //resizeCanvas();
 }
 
+function restartQueue() {
+    finishModal.classList.add('hidden');
+    queueDict.cardIdx = 0;
+    queueDict.cards[queueDict.cardIdx].step = 0
+}
+
 function closeApp() {
     overlay.classList.remove('active');
     if (document.fullscreenElement) {
@@ -656,11 +773,11 @@ function closeApp() {
 
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
-    overlay.requestFullscreen().catch(() => {});
-    fsIcon.className = "fa-solid fa-compress";
+        overlay.requestFullscreen().catch(() => {});
+        fsIcon.className = "fa-solid fa-compress";
     } else {
-    document.exitFullscreen().catch(() => {});
-    fsIcon.className = "fa-solid fa-expand";
+        document.exitFullscreen().catch(() => {});
+        fsIcon.className = "fa-solid fa-expand";
     }
 }
 
@@ -668,8 +785,9 @@ function toggleFullscreen() {
 startQueueBtn.addEventListener('click', openApp);
 document.getElementById('closeBtn').addEventListener('click', closeApp);
 document.getElementById('modalExitBtn').addEventListener('click', closeApp);
-document.getElementById('repeatBtn').addEventListener('click', openApp);
+document.getElementById('repeatBtn').addEventListener('click', restartQueue);
 document.getElementById('prevBtn').addEventListener('click', prevCard);
+document.getElementById('stepBtn').addEventListener('click', nextStep);
 document.getElementById('nextBtn').addEventListener('click', nextCard);
 document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
 
@@ -682,6 +800,12 @@ window.addEventListener('keydown', (e) => {
         e.preventDefault();
     } else if (e.key === 'ArrowDown') {
         nextStep();
+        e.preventDefault();
+    } else if (e.key === 'Tab') {
+        nextCard();
+        e.preventDefault();
+    } else if (e.key === 'Enter') {
+        toggleFullscreen();
         e.preventDefault();
     } else if (e.key === 'Escape') {
         closeApp();
@@ -807,24 +931,24 @@ function createDraggableItem(text) {
 // Helper: Configure dragover, dragleave, and drop events for containers
 function setupDragAndDropHandlers(containers) {
     containers.forEach(container => {
-    container.addEventListener('dragover', (e) => {
-        e.preventDefault(); // Necessary to allow drop
-        container.classList.add('drag-over');
-    });
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Necessary to allow drop
+            container.classList.add('drag-over');
+        });
 
-    container.addEventListener('dragleave', () => {
-        container.classList.remove('drag-over');
-    });
+        container.addEventListener('dragleave', () => {
+            container.classList.remove('drag-over');
+        });
 
-    container.addEventListener('drop', (e) => {
-        e.preventDefault();
-        container.classList.remove('drag-over');
+        container.addEventListener('drop', (e) => {
+            e.preventDefault();
+            container.classList.remove('drag-over');
 
-        const draggingElement = document.querySelector('.vfx-item.dragging');
-        if (draggingElement) {
-        container.appendChild(draggingElement);
-        }
-    });
+            const draggingElement = document.querySelector('.vfx-item.dragging');
+            if (draggingElement) {
+            container.appendChild(draggingElement);
+            }
+        });
     });
 }
 
