@@ -448,111 +448,101 @@ function draw() {
 
     switch (queueDict.fx.interpolation) {
         case 'static':
-            for (const type of types) {
-                switch (type) {
-                    case 'pixelate':
-                        spriteShader.setUniform('uPixelate', 50.0);
-                        break;
-                    case 'swirl':
-                        spriteShader.setUniform('uSwirl', 3.0);
-                        break;
-                    case 'wave':
-                        spriteShader.setUniform('uWave', 3.0);
-                        break;
-                    case 'tunnel':
-                        spriteShader.setUniform('uTunnel', 0.5);
-                        break;
-                    case 'mirror':
-                        spriteShader.setUniform('uMirror', 1.0);
-                        break;
-                    case 'fisheye':
-                        spriteShader.setUniform('uFisheye', 1.2);
-                        break;
-                    case 'ghost':
-                        spriteShader.setUniform('uAlpha', 0.5);
-                        break;
-                }            
+
+            if (types.includes('pixelate')) {
+                spriteShader.setUniform('uPixelate', 50.0);
+            } else {
+                spriteShader.setUniform('uPixelate', 0.0);
             }
 
+            if (types.includes('swirl')) {
+                spriteShader.setUniform('uSwirl', 3.0);
+            } else {
+                spriteShader.setUniform('uSwirl', 0.0);
+            }
+
+            if (types.includes('wave')) {
+                spriteShader.setUniform('uWave', 3.0);
+            } else {
+                spriteShader.setUniform('uWave', 0.0);
+            }
+
+            if (types.includes('tunnel')) {
+                spriteShader.setUniform('uTunnel', 0.2);
+            } else {
+                spriteShader.setUniform('uTunnel', 0.0);
+            }
+
+            if (types.includes('mirror')) {
+                spriteShader.setUniform('uMirror', 1.0);
+            } else {
+                spriteShader.setUniform('uMirror', 0.0);
+            }
+
+            if (types.includes('fisheye')) {
+                spriteShader.setUniform('uFisheye', 1.2);
+            } else {
+                spriteShader.setUniform('uFisheye', 0.0);
+            }
+
+            if (types.includes('ghost')) {
+                spriteShader.setUniform('uAlpha', 0.5);
+            } else {
+                spriteShader.setUniform('uAlpha', 1.0);
+            }
             break;
+
         case 'linear':
             
             break;
-        case 'loop':
-            for (const type of types) {
-                switch (type) {
-                    case 'pixelate':
-                        spriteShader.setUniform('uPixelate', 50.0);
-                        break;
-                    case 'swirl':
-                        spriteShader.setUniform('uSwirl', 3.0 * sin(millis() / 1000));
-                        break;
-                    case 'wave':
-                        spriteShader.setUniform('uWave', 3.0 * millis() / 1000);
-                        break;
-                    case 'tunnel':
-                        spriteShader.setUniform('uTunnel', 0.5);
-                        break;
-                    case 'mirror':
-                        spriteShader.setUniform('uMirror', 1.0 + sin(millis()/1000));
-                        break;
-                    case 'fisheye':
-                        spriteShader.setUniform('uFisheye', 1.2);
-                        break;
-                    case 'ghost':
-                        spriteShader.setUniform('uAlpha', 0.5);
-                        break;
-                }            
+
+        case 'looped':
+            const timeSec = millis() / 1000
+            if (types.includes('pixelate')) {
+                spriteShader.setUniform('uPixelate', map(sin(timeSec), -1, 1, 50.0, height/2));
+            } else {
+                spriteShader.setUniform('uPixelate', 0.0);
             }
 
+            if (types.includes('swirl')) {
+                spriteShader.setUniform('uSwirl', 3.0 * sin(timeSec));
+            } else {
+                spriteShader.setUniform('uSwirl', 0.0);
+            }
+
+            if (types.includes('wave')) {
+                spriteShader.setUniform('uWave', 3.0 * timeSec);
+            } else {
+                spriteShader.setUniform('uWave', 0.0);
+            }
+
+            if (types.includes('tunnel')) {
+                spriteShader.setUniform('uTunnel', map(sin(timeSec), -1, 1, 0.0, 1.0));
+            } else {
+                spriteShader.setUniform('uTunnel', 0.0);
+            }
+
+            if (types.includes('mirror')) {
+                spriteShader.setUniform('uMirror', 1.0 + sin(timeSec));
+            } else {
+                spriteShader.setUniform('uMirror', 0.0);
+            }
+
+            if (types.includes('fisheye')) {
+                spriteShader.setUniform('uFisheye', sin(timeSec));
+            } else {
+                spriteShader.setUniform('uFisheye', 0.0);
+            }
+
+            if (types.includes('ghost')) {
+                spriteShader.setUniform('uAlpha', 0.5);
+            } else {
+                spriteShader.setUniform('uAlpha', 1.0);
+            }
             break;
     }
 
-    // console.log(queueDict.cards)
-
-    // if (
-    //     queueDict.cards.length > 0 &&
-    //     queueDict.cards[queueDict.cardIdx].hint.length > 0
-    // ) {
-
-    //     const textArr = queueDict.cards[queueDict.cardIdx].hint;
-    //     const fullText = textArr.join('');
-    //     const midStep = slidingVal%1;        
-        
-    //     push();
-
-    //     const thisHeight = 50 //fitTextSize(fullText, pg)
-    //     textSize(thisHeight);
-    //     textAlign(LEFT, BASELINE);
-
-    //     const startX = 0 - textWidth(fullText) / 2;
-    //     const b = myFont.textBounds(fullText, 0, 0, thisHeight);
-    //     const textY = -(b.y + b.h / 2);
-
-    //     for (let i = 0; i < textArr.length; i++) {
-    //         // Measure the prefix so kerning is respected
-    //         const textX = startX + textWidth(textArr.slice(0, i).join(""));
-    //         let transVal = 0;
-            
-    //         if (slidingVal >= i + 1) {
-    //             transVal = 1;
-    //         } else if (slidingVal < i) {
-    //             transVal = 0;
-    //         } else {
-    //             transVal = midStep;
-    //         }
-
-    //         fill(255, transVal * 255);
-    //         stroke(50);
-    //         strokeWeight(20);
-
-    //         text(textArr[i], textX, textY);
-    //     }
-
-    //     pop()
-    // }
-
-    // 4. Draw the full-screen quad to render the effect
+    // Draw the full-screen quad to render the effect
     rect(-width/2, -height/2, width, height);
 
     if (queueDict.cards.length > 0 && queueDict.cards[queueDict.cardIdx].hint.length > 0) {
@@ -808,6 +798,8 @@ window.addEventListener('keydown', (e) => {
         toggleFullscreen();
         e.preventDefault();
     } else if (e.key === 'Escape') {
+        closeApp();
+    } else if (e.key === 'b') {
         closeApp();
     }
 });
