@@ -309,6 +309,8 @@ async function startQueue(idArr) {
     globCurrents['iter'] = targIterations
     globCurrents['sect'] = null
 
+    let sourcesArr = []
+
     for (let n = 0; n < idArr.length; n++){
 
         const thisId = idArr[n]
@@ -322,6 +324,11 @@ async function startQueue(idArr) {
         console.log(sectData.source_id)
         const thisSource = await getSourceById(sectData.source_id)
         const thisMercy = thisSource.mercy_words
+        sourcesArr.push(thisSource)
+
+        if (n == idArr.length - 1) {
+            populateSections(sectData.source_id)
+        }
 
         currentCompare = await createComparer( {
             outOfOrder: { mode: "proportional" },
@@ -339,6 +346,7 @@ async function startQueue(idArr) {
         targIterations++
     }
 
+    populateSources(sourcesArr)
     loadSect(globCurrents['sect'] + "*" + globCurrents['iter'])
     toggRecogAndElem(true)
     shiftContentBlocks('game')
@@ -1038,14 +1046,6 @@ function synthSpeakClosure(str, lang) {
 
 async function populateSections(id, clickedElem) {
       
-    const clearHighlight = document.querySelector('.title-highlight')
-
-    if(clearHighlight) {
-        clearHighlight.classList.remove('title-highlight')
-    }
-
-    clickedElem.classList.add('title-highlight')
-
     sectDiv.innerHTML = ''
 
     const partsData = await getSourceParts(id)
@@ -1054,6 +1054,17 @@ async function populateSections(id, clickedElem) {
     partsData.forEach(entry => {
         buildSectCheckbox(entry.id, entry.text, entry.award)
     })
+    
+    
+    const clearHighlight = document.querySelector('.title-highlight')
+
+    if(clearHighlight) {
+        clearHighlight.classList.remove('title-highlight')
+    }
+
+    if (clickedElem) {
+        clickedElem.classList.add('title-highlight')
+    }
 }
 
 function populateProgressBtns([arr, total]) {

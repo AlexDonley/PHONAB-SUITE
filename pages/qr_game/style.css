@@ -45,7 +45,7 @@ body {
 }
 
 .blue {
-    color: blue;
+    color: green;
 }
 
 .team.red {
@@ -54,7 +54,7 @@ body {
 }
 .team.blue {
     color: white;
-    background-color: blue;
+    background-color: green;
 }
 
 textarea {

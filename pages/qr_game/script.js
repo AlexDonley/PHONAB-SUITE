@@ -134,8 +134,10 @@ inputText.addEventListener('input', (event) => {
                     if(processedData.value.toLowerCase() === matchQueue[0].toLowerCase()) {
                         console.log("Correct match for: ", processedData.value);
 
-                        teamScores[processedData.team] += 1;
-                        document.getElementById(`score${processedData.team === "red" ? 1 : 2}`).textContent = teamScores[processedData.team];
+                        if (processedData.team) {
+                            teamScores[processedData.team] += 1;
+                            document.getElementById(`score${processedData.team === "red" ? 1 : 2}`).textContent = teamScores[processedData.team];
+                        }
                         
                         matchQueue.shift();
                         if (matchQueue.length > 0) {
@@ -160,20 +162,34 @@ function nextInQueue(char) {
             imgToDisplay(char);
             break;
         case "action":
-            imgToDisplay(char, 'Action');
+            imgToDisplay(char, 'action');
             break;
         case "animal":
-            imgToDisplay(char, 'Animal');
+            imgToDisplay(char, 'animal');
             break;
-        case "capital":
+        case "uppercase":
             displayBox.innerHTML = char.toUpperCase();
+            break;
+        case "lowercase":
+            displayBox.innerHTML = char.toLowerCase();
+            break;
+        case "allcase":
+            const randCase = Math.round(Math.random());
+
+            if (randCase === 0) {
+                displayBox.innerHTML = char.toUpperCase();
+            } else {
+                displayBox.innerHTML = char.toLowerCase();
+            }
+            
             break;
     }   
 }
 
-function createMatchQueue(charArr, len) {
+function createMatchQueue(charArr) {
     var baseArr = [...charArr];
     var newArr = [];
+    const len = charArr.length;
 
     for (var i = 0; i < len; i++) {
         var randomIndex = Math.floor(Math.random() * baseArr.length);
@@ -200,7 +216,7 @@ function iconPriority(dict) {
     }
 }
 
-console.log(createMatchQueue(["A", "B", "C", "T"], 10));
+console.log(createMatchQueue(["A", "B", "C", "T"]));
 
 function imgToDisplay(char, type) {
     displayBox.innerHTML = "";
@@ -211,7 +227,7 @@ function imgToDisplay(char, type) {
     if (type) {
         newImg.src = iconPriority(abcImgs[abcLets[char][type]]);
     } else {
-        let typesArr = ["Animal", "Misc", "Action"];
+        let typesArr = ["animal", "misc", "action"];
         let randomType = typesArr[Math.floor(Math.random() * typesArr.length)];
 
         newImg.src = iconPriority(abcImgs[abcLets[char][randomType]]);
@@ -225,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // --- STATE MANAGEMENT ---
             const state = {
-                letters: new Set(['A', 'B', 'C', 'D', 'E']), // Default selected letters
+                letters: new Set(['F', 'N']), // Default selected letters
                 mode: 'display',           // 'display' | 'game'
                 input: 'single',           // 'single' | 'multi'
                 triggerMode: 'auto',       // 'auto' | 'timed'

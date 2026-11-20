@@ -65,7 +65,7 @@ function fetchIpaZyDict() {
         // test successful fetching and functions with the example "friday"
         const testArr = engToIPAArr('in');
         const revArr = reviseIpaArr(testArr);
-        console.log(ipaToZY(revArr));
+        // console.log(ipaToZY(revArr));
     })
 }
 
@@ -197,7 +197,6 @@ function reviseIpaArr(arr) {
         }
     })
 
-    console.log(newArr);
     return newArr
 }
 
