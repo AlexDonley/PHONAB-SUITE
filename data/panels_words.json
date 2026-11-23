@@ -777,5 +777,68 @@
         "sentences": [
             "Big Green Monster has"            
         ]
+    },
+    {
+        "title": "Stinky Cheese 1.1",
+        "words": [
+            "once upon a time", "lonely", "stinky", "cheese",
+            "bacon", "mouth", "olives", "eyes",
+            "run", "as fast as you can"
+                ],
+        "sentences": [
+            "make _ out of _"
+        ]
+    },
+    {
+        "title": "Stinky Cheese 1.2",
+        "words": [
+            "bake", "oven", "terrible",
+            "catch", "smell"
+                ],
+        "sentences": [
+            "make _ out of _"
+        ]
+    },
+    {
+        "title": "Stinky Cheese 2.1",
+        "words": [
+            "hungry", "chase", "until", "cows",
+            "grass", "awful", "run away from", "too",
+            "stomachaches", "weeds"
+                ],
+        "sentences": [
+            "what's that _ smell?"
+        ]
+    },
+    {
+        "title": "Stinky Cheese 3.1",
+        "words": [
+            "kids", "playing", "school", "nasty",
+            "gross", "if", "get out of here", "either"
+                ],
+        "sentences": [
+            "_ will make _"
+        ]
+    },
+    {
+        "title": "Stinky Cheese 4.1",
+        "words": [
+            "river", "bridge", "swim", "carry",
+            "across", "fall apart", "hop on", "back",
+            "how", "trust"
+                ],
+        "sentences": [
+            "make _ out of _"
+        ]
+    },
+    {
+        "title": "Stinky Cheese 4.2",
+        "words": [
+            "funky", "coughs", "gags",
+            "sneezes", "flew into"
+                ],
+        "sentences": [
+            "If I try to _, I'll _"
+        ]
     }
 ]
