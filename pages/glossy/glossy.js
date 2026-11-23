@@ -5,6 +5,7 @@ import {
     charToPin, parseAndCaption
 } from '../../js_modules/universal-phonics.js'
 import { fillMaxFontSize } from '../../js_modules/resize-text.js'
+import { urlQuerToDict } from '../../js_modules/url-query.js'
 
 const highLight         = document.querySelector('#highLight');
 const fullText          = document.querySelector('#fullText');
@@ -74,6 +75,11 @@ function loadTextOptions() {
 
 loadTextOptions()
 const jsonDataPath = "../../data/gloss_json/"
+
+const urlData = urlQuerToDict()
+if (urlData.gl == 'demo') {
+    getSentenceJSON("sick1")
+}
 
 
 function getSentenceJSON(name) {
