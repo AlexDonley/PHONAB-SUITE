@@ -73,20 +73,21 @@ textarea {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 10px;
     padding: 10px;
-    background: tan;
-    background-image: url(../../img/wood_dark.jpg);
-    background-size:     cover;
-    background-repeat:   no-repeat;
+    background: black;
     background-position: center center;
+    transition: background 0.2s;
+}
+.game-board.red {
+    background: maroon;
+}
+.game-board.blue {
+    background: navy;
 }
 
 .side-bar {
     height: 100vh;
     width: 20vw;
-    background-image: url(../../img/wood_light.jpg);
-    background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: center center;
+    background: rgb(236, 209, 174);
     box-shadow: -10px 0 10px -5px #000000 inset;
     position: relative;
 }
@@ -222,19 +223,19 @@ textarea {
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%)
 } */
 
-.blue {
+.shiny.blue {
     background: blue;
     color: white;
 }
-.red {
+.shiny.red {
     background: red;
     color: white;
 }
-.yellow {
+.shiny.yellow {
     background: yellow;
     color: black;
 }
-.green {
+.shiny.green {
     background: green;
     color: white;
 }

@@ -1,27 +1,29 @@
-import { shuffle } from '../../js_modules/shuffle.js'
+import { shuffle } from '../../js_modules/shuffle.js';
 import {
     targetLang, speechRec, 
     setLanguage, startRecLoop, stopRecLoop
-} from '../../js_modules/speech-rec.js'
+} from '../../js_modules/speech-rec.js';
 import { 
     urlConfigs, writeConfigValues 
-} from '../../js_modules/url-query.js'
-import { genWPStrToArr, checkArrOverlap } from '../../js_modules/word-process.js'
+} from '../../js_modules/url-query.js';
+import { genWPStrToArr, checkArrOverlap } from '../../js_modules/word-process.js';
 
-const gameBoard     = document.querySelector('#gameBoard')
-const speechLog     = document.querySelector('#speechLog')
-const speechNow     = document.querySelector('#speechNow')
-const goBtn         = document.querySelector('#goBtn')
-const micButton     = document.querySelector('#micButton')
-const micIcon       = document.querySelector('#micIcon')
-const teamBar       = document.querySelector('#teamBar')
-const scoreKeep     = document.querySelector('#scoreKeep')
-const suggestBox    = document.querySelector('#suggestBox')
-const vocabQueue    = document.querySelector('#vocabQueue')
-const userPickTeams = document.querySelector('#userPickTeams')
-const userPickGrid  = document.querySelector('#userPickGrid')
-const userPickList  = document.querySelector('#userPickList')
-const optionsMenu   = document.querySelector('#optionsMenu')
+const gameBoard     = document.querySelector('#gameBoard');
+const speechLog     = document.querySelector('#speechLog');
+const speechNow     = document.querySelector('#speechNow');
+const goBtn         = document.querySelector('#goBtn');
+const micButton     = document.querySelector('#micButton');
+const micIcon       = document.querySelector('#micIcon');
+const teamBar       = document.querySelector('#teamBar');
+const scoreKeep     = document.querySelector('#scoreKeep');
+const suggestBox    = document.querySelector('#suggestBox');
+const vocabQueue    = document.querySelector('#vocabQueue');
+const userPickTeams = document.querySelector('#userPickTeams');
+const userPickGrid  = document.querySelector('#userPickGrid');
+const userPickList  = document.querySelector('#userPickList');
+const optionsMenu   = document.querySelector('#optionsMenu');
+const nextBtn       = document.querySelector('#nextBtn');
+const plauseBtn     = document.querySelector('#plauseBtn')
 
 goBtn.addEventListener('click', startRound)
 micButton.addEventListener('click', toggleRec)
@@ -266,7 +268,13 @@ function nextTeam() {
         turn = 1
     }
 
-    teamBar.children[0].style.fill = teamColors[turn - 1]
+    const thisColor = teamColors[turn - 1]
+
+    teamBar.children[0].style.fill = thisColor
+    teamColors.forEach(color => {
+        gameBoard.classList.remove(color)
+    })
+    gameBoard.classList.add(thisColor)
 
     console.log("next team")
 }
