@@ -10,8 +10,6 @@ body {
   flex-direction: column;
   transition: background-color 0.3s;
     font-family: "Century Gothic", Arial, sans-serif !important;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 body.active-mic {
   background-color: rgb(57, 1, 1);
@@ -83,37 +81,23 @@ button {
   z-index: -1;
 }
 
-/* .right-sidebar {
-  position: fixed;
-  right: 10px;
-  bottom: max(1vh, 1vw);
-  height: 86vh;
-  z-index: 2;
-} */
-
-.right-sidebar {
-  position: fixed;
-  right: calc(10px + env(safe-area-inset-right, 0px));
-  top: calc(100px + env(safe-area-inset-top, 0px));
-  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+.top-awards {
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* or flex-end, space-evenly, etc. */
-  gap: 12px;
-  z-index: 2;
+  gap: 10px;
+  padding: 5px;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* thumb, track */
 }
-
-.award-div {
-  flex: 1;
-  display: flex;
-  gap: 5px;
-  padding: 10px;
-  writing-mode: vertical-lr;
+.top-awards > * {
+  flex: 0 0 auto;
 }
 
 .award-circle {
-  height: min(7vh, 7vw);
-  width: min(7vh, 7vw);
+  height: min(6vh, 6vw);
+  width: min(6vh, 6vw);
   border-radius: 50%;
   font-size: min(3vh, 3vw);
   display: flex;
@@ -122,9 +106,29 @@ button {
   transition: font-size 0.2s;
   user-select: none;
 }
-
 .award-circle:hover {
   font-size: min(4vh, 4vw);
+}
+
+.circle-delete {
+  position: absolute;
+  right: calc(-1 * min(1vh, 1vw));
+  top: 0;
+  height: min(2vh, 2vw);
+  width: min(2vh, 2vw);
+  background: maroon;
+  border-radius: min(1vh, 1vw);
+  font-size: min(1vh, 1vw);
+  line-height: min(2vh, 2vw);
+  transition: background 0.2s;
+}
+.circle-delete:hover {
+  background: red;
+}
+
+.see-awards {
+  font-size: 2rem;
+  border-radius: 15px;
 }
 
 canvas {
@@ -163,7 +167,7 @@ svg {
   align-items: center;
   font-family: inherit;
   grid-template-rows: 20px min(8vh, 8vw);
-  grid-template-columns: 130px 3fr 2fr 1fr;
+  grid-template-columns: 130px 2fr 1fr minmax(0, 2fr);
 }
 
 .arrow-cutout {
@@ -186,7 +190,7 @@ svg {
   grid-row-end: 3;
 }
 
-.header-big-font {
+.header-big {
   font-size: min(6vh, 6vw)
 }
 
@@ -235,7 +239,8 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px
+  gap: 10px;
+  font-size: min(2.5vh, 2.5vw)
 }
 .stop-watch.flip {
   background: radial-gradient(circle at center, maroon, 70%, red);;

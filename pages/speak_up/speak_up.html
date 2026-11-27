@@ -21,9 +21,6 @@
             <div class="arrow-overlay"></div>
         </div>
     </div>
-    <div class="right-sidebar shadow">
-        <div class="award-div" id="awardDiv"></div>
-    </div>
     <div class="corner-btns shadow">
         <button class="user-btn" id="userBtn">
             <svg height="40px" viewBox="0 -960 960 960" width="40px" fill="#555555"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
@@ -56,19 +53,20 @@
     <div class="header shadow">
         <div class="arrow-cutout"></div>
         <div class="percent"></div>
-        <div class="title header-big-font">Speak Up!</div>
+        <div class="title header-big">Speak Up!</div>
         <div class="upper">Timer</div>
-        <div class="upper">Score</div>
+        <div class="upper">Awards</div>
         <div class="stop-watch lower">
-            <button class="timer-btn flip" id="timerBtn">
+            <button class="timer-btn flip shadow" id="timerBtn">
                 <div class="timer-frame up-arrow">
                     <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="gray"><path d="M400-840q-17 0-28.5-11.5T360-880q0-17 11.5-28.5T400-920h160q17 0 28.5 11.5T600-880q0 17-11.5 28.5T560-840H400Zm80 440q17 0 28.5-11.5T520-440v-160q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600v160q0 17 11.5 28.5T480-400Zm0 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l28-28q11-11 28-11t28 11q11 11 11 28t-11 28l-28 28q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
                 </div>
             </button>
-            <div class="header-big-font" id="stopWatch">0:00</div>
+            <div class="timer-digit" id="stopWatch">0:00</div>
         </div>
 
-        <div class="score header-big-font lower" id="scoreMarker">0</div> 
+        <div class="top-awards lower" id="topAwards">
+        </div> 
     </div>
     <div class="lower-sect">
         <div class="main-content">

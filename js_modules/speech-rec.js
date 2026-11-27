@@ -13,6 +13,17 @@ speechRec.continuous = false;
 
 export let willLoop = true
 
+let isRecognizing = false;
+
+speechRec.onstart = () => {
+    isRecognizing = true;
+};
+
+speechRec.onend = () => {
+    isRecognizing = false;
+};
+
+
 export function setLanguage(str) {
     targetLang = str
     speechRec.lang = targetLang
@@ -27,7 +38,10 @@ export function startRecLoop(loopBool, interBool, contBool, langStr) {
     
     speechRec.interimResults = interBool
     speechRec.continous = contBool
-    speechRec.start()
+    
+    if (!isRecognizing) {
+        speechRec.start()
+    }
 }
 
 // export const recResults = speechRec.addEventListener("result", (e) => {

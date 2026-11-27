@@ -37,8 +37,7 @@ import {
 
 const progBtns        = document.querySelector('.progress-click');
 const stopWatch       = document.querySelector('#stopWatch');
-const awardDiv        = document.querySelector('#awardDiv');
-const scoreMarker     = document.querySelector('#scoreMarker');
+const topAwards       = document.querySelector('#topAwards');
 const settingsMenu    = document.querySelector('.settings-menu');
 const ffLang          = document.querySelector('#ffLang');
 const oscType         = document.querySelector('#oscType')
@@ -100,7 +99,6 @@ playBtn.addEventListener("click", synthSpeakClosure('fullSent', targetLang));
 homeBtn.addEventListener("click", endQueue);
 userBtn.addEventListener("click", e => {
     shiftContentBlocks('user')
-    stopRecLoop()
 });
 readBtn.addEventListener("click", e => {
     shiftContentBlocks('game')
@@ -264,7 +262,6 @@ perfectWow.volume = 0.2
 // variables for scoring and progress
 
 let score = 0
-scoreMarker.innerText = score
 
 let currentCompare = await createComparer()
 
@@ -341,7 +338,7 @@ async function startQueue(idArr) {
         complObjs[fullId] = genPresetObj(sectData)
 
         const newAward = awardProgElem(fullId, sectData.award)
-        awardDiv.prepend(newAward)
+        topAwards.prepend(newAward)
 
         targIterations++
     }
@@ -374,17 +371,12 @@ async function startFreef() {
     globCurrents['iter'] = targIterations
     targIterations++
 
-    awardDiv.prepend(awardProgElem(thisTextID, '👍'))
+    topAwards.prepend(awardProgElem(thisTextID, '👍'))
     loadSect(thisTextID)
 
     toggRecogAndElem(true)
     shiftContentBlocks('game')
 }
-
-// TO DO: Probably delete these
-// const safariBool = window.navigator.userAgent.includes('Safari');
-// const safariBool = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
-// console.log(safariBool)
 
 speechRec.addEventListener("result", (e) => {
   
@@ -627,8 +619,10 @@ function genFreefObj(arr) {
 
 export function toggRecogAndElem(bool) {
     
+    stopRecLoop()
+    
     let recogSet = isRecog
-
+    
     if(bool === true || bool === false) {
         recogSet = !bool
     }
@@ -645,12 +639,11 @@ export function toggRecogAndElem(bool) {
         isRecog = false
         //document.body.classList.remove('active-mic')
         micBtn.classList.remove('active')
-        stopRecLoop()
 
     }
 }
 
-micBtn.addEventListener('click', toggRecogAndElem)
+micBtn.addEventListener('click', toggRecogAndElem);
 
 function nextFragment() {
   
@@ -884,7 +877,7 @@ function updateArrow(map) {
 
 function updateScore(n) {
     score += n
-    scoreMarker.innerText = score
+    topAwards.innerText = score
 
     if(!(currentUserIndex == null)) {
         userInfo[currentUserIndex].user_score = score
@@ -895,19 +888,54 @@ function updateScore(n) {
 function awardProgElem(awardID, awardEmote) {
     
     // create surrounding circle progress marker
-    const gradCirc = document.createElement('div')
-    gradCirc.classList.add('award-circle')
-    gradCirc.style.background = genStepConicGrad(['gray'])
+    const gradCirc = document.createElement('div');
+    gradCirc.classList.add('award-circle');
+    gradCirc.classList.add('shadow');
+    gradCirc.style.background = genStepConicGrad(['gray']);
     gradCirc.id = awardID
+
+    // create a delete button
+    const circDelete = document.createElement('div');
+    circDelete.classList.add('circle-delete');
+    circDelete.innerText = 'x';
+
+    // add award emoji and delete button
+    gradCirc.append(awardEmote);
+    gradCirc.append(circDelete);
 
     // a click navigates to partially-completed round
     gradCirc.addEventListener('click', e => {
-        loadSect(gradCirc.id)
+
+        if (e.target.classList.contains('circle-delete')) {
+            console.log('attempt to delete section')
+
+            // delete data from browser
+            const parentCirc = e.target.parentElement;
+            const thisDataId = parentCirc.id;
+            
+            console.log(`Deleting ${thisDataId} from complObjs.`);
+            delete complObjs[thisDataId];
+
+            // delete this element
+            parentCirc.remove()
+
+            // switch to different speaking practice or back to menu
+            const keysCheck = Object.keys(complObjs);
+
+            if (keysCheck.length > 0) {
+                // check for different section
+                loadSect(keysCheck[0]);
+
+            } else {
+                // back to menu if none
+                shiftContentBlocks('menu');
+            }
+            
+        } else {
+            loadSect(gradCirc.id)
+            shiftContentBlocks('game')
+        }
     })
-
-
-    // add the emoticon award inside
-    gradCirc.innerText = awardEmote
 
     return gradCirc
 }
@@ -1096,7 +1124,6 @@ function populateProgressBtns([arr, total]) {
         rowTempStr += 100 * arr[i].length / total + "fr "
     }
 
-    console.log(rowTempStr)
     progBtns.style.gridTemplateColumns = rowTempStr
 }
 
@@ -1146,12 +1173,12 @@ function updateVol() {
 
 function showUserPage() {
     shiftContentBlocks('user');
-    stopRecLoop();
 }
 
 function shiftContentBlocks(str) {
     playBtn.disabled = true;
     micBtn.disabled = true;
+    toggRecogAndElem(false)
     
     if (str == 'user') {
         contentBlocks.style.left = "0%"
@@ -1159,6 +1186,7 @@ function shiftContentBlocks(str) {
         contentBlocks.style.left = "-200%"
         playBtn.disabled = false;
         micBtn.disabled = false;
+        toggRecogAndElem(true)
     } else if (str == 'menu') {
         contentBlocks.style.left = "-100%"
     }
