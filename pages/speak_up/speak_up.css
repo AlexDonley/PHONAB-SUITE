@@ -10,6 +10,8 @@ body {
   flex-direction: column;
   transition: background-color 0.3s;
     font-family: "Century Gothic", Arial, sans-serif !important;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 body.active-mic {
   background-color: rgb(57, 1, 1);
@@ -92,12 +94,13 @@ button {
 .right-sidebar {
   position: fixed;
   right: calc(10px + env(safe-area-inset-right, 0px));
-  bottom: calc(max(1vh, 1vw) + env(safe-area-inset-bottom, 0px));
-  height: 86vh;
-  height: 86dvh;
-  max-height: calc(100dvh - 20px - env(safe-area-inset-top, 0px));
+  top: calc(100px + env(safe-area-inset-top, 0px));
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* or flex-end, space-evenly, etc. */
+  gap: 12px;
   z-index: 2;
-  overflow-y: auto;
 }
 
 .award-div {
