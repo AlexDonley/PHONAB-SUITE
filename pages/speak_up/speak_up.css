@@ -81,12 +81,23 @@ button {
   z-index: -1;
 }
 
-.right-sidebar {
+/* .right-sidebar {
   position: fixed;
   right: 10px;
   bottom: max(1vh, 1vw);
   height: 86vh;
   z-index: 2;
+} */
+
+.right-sidebar {
+  position: fixed;
+  right: calc(10px + env(safe-area-inset-right, 0px));
+  bottom: calc(max(1vh, 1vw) + env(safe-area-inset-bottom, 0px));
+  height: 86vh;
+  height: 86dvh;
+  max-height: calc(100dvh - 20px - env(safe-area-inset-top, 0px));
+  z-index: 2;
+  overflow-y: auto;
 }
 
 .award-div {
