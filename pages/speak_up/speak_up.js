@@ -345,7 +345,6 @@ async function startQueue(idArr) {
 
     populateSources(sourcesArr)
     loadSect(globCurrents['sect'] + "*" + globCurrents['iter'])
-    toggRecogAndElem(true)
     shiftContentBlocks('game')
 
     const newQR = genQRstr({
@@ -374,7 +373,6 @@ async function startFreef() {
     topAwards.prepend(awardProgElem(thisTextID, '👍'))
     loadSect(thisTextID)
 
-    toggRecogAndElem(true)
     shiftContentBlocks('game')
 }
 
