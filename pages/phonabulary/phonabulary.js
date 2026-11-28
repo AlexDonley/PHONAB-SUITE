@@ -1,3 +1,5 @@
+import { mapKeysToFunctions } from "../../js_modules/controls.js";
+
 const menuToggle = document.getElementById('menuToggle');
 const abcGrid = document.getElementById('abcGrid');
 const drillGrid = document.getElementById('drillGrid');
@@ -781,28 +783,19 @@ document.getElementById('stepBtn').addEventListener('click', nextStep);
 document.getElementById('nextBtn').addEventListener('click', nextCard);
 document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
 
-// Keyboard Shortcuts
-window.addEventListener('keydown', (e) => {
-    if (!overlay.classList.contains('active')) return;
-
-    if (e.key === 'ArrowUp') {
-        prevCard();
-        e.preventDefault();
-    } else if (e.key === 'ArrowDown') {
-        nextStep();
-        e.preventDefault();
-    } else if (e.key === 'Tab') {
-        nextCard();
-        e.preventDefault();
-    } else if (e.key === 'Enter') {
-        toggleFullscreen();
-        e.preventDefault();
-    } else if (e.key === 'Escape') {
-        closeApp();
-    } else if (e.key === 'b') {
-        closeApp();
+// Keyboard Functions
+mapKeysToFunctions(
+    {
+        'ArrowUp': prevCard,
+        'ArrowDown': nextStep,
+        'Tab': nextCard,
+        'Enter': toggleFullscreen,
+        'Escape': closeApp,
+        'b': closeApp
     }
-});
+)
+
+// TODOTODO
 
 // Global declarations to allow for modularity
 window.preload = preload;

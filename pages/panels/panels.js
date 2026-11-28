@@ -3,10 +3,9 @@ import {
     targetLang, speechRec, 
     setLanguage, startRecLoop, stopRecLoop
 } from '../../js_modules/speech-rec.js';
-import { 
-    urlConfigs, writeConfigValues 
-} from '../../js_modules/url-query.js';
+import { urlConfigs, writeConfigValues } from '../../js_modules/url-query.js';
 import { genWPStrToArr, checkArrOverlap } from '../../js_modules/word-process.js';
+import { mapKeysToFunctions } from '../../js_modules/controls.js'
 
 const gameBoard     = document.querySelector('#gameBoard');
 const speechLog     = document.querySelector('#speechLog');
@@ -23,15 +22,37 @@ const userPickGrid  = document.querySelector('#userPickGrid');
 const userPickList  = document.querySelector('#userPickList');
 const optionsMenu   = document.querySelector('#optionsMenu');
 const nextBtn       = document.querySelector('#nextBtn');
-const plauseBtn     = document.querySelector('#plauseBtn')
+const plauseBtn     = document.querySelector('#plauseBtn');
+
+const listenToggle = (value = !listenBool) => {
+    listenBool = value;
+    listenBool ? recOn() :recOff();
+};
+
+function recOn() {
+    micIcon.innerText = "radio_button_checked"
+    micButton.classList.add('on')
+    startRecLoop(1, 1, 0, targetLang)
+}
+
+function recOff() {
+    micIcon.innerText = "radio_button_unchecked"
+    micButton.classList.remove('on')
+    stopRecLoop()
+}
 
 goBtn.addEventListener('click', startRound)
-micButton.addEventListener('click', toggleRec)
+micButton.addEventListener('click', () => {
+    listenToggle()
+})
 suggestBox.addEventListener('click', nextSentence)
 
 const smallWin = new Audio("../../sfx/success.mp3")
 const bigWin = new Audio("../../sfx/copyability.mp3")
 const boardWin = new Audio("../../sfx/yo2.mp3")
+
+let attemptCount = 0;
+let attemptLimit = 2;
 
 smallWin.volume = 0.45
 bigWin.volume = 0.45
@@ -170,20 +191,6 @@ function dequeueOption() {
 
 setLanguage('en')
 
-function toggleRec() {
-    if (listenBool) {
-        listenBool = false
-        micIcon.innerText = "radio_button_unchecked"
-        micButton.classList.remove('on')
-        stopRecLoop()
-    } else {
-        listenBool = true
-        micIcon.innerText = "radio_button_checked"
-        micButton.classList.add('on')
-        startRecLoop(1, 1, 0, targetLang)
-    }
-}
-
 speechRec.addEventListener("result", (e) => {
   
     const text = Array.from(e.results)
@@ -211,7 +218,11 @@ speechRec.addEventListener("result", (e) => {
         speechLog.prepend(logDiv)
         
         checkBoard(text, turn)
-        nextTeam()
+        if (attemptCount >= attemptLimit) {
+            nextPhase()
+        } else {
+            attemptCount++
+        }
     }
 })
 
@@ -262,21 +273,24 @@ function checkBoard(str, team){
 
 function nextTeam() {
 
+    attemptCount = 0
+
     if (turn < teamCount) {
-        turn++
+        turn++;
     } else {
-        turn = 1
+        turn = 1;
     }
 
-    const thisColor = teamColors[turn - 1]
+    const thisColor = teamColors[turn - 1];
 
-    teamBar.children[0].style.fill = thisColor
+    teamBar.children[0].style.fill = thisColor;
     teamColors.forEach(color => {
-        gameBoard.classList.remove(color)
+        gameBoard.classList.remove(color);
     })
-    gameBoard.classList.add(thisColor)
+    gameBoard.classList.add(thisColor);
 
-    console.log("next team")
+    listenToggle();
+    console.log("next team");
 }
 
 function populateTeams(numOfTeams) {
@@ -498,5 +512,24 @@ function processWordlist(data) {
         }
     }
 }
+
+let phaseIdx = 0
+let phaseQueue = [nextTeam, listenToggle];
+
+function nextPhase() {
+    if (phaseQueue) {
+        if (phaseIdx < phaseQueue.length - 1) {
+            phaseIdx += 1;
+        } else {
+            phaseIdx = 0;
+        }
+
+        phaseQueue[phaseIdx]();
+    }
+}
+
+mapKeysToFunctions({
+    'ArrowDown': nextPhase
+})
 
 loadJSON('panels_words')
